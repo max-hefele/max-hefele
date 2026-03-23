@@ -14,10 +14,21 @@ const SOCIAL_LINKS = [
 const NAV_ITEMS = ["About", "Music", "Dates", "Contact"];
 
 const GOOGLE_DRIVE = {
-  pressKit: "https://drive.google.com/drive/folders/1IWpYqmi32KSwJYzpufRnb0VvszaQtfL6",
   videos: "https://drive.google.com/drive/folders/159vuE6gldbiJihBx7CigxbYG2p4ZdWj0",
-  firstVideo: "https://drive.google.com/file/d/1W4eYUtmmDKoGH5lSQP9gvhMdtTqM-ZGY/preview",
 };
+
+const VIDEO_IDS = [
+  "1x1dK3ECiPqBgl3x9C4AkhDJRsvmdKetg",
+  "1X9EQjdtchvJAmKsRb8YFbhk1AWN02iPH",
+  "1S0OZCmvRVf6cTdqfnIeFgsohICHcvES1",
+  "1lXFgUJirrz8qA-6Ni04iVpfkqiWXfH5g",
+  "16V3xOlMDs817LPzNDWm9AZTJWZ1JMz8B",
+  "1fqwwCK1xxJsohmpWcWlrFne-NBIWTAqj",
+  "1icwk_hpgDJKz4J7ktGzfu5oth9huW0hI",
+  "1zZ4PanhXvNvCT6TXVW9slITDBrMYtwIJ",
+  "1t8rpnyLjV-pt-XFXS108gfDvomQTV1Gw",
+  "1W4eYUtmmDKoGH5lSQP9gvhMdtTqM-ZGY",
+];
 
 const RESIDENCIES = [
   "Citrus Club Ulm '05–'11",
@@ -78,11 +89,6 @@ const Icons = {
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   ),
-  Download: () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-    </svg>
-  ),
 };
 
 // ─── Styles ───
@@ -135,12 +141,11 @@ const css = `
   .hero-grain { position: absolute; inset: 0; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; pointer-events: none; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
   .hero-name { font-family: var(--font-display); font-size: clamp(64px, 13vw, 160px); letter-spacing: clamp(8px, 2vw, 18px); line-height: 0.9; text-align: center; animation: heroIn 1.4s var(--ease) forwards; opacity: 0; }
-  .hero-sub { margin-top: 20px; font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: var(--text-dim); animation: heroIn 1.4s var(--ease) 0.15s forwards; opacity: 0; font-weight: 600; }
-  .hero-line { width: 40px; height: 1px; background: var(--text-dim); margin: 32px 0; animation: heroIn 1.4s var(--ease) 0.3s forwards; opacity: 0; }
-  .hero-socials { display: flex; gap: 14px; animation: heroIn 1.4s var(--ease) 0.4s forwards; opacity: 0; }
+  .hero-line { width: 40px; height: 1px; background: var(--text-dim); margin: 32px 0; animation: heroIn 1.4s var(--ease) 0.15s forwards; opacity: 0; }
+  .hero-socials { display: flex; gap: 14px; animation: heroIn 1.4s var(--ease) 0.25s forwards; opacity: 0; }
   .hero-socials a { color: var(--text-dim); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border-light); border-radius: 50%; transition: all 0.3s var(--ease); text-decoration: none; }
   .hero-socials a:hover { color: var(--text); border-color: var(--text-mid); transform: translateY(-3px); }
-  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); animation: heroIn 1.4s var(--ease) 0.6s forwards, bob 2.5s ease-in-out 2s infinite; opacity: 0; color: var(--text-dim); cursor: pointer; }
+  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); animation: heroIn 1.4s var(--ease) 0.45s forwards, bob 2.5s ease-in-out 1.8s infinite; opacity: 0; color: var(--text-dim); cursor: pointer; }
   @keyframes heroIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
@@ -184,23 +189,16 @@ const css = `
   /* VIDEO */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
   .video-frame iframe { width: 100%; height: 100%; border: none; }
-  .video-more { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+  .video-more { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
   .video-more:hover { color: var(--text); }
 
   /* DATES */
   .dates-empty { text-align: center; padding: 72px 0; }
   .dates-empty-title { font-family: var(--font-display); font-size: 28px; letter-spacing: 3px; color: var(--text-mid); margin-bottom: 10px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
-
-  /* EPK */
-  .epk-bar { margin-top: 64px; padding: 32px 36px; background: var(--bg-card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; transition: border-color 0.3s; }
-  .epk-bar:hover { border-color: var(--border-light); }
-  .epk-info h3 { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; margin-bottom: 4px; }
-  .epk-info p { font-size: 12px; color: var(--text-dim); letter-spacing: 0.5px; }
-  .epk-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; padding: 12px 28px; border: 1px solid var(--border-light); transition: all 0.3s; white-space: nowrap; font-family: var(--font-body); font-weight: 600; }
-  .epk-btn:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 
   /* CONTACT */
   .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); }
@@ -252,15 +250,14 @@ const css = `
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
     .music-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
-    .epk-bar { flex-direction: column; align-items: flex-start; }
     .hero-name { letter-spacing: 6px; }
   }
   @media (max-width: 480px) {
     .highlights { grid-template-columns: 1fr; }
     .section, .music-inner, .contact-inner { padding: 80px 20px; }
-    .hero-sub { font-size: 9px; letter-spacing: 4px; }
   }
 `;
 
@@ -326,7 +323,6 @@ export default function MaxHefele() {
         <div className="hero-grain" />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
-          <p className="hero-sub">Melodic Techno &nbsp;·&nbsp; Indie Dance &nbsp;·&nbsp; Süddeutschland</p>
           <div className="hero-line" />
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
@@ -419,12 +415,16 @@ export default function MaxHefele() {
           </Rv>
           <Rv delay={200}>
             <div className="video-block">
-              <div className="video-label">Latest Video</div>
-              <div className="video-frame">
-                <iframe src={GOOGLE_DRIVE.firstVideo} allow="autoplay; encrypted-media" allowFullScreen title="Latest Video" />
+              <div className="video-label">Videos</div>
+              <div className="video-grid">
+                {VIDEO_IDS.map((id, i) => (
+                  <div className="video-frame" key={id}>
+                    <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
+                  </div>
+                ))}
               </div>
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
-                Alle Videos ansehen <Icons.Arrow />
+                Alle Videos auf Google Drive <Icons.Arrow />
               </a>
             </div>
           </Rv>
@@ -442,17 +442,6 @@ export default function MaxHefele() {
           <div className="dates-empty">
             <div className="dates-empty-title">NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN</div>
             <div className="dates-empty-sub">Für Booking-Anfragen bitte Kontakt aufnehmen.</div>
-          </div>
-        </Rv>
-        <Rv delay={200}>
-          <div className="epk-bar">
-            <div className="epk-info">
-              <h3>PRESS KIT / EPK</h3>
-              <p>Bio, Pressefotos, Logo, Technical Rider — alles zum Download.</p>
-            </div>
-            <a className="epk-btn" href={GOOGLE_DRIVE.pressKit} target="_blank" rel="noopener noreferrer">
-              <Icons.Download /> Press Kit
-            </a>
           </div>
         </Rv>
       </section>
