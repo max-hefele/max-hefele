@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // ─── Config ───
-const ARTIST_NAME = "MAX HEFELE";
+const ARTIST_NAME = "MAXHEFELE";
 
 const SOCIAL_LINKS = [
   { name: "Instagram", url: "https://www.instagram.com/djmexxpain/", icon: "IG" },
