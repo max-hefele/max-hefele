@@ -4,11 +4,12 @@ import { useState, useEffect, useRef } from "react";
 const ARTIST_NAME = "MAXHEFELE";
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", url: "https://www.instagram.com/djmexxpain/", icon: "IG" },
-  { name: "YouTube", url: "https://www.youtube.com/@djmexxpain", icon: "YT" },
-  { name: "Facebook", url: "https://www.facebook.com/DjMexxPain/", icon: "FB" },
-  { name: "SoundCloud", url: "https://soundcloud.com/dj-mexx-pain", icon: "SC" },
-  { name: "Mixcloud", url: "https://www.mixcloud.com/mexxpain7/", icon: "MC" },
+  { name: "Instagram", url: "https://www.instagram.com/max.hefele.music/", icon: "IG" },
+  { name: "SoundCloud", url: "https://soundcloud.com/maxhefele", icon: "SC" },
+  { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
+  { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
+  { name: "Spotify", url: "#", icon: "SP", soon: true },
+  { name: "Beatport", url: "#", icon: "BP", soon: true },
 ];
 
 const NAV_ITEMS = ["About", "Music", "Dates", "Contact"];
@@ -53,9 +54,14 @@ const Icons = {
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
     </svg>
   ),
-  FB: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  SP: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11a.62.62 0 0 1 .21.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34a.78.78 0 0 1 .25 1.07zm.11-2.84C14.8 8.99 9.4 8.78 6.3 9.72a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 0 1-.96 1.61z"/>
+    </svg>
+  ),
+  BP: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5.5a1 1 0 0 1 2 0v4.05l3.04 1.76a1 1 0 0 1-1 1.73l-3.54-2.04A1 1 0 0 1 11 12V7.5z"/>
     </svg>
   ),
   SC: () => (
@@ -145,6 +151,7 @@ const css = `
   .hero-socials { display: flex; gap: 14px; animation: heroIn 1.4s var(--ease) 0.25s forwards; opacity: 0; }
   .hero-socials a { color: var(--text-dim); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border-light); border-radius: 50%; transition: all 0.3s var(--ease); text-decoration: none; }
   .hero-socials a:hover { color: var(--text); border-color: var(--text-mid); transform: translateY(-3px); }
+  .hero-social-soon { color: #333; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px dashed var(--border-light); border-radius: 50%; cursor: default; opacity: 0.5; }
   .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); animation: heroIn 1.4s var(--ease) 0.45s forwards, bob 2.5s ease-in-out 1.8s infinite; opacity: 0; color: var(--text-dim); cursor: pointer; }
   @keyframes heroIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
@@ -210,6 +217,9 @@ const css = `
   .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-dim); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; font-weight: 500; }
   .contact-social:first-child { border-top: 1px solid var(--border); }
   .contact-social:hover { color: var(--text); padding-left: 8px; }
+  .contact-social-soon { color: #444; cursor: default; }
+  .contact-social-soon:hover { padding-left: 0; color: #444; }
+  .soon-badge { font-size: 9px; letter-spacing: 1px; padding: 3px 8px; border: 1px solid var(--border-light); color: var(--text-dim); border-radius: 2px; }
 
   /* FOOTER */
   .footer { padding: 36px 48px; text-align: center; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; border-top: 1px solid var(--border); }
@@ -327,6 +337,9 @@ export default function MaxHefele() {
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon];
+              if (s.soon) {
+                return <span key={s.name} className="hero-social-soon" title={`${s.name} — bald verfügbar`}><Icon /></span>;
+              }
               return <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}><Icon /></a>;
             })}
           </div>
@@ -350,10 +363,13 @@ export default function MaxHefele() {
           <div>
             <Rv delay={150}>
               <div className="about-text">
-                <p>Max Hefele steht für melodischen Techno mit einem klaren Fokus auf Atmosphäre und musikalischen Aufbau. Mit einem guten Gespür für Timing und Dynamik schafft er einen Flow, der den Dancefloor trägt — von ruhigen, hypnotischen Momenten bis zu treibender Energie.</p>
-                <p>Der aus Süddeutschland stammende DJ ist seit vielen Jahren Teil der elektronischen Clubkultur. Seine musikalische Reise begann früh hinter den Decks und führte ihn über zahlreiche Clubnächte und Events, bei denen er sich einen Ruf für stilvolle, dramaturgisch aufgebaute Sets erspielt hat.</p>
-                <p>Neben seiner Arbeit als DJ produziert Max Hefele seit Jahren eigene Tracks und hat über die Zeit ein umfangreiches Repertoire an Produktionen aufgebaut. Erste Veröffentlichungen aus diesem Fundus erscheinen demnächst auf dem Label MYR-Recordings.</p>
-                <p className="about-note">Bis 2026 trat er unter dem Künstlernamen Mexx Pain auf.</p>
+                <p>Max Hefele steht für 20 Jahre Clubkultur.</p>
+                <p>Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh: Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.</p>
+                <p>Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.</p>
+                <p>Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.</p>
+                <p>Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.</p>
+                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
+                <p>Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren.</p>
               </div>
             </Rv>
             <Rv delay={250}>
@@ -388,19 +404,19 @@ export default function MaxHefele() {
           </Rv>
           <Rv delay={100}>
             <div className="music-grid">
-              <a className="m-card" href="https://soundcloud.com/dj-mexx-pain" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.SC /></div>
                 <div className="m-card-name">SOUNDCLOUD</div>
-                <div className="m-card-desc">Mixes, eigene Tracks und der „Rave in the City" Podcast. Erste Releases demnächst auf MYR-Recordings.</div>
+                <div className="m-card-desc">Mixes, eigene Tracks und die „Rave in the City" Reihe. Debüt-EP demnächst auf MYR Records.</div>
                 <div className="m-card-link">Anhören <Icons.Arrow /></div>
               </a>
-              <a className="m-card" href="https://www.youtube.com/@djmexxpain" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.YT /></div>
                 <div className="m-card-name">YOUTUBE</div>
-                <div className="m-card-desc">Rave in the City — der Video-Podcast mit Sets und visuellen Erlebnissen alle zwei Wochen.</div>
+                <div className="m-card-desc">Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.</div>
                 <div className="m-card-link">Ansehen <Icons.Arrow /></div>
               </a>
-              <a className="m-card" href="https://www.mixcloud.com/mexxpain7/" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.MC /></div>
                 <div className="m-card-name">MIXCLOUD</div>
                 <div className="m-card-desc">Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.</div>
@@ -410,7 +426,7 @@ export default function MaxHefele() {
           </Rv>
           <Rv delay={150}>
             <div className="sc-embed">
-              <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/dj-mexx-pain&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
+              <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
             </div>
           </Rv>
           <Rv delay={200}>
@@ -460,18 +476,24 @@ export default function MaxHefele() {
                 <p style={{ color: "var(--text-dim)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "28px" }}>
                   Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.
                 </p>
-                <a className="contact-email" href="mailto:booking.djmexxpain@gmail.com">
+                <a className="contact-email" href="mailto:info@maxhefele.de">
                   <Icons.Mail />
-                  booking.djmexxpain@gmail.com
+                  info@maxhefele.de
                 </a>
               </Rv>
             </div>
             <div>
               <Rv delay={200}>
                 {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
-                    {s.name} <Icons.Arrow />
-                  </a>
+                  s.soon ? (
+                    <span key={s.name} className="contact-social contact-social-soon">
+                      {s.name} <span className="soon-badge">bald</span>
+                    </span>
+                  ) : (
+                    <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
+                      {s.name} <Icons.Arrow />
+                    </a>
+                  )
                 ))}
               </Rv>
             </div>
@@ -512,7 +534,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>Kontakt</h3>
                   <p>
-                    E-Mail: <a href="mailto:booking.djmexxpain@gmail.com">booking.djmexxpain@gmail.com</a>
+                    E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
                   </p>
                   <div className="legal-placeholder">
                     ⚠️ Optional: Telefonnummer ergänzen
@@ -563,7 +585,7 @@ export default function MaxHefele() {
                     Max Hefele<br/>
                     [Straße und Hausnummer]<br/>
                     [PLZ Ort]<br/>
-                    E-Mail: booking.djmexxpain@gmail.com
+                    E-Mail: info@maxhefele.de
                   </div>
                 </div>
 
