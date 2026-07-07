@@ -523,7 +523,6 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>Verantwortlich</h3>
                   <div className="legal-placeholder">
-                    <br/><br/>
                     Max Hefele<br/>
                     Kapellenfeld 3 <br/>
                     86865 Markt Wald <br/>
@@ -543,9 +542,7 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV</h3>
-                  <div className="legal-placeholder">
-                    ⚠️ PLATZHALTER:<br/><br/>
-                    Max Hefele<br/>
+                  <div className="legal-placeholder">:
                     [Adresse wie oben]
                   </div>
                 </div>
@@ -1048,7 +1045,7 @@ https://www.e-recht24.de
                     Diese Datenschutzerklärung kann bei Bedarf angepasst werden, um gesetzlichen Änderungen Rechnung zu tragen.
                   </p>
                   <div className="legal-placeholder">
-                    ⚠️ Stand 07.07.2026
+                    Stand 07.07.2026
                   </div>
                 </div>
               </>
