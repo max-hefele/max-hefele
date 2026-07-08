@@ -193,22 +193,12 @@ const css = `
   .m-card:hover .m-card-link { color: var(--text); }
   .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; }
 
-/* VIDEO & EMBED PRIVACY WRAPPER */
-  .embed-container { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; }
-  .embed-privacy-placeholder { 
-    position: absolute; inset: 0; z-index: 10;
-    display: flex; flex-direction: column; justify-content: center; align-items: center; 
-    background: rgba(6, 6, 6, 0.85); /* Leicht transparent */
-    backdrop-filter: blur(4px);
-    padding: 24px; text-align: center;
-  }
-  .embed-privacy-text { font-size: 11px; color: rgba(255, 255, 255, 0.7); max-width: 340px; line-height: 1.6; margin-bottom: 14px; letter-spacing: 0.3px; }
-  .embed-privacy-btn { 
-    background: transparent; border: 1px solid rgba(255, 255, 255, 0.5); color: #fff; 
-    padding: 8px 18px; font-family: var(--font-body); font-size: 10px; font-weight: 600; 
-    letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; 
-  }
-  .embed-privacy-btn:hover { background: #fff; color: #000; }
+  /* VIDEO & EMBED PRIVACY WRAPPER */
+  .embed-privacy-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #0b0b0b; padding: 24px; text-align: center; border: 1px dashed #222; }
+  .embed-privacy-text { font-size: 11px; color: var(--text-mid); max-width: 340px; line-height: 1.6; margin-bottom: 14px; letter-spacing: 0.3px; }
+  .embed-privacy-btn { background: #181818; border: 1px solid #333; color: #fff; padding: 8px 18px; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+  .embed-privacy-btn:hover { background: #fff; color: #000; border-color: #fff; }
+
   /* VIDEO */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
@@ -449,79 +439,65 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
             </div>
           </Rv>
           
-{/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
+          {/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
           <Rv delay={150}>
-            <div className="embed-container" style={{ position: "relative", height: "166px", marginTop: "32px", border: "1px solid var(--border)" }}>
-              {/* Hier liegt das Overlay immer drüber, bis allowSoundCloud true ist */}
-              {!allowSoundCloud && (
-                <div className="embed-privacy-placeholder" style={{ 
-                  position: "absolute", inset: 0, zIndex: 10, 
-                  display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", 
-                  background: "rgba(6, 6, 6, 0.75)", backdropFilter: "blur(4px)" 
-                }}>
-                  <p className="embed-privacy-text" style={{ color: "rgba(255,255,255,0.7)", marginBottom: "14px" }}>
-                    SoundCloud Player laden?
-                  </p>
-                  <button className="embed-privacy-btn" onClick={() => {
-                    setAllowSoundCloud(true);
-                    localStorage.setItem("consent-soundcloud", "true");
-                  }}>
-                    Bestätigen
-                  </button>
-                </div>
+            <div className="sc-embed" style={{ height: "166px" }}>
+              {allowSoundCloud ? (
+                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
+              ) : (
+                <div className="embed-privacy-placeholder">
+                  <p className="embed-privacy-text">Beim Laden des Players werden externe Daten von SoundCloud geladen und Cookies gesetzt. Weitere Infos in unserer Datenschutzerklärung.</p>
+<button className="embed-privacy-btn" onClick={() => {
+  setAllowSoundCloud(true);
+  localStorage.setItem("consent-soundcloud", "true"); // Speichert die Zustimmung
+}}>
+  SoundCloud laden
+</button>                </div>
               )}
-              {/* Der eigentliche Player (wird erst geladen, wenn allowSoundCloud true ist) */}
-              <iframe 
-                width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" 
-                style={{ border: 0, width: "100%", height: "100%" }} 
-                title="SoundCloud Player" 
-              />
             </div>
           </Rv>
 
           {/* GOOGLE DRIVE EMBED PRIVACY WRAPPER */}
-<Rv delay={200}>
+          <Rv delay={200}>
             <div className="video-block">
               <div className="video-label">Videos</div>
               <div className="video-grid">
-                {VIDEO_IDS.map((id) => (
-                  <div className="video-frame" key={id} style={{ position: "relative" }}>
-                    {!allowGoogleDrive && (
+                {VIDEO_IDS.map((id, i) => (
+                  <div className="video-frame" key={id}>
+                    {allowGoogleDrive ? (
+                      <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
+                    ) : (
                       <div className="embed-privacy-placeholder">
-                        <p className="embed-privacy-text">Datenschutzhinweis: Video von Google laden?</p>
-                        <button className="embed-privacy-btn" onClick={() => {
-                          setAllowGoogleDrive(true);
-                          localStorage.setItem("consent-googledrive", "true");
-                        }}>
-                          Video laden
-                        </button>
-                      </div>
-                    )}
-                    {allowGoogleDrive && (
-                      <iframe 
-                        src={`https://drive.google.com/file/d/${id}/preview`} 
-                        title="Video"
-                        allow="autoplay; encrypted-media" 
-                        allowFullScreen 
-                      />
+                        <p className="embed-privacy-text">Mit dem Laden dieses Videos akzeptieren Sie die Datenschutzbestimmungen von Google.</p>
+<button className="embed-privacy-btn" onClick={() => {
+  setAllowGoogleDrive(true);
+  localStorage.setItem("consent-googledrive", "true"); // Speichert die Zustimmung
+}}>
+  Video laden
+</button>                      </div>
                     )}
                   </div>
                 ))}
               </div>
+              <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
+                Alle Videos auf Google Drive <Icons.Arrow />
+              </a>
             </div>
           </Rv>
         </div>
       </section>
-{/* DATES */}
+
+      {/* DATES */}
       <section className="section" id="dates">
         <Rv>
-          <p className="section-label">Schedule</p>
+          <p className="section-label">Live</p>
           <h2 className="section-title">DATES</h2>
           <div className="section-line" />
+        </Rv>
+        <Rv delay={100}>
           <div className="dates-empty">
-            <h3 className="dates-empty-title">Currently no upcoming dates.</h3>
-<p className="dates-empty-sub">Follow my social channels to stay updated on future events.</p>
+            <div className="dates-empty-title">NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN</div>
+            <div className="dates-empty-sub">Für Booking-Anfragen bitte Kontakt aufnehmen.</div>
           </div>
         </Rv>
       </section>
@@ -530,71 +506,62 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
-            <p className="section-label">Contact</p>
-            <h2 className="section-title">GET IN TOUCH</h2>
+            <p className="section-label">Get in Touch</p>
+            <h2 className="section-title">CONTACT</h2>
             <div className="section-line" />
           </Rv>
-          <Rv delay={100}>
-            <div className="contact-grid">
-              <div>
-                <a href="mailto:info@maxhefele.de" className="contact-email">
-                  <Icons.Mail /> info@maxhefele.de
+          <div className="contact-grid">
+            <div>
+              <Rv delay={100}>
+                <p style={{ color: "var(--text-dim)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "28px" }}>
+                  Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.
+                </p>
+                <a className="contact-email" href="mailto:info@maxhefele.de">
+                  <Icons.Mail />
+                  info@maxhefele.de
                 </a>
-              </div>
-              <div>
-                {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} href={s.soon ? "#" : s.url} target={s.soon ? "" : "_blank"} rel="noopener noreferrer" className={`contact-social ${s.soon ? "contact-social-soon" : ""}`}>
-                    {s.name}
-                    {s.soon ? <span className="soon-badge">Soon</span> : <Icons.Arrow />}
-                  </a>
-                ))}
-              </div>
+              </Rv>
             </div>
-          </Rv>
+            <div>
+              <Rv delay={200}>
+                {SOCIAL_LINKS.map(s => (
+                  s.soon ? (
+                    <span key={s.name} className="contact-social contact-social-soon">
+                      {s.name} <span className="soon-badge">bald</span>
+                    </span>
+                  ) : (
+                    <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
+                      {s.name} <Icons.Arrow />
+                    </a>
+                  )
+                ))}
+              </Rv>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
-        <p>© {new Date().getFullYear()} {ARTIST_NAME}</p>
+        <div>© {new Date().getFullYear()} {ARTIST_NAME} — ALL RIGHTS RESERVED</div>
         <div className="footer-links">
-          <button className="footer-link" onClick={() => setLegalModal("impressum")}>IMPRESSUM</button>
-          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>DATENSCHUTZ</button>
+          <button className="footer-link" onClick={() => setLegalModal("impressum")}>Impressum</button>
+          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>Datenschutz</button>
         </div>
       </footer>
 
-      {/* LEGAL MODAL */}
+      {/* LEGAL MODALS */}
       {legalModal && (
-        <div className="legal-overlay" onClick={() => setLegalModal(null)}>
-          <div className="legal-box" onClick={e => e.stopPropagation()}>
-            <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
-            
-            {legalModal === "impressum" ? (
+        <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
+          <div className="legal-box">
+            <button className="legal-close" onClick={() => setLegalModal(null)}>×</button>
+
+            {legalModal === "impressum" && (
               <>
                 <h2 className="legal-title">IMPRESSUM</h2>
+                <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
+
                 <div className="legal-section">
-                  <p>Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de</p>
-                </div>
-              </>
-            ) : (
-              <>
-                <h2 className="legal-title">DATENSCHUTZ</h2>
-                <div className="legal-section">
-                  <h3>Datenschutzhinweis</h3>
-                  <p>Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Wir verarbeiten Daten nur im Rahmen der gesetzlichen Bestimmungen (DSGVO).</p>
-                  <h3>Externe Medien</h3>
-                  <p>Diese Website verwendet eine Zwei-Klick-Lösung für eingebettete Inhalte (SoundCloud, Google Drive). Erst durch Ihre ausdrückliche Bestätigung ("Video laden" / "Bestätigen") werden Verbindungen zu den Servern der Drittanbieter hergestellt.</p>
-                  <h3>Ihre Rechte</h3>
-                  <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten.</p>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-    </>
-  );
-}                  <h3>Verantwortlich</h3>
+                  <h3>Verantwortlich</h3>
                   <div className="legal-placeholder">
                     Max Hefele<br />
                     Kapellenfeld 3<br />
