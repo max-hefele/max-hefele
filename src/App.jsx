@@ -303,8 +303,12 @@ export default function MaxHefele() {
   const [legalModal, setLegalModal] = useState(null); // null | "impressum" | "datenschutz"
   
   // DSGVO-Einwilligungs-Zustände (Zwei-Klick-Lösung)
-  const [allowSoundCloud, setAllowSoundCloud] = useState(false);
-  const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
+const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
+  localStorage.getItem("consent-soundcloud") === "true"
+);
+const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
+  localStorage.getItem("consent-googledrive") === "true"
+);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
@@ -443,8 +447,12 @@ export default function MaxHefele() {
               ) : (
                 <div className="embed-privacy-placeholder">
                   <p className="embed-privacy-text">Beim Laden des Players werden externe Daten von SoundCloud geladen und Cookies gesetzt. Weitere Infos in unserer Datenschutzerklärung.</p>
-                  <button className="embed-privacy-btn" onClick={() => setAllowSoundCloud(true)}>SoundCloud laden</button>
-                </div>
+<button className="embed-privacy-btn" onClick={() => {
+  setAllowSoundCloud(true);
+  localStorage.setItem("consent-soundcloud", "true"); // Speichert die Zustimmung
+}}>
+  SoundCloud laden
+</button>                </div>
               )}
             </div>
           </Rv>
@@ -461,8 +469,12 @@ export default function MaxHefele() {
                     ) : (
                       <div className="embed-privacy-placeholder">
                         <p className="embed-privacy-text">Mit dem Laden dieses Videos akzeptieren Sie die Datenschutzbestimmungen von Google.</p>
-                        <button className="embed-privacy-btn" onClick={() => setAllowGoogleDrive(true)}>Video laden</button>
-                      </div>
+<button className="embed-privacy-btn" onClick={() => {
+  setAllowGoogleDrive(true);
+  localStorage.setItem("consent-googledrive", "true"); // Speichert die Zustimmung
+}}>
+  Video laden
+</button>                      </div>
                     )}
                   </div>
                 ))}
