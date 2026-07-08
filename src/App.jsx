@@ -687,7 +687,7 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
                   <h3>iTunes / Apple Music</h3>
                   <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
                 </div>
-                <p><strong>Stand: 08. Juli 2026</strong></p>
+                <p><strong>Stand: 09. Juli 2026</strong></p>
               </>
             )}
           </div>
