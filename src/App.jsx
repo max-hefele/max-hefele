@@ -570,7 +570,7 @@ export default function MaxHefele() {
               </>
             )}
 
-            {legalModal === "datenschutz" && (
+ {legalModal === "datenschutz" && (
   <>
     <h2 className="legal-title">DATENSCHUTZ</h2>
     <p className="legal-subtitle">Datenschutzerklärung (DSGVO)</p>
@@ -674,7 +674,7 @@ export default function MaxHefele() {
 
       <h4>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h4>
       <p>
-        Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich[cite: 1]. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen[cite: 1]. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt[cite: 1].
+        Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich[cite: 1]. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen[cite: 1]. Die Rechtmäßigkeit der bis zum Widerruf erfolgte Datenverarbeitung bleibt vom Widerruf unberührt[cite: 1].
       </p>
 
       <h4>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)</h4>
@@ -729,7 +729,7 @@ export default function MaxHefele() {
       <h3>4. Datenerfassung auf dieser Website</h3>
       <h4>Cookies</h4>
       <p>
-        Unsere Internetseiten verwenden so genannte „Cookies“[cite: 1]. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an[cite: 1]. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert[cite: 1]. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht[cite: 1]. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatisch Löschung durch Ihren Webbrowser erfolgt[cite: 1].
+        Unsere Internetseiten verwenden so genannte „Cookies“[cite: 1]. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an[cite: 1]. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert[cite: 1]. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht[cite: 1]. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt[cite: 1].
       </p>
       <p>
         Cookies können von uns (First-Party-Cookies) oder von Drittunternehmen stammen (sog. Third-Party-Cookies)[cite: 1]. Third-Party-Cookies ermöglichen die Einbindung bestimmter Dienstleistungen von Drittunternehmen innerhalb von Webseiten (z. B. Cookies zur Abwicklung von Zahlungsdienstleistungen)[cite: 1].
@@ -780,7 +780,7 @@ export default function MaxHefele() {
         </a>[cite: 1].
       </p>
       <p>
-        Wenn das Social-Media-Element active ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Facebook-Server hergestellt[cite: 1]. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben[cite: 1]. Wenn Sie den Facebook „Like-Button“ anklicken, während Sie in Ihrem Facebook-Account eingeloggt sind, können Sie die Inhalte dieser Website auf Ihrem Facebook-Profil verlinken[cite: 1]. Dadurch kann Facebook den Besuch dieser Website Ihrem Benutzerkonto zuordnen[cite: 1]. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten[cite: 1]. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Facebook unter:{" "}
+        Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Facebook-Server hergestellt[cite: 1]. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben[cite: 1]. Wenn Sie den Facebook „Like-Button“ anklicken, während Sie in Ihrem Facebook-Account eingeloggt sind, können Sie die Inhalte dieser Website auf Ihrem Facebook-Profil verlinken[cite: 1]. Dadurch kann Facebook den Besuch dieser Website Ihrem Benutzerkonto zuordnen[cite: 1]. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten[cite: 1]. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Facebook unter:{" "}
         <a href="https://de-de.facebook.com/privacy/explanation" target="_blank" rel="noopener noreferrer">
           https://de-de.facebook.com/privacy/explanation
         </a>[cite: 1].
