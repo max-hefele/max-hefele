@@ -513,7 +513,7 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           </Rv>
         </div>
       </section>
-DATES */}
+{/* DATES */}
       <section className="section" id="dates">
         <Rv>
           <p className="section-label">Schedule</p>
@@ -521,7 +521,7 @@ DATES */}
           <div className="section-line" />
           <div className="dates-empty">
             <h3 className="dates-empty-title">Currently no upcoming dates.</h3>
-            <p className="dates-empty-sub">Check back soon for new events.</p>
+            <p className="dates-empty-sub">Folge mir auf Instagram für kurzfristige Ankündigungen.</p>
           </div>
         </Rv>
       </section>
@@ -531,13 +531,24 @@ DATES */}
         <div className="contact-inner">
           <Rv>
             <p className="section-label">Contact</p>
-            <h2 className="section-title">BOOKING</h2>
+            <h2 className="section-title">BOOKING & INFO</h2>
             <div className="section-line" />
           </Rv>
           <div className="contact-grid">
-            <a href="mailto:booking@maxhefele.com" className="contact-email">
-              <Icons.Mail /> booking@maxhefele.com
-            </a>
+            <Rv delay={100}>
+              <a href="mailto:info@maxhefele.de" className="contact-email">
+                <Icons.Mail /> info@maxhefele.de
+              </a>
+            </Rv>
+            <Rv delay={150}>
+              <div className="contact-socials">
+                {SOCIAL_LINKS.map(s => (
+                  <a key={s.name} href={s.url} className={`contact-social ${s.soon ? 'contact-social-soon' : ''}`} target="_blank" rel="noopener noreferrer">
+                    {s.name} {s.soon ? <span className="soon-badge">SOON</span> : <Icons.Arrow />}
+                  </a>
+                ))}
+              </div>
+            </Rv>
           </div>
         </div>
       </section>
@@ -546,8 +557,8 @@ DATES */}
       <footer className="footer">
         <p>© {new Date().getFullYear()} {ARTIST_NAME}</p>
         <div className="footer-links">
-          <button className="footer-link" onClick={() => setLegalModal("impressum")}>Impressum</button>
-          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>Datenschutz</button>
+          <button className="footer-link" onClick={() => setLegalModal("impressum")}>IMPRESSUM</button>
+          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>DATENSCHUTZ</button>
         </div>
       </footer>
 
@@ -555,16 +566,29 @@ DATES */}
       {legalModal && (
         <div className="legal-overlay" onClick={() => setLegalModal(null)}>
           <div className="legal-box" onClick={e => e.stopPropagation()}>
-            <button className="legal-close" onClick={() => setLegalModal(null)}>X</button>
-            {legalModal === "impressum" ? (
-              <div className="legal-section"></div>
-              {legalModal === "impressum"
-              <>
-                <h2 className="legal-title">IMPRESSUM</h2>
-                <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
-
+            <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
+            <div className="legal-section">
+              <h2 className="legal-title">{legalModal === "impressum" ? "IMPRESSUM" : "DATENSCHUTZERKLÄRUNG"}</h2>
+              {legalModal === "impressum" ? (
+                <div className="legal-placeholder">
+                  Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de
+                </div>
+              ) : (
                 <div className="legal-section">
-                  <h3>Verantwortlich</h3>
+                  <h3>1. Datenschutz auf einen Blick</h3>
+                  <p>Der Schutz Ihrer persönlichen Daten ist mir wichtig. Diese Seite verwendet eine Zwei-Klick-Lösung für externe Inhalte.</p>
+                  <h3>2. Externe Inhalte</h3>
+                  <p>Inhalte von SoundCloud und Google Drive werden erst geladen, wenn Sie aktiv zustimmen. Dabei werden Verbindungen zu den jeweiligen Servern aufgebaut und ggf. Ihre IP-Adresse übertragen.</p>
+                  <p>Sie können Ihre Zustimmung jederzeit löschen, indem Sie den Browser-Cache oder die lokalen Speicherdaten dieser Website zurücksetzen.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}                  <h3>Verantwortlich</h3>
                   <div className="legal-placeholder">
                     Max Hefele<br />
                     Kapellenfeld 3<br />
