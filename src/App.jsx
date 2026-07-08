@@ -521,7 +521,7 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           <div className="section-line" />
           <div className="dates-empty">
             <h3 className="dates-empty-title">Currently no upcoming dates.</h3>
-            <p className="dates-empty-sub">Folge mir auf Instagram für kurzfristige Ankündigungen.</p>
+<p className="dates-empty-sub">Follow my social channels to stay updated on future events.</p>
           </div>
         </Rv>
       </section>
@@ -531,25 +531,26 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
         <div className="contact-inner">
           <Rv>
             <p className="section-label">Contact</p>
-            <h2 className="section-title">BOOKING & INFO</h2>
+            <h2 className="section-title">GET IN TOUCH</h2>
             <div className="section-line" />
           </Rv>
-          <div className="contact-grid">
-            <Rv delay={100}>
-              <a href="mailto:info@maxhefele.de" className="contact-email">
-                <Icons.Mail /> info@maxhefele.de
-              </a>
-            </Rv>
-            <Rv delay={150}>
-              <div className="contact-socials">
+          <Rv delay={100}>
+            <div className="contact-grid">
+              <div>
+                <a href="mailto:info@maxhefele.de" className="contact-email">
+                  <Icons.Mail /> info@maxhefele.de
+                </a>
+              </div>
+              <div>
                 {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} href={s.url} className={`contact-social ${s.soon ? 'contact-social-soon' : ''}`} target="_blank" rel="noopener noreferrer">
-                    {s.name} {s.soon ? <span className="soon-badge">SOON</span> : <Icons.Arrow />}
+                  <a key={s.name} href={s.soon ? "#" : s.url} target={s.soon ? "" : "_blank"} rel="noopener noreferrer" className={`contact-social ${s.soon ? "contact-social-soon" : ""}`}>
+                    {s.name}
+                    {s.soon ? <span className="soon-badge">Soon</span> : <Icons.Arrow />}
                   </a>
                 ))}
               </div>
-            </Rv>
-          </div>
+            </div>
+          </Rv>
         </div>
       </section>
 
@@ -567,22 +568,27 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
         <div className="legal-overlay" onClick={() => setLegalModal(null)}>
           <div className="legal-box" onClick={e => e.stopPropagation()}>
             <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
-            <div className="legal-section">
-              <h2 className="legal-title">{legalModal === "impressum" ? "IMPRESSUM" : "DATENSCHUTZERKLÄRUNG"}</h2>
-              {legalModal === "impressum" ? (
-                <div className="legal-placeholder">
-                  Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de
-                </div>
-              ) : (
+            
+            {legalModal === "impressum" ? (
+              <>
+                <h2 className="legal-title">IMPRESSUM</h2>
                 <div className="legal-section">
-                  <h3>1. Datenschutz auf einen Blick</h3>
-                  <p>Der Schutz Ihrer persönlichen Daten ist mir wichtig. Diese Seite verwendet eine Zwei-Klick-Lösung für externe Inhalte.</p>
-                  <h3>2. Externe Inhalte</h3>
-                  <p>Inhalte von SoundCloud und Google Drive werden erst geladen, wenn Sie aktiv zustimmen. Dabei werden Verbindungen zu den jeweiligen Servern aufgebaut und ggf. Ihre IP-Adresse übertragen.</p>
-                  <p>Sie können Ihre Zustimmung jederzeit löschen, indem Sie den Browser-Cache oder die lokalen Speicherdaten dieser Website zurücksetzen.</p>
+                  <p>Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de</p>
                 </div>
-              )}
-            </div>
+              </>
+            ) : (
+              <>
+                <h2 className="legal-title">DATENSCHUTZ</h2>
+                <div className="legal-section">
+                  <h3>Datenschutzhinweis</h3>
+                  <p>Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Wir verarbeiten Daten nur im Rahmen der gesetzlichen Bestimmungen (DSGVO).</p>
+                  <h3>Externe Medien</h3>
+                  <p>Diese Website verwendet eine Zwei-Klick-Lösung für eingebettete Inhalte (SoundCloud, Google Drive). Erst durch Ihre ausdrückliche Bestätigung ("Video laden" / "Bestätigen") werden Verbindungen zu den Servern der Drittanbieter hergestellt.</p>
+                  <h3>Ihre Rechte</h3>
+                  <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten.</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
