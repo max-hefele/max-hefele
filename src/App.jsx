@@ -539,354 +539,62 @@ export default function MaxHefele() {
                     
                   </div>
                 </div>
-
-                <div className="legal-section">
-                  <h3>Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV</h3>
-                  <div className="legal-placeholder">:
-                    [Adresse wie oben]
-                  </div>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Haftung für Inhalte</h3>
-                  <p>
-                    Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter ist der Betreiber gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG besteht jedoch keine Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen.
-                  </p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Haftung für Links</h3>
-                  <p>
-                    Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte kein Einfluss besteht. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-                  </p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Urheberrecht</h3>
-                  <p>
-                    Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-                  </p>
-                </div>
               </>
             )}
 
- {legalModal === "datenschutz" && (
-  <>
-    <h2 className="legal-title">DATENSCHUTZ</h2>
-    <p className="legal-subtitle">Datenschutzerklärung (DSGVO)</p>
+            {legalModal === "datenschutz" && (
+              <>
+                <h2 className="legal-title">DATENSCHUTZERKLÄRUNG</h2>
+                <p className="legal-subtitle">Allgemeine Informationen</p>
 
-    <div className="legal-section">
-      <h3>1. Datenschutz auf einen Blick</h3>
-      <h4>Allgemeine Hinweise</h4>
-      <p>
-        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen[cite: 1]. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können[cite: 1]. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung[cite: 1].
-      </p>
-
-      <h4>Datenerfassung auf dieser Website</h4>
-      <h5>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h5>
-      <p>
-        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber[cite: 1]. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen[cite: 1].
-      </p>
-
-      <h5>Wie erfassen wir Ihre Daten?</h5>
-      <p>
-        Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen[cite: 1]. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben[cite: 1].
-      </p>
-      <p>
-        Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst[cite: 1]. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs)[cite: 1]. Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten[cite: 1].
-      </p>
-
-      <h5>Wofür nutzen wir Ihre Daten?</h5>
-      <p>
-        Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten[cite: 1]. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden[cite: 1]. Sofern über die Website Verträge geschlossen oder angebahnt werden können, werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet[cite: 1].
-      </p>
-
-      <h5>Welche Rechte haben Sie bezüglich Ihrer Daten?</h5>
-      <p>
-        Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten[cite: 1]. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen[cite: 1]. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen[cite: 1]. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen[cite: 1]. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu[cite: 1].
-      </p>
-      <p>
-        Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden[cite: 1].
-      </p>
-    </div>
-
-    <div className="legal-section">
-      <h3>2. Hosting</h3>
-      <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:[cite: 1]</p>
-      <h4>Strato</h4>
-      <p>
-        Anbieter ist die Strato AG, Otto-Ostrowski-Straße 7, 10249 Berlin (nachfolgend „Strato“)[cite: 1]. Wenn Sie unsere Website besuchen, erfasst Strato verschiedene Logfiles inklusive Ihrer IP-Adressen[cite: 1].
-      </p>
-      <p>
-        Weitere Informationen entnehmen Sie der Datenschutzerklärung von Strato:{" "}
-        <a href="https://www.strato.de/datenschutz/" target="_blank" rel="noopener noreferrer">
-          https://www.strato.de/datenschutz/
-        </a>[cite: 1].
-      </p>
-      <p>
-        Die Verwendung von Strato erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO[cite: 1]. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website[cite: 1]. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-      <h4>Auftragsverarbeitung</h4>
-      <p>
-        Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen[cite: 1]. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet[cite: 1].
-      </p>
-    </div>
-
-    <div className="legal-section">
-      <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
-      <h4>Datenschutz</h4>
-      <p>
-        Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst[cite: 1]. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung[cite: 1].
-      </p>
-      <p>
-        Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben[cite: 1]. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können[cite: 1]. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen[cite: 1]. Sie erläutert auch, wie und zu welchem Zweck das geschieht[cite: 1].
-      </p>
-      <p>
-        Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann[cite: 1]. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich[cite: 1].
-      </p>
-
-      <h4>Hinweis zur verantwortlichen Stelle</h4>
-      <p>
-        Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:[cite: 1]<br />
-        <strong>Max Hefele</strong>[cite: 1]<br />
-        xxxasdsa[cite: 1]<br />
-        Telefon: +49 xxx[cite: 1]<br />
-        E-Mail: max.hefele@gmx.de[cite: 1]
-      </p>
-      <p>
-        Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet[cite: 1].
-      </p>
-
-      <h4>Speicherdauer</h4>
-      <p>
-        Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt[cite: 1]. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe[cite: 1].
-      </p>
-
-      <h4>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website</h4>
-      <p>
-        Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9 Abs. 2 lit. a DSGVO, sofern besondere Datenkategorien nach Art. 9 Abs. 1 DSGVO verarbeitet werden[cite: 1]. Im Falle einer ausdrücklichen Einwilligung in die Übertragung personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1 lit. a DSGVO[cite: 1]. Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät (z. B. via Device-Fingerprinting) eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TDDDG[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1]. Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage des Art. 6 Abs. 1 lit. b DSGVO[cite: 1]. Des Weiteren verarbeiten wir Ihre Daten, sofern diese zur Erfüllung einer rechtlichen Verpflichtung erforderlich sind, auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO[cite: 1]. Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen[cite: 1]. Über die jeweils im Einzelfall einschlägigen Rechtsgrundlagen wird in den folgenden Absätzen dieser Datenschutzerklärung informiert[cite: 1].
-      </p>
-
-      <h4>Empfänger von personenbezogenen Daten</h4>
-      <p>
-        Im Rahmen unserer Geschäftstätigkeit arbeiten wir mit verschiedenen externen Stellen zusammen[cite: 1]. Dabei ist teilweise auch eine Übermittlung von personenbezogenen Daten an diese externen Stellen erforderlich[cite: 1]. Wir geben personenbezogene Daten nur dann an externe Stellen weiter, wenn dies im Rahmen einer Vertragserfüllung erforderlich ist, wenn wir gesetzlich hierzu verpflichtet sind (z. B. Weitergabe von Daten an Steuerbehörden), wenn wir ein berechtigtes Interesse nach Art. 6 Abs. 1 lit. f DSGVO an der Weitergabe haben oder wenn eine sonstige Rechtsgrundlage die Datenweitergabe erlaubt[cite: 1]. Beim Einsatz von Auftragsverarbeitern geben wir personenbezogene Daten unserer Kunden nur auf Grundlage eines gültigen Vertrags über Auftragsverarbeitung weiter[cite: 1]. Im Falle einer gemeinsamen Verarbeitung wird ein Vertrag über gemeinsame Verarbeitung geschlossen[cite: 1].
-      </p>
-
-      <h4>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h4>
-      <p>
-        Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich[cite: 1]. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen[cite: 1]. Die Rechtmäßigkeit der bis zum Widerruf erfolgte Datenverarbeitung bleibt vom Widerruf unberührt[cite: 1].
-      </p>
-
-      <h4>Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)</h4>
-      <blockquote>
-        <p>
-          <strong>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN; DIES GILT AUCH FÜR EIN AUF DIESE BESTIMMUNGEN GESTÜTZTES PROFILING[cite: 1]. DIE JEWEILIGE RECHTSGRUNDLAGE, AUF DENEN EINE VERARBEITUNG BERUHT, ENTNEHMEN SIE DIESER DATENSCHUTZERKLÄRUNG[cite: 1]. WENN SIE WIDERSPRUCH EINLEGEN, WERDEN WIR IHRE BETROFFENEN PERSONENBEZOGENEN DATEN NICHT MEHR VERARBEITEN, ES SEI DENN, WIR KÖNNEN ZWINGENDE SCHUTZWÜRDIGE GRÜNDE FÜR DIE VERARBEITUNG NACHWEISEN, DIE IHRE INTERESSEN, RECHTE UND FREIHEITEN ÜBERWIEGEN ODER DIE VERARBEITUNG DIENT DER GELTENDMACHUNG, AUSÜBUNG ODER VERTEIDIGUNG VON RECHTSANSPRÜCHEN (WIDERSPRUCH NACH ART. 21 ABS. 1 DSGVO)[cite: 1].</strong>
-        </p>
-        <p>
-          <strong>WERDEN IHRE PERSONENBEZOGENEN DATEN VERARBEITET, UM DIREKTWERBUNG ZU BETREIBEN, SO HABEN SIE DAS RECHT, JEDERZEIT WIDERSPRUCH GEGEN DIE VERARBEITUNG SIE BETREFFENDER PERSONENBEZOGENER DATEN ZUM ZWECKE DERARTIGER WERBUNG EINZULEGEN; DIES GILT AUCH FÜR DAS PROFILING, SOWEIT ES MIT SOLCHER DIREKTWERBUNG IN VERBINDUNG STEHT[cite: 1]. WENN SIE WIDERSPRECHEN, WERDEN IHRE PERSONENBEZOGENEN DATEN ANSCHLIESSEND NICHT MEHR ZUM ZWECKE DER DIREKTWERBUNG VERWENDET (WIDERSPRUCH NACH ART. 21 ABS. 2 DSGVO)[cite: 1].</strong>
-        </p>
-      </blockquote>
-
-      <h4>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h4>
-      <p>
-        Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu[cite: 1]. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe[cite: 1].
-      </p>
-
-      <h4>Recht auf Datenübertragbarkeit</h4>
-      <p>
-        Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen[cite: 1]. Sofern Sie die direkte Übertragung der Daten an einen anderen Verantwortlichen verlangen, erfolgt dies nur, soweit es technisch machbar ist[cite: 1].
-      </p>
-
-      <h4>Auskunft, Berichtigung und Löschung</h4>
-      <p>
-        Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten[cite: 1]. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden[cite: 1].
-      </p>
-
-      <h4>Recht auf Einschränkung der Verarbeitung</h4>
-      <p>
-        Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen[cite: 1]. Hierzu können Sie sich jederzeit an uns wenden[cite: 1]. Das Recht auf Einschränkung der Verarbeitung besteht in folgenden Fällen:[cite: 1]
-      </p>
-      <ul>
-        <li>Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir in der Regel Zeit, um dies zu überprüfen[cite: 1]. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen[cite: 1].</li>
-        <li>Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen[cite: 1].</li>
-        <li>Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen[cite: 1].</li>
-        <li>Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden[cite: 1]. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen[cite: 1].</li>
-      </ul>
-      <p>
-        Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten eingeschränkt haben, dürfen diese Daten - von ihrer Speicherung abgesehen - nur mit Ihrer Einwilligung oder zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der Europäischen Union oder eines Mitgliedstaats verarbeitet werden[cite: 1].
-      </p>
-
-      <h4>SSL- bzw. TLS-Verschlüsselung</h4>
-      <p>
-        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung[cite: 1]. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile[cite: 1].
-      </p>
-      <p>
-        Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden[cite: 1].
-      </p>
-    </div>
-
-    <div className="legal-section">
-      <h3>4. Datenerfassung auf dieser Website</h3>
-      <h4>Cookies</h4>
-      <p>
-        Unsere Internetseiten verwenden so genannte „Cookies“[cite: 1]. Cookies sind kleine Datenpakete und richten auf Ihrem Endgerät keinen Schaden an[cite: 1]. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert[cite: 1]. Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht[cite: 1]. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt[cite: 1].
-      </p>
-      <p>
-        Cookies können von uns (First-Party-Cookies) oder von Drittunternehmen stammen (sog. Third-Party-Cookies)[cite: 1]. Third-Party-Cookies ermöglichen die Einbindung bestimmter Dienstleistungen von Drittunternehmen innerhalb von Webseiten (z. B. Cookies zur Abwicklung von Zahlungsdienstleistungen)[cite: 1].
-      </p>
-      <p>
-        Cookies haben verschiedene Funktionen[cite: 1]. Zahlreiche Cookies sind technisch notwendig, da bestimmte Webseitenfunktionen ohne diese nicht funktionieren würden (z. B. die Warenkorbfunktion oder die Anzeige von Videos)[cite: 1]. Andere Cookies können zur Auswertung des Nutzerverhaltens oder zu Werbezwecken verwendet werden[cite: 1].
-      </p>
-      <p>
-        Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (z. B. für die Warenkorbfunktion) oder zur Optimierung der Website (z. B. Cookies zur Messung des Webpublikums) erforderlich sind (notwendige Cookies), werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere Rechtsgrundlage angegeben wird[cite: 1]. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von notwendigen Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste[cite: 1]. Sofern eine Einwilligung zur Speicherung von Cookies und vergleichbaren Wiedererkennungstechnologien abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage dieser Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG); die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-      <p>
-        Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren[cite: 1]. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein[cite: 1].
-      </p>
-
-      <h4>Kontaktformular</h4>
-      <p>
-        Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert[cite: 1]. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter[cite: 1].
-      </p>
-      <p>
-        Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist[cite: 1]. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-      <p>
-        Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage)[cite: 1]. Zwingende gesetzliche Bestimmungen - insbesondere Aufbewahrungsfristen - bleiben unberührt[cite: 1].
-      </p>
-
-      <h4>Anfrage per E-Mail, Telefon oder Telefax</h4>
-      <p>
-        Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet[cite: 1]. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter[cite: 1].
-      </p>
-      <p>
-        Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist[cite: 1]. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-      <p>
-        Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens)[cite: 1]. Zwingende gesetzliche Bestimmungen - insbesondere gesetzliche Aufbewahrungsfristen - bleiben unberührt[cite: 1].
-      </p>
-    </div>
-
-    <div className="legal-section">
-      <h3>5. Soziale Medien</h3>
-      <h4>Facebook</h4>
-      <p>
-        Auf dieser Website sind Elemente des sozialen Netzwerks Facebook integriert[cite: 1]. Anbieter dieses Dienstes ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland[cite: 1]. Die erfassten Daten werden nach Aussage von Facebook jedoch auch in die USA und in andere Drittländer übertragen[cite: 1].
-      </p>
-      <p>
-        Eine Übersicht über die Facebook Social-Media-Elemente finden Sie hier:{" "}
-        <a href="https://developers.facebook.com/docs/plugins/?locale=de_DE" target="_blank" rel="noopener noreferrer">
-          https://developers.facebook.com/docs/plugins/?locale=de_DE
-        </a>[cite: 1].
-      </p>
-      <p>
-        Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Facebook-Server hergestellt[cite: 1]. Facebook erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben[cite: 1]. Wenn Sie den Facebook „Like-Button“ anklicken, während Sie in Ihrem Facebook-Account eingeloggt sind, können Sie die Inhalte dieser Website auf Ihrem Facebook-Profil verlinken[cite: 1]. Dadurch kann Facebook den Besuch dieser Website Ihrem Benutzerkonto zuordnen[cite: 1]. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Facebook erhalten[cite: 1]. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Facebook unter:{" "}
-        <a href="https://de-de.facebook.com/privacy/explanation" target="_blank" rel="noopener noreferrer">
-          https://de-de.facebook.com/privacy/explanation
-        </a>[cite: 1].
-      </p>
-      <p>
-        Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-      <p>
-        Soweit mit Hilfe des hier beschriebenen Tools personenbezogene Daten auf unserer Website erfasst und an Facebook weitergeleitet werden, sind wir und die Meta Platforms Ireland Limited gemeinsam für diese Datenverarbeitung verantwortlich (Art. 26 DSGVO)[cite: 1]. Die gemeinsame Verantwortlichkeit beschränkt sich dabei ausschließlich auf die Erfassung der Daten und deren Weitergabe an Facebook[cite: 1]. Die nach der Weiterleitung erfolgende Verarbeitung durch Facebook ist nicht Teil der gemeinsamen Verantwortung[cite: 1]. Die uns gemeinsam obliegenden Verpflichtungen wurden in einer Vereinbarung über gemeinsame Verarbeitung festgehalten:{" "}
-        <a href="https://www.facebook.com/legal/controller_addendum" target="_blank" rel="noopener noreferrer">
-          https://www.facebook.com/legal/controller_addendum
-        </a>[cite: 1].
-      </p>
-      <p>
-        Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt[cite: 1]. Details finden Sie hier:{" "}
-        <a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" rel="noopener noreferrer">
-          https://www.facebook.com/legal/EU_data_transfer_addendum
-        </a>[cite: 1].
-      </p>
-      <p>
-        Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF)[cite: 1]. Weitere Informationen hierzu erhalten Sie unter:{" "}
-        <a href="https://www.dataprivacyframework.gov/participant/4452" target="_blank" rel="noopener noreferrer">
-          https://www.dataprivacyframework.gov/participant/4452
-        </a>[cite: 1].
-      </p>
-
-      <h4>Instagram</h4>
-      <p>
-        Auf dieser Website sind Funktionen des Dienstes Instagram eingebunden[cite: 1]. Diese Funktionen werden angeboten durch die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland[cite: 1].
-      </p>
-      <p>
-        Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Instagram-Server hergestellt[cite: 1]. Instagram erhält dadurch Informationen über den Besuch dieser Website durch Sie[cite: 1]. Wenn Sie in Ihrem Instagram-Account eingeloggt sind, können Sie durch Anklicken des Instagram-Buttons die Inhalte dieser Website mit Ihrem Instagram-Profil verlinken[cite: 1].
-      </p>
-      <p>
-        Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1]. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram:{" "}
-        <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer">
-          https://privacycenter.instagram.com/policy/
-        </a>[cite: 1].
-      </p>
-    </div>
-
-    <div className="legal-section">
-      <h3>6. Plugins und Tools</h3>
-      <h4>YouTube mit erweitertem Datenschutz</h4>
-      <p>
-        Diese Website bindet Videos der Website YouTube ein[cite: 1]. Betreiber der Website ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland[cite: 1].
-      </p>
-      <p>
-        Wir nutzen YouTube im erweiterten Datenschutzmodus[cite: 1]. Videos, die im erweiterten Datenschutzmodus abgespielt werden, werden nach Aussage von YouTube nicht zur Personalisierung des Surfens auf YouTube eingesetzt[cite: 1]. Im erweiterten Datenschutzmodus werden keine Cookies gesetzt[cite: 1]. Stattdessen werden jedoch sogenannte Local Storage Elemente im Browser des Users gespeichert[cite: 1]. Details finden Sie hier:{" "}
-        <a href="https://support.google.com/youtube/answer/171780" target="_blank" rel="noopener noreferrer">
-          https://support.google.com/youtube/answer/171780
-        </a>[cite: 1].
-      </p>
-      <p>
-        Die Nutzung von YouTube erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1]. Weitere Informationen über Datenschutz bei YouTube finden Sie unter:{" "}
-        <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">
-          https://policies.google.com/privacy?hl=de
-        </a>[cite: 1].
-      </p>
-
-      <h4>Google Fonts</h4>
-      <p>
-        Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden[cite: 1]. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen[cite: 1].
-      </p>
-      <p>
-        Die Nutzung von Google Fonts erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO bzw. bei abgefragter Einwilligung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1].
-      </p>
-
-      <h4>SoundCloud</h4>
-      <p>
-        Auf dieser Website können Plugins des sozialen Netzwerks SoundCloud (SoundCloud Limited, Berners House, 47-48 Berners Street, London W1T 3NF, Großbritannien) integriert sein[cite: 1].
-      </p>
-      <p>
-        Wenn Sie diese Website besuchen, wird nach Aktivierung des Plugins eine direkte Verbindung zwischen Ihrem Browser und dem SoundCloud-Server hergestellt[cite: 1]. Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, sofern eine Einwilligung abgefragt wurde[cite: 1]. Die Einwilligung ist jederzeit widerrufbar[cite: 1]. Weitere Informationen finden Sie unter:{" "}
-        <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">
-          https://soundcloud.com/pages/privacy
-        </a>[cite: 1].
-      </p>
-
-      <h4>Spotify</h4>
-      <p>
-        Auf dieser Website sind Funktionen des Musik-Dienstes Spotify eingebunden[cite: 1]. Anbieter ist die Spotify AB, Birger Jarlsgatan 61, 113 56 Stockholm in Schweden[cite: 1].
-      </p>
-      <p>
-        Beim Besuch dieser Website kann über das Plugin eine direkte Verbindung zwischen Ihrem Browser und dem Spotify-Server hergestellt werden[cite: 1]. Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) oder auf Grundlage einer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)[cite: 1]. Weitere Informationen finden Sie in der Datenschutzerklärung von Spotify:{" "}
-        <a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
-          https://www.spotify.com/de/legal/privacy-policy/
-        </a>[cite: 1].
-      </p>
-    </div>
-    
-    <p className="legal-source" style={{ marginTop: "20px", fontSize: "0.8rem", opacity: 0.7 }}>
-      Quelle: <a href="https://www.e-recht24.de" target="_blank" rel="noopener noreferrer">https://www.e-recht24.de</a>[cite: 1]
-    </p>
-  </>
-)}
+                <div className="legal-section">
+                  <h3>1. Datenschutz auf einen Blick</h3>
+                  <p><strong>Allgemeine Hinweise:</strong> Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung[cite: 27, 30, 31].</p>
+                  <p><strong>Datenerfassung auf dieser Website:</strong> Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen[cite: 34]. Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B. in ein Kontaktformular)[cite: 36, 37]. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs)[cite: 38, 39, 40]. Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden[cite: 42, 43].</p>
+                  <p><strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong> Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen[cite: 45, 46, 47]. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung zu verlangen, und es steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu[cite: 48, 49].</p>
                 </div>
 
                 <div className="legal-section">
-                  <h3>8. Änderungen</h3>
-                  <p>
-                    Diese Datenschutzerklärung kann bei Bedarf angepasst werden, um gesetzlichen Änderungen Rechnung zu tragen.
+                  <h3>2. Hosting</h3>
+                  <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+                  <p><strong>Strato:</strong> Anbieter ist die Strato AG, Otto-Ostrowski-Straße 7, 10249 Berlin. Wenn Sie unsere Website besuchen, erfasst Strato verschiedene Logfiles inklusive Ihrer IP-Adressen[cite: 53, 54, 55]. Die Verwendung von Strato erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website[cite: 57, 58]. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 59, 60].</p>
+                  <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag[cite: 64, 65, 66].</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
+                  <p><strong>Datenschutz:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung[cite: 68, 69, 70]. Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann[cite: 75].</p>
+                  <p><strong>Hinweis zur verantwortlichen Stelle:</strong><br />
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland<br />
+                    E-Mail: max.hefele@gmx.de
                   </p>
-                  <div className="legal-placeholder">
-                    Stand 07.07.2026
-                  </div>
+                  <p><strong>Speicherdauer:</strong> Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt oder Sie ein berechtigtes Löschersuchen geltend machen[cite: 84, 85, 86].</p>
+                  <p><strong>Rechtsgrundlagen &amp; Widerspruch:</strong> Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO[cite: 91, 92]. <strong>WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO ERFOLGT, HABEN SIE JEDERZEIT DAS RECHT, GEGEN DIE VERARBEITUNG IHRER PERSONENBEZOGENEN DATEN WIDERSPRUCH EINZULEGEN (Art. 21 DSGVO)[cite: 110, 111].</strong></p>
+                  <p>Es steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu[cite: 119, 120]. Zudem haben Sie das Recht auf Datenübertragbarkeit sowie Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung[cite: 122, 125, 128, 129].</p>
+                  <p><strong>SSL- bzw. TLS-Verschlüsselung:</strong> Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung[cite: 138, 139].</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>4. Datenerfassung auf dieser Website</h3>
+                  <p><strong>Cookies:</strong> Unsere Internetseiten verwenden so genannte „Cookies“[cite: 146, 147]. Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs oder zur Bereitstellung bestimmter Funktionen erforderlich sind (notwendige Cookies), werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert, sofern keine andere Rechtsgrundlage angegeben wird[cite: 154, 155]. Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden[cite: 159].</p>
+                  <p><strong>Kontaktformular &amp; Anfragen:</strong> Wenn Sie uns per Kontaktformular, E-Mail oder Telefon Anfragen zukommen lassen, werden Ihre Angaben inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage bei uns gespeichert und verarbeitet[cite: 162, 163, 174, 175]. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (vertragliche/vorvertragliche Maßnahmen) oder auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO)[cite: 165, 166, 167, 177, 178, 179].</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>5. Soziale Medien</h3>
+                  <p><strong>Facebook:</strong> Anbieter dieses Dienstes ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Irland[cite: 184, 186]. Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 193, 194]. Wir sind mit Meta gemeinsam für die Erfassung und Weiterleitung der Daten verantwortlich (Art. 26 DSGVO)[cite: 195, 196]. Das Unternehmen verfügt über eine Zertifizierung nach dem „EU-US Data Privacy Framework“ (DPF)[cite: 208].</p>
+                  <p><strong>Instagram:</strong> Diese Funktionen werden angeboten durch die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Irland[cite: 213, 214]. Die Nutzung erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG[cite: 220, 221]. Auch hier besteht eine gemeinsame Verantwortlichkeit für die Erfassung der Daten[cite: 223, 224]. Das Unternehmen ist nach dem DPF zertifiziert[cite: 239].</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>6. Plugins und Tools</h3>
+                  <p><strong>YouTube (mit erweitertem Datenschutz):</strong> Diese Website bindet Videos der Website YouTube ein. Betreiber ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland[cite: 244, 245]. Wir nutzen YouTube im erweiterten Datenschutzmodus, sodass laut YouTube keine Cookies gesetzt, sondern Local Storage Elemente im Browser gespeichert werden[cite: 250, 251, 252]. Die Nutzung erfolgt im Interesse einer ansprechenden Darstellung (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung[cite: 256, 257, 258]. Google ist nach dem DPF zertifiziert[cite: 262].</p>
+                  <p><strong>Google Fonts:</strong> Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten Google Fonts, bereitgestellt von Google[cite: 267]. Hierbei erlangt Google Kenntnis über Ihre IP-Adresse[cite: 270]. Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) oder basierend auf Ihrer Einwilligung[cite: 271, 272, 273].</p>
+                  <p><strong>SoundCloud:</strong> Es können Plugins des sozialen Netzwerks SoundCloud (SoundCloud Limited, London, Großbritannien) integriert sein[cite: 281]. SoundCloud erhält dadurch Informationen über Ihre IP-Adresse[cite: 284]. Die Speicherung und Analyse erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO oder Ihrer Einwilligung[cite: 288, 290]. Großbritannien gilt als datenschutzrechtlich sicherer Drittstaat[cite: 292, 293].</p>
+                  <p><strong>Spotify:</strong> Funktionen des Musik-Dienstes Spotify (Spotify AB, Stockholm, Schweden) sind eingebunden[cite: 296, 297]. Spotify erhält dadurch Kenntnis über Ihre IP-Adresse[cite: 300]. Bei der Nutzung von Spotify werden zudem Cookies von Google Analytics eingesetzt[cite: 303]. Die Speicherung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO oder Ihrer Einwilligung[cite: 306, 308].</p>
                 </div>
               </>
             )}
