@@ -168,6 +168,7 @@ const css = `
   .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-text p { color: var(--text-mid); font-size: 14.5px; line-height: 1.85; margin-bottom: 20px; }
   .about-text p:first-child { color: var(--accent); font-size: 15.5px; }
+  .about-note { font-size: 12.5px !important; color: var(--text-dim) !important; font-style: italic; padding-top: 8px; border-top: 1px solid var(--border); margin-top: 12px; }
   .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
   .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; transition: all 0.3s var(--ease); }
   .h-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
@@ -190,21 +191,19 @@ const css = `
   .m-card-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.65; flex: 1; }
   .m-card-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
   .m-card:hover .m-card-link { color: var(--text); }
-  .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; background: #0b0b0b; }
+  .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; }
 
-  /* PREVIEW PLACEHOLDER WITH THUMBNAIL */
-  .embed-privacy-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; position: relative; overflow: hidden; }
-  .embed-privacy-placeholder::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(2px); z-index: 1; }
-  .embed-privacy-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-  .embed-privacy-text { font-size: 11px; color: var(--text); max-width: 320px; line-height: 1.5; margin-bottom: 12px; letter-spacing: 0.3px; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
-  .embed-privacy-btn { background: rgba(25,25,25,0.9); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 8px 18px; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+  /* VIDEO & EMBED PRIVACY WRAPPER */
+  .embed-privacy-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #0b0b0b; padding: 24px; text-align: center; border: 1px dashed #222; }
+  .embed-privacy-text { font-size: 11px; color: var(--text-mid); max-width: 340px; line-height: 1.6; margin-bottom: 14px; letter-spacing: 0.3px; }
+  .embed-privacy-btn { background: #181818; border: 1px solid #333; color: #fff; padding: 8px 18px; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
   .embed-privacy-btn:hover { background: #fff; color: #000; border-color: #fff; }
 
   /* VIDEO */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
   .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; position: relative; }
+  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
   .video-frame iframe { width: 100%; height: 100%; border: none; }
   .video-more { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
   .video-more:hover { color: var(--text); }
@@ -301,8 +300,9 @@ function Rv({ children, delay = 0, className = "" }) {
 export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [legalModal, setLegalModal] = useState(null);
+  const [legalModal, setLegalModal] = useState(null); // null | "impressum" | "datenschutz"
   
+  // DSGVO-Einwilligungs-Zustände (Zwei-Klick-Lösung)
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
 
@@ -435,23 +435,21 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD EMBED WITH PLACEHOLDER PREVIEW */}
+          {/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
           <Rv delay={150}>
             <div className="sc-embed" style={{ height: "166px" }}>
               {allowSoundCloud ? (
                 <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
               ) : (
-                <div className="embed-privacy-placeholder" style={{ backgroundImage: "linear-gradient(135deg, #111 0%, #222 100%)", backgroundSize: "cover" }}>
-                  <div className="embed-privacy-content">
-                    <p className="embed-privacy-text"><Icons.SC /> SoundCloud Player laden (Datenschutzkonform)</p>
-                    <button className="embed-privacy-btn" onClick={() => setAllowSoundCloud(true)}>SoundCloud laden</button>
-                  </div>
+                <div className="embed-privacy-placeholder">
+                  <p className="embed-privacy-text">Beim Laden des Players werden externe Daten von SoundCloud geladen und Cookies gesetzt. Weitere Infos in unserer Datenschutzerklärung.</p>
+                  <button className="embed-privacy-btn" onClick={() => setAllowSoundCloud(true)}>SoundCloud laden</button>
                 </div>
               )}
             </div>
           </Rv>
 
-          {/* GOOGLE DRIVE VIDEO EMBEDS WITH THUMBNAIL PREVIEW */}
+          {/* GOOGLE DRIVE EMBED PRIVACY WRAPPER */}
           <Rv delay={200}>
             <div className="video-block">
               <div className="video-label">Videos</div>
@@ -461,11 +459,9 @@ export default function MaxHefele() {
                     {allowGoogleDrive ? (
                       <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
                     ) : (
-                      <div className="embed-privacy-placeholder" style={{ backgroundImage: `url('https://drive.google.com/thumbnail?id=${id}&sz=w1000')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                        <div className="embed-privacy-content">
-                          <p className="embed-privacy-text">Video-Vorschau {i + 1} — Erst nach Klick werden Google-Inhalte geladen.</p>
-                          <button className="embed-privacy-btn" onClick={() => setAllowGoogleDrive(true)}>Video laden</button>
-                        </div>
+                      <div className="embed-privacy-placeholder">
+                        <p className="embed-privacy-text">Mit dem Laden dieses Videos akzeptieren Sie die Datenschutzbestimmungen von Google.</p>
+                        <button className="embed-privacy-btn" onClick={() => setAllowGoogleDrive(true)}>Video laden</button>
                       </div>
                     )}
                   </div>
@@ -516,25 +512,23 @@ export default function MaxHefele() {
             </div>
             <div>
               <Rv delay={200}>
-                <a className="contact-social" href="https://www.instagram.com/max.hefele.music/" target="_blank" rel="noopener noreferrer">
-                  Instagram <Icons.Arrow />
-                </a>
-                <a className="contact-social" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
-                  SoundCloud <Icons.Arrow />
-                </a>
-                <a className="contact-social" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
-                  YouTube <Icons.Arrow />
-                </a>
-                <div className="contact-social contact-social-soon">
-                  Spotify <span className="soon-badge">Bald verfügbar</span>
-                </div>
+                {SOCIAL_LINKS.map(s => (
+                  s.soon ? (
+                    <span key={s.name} className="contact-social contact-social-soon">
+                      {s.name} <span className="soon-badge">bald</span>
+                    </span>
+                  ) : (
+                    <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
+                      {s.name} <Icons.Arrow />
+                    </a>
+                  )
+                ))}
               </Rv>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME} — ALL RIGHTS RESERVED</div>
         <div className="footer-links">
@@ -543,38 +537,121 @@ export default function MaxHefele() {
         </div>
       </footer>
 
-      {/* LEGAL MODAL */}
+      {/* LEGAL MODALS */}
       {legalModal && (
-        <div className="legal-overlay" onClick={() => setLegalModal(null)}>
-          <div className="legal-box" onClick={(e) => e.stopPropagation()}>
+        <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
+          <div className="legal-box">
             <button className="legal-close" onClick={() => setLegalModal(null)}>×</button>
-            <div className="legal-title">{legalModal === "impressum" ? "Impressum" : "Datenschutz"}</div>
-            
-            {legalModal === "impressum" ? (
-              <div className="legal-section">
-                <h3>Angaben gemäß § 5 DDG</h3>
-                <p>Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald</p>
-                <h3>Kontakt</h3>
-                <p>E-Mail: info@maxhefele.de</p>
-                <h3>EU-Streitschlichtung</h3>
-                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-                <h3>Haftungshinweis</h3>
-                <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</p>
-              </div>
-            ) : (
-              <div className="legal-section">
-                <h3>Datenschutzerklärung</h3>
-                <p>Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Wir verarbeiten Daten nur im Rahmen der gesetzlichen Bestimmungen (DSGVO).</p>
-                <h3>Externe Medien (Zwei-Klick-Lösung)</h3>
-                <p>Auf dieser Webseite sind externe Dienste wie SoundCloud und Google Drive eingebunden. Um Ihre Privatsphäre zu schützen, werden diese Inhalte standardmäßig nicht geladen. Erst durch Ihre explizite Zustimmung werden Verbindungen zu den Servern der Drittanbieter aufgebaut, wodurch Daten (insb. IP-Adresse) übertragen werden können.</p>
-                <h3>Ihre Rechte</h3>
-                <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Bitte kontaktieren Sie uns hierfür unter der im Impressum angegebenen E-Mail-Adresse.</p>
-                <div className="legal-placeholder">Stand: 08. Juli 2026</div>
-              </div>
+
+            {legalModal === "impressum" && (
+              <>
+                <h2 className="legal-title">IMPRESSUM</h2>
+                <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
+
+                <div className="legal-section">
+                  <h3>Verantwortlich</h3>
+                  <div className="legal-placeholder">
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland
+                  </div>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Kontakt</h3>
+                  <p>
+                    E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
+                  </p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>EU-Streitschlichtung</h3>
+                  <p>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                  </p>
+                </div>
+              </>
+            )}
+
+            {legalModal === "datenschutz" && (
+              <>
+                <h2 className="legal-title">DATENSCHUTZ</h2>
+                <p className="legal-subtitle">Datenschutzerklärung</p>
+                
+                <div className="legal-section">
+                  <h3>1. Datenschutz auf einen Blick</h3>
+                  <h3>Allgemeine Hinweise</h3>
+                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                  <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Verantwortliche Stelle</h3>
+                  <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                  <div className="legal-placeholder">
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    E-Mail: info@maxhefele.de
+                  </div>
+                  <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde</h3>
+                  <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Recht auf Auskunft, Löschung und Berichtigung</h3>
+                  <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
+                  <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
+                  <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
+                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
+                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
+                  <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>SoundCloud</h3>
+                  <p>Auf unseren Seiten können Plugins des sozialen Netzwerks SoundCloud (SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland) integriert sein. Die SoundCloud-Plugins erkennen Sie an dem SoundCloud-Logo auf den betroffenen Inhalten.</p>
+                  <p>Wenn Sie die SoundCloud-Inhalte über unser Zwei-Klick-System aktivieren, wird eine direkte Verbindung zwischen Ihrem Browser und dem SoundCloud-Server hergestellt. SoundCloud erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie den SoundCloud-Button anklicken während Sie in Ihrem SoundCloud-Benutzerkonto eingeloggt sind, können Sie die Inhalte unserer Seiten mit Ihrem SoundCloud-Profil verlinken. Dadurch kann SoundCloud den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch SoundCloud erhalten.</p>
+                  <p>Die Datenverarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von SoundCloud unter: <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">https://soundcloud.com/pages/privacy</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Mixcloud</h3>
+                  <p>Auf unserer Website sind Links oder Plugins des Audio-Dienstes Mixcloud integriert. Anbieter ist die Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien.</p>
+                  <p>Bei der Nutzung oder beim Aufruf von Mixcloud-Elementen stellt Ihr Browser eine direkte Verbindung zu den Servern von Mixcloud her. Hierdurch erhält Mixcloud die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Die Nutzung von Mixcloud erfolgt auf Grundlage unseres berechtigten Interesses an der ansprechenden Gestaltung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Für den Datentransfer nach Großbritannien liegt ein Angemessenheitsbeschluss der Europäischen Kommission vor.</p>
+                  <p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Mixcloud: <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">https://www.mixcloud.com/privacy/</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Beatport, Instagram & YouTube (Externe Verlinkungen)</h3>
+                  <p>Auf unserer Webseite befinden sich Hyperlinks zu externen Social-Media-Plattformen und Musikdiensten (Beatport, Instagram, YouTube). Es handelt sich hierbei um reine Text- bzw. Grafiklinks, die beim Laden unserer Webseite **keine** Daten an diese Netzwerke senden. Erst wenn Sie aktiv auf einen dieser Links klicken, werden Sie auf die Plattform des Drittanbieters weitergeleitet. Dort gelten die jeweiligen Datenschutzbestimmungen der Betreiber.</p>
+                  <p>Informationen zum Umgang mit Ihren Daten finden Sie in den Datenschutzrichtlinien von Beatport (<a href="https://www.beatport.com/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.beatport.com/privacy-policy</a>), Instagram (<a href="https://help.instagram.com/519522125107875" target="_blank" rel="noopener noreferrer">https://help.instagram.com/519522125107875</a>) und YouTube/Google (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>).</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>iTunes / Apple Music</h3>
+                  <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
+                </div>
+                <p><strong>Stand: 08. Juli 2026</strong></p>
+              </>
             )}
           </div>
         </div>
       )}
     </>
   );
-}
