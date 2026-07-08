@@ -95,6 +95,11 @@ const Icons = {
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   ),
+  Play: () => (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  ),
 };
 
 // ─── Styles ───
@@ -193,11 +198,20 @@ const css = `
   .m-card:hover .m-card-link { color: var(--text); }
   .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; }
 
-  /* VIDEO & EMBED PRIVACY WRAPPER */
-  .embed-privacy-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #0b0b0b; padding: 24px; text-align: center; border: 1px dashed #222; }
-  .embed-privacy-text { font-size: 11px; color: var(--text-mid); max-width: 340px; line-height: 1.6; margin-bottom: 14px; letter-spacing: 0.3px; }
-  .embed-privacy-btn { background: #181818; border: 1px solid #333; color: #fff; padding: 8px 18px; font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
-  .embed-privacy-btn:hover { background: #fff; color: #000; border-color: #fff; }
+  /* MEDIA CONSENT (Klick-zum-Laden) */
+  .media-consent { width: 100%; background: linear-gradient(160deg, #101010 0%, #0a0a0a 100%); border: 1px solid var(--border); display: flex; justify-content: center; align-items: center; padding: 56px 28px; position: relative; overflow: hidden; }
+  .media-consent::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
+  .media-consent--slim { padding: 32px 28px; }
+  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 380px; position: relative; z-index: 1; }
+  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; }
+  .media-consent--slim .media-consent-icon { width: 44px; height: 44px; margin-bottom: 14px; }
+  .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; }
+  .media-consent--slim .media-consent-title { font-size: 22px; }
+  .media-consent-text { font-size: 11.5px; color: var(--text-mid); line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
+  .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; }
+  .media-consent-link:hover { opacity: 0.7; }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); }
+  .media-consent-btn:hover { background: transparent; color: var(--text); }
 
   /* VIDEO */
   .video-block { margin-top: 56px; }
@@ -441,18 +455,25 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           
           {/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
           <Rv delay={150}>
-            <div className="sc-embed" style={{ height: "166px" }}>
+            <div className="sc-embed" style={{ height: allowSoundCloud ? "166px" : "auto" }}>
               {allowSoundCloud ? (
                 <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
               ) : (
-                <div className="embed-privacy-placeholder">
-                  <p className="embed-privacy-text">Beim Laden des Players werden externe Daten von SoundCloud geladen und Cookies gesetzt. Weitere Infos in unserer Datenschutzerklärung.</p>
-<button className="embed-privacy-btn" onClick={() => {
-  setAllowSoundCloud(true);
-  localStorage.setItem("consent-soundcloud", "true"); // Speichert die Zustimmung
-}}>
-  SoundCloud laden
-</button>                </div>
+                <div className="media-consent media-consent--slim" role="group" aria-label="SoundCloud aktivieren">
+                  <div className="media-consent-inner">
+                    <div className="media-consent-icon"><Icons.SC /></div>
+                    <div className="media-consent-title">SoundCloud Player</div>
+                    <p className="media-consent-text">
+                      Beim Laden wird deine IP-Adresse an SoundCloud übertragen und es werden Cookies gesetzt. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
+                    </p>
+                    <button className="media-consent-btn" onClick={() => {
+                      setAllowSoundCloud(true);
+                      localStorage.setItem("consent-soundcloud", "true");
+                    }}>
+                      Player laden
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           </Rv>
@@ -461,24 +482,31 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           <Rv delay={200}>
             <div className="video-block">
               <div className="video-label">Videos</div>
-              <div className="video-grid">
-                {VIDEO_IDS.map((id, i) => (
-                  <div className="video-frame" key={id}>
-                    {allowGoogleDrive ? (
+              {allowGoogleDrive ? (
+                <div className="video-grid">
+                  {VIDEO_IDS.map((id, i) => (
+                    <div className="video-frame" key={id}>
                       <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
-                    ) : (
-                      <div className="embed-privacy-placeholder">
-                        <p className="embed-privacy-text">Mit dem Laden dieses Videos akzeptieren Sie die Datenschutzbestimmungen von Google.</p>
-<button className="embed-privacy-btn" onClick={() => {
-  setAllowGoogleDrive(true);
-  localStorage.setItem("consent-googledrive", "true"); // Speichert die Zustimmung
-}}>
-  Video laden
-</button>                      </div>
-                    )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="media-consent" role="group" aria-label="Videos aktivieren">
+                  <div className="media-consent-inner">
+                    <div className="media-consent-icon"><Icons.Play /></div>
+                    <div className="media-consent-title">{VIDEO_IDS.length} Videos</div>
+                    <p className="media-consent-text">
+                      Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
+                    </p>
+                    <button className="media-consent-btn" onClick={() => {
+                      setAllowGoogleDrive(true);
+                      localStorage.setItem("consent-googledrive", "true");
+                    }}>
+                      Videos laden
+                    </button>
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
                 Alle Videos auf Google Drive <Icons.Arrow />
               </a>
