@@ -514,7 +514,7 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
         </div>
       </section>
 
-      {/* DATES */}
+{/* DATES */}
       <section className="section" id="dates">
         <Rv>
           <p className="section-label">Schedule</p>
@@ -522,8 +522,7 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           <div className="section-line" />
         </Rv>
         <div className="dates-empty">
-          <h3 className="dates-empty-title">Currently no upcoming dates.</h3>
-          <p className="dates-empty-sub">Follow my socials to stay updated.</p>
+           <p className="dates-empty-sub">Stay tuned for upcoming tour dates.</p>
         </div>
       </section>
 
@@ -531,32 +530,22 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
-            <p className="section-label">Get in touch</p>
+            <p className="section-label">Reach out</p>
             <h2 className="section-title">CONTACT</h2>
             <div className="section-line" />
           </Rv>
-          <Rv delay={100}>
-            <div className="contact-grid">
-              <div>
-                <a href="mailto:booking@maxhefele.com" className="contact-email">
-                  <Icons.Mail /> booking@maxhefele.com
-                </a>
-              </div>
-              <div>
-                {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} href={s.url} className="contact-social" target="_blank" rel="noopener noreferrer">
-                    {s.name} {s.soon ? <span className="soon-badge">SOON</span> : <Icons.Arrow />}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Rv>
+          <div className="contact-grid">
+            <a href="mailto:booking@maxhefele.com" className="contact-email">
+              <Icons.Mail /> booking@maxhefele.com
+            </a>
+            {/* Deine Social Links hier */}
+          </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
-        <p>© {new Date().getFullYear()} {ARTIST_NAME}</p>
+        <p>&copy; {new Date().getFullYear()} {ARTIST_NAME}</p>
         <div className="footer-links">
           <button className="footer-link" onClick={() => setLegalModal("impressum")}>Impressum</button>
           <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>Datenschutz</button>
@@ -567,10 +556,18 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
       {legalModal && (
         <div className="legal-overlay" onClick={() => setLegalModal(null)}>
           <div className="legal-box" onClick={e => e.stopPropagation()}>
-            <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
-            <h2 className="legal-title">{legalModal === "impressum" ? "Impressum" : "Datenschutz"}</h2>
+            <button className="legal-close" onClick={() => setLegalModal(null)}>X</button>
+            <h2 className="legal-title">{legalModal.toUpperCase()}</h2>
             <div className="legal-placeholder">
-              {legalModal === "impressum"
+              {/* Hier fügst du deine Texte für Impressum/Datenschutz ein */}
+              <p>Hier stehen deine Inhalte...</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}              {legalModal === "impressum"
               <>
                 <h2 className="legal-title">IMPRESSUM</h2>
                 <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
