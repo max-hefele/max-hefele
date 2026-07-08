@@ -836,12 +836,12 @@ Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, 
 auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt
 (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen –
 insbesondere gesetzliche Aufbewahrungsfristen – bleiben unberührt.
-                  </p>
+                  
                 </div>
 
                 <div className="legal-section">
                   <h3>6. Soziale Medien</h3>
-                  <p>
+                  
                     Facebook
 Auf dieser Website sind Elemente des sozialen Netzwerks Facebook integriert. Anbieter dieses Dienstes ist
 die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland. Die erfassten Daten werden
