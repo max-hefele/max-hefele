@@ -513,39 +513,38 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
           </Rv>
         </div>
       </section>
-
-{/* DATES */}
+DATES */}
       <section className="section" id="dates">
         <Rv>
           <p className="section-label">Schedule</p>
           <h2 className="section-title">DATES</h2>
           <div className="section-line" />
+          <div className="dates-empty">
+            <h3 className="dates-empty-title">Currently no upcoming dates.</h3>
+            <p className="dates-empty-sub">Check back soon for new events.</p>
+          </div>
         </Rv>
-        <div className="dates-empty">
-           <p className="dates-empty-sub">Stay tuned for upcoming tour dates.</p>
-        </div>
       </section>
 
       {/* CONTACT */}
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
-            <p className="section-label">Reach out</p>
-            <h2 className="section-title">CONTACT</h2>
+            <p className="section-label">Contact</p>
+            <h2 className="section-title">BOOKING</h2>
             <div className="section-line" />
           </Rv>
           <div className="contact-grid">
             <a href="mailto:booking@maxhefele.com" className="contact-email">
               <Icons.Mail /> booking@maxhefele.com
             </a>
-            {/* Deine Social Links hier */}
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} {ARTIST_NAME}</p>
+        <p>© {new Date().getFullYear()} {ARTIST_NAME}</p>
         <div className="footer-links">
           <button className="footer-link" onClick={() => setLegalModal("impressum")}>Impressum</button>
           <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>Datenschutz</button>
@@ -557,17 +556,9 @@ const [allowGoogleDrive, setAllowGoogleDrive] = useState(() =>
         <div className="legal-overlay" onClick={() => setLegalModal(null)}>
           <div className="legal-box" onClick={e => e.stopPropagation()}>
             <button className="legal-close" onClick={() => setLegalModal(null)}>X</button>
-            <h2 className="legal-title">{legalModal.toUpperCase()}</h2>
-            <div className="legal-placeholder">
-              {/* Hier fügst du deine Texte für Impressum/Datenschutz ein */}
-              <p>Hier stehen deine Inhalte...</p>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}              {legalModal === "impressum"
+            {legalModal === "impressum" ? (
+              <div className="legal-section"></div>
+              {legalModal === "impressum"
               <>
                 <h2 className="legal-title">IMPRESSUM</h2>
                 <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
