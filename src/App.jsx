@@ -777,7 +777,7 @@ Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Si
                 <div className="legal-section">
                   <h3>5. Datenerfassung auf dieser Website</h3>
                   <div className="legal-placeholder">
-                    <p>
+
                     Cookies
 Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Datenpakete und richten auf
 Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung
@@ -926,7 +926,7 @@ europäischer Datenschutzstandards bei Datenverarbeitungen in den USA gewährlei
 dem DPF zertifizierte Unternehmen verpflichtet sich, diese Datenschutzstandards einzuhalten. Weitere
 Informationen hierzu erhalten Sie vom Anbieter unter folgendem Link:
 https://www.dataprivacyframework.gov/participant/4452.
-                  </p>
+                  
                 </div>
 
                 <div className="legal-section">
