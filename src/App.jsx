@@ -12,11 +12,32 @@ const SOCIAL_LINKS = [
   { name: "Beatport", url: "#", icon: "BP", soon: true }
 ];
 
-const NAV_ITEMS = ["About", "Music", "Dates", "Contact"];
+const NAV_ITEMS = ["About", "Music", "News", "Dates", "Contact"];
 
 const GOOGLE_DRIVE = {
   videos: "https://drive.google.com/drive/folders/159vuE6gldbiJihBx7CigxbYG2p4ZdWj0",
 };
+
+const NEWS_ITEMS = [
+  {
+    id: 1,
+    date: "05.07.2026",
+    category: "Interview",
+    title: "Im Gespräch mit dem Faze Magazin",
+    excerpt: "Ein tiefes Interview über 20 Jahre hinter den Decks, den harten Wechsel von Hip-Hop zu Melodic Techno und meine Vision für die kommende EP auf MYR Records.",
+    link: "https://www.fazemag.de", 
+    image: "images/news-faze.jpg",   
+  },
+  {
+    id: 2,
+    date: "28.06.2026",
+    category: "Video",
+    title: "Rave in the City — Episode 12 ist live",
+    excerpt: "Die neueste Episode ist online. Diesmal im industriellen Look, direkt aus einem verlassenen Kesselhaus. Eine Stunde treibender Melodic Techno.",
+    link: "https://www.youtube.com/@MaxHefele",
+    image: "images/about.jpg", 
+  },
+];
 
 const VIDEO_IDS = [
   "1x1dK3ECiPqBgl3x9C4AkhDJRsvmdKetg",
@@ -196,38 +217,34 @@ const css = `
   .m-card-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.65; flex: 1; }
   .m-card-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
   .m-card:hover .m-card-link { color: var(--text); }
-  .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; }
 
-  /* TRANSPARENT PRIVACY OVERLAY SYSTEM (2-KLICK) */
-  .privacy-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .privacy-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background: rgba(6, 6, 6, 0.88);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 32px 24px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-  }
+  /* NEWS SECTION */
+  .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 20px; }
+  .n-card { background: var(--bg-card); border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s var(--ease); }
+  .n-card:hover { border-color: var(--border-light); transform: translateY(-4px); }
+  .n-img-wrap { width: 100%; aspect-ratio: 16/10; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
+  .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .n-card:hover .n-img { transform: scale(1.02); }
+  .n-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+  .n-meta { display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+  .n-cat { color: var(--text); font-weight: 600; border: 1px solid var(--border-light); padding: 3px 10px; font-size: 9px; letter-spacing: 1.5px; }
+  .n-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 1px; margin-bottom: 12px; line-height: 1.15; }
+  .n-excerpt { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; flex: 1; margin-bottom: 24px; }
+  .n-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; font-weight: 600; }
+  .n-card:hover .n-link { color: var(--text); }
 
-  /* MEDIA CONSENT INLINE ELEMENTS */
+  /* PRIVACY OVERLAY SYSTEM (MILCHGLAS & REIN CSS) */
+  .privacy-wrapper { position: relative; width: 100%; overflow: hidden; border: 1px solid var(--border); }
+  .privacy-overlay { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 32px 24px; text-align: center; }
+
+  /* MEDIA CONSENT ELEMENTS */
   .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 11; }
-  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; }
+  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; background: rgba(0,0,0,0.4); }
   .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; }
   .media-consent-text { font-size: 11.5px; color: var(--text-mid); line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
   .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; }
   .media-consent-link:hover { opacity: 0.7; }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
   /* VIDEO */
@@ -297,6 +314,7 @@ const css = `
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
     .music-grid { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; gap: 24px; }
     .video-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
@@ -327,13 +345,11 @@ function Rv({ children, delay = 0, className = "" }) {
   return <div ref={ref} className={`rv ${vis ? "vis" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
-// ─── Main Component ───
 export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [legalModal, setLegalModal] = useState(null); // null | "impressum" | "datenschutz"
+  const [legalModal, setLegalModal] = useState(null);
   
-  // DSGVO-Einwilligungs-Zustände (Zwei-Klick-Lösung)
   const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
     localStorage.getItem("consent-soundcloud") === "true"
   );
@@ -349,7 +365,6 @@ export default function MaxHefele() {
 
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
 
-  // Funktion zum Widerrufen der Einwilligungen (DSGVO-konform)
   const resetConsent = () => {
     localStorage.removeItem("consent-soundcloud");
     localStorage.removeItem("consent-googledrive");
@@ -422,7 +437,7 @@ export default function MaxHefele() {
                 <p>Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.</p>
                 <p>Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.</p>
                 <p>Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.</p>
-                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
+                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City\". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
                 <p>Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren.</p>
               </div>
             </Rv>
@@ -461,7 +476,7 @@ export default function MaxHefele() {
               <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.SC /></div>
                 <div className="m-card-name">SOUNDCLOUD</div>
-                <div className="m-card-desc">Mixes, eigene Tracks und die „Rave in the City" Reihe. Debüt-EP demnächst auf MYR Records.</div>
+                <div className="m-card-desc">Mixes, eigene Tracks und die „Rave in the City\" Reihe. Debüt-EP demnächst auf MYR Records.</div>
                 <div className="m-card-link">Anhören <Icons.Arrow /></div>
               </a>
               <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
@@ -479,60 +494,89 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
+          {/* SOUNDCLOUD-BEREICH MIT SKELETT-FALLBACK */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px' }}>
-              {!allowSoundCloud ? (
-                <div className="privacy-overlay" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/sc-poster.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                  <div className="media-consent-inner">
-                    <div className="media-consent-icon"><Icons.SC /></div>
-                    <div className="media-consent-title">SoundCloud Player</div>
-                    <p className="media-consent-text">
-                      Beim Laden wird deine IP-Adresse an SoundCloud übertragen und es werden Cookies gesetzt. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
-                    </p>
-                    <button className="media-consent-btn" onClick={() => {
-                      setAllowSoundCloud(true);
-                      localStorage.setItem("consent-soundcloud", "true");
-                    }}>
-                      Player laden
-                    </button>
-                  </div>
-                </div>
-              ) : (
+            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px', position: 'relative', background: '#0a0a0a' }}>
+              {allowSoundCloud ? (
                 <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+              ) : (
+                <>
+                  {/* Animierte Soundspur als schimmerndes Hintergrund-Skelett */}
+                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px', opacity: 0.25, pointerEvents: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ width: '40px', height: '40px', background: '#1a1a1a', border: '1px solid #222' }} />
+                      <div>
+                        <div style={{ width: '140px', height: '10px', background: '#222', marginBottom: '6px' }} />
+                        <div style={{ width: '80px', height: '7px', background: '#1a1a1a' }} />
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '2px', alignItems: 'end', height: '40px', width: '100%', marginTop: '4px' }}>
+                      {Array.from({ length: 65 }).map((_, idx) => {
+                        const h = Math.abs(Math.sin(idx * 0.12)) * 32 + 4;
+                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#222' }} />;
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Frosted Glass Overlay */}
+                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', background: 'rgba(6, 6, 6, 0.75)' }}>
+                    <div className="media-consent-inner">
+                      <div className="media-consent-icon"><Icons.SC /></div>
+                      <div className="media-consent-title">SoundCloud Player</div>
+                      <p className="media-consent-text">
+                        Beim Laden wird deine IP-Adresse an SoundCloud übertragen und es werden Cookies gesetzt. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
+                      </p>
+                      <button className="media-consent-btn" onClick={() => {
+                        setAllowSoundCloud(true);
+                        localStorage.setItem("consent-soundcloud", "true");
+                      }}>
+                        Player laden
+                      </button>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </Rv>
 
-          {/* GOOGLE DRIVE EMBED PRIVACY WRAPPER */}
+          {/* VIDEO-BEREICH MIT RASTER-MILCHGLAS-EFFEKT */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="video-label">Videos</div>
-              <div className="privacy-wrapper" style={{ minHeight: '340px' }}>
-                {!allowGoogleDrive ? (
-                  <div className="privacy-overlay" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/video-poster.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                    <div className="media-consent-inner">
-                      <div className="media-consent-icon"><Icons.Play /></div>
-                      <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
-                      <p className="media-consent-text">
-                        Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
-                      </p>
-                      <button className="media-consent-btn" onClick={() => {
-                        setAllowGoogleDrive(true);
-                        localStorage.setItem("consent-googledrive", "true");
-                      }}>
-                        Videos laden
-                      </button>
+              <div className="video-grid" style={{ position: 'relative' }}>
+                {allowGoogleDrive ? (
+                  VIDEO_IDS.map((id, i) => (
+                    <div className="video-frame" key={id}>
+                      <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
                     </div>
-                  </div>
+                  ))
                 ) : (
-                  <div className="video-grid">
+                  <>
+                    {/* Das komplette Video-Raster wird als elegante Platzhalter aufgebaut */}
                     {VIDEO_IDS.map((id, i) => (
-                      <div className="video-frame" key={id}>
-                        <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
+                      <div className="video-frame" key={id} style={{ background: 'radial-gradient(circle at center, #141414 0%, #070707 100%)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                        <div style={{ color: '#252525', transform: 'scale(1.2)' }}><Icons.Play /></div>
+                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: 'var(--text-dim)', fontWeight: 600 }}>VIDEO {i + 1}</span>
                       </div>
                     ))}
-                  </div>
+                    
+                    {/* Riesen-Milchglas-Sichtschutz über das gesamte Raster hinweg */}
+                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', background: 'rgba(6, 6, 6, 0.78)' }}>
+                      <div className="media-consent-inner">
+                        <div className="media-consent-icon"><Icons.Play /></div>
+                        <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
+                        <p className="media-consent-text">
+                          Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
+                        </p>
+                        <button className="media-consent-btn" onClick={() => {
+                          setAllowGoogleDrive(true);
+                          localStorage.setItem("consent-googledrive", "true");
+                        }}>
+                          Videos laden
+                        </button>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
@@ -541,6 +585,41 @@ export default function MaxHefele() {
             </div>
           </Rv>
         </div>
+      </section>
+
+      {/* NEWS SECTION */}
+      <section className="section" id="news">
+        <Rv>
+          <p className="section-label">Latest Updates</p>
+          <h2 className="section-title">NEWS</h2>
+          <div className="section-line" />
+        </Rv>
+        <Rv delay={100}>
+          <div className="news-grid">
+            {NEWS_ITEMS.map(item => (
+              <a key={item.id} className="n-card" href={item.link} target="_blank" rel="noopener noreferrer">
+                <div className="n-img-wrap">
+                  <img 
+                    className="n-img" 
+                    src={item.image.startsWith('http') ? item.image : `${import.meta.env.BASE_URL}${item.image}`} 
+                    alt={item.title} 
+                    loading="lazy" 
+                    onError={(e) => { e.target.style.display = 'none'; }} 
+                  />
+                </div>
+                <div className="n-content">
+                  <div className="n-meta">
+                    <span className="n-date">{item.date}</span>
+                    <span className="n-cat">{item.category}</span>
+                  </div>
+                  <h3 className="n-title">{item.title}</h3>
+                  <p className="n-excerpt">{item.excerpt}</p>
+                  <div className="n-link">Mehr ansehen <Icons.Arrow /></div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Rv>
       </section>
 
       {/* DATES */}
@@ -627,7 +706,7 @@ export default function MaxHefele() {
                 </div>
 
                 <div className="legal-section">
-                  <h3>Kontakt</h3>
+                  <h3>Contact</h3>
                   <p>
                     E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
                   </p>
