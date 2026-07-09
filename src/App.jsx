@@ -24,7 +24,7 @@ const NEWS_ITEMS = [
     date: "09.07.2026",
     category: "Interview",
     title: "Max Hefele presents Call Me [MYR]",
-    excerpt: "Ein kurzer einblick in die neue EP",
+    excerpt: "Meine Vision für die kommende EP auf MYR Records.",
     link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", 
     image: "images/chromatic-club",   
   },
@@ -33,7 +33,7 @@ const NEWS_ITEMS = [
     date: "09.07.2026",
     category: "Interview with the last future",
     title: "Max Hefele presents Call Me [MYR]",
-    excerpt: "On Call Me EP, Max Hefele explores the increasingly porous boundary between classic house music and modern melodic techno.",
+    excerpt: "Hier ein kleiner einblick in meine neue EP.",
     link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
     image: "images/thelastfuture", 
   },
@@ -233,24 +233,24 @@ const css = `
   .n-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; font-weight: 600; }
   .n-card:hover .n-link { color: var(--text); }
 
-  /* PRIVACY OVERLAY SYSTEM (GLASSMORPHISMUS OPTIMIERUNG) */
+  /* PRIVACY OVERLAY SYSTEM */
   .privacy-wrapper { position: relative; width: 100%; overflow: hidden; border: 1px solid var(--border); }
-  .privacy-overlay { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 32px 24px; text-align: center; }
+  .privacy-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 32px 24px; text-align: center; }
 
   /* MEDIA CONSENT ELEMENTS */
-  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 11; }
-  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; background: rgba(15,15,15,0.6); }
-  .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; }
-  .media-consent-text { font-size: 11.5px; color: #aaa; line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
-  .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; }
+  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 13; }
+  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--text); margin-bottom: 18px; background: rgba(15,15,15,0.6); }
+  .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+  .media-consent-text { font-size: 11.5px; color: #ddd; line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+  .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; font-weight: 600; }
   .media-consent-link:hover { opacity: 0.7; }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 25px rgba(0,0,0,0.5); }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 25px rgba(0,0,0,0.6); }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
   /* VIDEO */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; position: relative; }
   .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
   .video-frame iframe { width: 100%; height: 100%; border: none; }
   .video-more { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
@@ -437,7 +437,7 @@ export default function MaxHefele() {
                 <p>Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.</p>
                 <p>Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.</p>
                 <p>Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.</p>
-                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City\". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
+                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
                 <p>Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren.</p>
               </div>
             </Rv>
@@ -494,32 +494,37 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD-BEREICH MIT KORRIGIERTEM HOCH-KONTRAST-SKELETT */}
+          {/* SOUNDCLOUD-BEREICH MIT DURCHSCHEINENDEM ATMOSPHÄREN-HINTERGRUND */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px', position: 'relative', background: '#111' }}>
+            <div className="privacy-wrapper" style={{ 
+              marginTop: '32px', 
+              height: '166px', 
+              position: 'relative', 
+              background: allowSoundCloud ? 'transparent' : `linear-gradient(rgba(6, 6, 6, 0.65), rgba(6, 6, 6, 0.65)), url('${import.meta.env.BASE_URL}images/about.jpg') center/cover no-repeat` 
+            }}>
               {allowSoundCloud ? (
                 <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
               ) : (
                 <>
-                  {/* Sichtbares, helleres UI-Skelett */}
-                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '10px', opacity: 0.8, pointerEvents: 'none' }}>
+                  {/* Künstliches UI-Skelett schimmert leicht durch */}
+                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '10px', opacity: 0.25, pointerEvents: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '42px', height: '42px', background: '#222', border: '1px solid #333' }} />
+                      <div style={{ width: '42px', height: '42px', background: '#fff', opacity: 0.2 }} />
                       <div>
-                        <div style={{ width: '180px', height: '11px', background: '#333', marginBottom: '6px' }} />
-                        <div style={{ width: '100px', height: '8px', background: '#222' }} />
+                        <div style={{ width: '180px', height: '11px', background: '#fff', opacity: 0.3, marginBottom: '6px' }} />
+                        <div style={{ width: '100px', height: '8px', background: '#fff', opacity: 0.15 }} />
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: '3px', alignItems: 'end', height: '44px', width: '100%', marginTop: '6px' }}>
                       {Array.from({ length: 65 }).map((_, idx) => {
                         const h = Math.abs(Math.sin(idx * 0.12)) * 36 + 4;
-                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#2d2d30' }} />;
+                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#fff', opacity: 0.15 }} />;
                       })}
                     </div>
                   </div>
 
-                  {/* Korrigiertes, helleres Frosted Glass Overlay */}
-                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.4)' }}>
+                  {/* Frosted Glass Overlay lässt das abgedunkelte Foto durchscheinen */}
+                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.35)' }}>
                     <div className="media-consent-inner">
                       <div className="media-consent-icon"><Icons.SC /></div>
                       <div className="media-consent-title">SoundCloud Player</div>
@@ -539,7 +544,7 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO-BEREICH MIT KORRIGIERTEM HOCH-KONTRAST-RASTER */}
+          {/* VIDEO-BEREICH MIT INTEGRIERTEM DURCHSCHIMMERNDEM BILD-RASTER */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="video-label">Videos</div>
@@ -552,16 +557,24 @@ export default function MaxHefele() {
                   ))
                 ) : (
                   <>
-                    {/* Deutlich sichtbareres Raster aus Schiefergrau */}
+                    {/* Jede Video-Kachel nutzt das abgedunkelte Pressebild als Textur */}
                     {VIDEO_IDS.map((id, i) => (
-                      <div className="video-frame" key={id} style={{ background: '#141416', border: '1px solid #252528', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-                        <div style={{ color: '#444', transform: 'scale(1.2)' }}><Icons.Play /></div>
-                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: '#666', fontWeight: 600 }}>VIDEO {i + 1}</span>
+                      <div className="video-frame" key={id} style={{ 
+                        background: `linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.55)), url('${import.meta.env.BASE_URL}images/about.jpg') center/cover no-repeat`, 
+                        border: '1px solid rgba(255,255,255,0.04)', 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        gap: '12px' 
+                      }}>
+                        <div style={{ color: '#fff', opacity: 0.5, transform: 'scale(1.2)' }}><Icons.Play /></div>
+                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: '#fff', opacity: 0.4, fontWeight: 600 }}>VIDEO {i + 1}</span>
                       </div>
                     ))}
                     
-                    {/* Durchlässigeres Milchglas über dem gesamten Video-Verbund */}
-                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', background: 'rgba(6, 6, 6, 0.45)' }}>
+                    {/* Übergreifendes Milchglas über dem gesamten Verbund */}
+                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.4)' }}>
                       <div className="media-consent-inner">
                         <div className="media-consent-icon"><Icons.Play /></div>
                         <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
@@ -767,12 +780,12 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
 
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
-                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
-                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung is jederzeit für die Zukunft widerrufbar.</p>
+                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
+                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
                   <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
                 </div>
 
