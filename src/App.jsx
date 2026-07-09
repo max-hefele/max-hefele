@@ -26,7 +26,7 @@ const NEWS_ITEMS = [
     title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Meine Vision für die kommende EP auf MYR Records.",
     link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", 
-    image: "images/chromatic-club",   
+    image: "images/chromatic-club.jpg",   
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const NEWS_ITEMS = [
     title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Hier ein kleiner einblick in meine neue EP.",
     link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
-    image: "images/thelastfuture", 
+    image: "images/thelastfuture.jpg", 
   },
 ];
 
@@ -218,6 +218,34 @@ const css = `
   .m-card-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
   .m-card:hover .m-card-link { color: var(--text); }
 
+  /* PRIVACY OVERLAY & GLASSMORPHISM */
+  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: #080808; }
+  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(20, 20, 20, 0.85); padding: 24px 32px; border-radius: 8px; border: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #222; }
+  .media-consent-text-wrap { text-align: left; }
+  .media-consent-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; color: var(--text); margin-bottom: 4px; line-height: 1; }
+  .media-consent-text { font-size: 11px; color: #888; line-height: 1.5; margin: 0; letter-spacing: 0.2px; }
+  .media-consent-link { background: none; border: none; padding: 0; color: var(--text-mid); font-family: var(--font-body); font-size: 11px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color 0.3s; }
+  .media-consent-link:hover { color: var(--text); }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; }
+  .media-consent-btn:hover { background: transparent; color: var(--text); }
+
+  /* FAKE BACKGROUNDS FOR BLUR */
+  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 3px; padding: 0 32px; opacity: 0.25; }
+  .fake-waveform-bg > div { flex: 1; background: #555; border-radius: 2px; }
+  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 12px; opacity: 0.25; }
+  .fake-video-bg > div { background: #333; border-radius: 4px; }
+
+  /* VIDEO GRID KOMPAKT */
+  .video-block { margin-top: 56px; }
+  .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
+  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
+  .video-frame iframe { width: 100%; height: 100%; border: none; }
+  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+  .video-more:hover { color: var(--text); }
+
   /* NEWS SECTION */
   .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 20px; }
   .n-card { background: var(--bg-card); border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s var(--ease); }
@@ -233,35 +261,10 @@ const css = `
   .n-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; font-weight: 600; }
   .n-card:hover .n-link { color: var(--text); }
 
-  /* PRIVACY OVERLAY SYSTEM */
-  .privacy-wrapper { position: relative; width: 100%; overflow: hidden; border: 1px solid var(--border); }
-  .privacy-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 32px 24px; text-align: center; }
-
-  /* MEDIA CONSENT ELEMENTS */
-  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 13; }
-  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--text); margin-bottom: 18px; background: rgba(15,15,15,0.6); }
-  .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-  .media-consent-text { font-size: 11.5px; color: #ddd; line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-  .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; font-weight: 600; }
-  .media-consent-link:hover { opacity: 0.7; }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 25px rgba(0,0,0,0.6); }
-  .media-consent-btn:hover { background: transparent; color: var(--text); }
-
-  /* VIDEO */
-  .video-block { margin-top: 56px; }
-  .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; position: relative; }
-  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
-  .video-frame iframe { width: 100%; height: 100%; border: none; }
-  .video-more { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--text); }
-
-  /* DATES */
+  /* DATES & CONTACT & FOOTER & LEGAL */
   .dates-empty { text-align: center; padding: 72px 0; }
   .dates-empty-title { font-family: var(--font-display); font-size: 28px; letter-spacing: 3px; color: var(--text-mid); margin-bottom: 10px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
-
-  /* CONTACT */
   .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); }
   .contact-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
@@ -274,14 +277,10 @@ const css = `
   .contact-social-soon { color: #444; cursor: default; }
   .contact-social-soon:hover { padding-left: 0; color: #444; }
   .soon-badge { font-size: 9px; letter-spacing: 1px; padding: 3px 8px; border: 1px solid var(--border-light); color: var(--text-dim); border-radius: 2px; }
-
-  /* FOOTER */
   .footer { padding: 36px 48px; text-align: center; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; border-top: 1px solid var(--border); }
   .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: color 0.3s; padding: 0; }
   .footer-link:hover { color: var(--text-mid); }
-
-  /* LEGAL MODAL */
   .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: flex-start; padding: 60px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg); border: 1px solid var(--border-light); max-width: 720px; width: 100%; padding: 56px 48px; position: relative; }
   .legal-close { position: absolute; top: 20px; right: 20px; background: none; border: 1px solid var(--border); color: var(--text-dim); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.3s; font-family: var(--font-body); }
@@ -296,8 +295,6 @@ const css = `
   .legal-section a { color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
   .legal-section a:hover { color: var(--text); }
   .legal-placeholder { background: var(--bg-card); border: 1px dashed var(--border-light); padding: 20px 24px; color: var(--text-dim); font-size: 12px; line-height: 1.7; letter-spacing: 0.3px; margin-top: 8px; }
-
-  /* GRAIN */
   .grain { position: fixed; inset: 0; pointer-events: none; z-index: 200; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; }
 
   /* REVEAL */
@@ -314,14 +311,17 @@ const css = `
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
     .music-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
     .news-grid { grid-template-columns: 1fr; gap: 24px; }
-    .video-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
     .hero-name { letter-spacing: 6px; }
+    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; }
+    .media-consent-text-wrap { text-align: center; }
   }
   @media (max-width: 480px) {
     .highlights { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
     .section, .music-inner, .contact-inner { padding: 80px 20px; }
   }
 `;
@@ -349,6 +349,7 @@ export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
+  const [videosExpanded, setVideosExpanded] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
     localStorage.getItem("consent-soundcloud") === "true"
@@ -370,6 +371,7 @@ export default function MaxHefele() {
     localStorage.removeItem("consent-googledrive");
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
+    setVideosExpanded(false);
     alert("Deine Cookie- und Streaming-Einwilligungen wurden erfolgreich widerrufen.");
   };
 
@@ -463,7 +465,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC */}
+      {/* MUSIC & VIDEOS */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
@@ -494,104 +496,83 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD-BEREICH MIT DURCHSCHEINENDEM ATMOSPHÄREN-HINTERGRUND */}
+          {/* SOUNDCLOUD-BEREICH MIT DURCHSCHEINENDEM HINTERGRUND */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ 
-              marginTop: '32px', 
-              height: '166px', 
-              position: 'relative', 
-              background: allowSoundCloud ? 'transparent' : `linear-gradient(rgba(6, 6, 6, 0.65), rgba(6, 6, 6, 0.65)), url('${import.meta.env.BASE_URL}images/about.jpg') center/cover no-repeat` 
-            }}>
-              {allowSoundCloud ? (
-                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
-              ) : (
+            <div className="privacy-wrapper" style={{ height: '166px', marginTop: '32px' }}>
+              {!allowSoundCloud ? (
                 <>
-                  {/* Künstliches UI-Skelett schimmert leicht durch */}
-                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '10px', opacity: 0.25, pointerEvents: 'none' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '42px', height: '42px', background: '#fff', opacity: 0.2 }} />
-                      <div>
-                        <div style={{ width: '180px', height: '11px', background: '#fff', opacity: 0.3, marginBottom: '6px' }} />
-                        <div style={{ width: '100px', height: '8px', background: '#fff', opacity: 0.15 }} />
-                      </div>
-                    </div>
-                    <div style={{ display: 'flex', gap: '3px', alignItems: 'end', height: '44px', width: '100%', marginTop: '6px' }}>
-                      {Array.from({ length: 65 }).map((_, idx) => {
-                        const h = Math.abs(Math.sin(idx * 0.12)) * 36 + 4;
-                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#fff', opacity: 0.15 }} />;
-                      })}
-                    </div>
+                  {/* Fake Audio Waveform for Blur Effect */}
+                  <div className="fake-waveform-bg">
+                    {Array.from({ length: 45 }).map((_, i) => (
+                      <div key={i} style={{ height: `${Math.max(10, Math.random() * 100)}%` }} />
+                    ))}
                   </div>
-
-                  {/* Frosted Glass Overlay lässt das abgedunkelte Foto durchscheinen */}
-                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.35)' }}>
+                  <div className="privacy-blur-overlay">
                     <div className="media-consent-inner">
                       <div className="media-consent-icon"><Icons.SC /></div>
-                      <div className="media-consent-title">SoundCloud Player</div>
-                      <p className="media-consent-text">
-                        Beim Laden wird deine IP-Adresse an SoundCloud übertragen und es werden Cookies gesetzt. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
-                      </p>
+                      <div className="media-consent-text-wrap">
+                        <h4 className="media-consent-title">SoundCloud Audio</h4>
+                        <p className="media-consent-text">Laden des Players überträgt Daten an SoundCloud. <br/><button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung lesen</button></p>
+                      </div>
                       <button className="media-consent-btn" onClick={() => {
                         setAllowSoundCloud(true);
                         localStorage.setItem("consent-soundcloud", "true");
-                      }}>
-                        Player laden
-                      </button>
+                      }}>Player laden</button>
                     </div>
                   </div>
                 </>
+              ) : (
+                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
               )}
             </div>
           </Rv>
 
-          {/* VIDEO-BEREICH MIT INTEGRIERTEM DURCHSCHIMMERNDEM BILD-RASTER */}
+          {/* VIDEO-BEREICH - GEBÜNDELT UND KOMPAKT */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="video-label">Videos</div>
-              <div className="video-grid" style={{ position: 'relative' }}>
-                {allowGoogleDrive ? (
-                  VIDEO_IDS.map((id, i) => (
+              
+              {(!allowGoogleDrive || !videosExpanded) ? (
+                <div className="privacy-wrapper" style={{ height: '220px', cursor: allowGoogleDrive ? 'pointer' : 'default' }} onClick={() => { if(allowGoogleDrive) setVideosExpanded(true); }}>
+                  {/* Fake Video Grid for Blur Effect */}
+                  <div className="fake-video-bg">
+                    {Array.from({ length: 3 }).map((_, i) => <div key={i} />)}
+                  </div>
+                  <div className="privacy-blur-overlay">
+                    <div className="media-consent-inner">
+                      <div className="media-consent-icon"><Icons.Play /></div>
+                      <div className="media-consent-text-wrap">
+                        <h4 className="media-consent-title">{VIDEO_IDS.length} Videos ansehen</h4>
+                        {!allowGoogleDrive && (
+                          <p className="media-consent-text">
+                            Zum Abspielen werden Inhalte von Google Drive geladen. <br/>
+                            <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>Datenschutzerklärung lesen</button>
+                          </p>
+                        )}
+                      </div>
+                      {!allowGoogleDrive ? (
+                        <button className="media-consent-btn" onClick={(e) => { 
+                          e.stopPropagation(); 
+                          setAllowGoogleDrive(true); 
+                          setVideosExpanded(true);
+                          localStorage.setItem("consent-googledrive", "true"); 
+                        }}>Videos laden & öffnen</button>
+                      ) : (
+                        <button className="media-consent-btn">Jetzt aufklappen</button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="video-grid">
+                  {VIDEO_IDS.map((id, i) => (
                     <div className="video-frame" key={id}>
                       <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
                     </div>
-                  ))
-                ) : (
-                  <>
-                    {/* Jede Video-Kachel nutzt das abgedunkelte Pressebild als Textur */}
-                    {VIDEO_IDS.map((id, i) => (
-                      <div className="video-frame" key={id} style={{ 
-                        background: `linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.55)), url('${import.meta.env.BASE_URL}images/about.jpg') center/cover no-repeat`, 
-                        border: '1px solid rgba(255,255,255,0.04)', 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        gap: '12px' 
-                      }}>
-                        <div style={{ color: '#fff', opacity: 0.5, transform: 'scale(1.2)' }}><Icons.Play /></div>
-                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: '#fff', opacity: 0.4, fontWeight: 600 }}>VIDEO {i + 1}</span>
-                      </div>
-                    ))}
-                    
-                    {/* Übergreifendes Milchglas über dem gesamten Verbund */}
-                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.4)' }}>
-                      <div className="media-consent-inner">
-                        <div className="media-consent-icon"><Icons.Play /></div>
-                        <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
-                        <p className="media-consent-text">
-                          Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
-                        </p>
-                        <button className="media-consent-btn" onClick={() => {
-                          setAllowGoogleDrive(true);
-                          localStorage.setItem("consent-googledrive", "true");
-                        }}>
-                          Videos laden
-                        </button>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
+                  ))}
+                </div>
+              )}
+              
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
                 Alle Videos auf Google Drive <Icons.Arrow />
               </a>
@@ -600,7 +581,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* NEWS SECTION */}
+      {/* NEWS SECTION - RICH LINK PREVIEWS */}
       <section className="section" id="news">
         <Rv>
           <p className="section-label">Latest Updates</p>
@@ -627,7 +608,7 @@ export default function MaxHefele() {
                   </div>
                   <h3 className="n-title">{item.title}</h3>
                   <p className="n-excerpt">{item.excerpt}</p>
-                  <div className="n-link">Mehr ansehen <Icons.Arrow /></div>
+                  <div className="n-link">Mehr lesen auf {new URL(item.link).hostname.replace('www.', '')} <Icons.Arrow /></div>
                 </div>
               </a>
             ))}
@@ -761,7 +742,7 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Many Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
                   <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
                     Einwilligungen hier widerrufen
                   </button>
@@ -780,11 +761,11 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
 
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
-                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
+                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
                   <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
                   <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
                 </div>
