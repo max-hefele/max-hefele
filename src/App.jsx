@@ -21,21 +21,21 @@ const GOOGLE_DRIVE = {
 const NEWS_ITEMS = [
   {
     id: 1,
-    date: "05.07.2026",
+    date: "09.07.2026",
     category: "Interview",
-    title: "Im Gespräch mit dem Faze Magazin",
+    title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Ein tiefes Interview über 20 Jahre hinter den Decks, den harten Wechsel von Hip-Hop zu Melodic Techno und meine Vision für die kommende EP auf MYR Records.",
-    link: "https://www.fazemag.de", 
-    image: "images/news-faze.jpg",   
+    link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr" 
+    image: "images/chromatic-club",   
   },
   {
     id: 2,
-    date: "28.06.2026",
-    category: "Video",
-    title: "Rave in the City — Episode 12 ist live",
+    date: "09.07.2026",
+    category: "Interview with the last future",
+    title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Die neueste Episode ist online. Diesmal im industriellen Look, direkt aus einem verlassenen Kesselhaus. Eine Stunde treibender Melodic Techno.",
-    link: "https://www.youtube.com/@MaxHefele",
-    image: "images/about.jpg", 
+    link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
+    image: "images/thelastfuture", 
   },
 ];
 
@@ -233,18 +233,18 @@ const css = `
   .n-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; font-weight: 600; }
   .n-card:hover .n-link { color: var(--text); }
 
-  /* PRIVACY OVERLAY SYSTEM (MILCHGLAS & REIN CSS) */
+  /* PRIVACY OVERLAY SYSTEM (GLASSMORPHISMUS OPTIMIERUNG) */
   .privacy-wrapper { position: relative; width: 100%; overflow: hidden; border: 1px solid var(--border); }
   .privacy-overlay { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 32px 24px; text-align: center; }
 
   /* MEDIA CONSENT ELEMENTS */
   .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 11; }
-  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; background: rgba(0,0,0,0.4); }
+  .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; background: rgba(15,15,15,0.6); }
   .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; }
-  .media-consent-text { font-size: 11.5px; color: var(--text-mid); line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
+  .media-consent-text { font-size: 11.5px; color: #aaa; line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
   .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; }
   .media-consent-link:hover { opacity: 0.7; }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 12px 32px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); box-shadow: 0 4px 25px rgba(0,0,0,0.5); }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
   /* VIDEO */
@@ -494,32 +494,32 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD-BEREICH MIT SKELETT-FALLBACK */}
+          {/* SOUNDCLOUD-BEREICH MIT KORRIGIERTEM HOCH-KONTRAST-SKELETT */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px', position: 'relative', background: '#0a0a0a' }}>
+            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px', position: 'relative', background: '#111' }}>
               {allowSoundCloud ? (
                 <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
               ) : (
                 <>
-                  {/* Animierte Soundspur als schimmerndes Hintergrund-Skelett */}
-                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px', opacity: 0.25, pointerEvents: 'none' }}>
+                  {/* Sichtbares, helleres UI-Skelett */}
+                  <div style={{ width: '100%', height: '100%', padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '10px', opacity: 0.8, pointerEvents: 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '40px', height: '40px', background: '#1a1a1a', border: '1px solid #222' }} />
+                      <div style={{ width: '42px', height: '42px', background: '#222', border: '1px solid #333' }} />
                       <div>
-                        <div style={{ width: '140px', height: '10px', background: '#222', marginBottom: '6px' }} />
-                        <div style={{ width: '80px', height: '7px', background: '#1a1a1a' }} />
+                        <div style={{ width: '180px', height: '11px', background: '#333', marginBottom: '6px' }} />
+                        <div style={{ width: '100px', height: '8px', background: '#222' }} />
                       </div>
                     </div>
-                    <div style={{ display: 'flex', gap: '2px', alignItems: 'end', height: '40px', width: '100%', marginTop: '4px' }}>
+                    <div style={{ display: 'flex', gap: '3px', alignItems: 'end', height: '44px', width: '100%', marginTop: '6px' }}>
                       {Array.from({ length: 65 }).map((_, idx) => {
-                        const h = Math.abs(Math.sin(idx * 0.12)) * 32 + 4;
-                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#222' }} />;
+                        const h = Math.abs(Math.sin(idx * 0.12)) * 36 + 4;
+                        return <div key={idx} style={{ flex: 1, height: `${h}px`, background: '#2d2d30' }} />;
                       })}
                     </div>
                   </div>
 
-                  {/* Frosted Glass Overlay */}
-                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', background: 'rgba(6, 6, 6, 0.75)' }}>
+                  {/* Korrigiertes, helleres Frosted Glass Overlay */}
+                  <div className="privacy-overlay" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', background: 'rgba(6, 6, 6, 0.4)' }}>
                     <div className="media-consent-inner">
                       <div className="media-consent-icon"><Icons.SC /></div>
                       <div className="media-consent-title">SoundCloud Player</div>
@@ -539,7 +539,7 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO-BEREICH MIT RASTER-MILCHGLAS-EFFEKT */}
+          {/* VIDEO-BEREICH MIT KORRIGIERTEM HOCH-KONTRAST-RASTER */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="video-label">Videos</div>
@@ -552,16 +552,16 @@ export default function MaxHefele() {
                   ))
                 ) : (
                   <>
-                    {/* Das komplette Video-Raster wird als elegante Platzhalter aufgebaut */}
+                    {/* Deutlich sichtbareres Raster aus Schiefergrau */}
                     {VIDEO_IDS.map((id, i) => (
-                      <div className="video-frame" key={id} style={{ background: 'radial-gradient(circle at center, #141414 0%, #070707 100%)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-                        <div style={{ color: '#252525', transform: 'scale(1.2)' }}><Icons.Play /></div>
-                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: 'var(--text-dim)', fontWeight: 600 }}>VIDEO {i + 1}</span>
+                      <div className="video-frame" key={id} style={{ background: '#141416', border: '1px solid #252528', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+                        <div style={{ color: '#444', transform: 'scale(1.2)' }}><Icons.Play /></div>
+                        <span style={{ fontSize: '9px', letterSpacing: '2px', color: '#666', fontWeight: 600 }}>VIDEO {i + 1}</span>
                       </div>
                     ))}
                     
-                    {/* Riesen-Milchglas-Sichtschutz über das gesamte Raster hinweg */}
-                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', background: 'rgba(6, 6, 6, 0.78)' }}>
+                    {/* Durchlässigeres Milchglas über dem gesamten Video-Verbund */}
+                    <div className="privacy-overlay" style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', background: 'rgba(6, 6, 6, 0.45)' }}>
                       <div className="media-consent-inner">
                         <div className="media-consent-icon"><Icons.Play /></div>
                         <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
@@ -748,7 +748,7 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                  <p>Many Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
                   <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
                     Einwilligungen hier widerrufen
                   </button>
