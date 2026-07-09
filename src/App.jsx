@@ -198,15 +198,32 @@ const css = `
   .m-card:hover .m-card-link { color: var(--text); }
   .sc-embed { margin-top: 32px; border: 1px solid var(--border); overflow: hidden; }
 
-  /* MEDIA CONSENT (Klick-zum-Laden) */
-  .media-consent { width: 100%; background: linear-gradient(160deg, #101010 0%, #0a0a0a 100%); border: 1px solid var(--border); display: flex; justify-content: center; align-items: center; padding: 56px 28px; position: relative; overflow: hidden; }
-  .media-consent::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
-  .media-consent--slim { padding: 32px 28px; }
-  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 380px; position: relative; z-index: 1; }
+  /* TRANSPARENT PRIVACY OVERLAY SYSTEM (2-KLICK) */
+  .privacy-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .privacy-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: rgba(6, 6, 6, 0.88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 32px 24px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  /* MEDIA CONSENT INLINE ELEMENTS */
+  .media-consent-inner { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 420px; position: relative; z-index: 11; }
   .media-consent-icon { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-mid); margin-bottom: 18px; }
-  .media-consent--slim .media-consent-icon { width: 44px; height: 44px; margin-bottom: 14px; }
   .media-consent-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; color: var(--text); margin-bottom: 10px; }
-  .media-consent--slim .media-consent-title { font-size: 22px; }
   .media-consent-text { font-size: 11.5px; color: var(--text-mid); line-height: 1.7; margin-bottom: 22px; letter-spacing: 0.2px; }
   .media-consent-link { background: none; border: none; padding: 0; color: var(--text); font-family: var(--font-body); font-size: 11.5px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: opacity 0.3s; }
   .media-consent-link:hover { opacity: 0.7; }
@@ -216,7 +233,7 @@ const css = `
   /* VIDEO */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
   .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
   .video-frame iframe { width: 100%; height: 100%; border: none; }
   .video-more { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
@@ -331,6 +348,15 @@ export default function MaxHefele() {
   }, []);
 
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
+
+  // Funktion zum Widerrufen der Einwilligungen (DSGVO-konform)
+  const resetConsent = () => {
+    localStorage.removeItem("consent-soundcloud");
+    localStorage.removeItem("consent-googledrive");
+    setAllowSoundCloud(false);
+    setAllowGoogleDrive(false);
+    alert("Deine Cookie- und Streaming-Einwilligungen wurden erfolgreich widerrufen.");
+  };
 
   return (
     <>
@@ -455,11 +481,9 @@ export default function MaxHefele() {
           
           {/* SOUNDCLOUD EMBED PRIVACY WRAPPER */}
           <Rv delay={150}>
-            <div className="sc-embed" style={{ height: allowSoundCloud ? "166px" : "auto" }}>
-              {allowSoundCloud ? (
-                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0 }} title="SoundCloud Player" />
-              ) : (
-                <div className="media-consent media-consent--slim" role="group" aria-label="SoundCloud aktivieren">
+            <div className="privacy-wrapper" style={{ marginTop: '32px', height: '166px' }}>
+              {!allowSoundCloud ? (
+                <div className="privacy-overlay" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/sc-poster.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                   <div className="media-consent-inner">
                     <div className="media-consent-icon"><Icons.SC /></div>
                     <div className="media-consent-title">SoundCloud Player</div>
@@ -474,39 +498,43 @@ export default function MaxHefele() {
                     </button>
                   </div>
                 </div>
+              ) : (
+                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
               )}
             </div>
           </Rv>
 
           {/* GOOGLE DRIVE EMBED PRIVACY WRAPPER */}
           <Rv delay={200}>
-            <div className="video-block">
+            <div className="video-block" id="videos">
               <div className="video-label">Videos</div>
-              {allowGoogleDrive ? (
-                <div className="video-grid">
-                  {VIDEO_IDS.map((id, i) => (
-                    <div className="video-frame" key={id}>
-                      <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
+              <div className="privacy-wrapper" style={{ minHeight: '340px' }}>
+                {!allowGoogleDrive ? (
+                  <div className="privacy-overlay" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/video-poster.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    <div className="media-consent-inner">
+                      <div className="media-consent-icon"><Icons.Play /></div>
+                      <div className="media-consent-title">{VIDEO_IDS.length} Videos aktivieren</div>
+                      <p className="media-consent-text">
+                        Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
+                      </p>
+                      <button className="media-consent-btn" onClick={() => {
+                        setAllowGoogleDrive(true);
+                        localStorage.setItem("consent-googledrive", "true");
+                      }}>
+                        Videos laden
+                      </button>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="media-consent" role="group" aria-label="Videos aktivieren">
-                  <div className="media-consent-inner">
-                    <div className="media-consent-icon"><Icons.Play /></div>
-                    <div className="media-consent-title">{VIDEO_IDS.length} Videos</div>
-                    <p className="media-consent-text">
-                      Zum Abspielen werden Inhalte von Google geladen. Dabei wird deine IP-Adresse an Google übertragen. Mehr dazu in der <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung</button>.
-                    </p>
-                    <button className="media-consent-btn" onClick={() => {
-                      setAllowGoogleDrive(true);
-                      localStorage.setItem("consent-googledrive", "true");
-                    }}>
-                      Videos laden
-                    </button>
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className="video-grid">
+                    {VIDEO_IDS.map((id, i) => (
+                      <div className="video-frame" key={id}>
+                        <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
                 Alle Videos auf Google Drive <Icons.Arrow />
               </a>
@@ -641,7 +669,10 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                  <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
+                    Einwilligungen hier widerrufen
+                  </button>
                 </div>
 
                 <div className="legal-section">
@@ -656,6 +687,9 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
+                  <h3>GitHub Pages (Hosting)</h3>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
                   <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
