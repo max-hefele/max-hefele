@@ -220,22 +220,23 @@ const css = `
 
   /* PRIVACY OVERLAY & GLASSMORPHISM */
   .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: #080808; }
-  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(20, 20, 20, 0.85); padding: 24px 32px; border-radius: 8px; border: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #222; }
+  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(20, 20, 20, 0.9); padding: 24px 32px; border-radius: 8px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #333; }
   .media-consent-text-wrap { text-align: left; }
   .media-consent-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; color: var(--text); margin-bottom: 4px; line-height: 1; }
-  .media-consent-text { font-size: 11px; color: #888; line-height: 1.5; margin: 0; letter-spacing: 0.2px; }
+  .media-consent-text { font-size: 11px; color: #aaa; line-height: 1.5; margin: 0; letter-spacing: 0.2px; }
   .media-consent-link { background: none; border: none; padding: 0; color: var(--text-mid); font-family: var(--font-body); font-size: 11px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color 0.3s; }
   .media-consent-link:hover { color: var(--text); }
   .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
-  /* FAKE BACKGROUNDS FOR BLUR */
-  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 3px; padding: 0 32px; opacity: 0.25; }
-  .fake-waveform-bg > div { flex: 1; background: #555; border-radius: 2px; }
-  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 12px; opacity: 0.25; }
-  .fake-video-bg > div { background: #333; border-radius: 4px; }
+  /* FAKE BACKGROUNDS FOR BLUR (NOW MUCH BRIGHTER) */
+  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 32px; opacity: 0.85; background: #111; }
+  .fake-waveform-bg > div { flex: 1; background: linear-gradient(180deg, #ff7700 0%, #ff3300 100%); border-radius: 2px; }
+  
+  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; opacity: 0.85; background: #111; }
+  .fake-video-bg > div { background: #444; border-radius: 4px; border: 1px solid #555; }
 
   /* VIDEO GRID KOMPAKT */
   .video-block { margin-top: 56px; }
