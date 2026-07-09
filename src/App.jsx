@@ -25,7 +25,7 @@ const NEWS_ITEMS = [
     category: "Interview",
     title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Ein tiefes Interview über 20 Jahre hinter den Decks, den harten Wechsel von Hip-Hop zu Melodic Techno und meine Vision für die kommende EP auf MYR Records.",
-    link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr" 
+    link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", 
     image: "images/chromatic-club",   
   },
   {
@@ -772,7 +772,7 @@ export default function MaxHefele() {
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
                   <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
-                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
+                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung is jederzeit für die Zukunft widerrufbar.</p>
                   <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
                 </div>
 
