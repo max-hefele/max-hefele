@@ -9,7 +9,7 @@ const SOCIAL_LINKS = [
   { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
   { name: "Spotify", url: "#", icon: "SP", soon: true },
-  { name: "Beatport", url: "#", icon: "BP", soon: true }, a
+  { name: "Beatport", url: "#", icon: "BP", soon: true }
 ];
 
 const NAV_ITEMS = ["About", "Music", "Dates", "Contact"];
@@ -317,12 +317,12 @@ export default function MaxHefele() {
   const [legalModal, setLegalModal] = useState(null); // null | "impressum" | "datenschutz"
   
   // DSGVO-Einwilligungs-Zustände (Zwei-Klick-Lösung)
-const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
-  localStorage.getItem("consent-soundcloud") === "true"
-);
-const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
-  localStorage.getItem("consent-googledrive") === "true"
-);
+  const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
+    localStorage.getItem("consent-soundcloud") === "true"
+  );
+  const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
+    localStorage.getItem("consent-googledrive") === "true"
+  );
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
