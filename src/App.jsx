@@ -1,5 +1,135 @@
 import { useState, useEffect, useRef } from "react";
 
+// ─── Translations ───
+const T = {
+  de: {
+    nav: [
+      { id: "about", label: "About" },
+      { id: "music", label: "Music" },
+      { id: "news", label: "News" },
+      { id: "dates", label: "Dates" },
+      { id: "contact", label: "Contact" }
+    ],
+    soon: "bald",
+    aboutLabel: "About",
+    aboutTitle: "MAX HEFELE",
+    aboutText: [
+      "Max Hefele steht für 20 Jahre Clubkultur.",
+      "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh: Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
+      "Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.",
+      "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
+      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.",
+      "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City\". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
+      "Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
+    ],
+    resTitle: "Residencies",
+    musicLabel: "Listen",
+    musicTitle: "MUSIC",
+    scDesc: "Mixes, eigene Tracks und die „Rave in the City\" Reihe. Debüt-EP demnächst auf MYR Records.",
+    ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
+    mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
+    listenBtn: "Anhören",
+    watchBtn: "Ansehen",
+    consentSC: {
+      title: "SoundCloud Audio",
+      text: "Laden des Players überträgt Daten an SoundCloud.",
+      link: "Datenschutzerklärung lesen",
+      btn: "Player laden"
+    },
+    consentVD: {
+      title: (count) => `${count} Videos ansehen`,
+      text: "Zum Abspielen werden Inhalte von Google Drive geladen.",
+      link: "Datenschutzerklärung lesen",
+      btnLoad: "Videos laden & öffnen",
+      btnExpand: "Jetzt aufklappen"
+    },
+    videoLabel: "Videos",
+    videoMore: "Alle Videos auf Google Drive",
+    newsLabel: "Latest Updates",
+    newsTitle: "NEWS",
+    readMore: "Mehr lesen auf",
+    datesLabel: "Live",
+    datesTitle: "DATES",
+    datesEmpty: "NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN",
+    datesSub: "Für Booking-Anfragen bitte Kontakt aufnehmen.",
+    contactLabel: "Get in Touch",
+    contactTitle: "CONTACT",
+    contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
+    footerRights: "ALL RIGHTS RESERVED",
+    imprintBtn: "Impressum",
+    privacyBtn: "Datenschutz",
+    revokeBtn: "Einwilligungen hier widerrufen",
+    revokeAlert: "Deine Cookie- und Streaming-Einwilligungen wurden erfolgreich widerrufen.",
+    legalTitleImprint: "IMPRESSUM",
+    legalSubtitleImprint: "Angaben gemäß § 5 DDG",
+    legalTitlePrivacy: "DATENSCHUTZ",
+    legalSubtitlePrivacy: "Datenschutzerklärung",
+  },
+  en: {
+    nav: [
+      { id: "about", label: "About" },
+      { id: "music", label: "Music" },
+      { id: "news", label: "News" },
+      { id: "dates", label: "Dates" },
+      { id: "contact", label: "Contact" }
+    ],
+    soon: "soon",
+    aboutLabel: "About",
+    aboutTitle: "MAX HEFELE",
+    aboutText: [
+      "Max Hefele stands for 20 years of club culture.",
+      "As a resident under the name Mexx Pain, he came from hip-hop and learned early on: two turntables are more than just technology. With instinct, precision, and perfect timing, he shaped entire nights. He knows how to move crowds and direct the energy of a room.",
+      "Exactly this experience characterizes his Melodic Techno sets today. Max Hefele doesn't play stock setlists. He reads the room, builds tension, sustains it, and knows exactly when a track needs to hit.",
+      "After two decades behind the decks, his own name makes visible what shaped him: the journey from hip-hop to electronic music, without cutting ties to his roots.",
+      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This sovereignty is also audible in the studio. With his debut EP on MYR Records, the next chapter of his story begins.",
+      "In parallel, his musical vision appears every two weeks in the YouTube series 'Rave in the City'. An hour that shows what it's all about. Quality over quantity. Experience over chance. No show. Just music.",
+      "Max Hefele brings something that has become rare: genuine club experience and the ability to craft entire nights without losing the thread."
+    ],
+    resTitle: "Residencies",
+    musicLabel: "Listen",
+    musicTitle: "MUSIC",
+    scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP coming soon on MYR Records.",
+    ytDesc: "Rave in the City — curated one-hour sets, new every two weeks.",
+    mcDesc: "Complete DJ sets and live recordings — the full musical journey.",
+    listenBtn: "Listen",
+    watchBtn: "Watch",
+    consentSC: {
+      title: "SoundCloud Audio",
+      text: "Loading the player transfers data to SoundCloud.",
+      link: "Read Privacy Policy",
+      btn: "Load Player"
+    },
+    consentVD: {
+      title: (count) => `Watch ${count} Videos`,
+      text: "Content from Google Drive is loaded for playback.",
+      link: "Read Privacy Policy",
+      btnLoad: "Load & open videos",
+      btnExpand: "Expand now"
+    },
+    videoLabel: "Videos",
+    videoMore: "All videos on Google Drive",
+    newsLabel: "Latest Updates",
+    newsTitle: "NEWS",
+    readMore: "Read more on",
+    datesLabel: "Live",
+    datesTitle: "DATES",
+    datesEmpty: "NEW DATES WILL BE ANNOUNCED SOON",
+    datesSub: "For booking inquiries please get in touch.",
+    contactLabel: "Get in Touch",
+    contactTitle: "CONTACT",
+    contactText: "For booking inquiries, collaborations or general questions — just send a message.",
+    footerRights: "ALL RIGHTS RESERVED",
+    imprintBtn: "Imprint",
+    privacyBtn: "Privacy Policy",
+    revokeBtn: "Revoke consents here",
+    revokeAlert: "Your cookie and streaming consents have been successfully revoked.",
+    legalTitleImprint: "IMPRINT",
+    legalSubtitleImprint: "Information according to § 5 DDG",
+    legalTitlePrivacy: "PRIVACY POLICY",
+    legalSubtitlePrivacy: "Privacy Statement",
+  }
+};
+
 // ─── Config ───
 const ARTIST_NAME = "MAXHEFELE";
 
@@ -11,8 +141,6 @@ const SOCIAL_LINKS = [
   { name: "Spotify", url: "#", icon: "SP", soon: true },
   { name: "Beatport", url: "#", icon: "BP", soon: true }
 ];
-
-const NAV_ITEMS = ["About", "Music", "News", "Dates", "Contact"];
 
 const GOOGLE_DRIVE = {
   videos: "https://drive.google.com/drive/folders/159vuE6gldbiJihBx7CigxbYG2p4ZdWj0",
@@ -152,11 +280,19 @@ const css = `
   .nav.scrolled { background: rgba(6,6,6,0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); padding: 16px 48px; border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--font-display); font-size: 20px; letter-spacing: 4px; color: var(--text); text-decoration: none; opacity: 0; transition: opacity 0.4s; cursor: pointer; }
   .nav.scrolled .nav-logo { opacity: 1; }
+  .nav-right { display: flex; align-items: center; gap: 36px; }
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; transition: color 0.3s; position: relative; }
   .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--text); transition: width 0.4s var(--ease); }
   .nav-links a:hover { color: var(--text); }
   .nav-links a:hover::after { width: 100%; }
+  
+  /* LANGUAGE SWITCHER */
+  .lang-switch { display: flex; gap: 8px; align-items: center; }
+  .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 10px; letter-spacing: 2px; transition: color 0.3s; font-weight: 600; padding: 0; }
+  .lang-switch button.active { color: var(--text); }
+  .lang-switch span { color: var(--border-light); font-size: 10px; }
+
   .menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; z-index: 101; }
   .menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--text); margin: 6px 0; transition: all 0.3s; }
   .menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -231,7 +367,7 @@ const css = `
   .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
-  /* FAKE BACKGROUNDS FOR BLUR (NOW MUCH BRIGHTER) */
+  /* FAKE BACKGROUNDS FOR BLUR */
   .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 32px; opacity: 0.85; background: #111; }
   .fake-waveform-bg > div { flex: 1; background: linear-gradient(180deg, #ff7700 0%, #ff3300 100%); border-radius: 2px; }
   
@@ -347,6 +483,9 @@ function Rv({ children, delay = 0, className = "" }) {
 }
 
 export default function MaxHefele() {
+  const [lang, setLang] = useState('de');
+  const t = T[lang];
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
@@ -373,7 +512,7 @@ export default function MaxHefele() {
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
     setVideosExpanded(false);
-    alert("Deine Cookie- und Streaming-Einwilligungen wurden erfolgreich widerrufen.");
+    alert(t.revokeAlert);
   };
 
   return (
@@ -384,18 +523,29 @@ export default function MaxHefele() {
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>{ARTIST_NAME}</span>
-        <ul className="nav-links">
-          {NAV_ITEMS.map(item => (
-            <li key={item}><a href={`#${item.toLowerCase()}`} onClick={e => { e.preventDefault(); go(item.toLowerCase()); }}>{item}</a></li>
-          ))}
-        </ul>
-        <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span /><span /><span />
-        </button>
+        
+        <div className="nav-right">
+          <ul className="nav-links">
+            {t.nav.map(item => (
+              <li key={item.id}><a href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a></li>
+            ))}
+          </ul>
+          
+          <div className="lang-switch">
+            <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
+            <span>|</span>
+            <button onClick={() => setLang('en')} className={lang === 'en' ? 'active' : ''}>EN</button>
+          </div>
+
+          <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            <span /><span /><span />
+          </button>
+        </div>
       </nav>
+      
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-        {NAV_ITEMS.map(item => (
-          <a key={item} href={`#${item.toLowerCase()}`} onClick={e => { e.preventDefault(); go(item.toLowerCase()); }}>{item}</a>
+        {t.nav.map(item => (
+          <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
       </div>
 
@@ -410,7 +560,7 @@ export default function MaxHefele() {
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon];
               if (s.soon) {
-                return <span key={s.name} className="hero-social-soon" title={`${s.name} — bald verfügbar`}><Icon /></span>;
+                return <span key={s.name} className="hero-social-soon" title={`${s.name} — ${t.soon}`}><Icon /></span>;
               }
               return <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}><Icon /></a>;
             })}
@@ -422,8 +572,8 @@ export default function MaxHefele() {
       {/* ABOUT */}
       <section className="section" id="about">
         <Rv>
-          <p className="section-label">About</p>
-          <h2 className="section-title">{ARTIST_NAME}</h2>
+          <p className="section-label">{t.aboutLabel}</p>
+          <h2 className="section-title">{t.aboutTitle}</h2>
           <div className="section-line" />
         </Rv>
         <div className="about-layout">
@@ -435,13 +585,7 @@ export default function MaxHefele() {
           <div>
             <Rv delay={150}>
               <div className="about-text">
-                <p>Max Hefele steht für 20 Jahre Clubkultur.</p>
-                <p>Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh: Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.</p>
-                <p>Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.</p>
-                <p>Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.</p>
-                <p>Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.</p>
-                <p>Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.</p>
-                <p>Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren.</p>
+                {t.aboutText.map((para, i) => <p key={i}>{para}</p>)}
               </div>
             </Rv>
             <Rv delay={250}>
@@ -456,7 +600,7 @@ export default function MaxHefele() {
             </Rv>
             <Rv delay={300}>
               <div className="residencies">
-                <div className="res-title">Residencies</div>
+                <div className="res-title">{t.resTitle}</div>
                 <div className="res-list">
                   {RESIDENCIES.map(r => <span className="res-tag" key={r}>{r}</span>)}
                 </div>
@@ -470,8 +614,8 @@ export default function MaxHefele() {
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
-            <p className="section-label">Listen</p>
-            <h2 className="section-title">MUSIC</h2>
+            <p className="section-label">{t.musicLabel}</p>
+            <h2 className="section-title">{t.musicTitle}</h2>
             <div className="section-line" />
           </Rv>
           <Rv delay={100}>
@@ -479,30 +623,29 @@ export default function MaxHefele() {
               <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.SC /></div>
                 <div className="m-card-name">SOUNDCLOUD</div>
-                <div className="m-card-desc">Mixes, eigene Tracks und die „Rave in the City\" Reihe. Debüt-EP demnächst auf MYR Records.</div>
-                <div className="m-card-link">Anhören <Icons.Arrow /></div>
+                <div className="m-card-desc">{t.scDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
               <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.YT /></div>
                 <div className="m-card-name">YOUTUBE</div>
-                <div className="m-card-desc">Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.</div>
-                <div className="m-card-link">Ansehen <Icons.Arrow /></div>
+                <div className="m-card-desc">{t.ytDesc}</div>
+                <div className="m-card-link">{t.watchBtn} <Icons.Arrow /></div>
               </a>
               <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
                 <div className="m-card-icon"><Icons.MC /></div>
                 <div className="m-card-name">MIXCLOUD</div>
-                <div className="m-card-desc">Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.</div>
-                <div className="m-card-link">Anhören <Icons.Arrow /></div>
+                <div className="m-card-desc">{t.mcDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD-BEREICH MIT DURCHSCHEINENDEM HINTERGRUND */}
+          {/* SOUNDCLOUD-BEREICH */}
           <Rv delay={150}>
             <div className="privacy-wrapper" style={{ height: '166px', marginTop: '32px' }}>
               {!allowSoundCloud ? (
                 <>
-                  {/* Fake Audio Waveform for Blur Effect */}
                   <div className="fake-waveform-bg">
                     {Array.from({ length: 45 }).map((_, i) => (
                       <div key={i} style={{ height: `${Math.max(10, Math.random() * 100)}%` }} />
@@ -512,13 +655,13 @@ export default function MaxHefele() {
                     <div className="media-consent-inner">
                       <div className="media-consent-icon"><Icons.SC /></div>
                       <div className="media-consent-text-wrap">
-                        <h4 className="media-consent-title">SoundCloud Audio</h4>
-                        <p className="media-consent-text">Laden des Players überträgt Daten an SoundCloud. <br/><button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>Datenschutzerklärung lesen</button></p>
+                        <h4 className="media-consent-title">{t.consentSC.title}</h4>
+                        <p className="media-consent-text">{t.consentSC.text} <br/><button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button></p>
                       </div>
                       <button className="media-consent-btn" onClick={() => {
                         setAllowSoundCloud(true);
                         localStorage.setItem("consent-soundcloud", "true");
-                      }}>Player laden</button>
+                      }}>{t.consentSC.btn}</button>
                     </div>
                   </div>
                 </>
@@ -528,14 +671,13 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO-BEREICH - GEBÜNDELT UND KOMPAKT */}
+          {/* VIDEO-BEREICH */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
-              <div className="video-label">Videos</div>
+              <div className="video-label">{t.videoLabel}</div>
               
               {(!allowGoogleDrive || !videosExpanded) ? (
                 <div className="privacy-wrapper" style={{ height: '220px', cursor: allowGoogleDrive ? 'pointer' : 'default' }} onClick={() => { if(allowGoogleDrive) setVideosExpanded(true); }}>
-                  {/* Fake Video Grid for Blur Effect */}
                   <div className="fake-video-bg">
                     {Array.from({ length: 3 }).map((_, i) => <div key={i} />)}
                   </div>
@@ -543,11 +685,11 @@ export default function MaxHefele() {
                     <div className="media-consent-inner">
                       <div className="media-consent-icon"><Icons.Play /></div>
                       <div className="media-consent-text-wrap">
-                        <h4 className="media-consent-title">{VIDEO_IDS.length} Videos ansehen</h4>
+                        <h4 className="media-consent-title">{t.consentVD.title(VIDEO_IDS.length)}</h4>
                         {!allowGoogleDrive && (
                           <p className="media-consent-text">
-                            Zum Abspielen werden Inhalte von Google Drive geladen. <br/>
-                            <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>Datenschutzerklärung lesen</button>
+                            {t.consentVD.text} <br/>
+                            <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>{t.consentVD.link}</button>
                           </p>
                         )}
                       </div>
@@ -557,9 +699,9 @@ export default function MaxHefele() {
                           setAllowGoogleDrive(true); 
                           setVideosExpanded(true);
                           localStorage.setItem("consent-googledrive", "true"); 
-                        }}>Videos laden & öffnen</button>
+                        }}>{t.consentVD.btnLoad}</button>
                       ) : (
-                        <button className="media-consent-btn">Jetzt aufklappen</button>
+                        <button className="media-consent-btn">{t.consentVD.btnExpand}</button>
                       )}
                     </div>
                   </div>
@@ -575,18 +717,18 @@ export default function MaxHefele() {
               )}
               
               <a className="video-more" href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer">
-                Alle Videos auf Google Drive <Icons.Arrow />
+                {t.videoMore} <Icons.Arrow />
               </a>
             </div>
           </Rv>
         </div>
       </section>
 
-      {/* NEWS SECTION - RICH LINK PREVIEWS */}
+      {/* NEWS SECTION */}
       <section className="section" id="news">
         <Rv>
-          <p className="section-label">Latest Updates</p>
-          <h2 className="section-title">NEWS</h2>
+          <p className="section-label">{t.newsLabel}</p>
+          <h2 className="section-title">{t.newsTitle}</h2>
           <div className="section-line" />
         </Rv>
         <Rv delay={100}>
@@ -609,7 +751,7 @@ export default function MaxHefele() {
                   </div>
                   <h3 className="n-title">{item.title}</h3>
                   <p className="n-excerpt">{item.excerpt}</p>
-                  <div className="n-link">Mehr lesen auf {new URL(item.link).hostname.replace('www.', '')} <Icons.Arrow /></div>
+                  <div className="n-link">{t.readMore} {new URL(item.link).hostname.replace('www.', '')} <Icons.Arrow /></div>
                 </div>
               </a>
             ))}
@@ -620,14 +762,14 @@ export default function MaxHefele() {
       {/* DATES */}
       <section className="section" id="dates">
         <Rv>
-          <p className="section-label">Live</p>
-          <h2 className="section-title">DATES</h2>
+          <p className="section-label">{t.datesLabel}</p>
+          <h2 className="section-title">{t.datesTitle}</h2>
           <div className="section-line" />
         </Rv>
         <Rv delay={100}>
           <div className="dates-empty">
-            <div className="dates-empty-title">NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN</div>
-            <div className="dates-empty-sub">Für Booking-Anfragen bitte Kontakt aufnehmen.</div>
+            <div className="dates-empty-title">{t.datesEmpty}</div>
+            <div className="dates-empty-sub">{t.datesSub}</div>
           </div>
         </Rv>
       </section>
@@ -636,15 +778,15 @@ export default function MaxHefele() {
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
-            <p className="section-label">Get in Touch</p>
-            <h2 className="section-title">CONTACT</h2>
+            <p className="section-label">{t.contactLabel}</p>
+            <h2 className="section-title">{t.contactTitle}</h2>
             <div className="section-line" />
           </Rv>
           <div className="contact-grid">
             <div>
               <Rv delay={100}>
                 <p style={{ color: "var(--text-dim)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "28px" }}>
-                  Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.
+                  {t.contactText}
                 </p>
                 <a className="contact-email" href="mailto:info@maxhefele.de">
                   <Icons.Mail />
@@ -657,7 +799,7 @@ export default function MaxHefele() {
                 {SOCIAL_LINKS.map(s => (
                   s.soon ? (
                     <span key={s.name} className="contact-social contact-social-soon">
-                      {s.name} <span className="soon-badge">bald</span>
+                      {s.name} <span className="soon-badge">{t.soon}</span>
                     </span>
                   ) : (
                     <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
@@ -672,10 +814,10 @@ export default function MaxHefele() {
       </section>
 
       <footer className="footer">
-        <div>© {new Date().getFullYear()} {ARTIST_NAME} — ALL RIGHTS RESERVED</div>
+        <div>© {new Date().getFullYear()} {ARTIST_NAME} — {t.footerRights}</div>
         <div className="footer-links">
-          <button className="footer-link" onClick={() => setLegalModal("impressum")}>Impressum</button>
-          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>Datenschutz</button>
+          <button className="footer-link" onClick={() => setLegalModal("impressum")}>{t.imprintBtn}</button>
+          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>{t.privacyBtn}</button>
         </div>
       </footer>
 
@@ -687,8 +829,8 @@ export default function MaxHefele() {
 
             {legalModal === "impressum" && (
               <>
-                <h2 className="legal-title">IMPRESSUM</h2>
-                <p className="legal-subtitle">Angaben gemäß § 5 DDG</p>
+                <h2 className="legal-title">{t.legalTitleImprint}</h2>
+                <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
 
                 <div className="legal-section">
                   <h3>Verantwortlich</h3>
@@ -719,8 +861,8 @@ export default function MaxHefele() {
 
             {legalModal === "datenschutz" && (
               <>
-                <h2 className="legal-title">DATENSCHUTZ</h2>
-                <p className="legal-subtitle">Datenschutzerklärung</p>
+                <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
+                <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
                 
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
@@ -745,7 +887,7 @@ export default function MaxHefele() {
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
                   <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
                   <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
-                    Einwilligungen hier widerrufen
+                    {t.revokeBtn}
                   </button>
                 </div>
 
