@@ -583,7 +583,7 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${import.meta.env.BASE_URL}images/hero.jpg') center 10% / cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${import.meta.env.BASE_URL}images/hero.jpg') center 0% / cover no-repeat` }} />
         <div className="hero-grain" />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
