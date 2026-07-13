@@ -15,17 +15,17 @@ const T = {
     aboutTitle: "MAX HEFELE",
     aboutText: [
       "Max Hefele steht für 20 Jahre Clubkultur.",
-      "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh: Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
+      "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh, Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
       "Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.",
-      "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
-      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.",
-      "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City\". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
-      "Max Hefele brings etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
+      "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat. Der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
+      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP CALL ME die auf MYR Records am 19.08.26 erscheint, beginnt das nächste Kapitel seiner Geschichte.",
+      "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe Rave in the City. Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
+      "Max Hefele brings etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
     musicTitle: "MUSIC",
-    scDesc: "Mixes, eigene Tracks und die „Rave in the City\" Reihe. Debüt-EP demnächst auf MYR Records.",
+    scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP demnächst auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
     listenBtn: "Anhören",
@@ -78,12 +78,12 @@ const T = {
     aboutTitle: "MAX HEFELE",
     aboutText: [
       "Max Hefele stands for 20 years of club culture.",
-      "As a resident under the name Mexx Pain, he came from hip-hop and learned early on: two turntables are more than just technology. With instinct, precision, and perfect timing, he shaped entire nights. He knows how to move crowds and direct the energy of a room.",
+      "Starting out as a resident under the name Mexx Pain, he emerged from the Hip-Hop scene and learned early on that two turntables are more than just technique. With instinct, precision, and perfect timing, he shapes entire nights. He knows exactly how to move crowds and command the energy of a room.",
       "Exactly this experience characterizes his Melodic Techno sets today. Max Hefele doesn't play stock setlists. He reads the room, builds tension, sustains it, and knows exactly when a track needs to hit.",
-      "After two decades behind the decks, his own name makes visible what shaped him: the journey from hip-hop to electronic music, without cutting ties to his roots.",
-      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This sovereignty is also audible in the studio. With his debut EP on MYR Records, the next chapter of his story begins.",
-      "In parallel, his musical vision appears every two weeks in the YouTube series 'Rave in the City'. An hour that shows what it's all about. Quality over quantity. Experience over chance. No show. Just music.",
-      "Max Hefele brings something that has become rare: genuine club experience and the ability to craft entire nights without losing the thread."
+      "After two decades behind the decks, his name now reflects the very forces that shaped him. It is a journey from Hip-Hop to electronic music, all without ever severing those roots.",
+      "His sound doesn't rely on effects. It focuses on tension, depth, and the right moment. This mastery is also evident in his studio work. With his debut EP 'CALL ME', set for release on MYR Records on August 19, 2026, the next chapter of his story begins.",
+      "In parallel, he shares his musical vision every two weeks through the YouTube series 'Rave in the City.' One hour that captures the essence of what it’s all about: quality over quantity, experience over chance. No gimmicks. Just music.",
+      "Max Hefele brings something that has become rare genuine club experience and the ability to craft entire nights without losing the thread."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
