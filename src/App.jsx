@@ -20,12 +20,12 @@ const T = {
       "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat: der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
       "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio. Mit der Debüt-EP auf MYR Records beginnt das nächste Kapitel seiner Geschichte.",
       "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe „Rave in the City\". Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
-      "Max Hefele bringt etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
+      "Max Hefele brings etwas mit, das selten geworden ist: echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
     musicTitle: "MUSIC",
-    scDesc: "Mixes, eigene Tracks und die „Rave in the City" Reihe. Debüt-EP demnächst auf MYR Records.",
+    scDesc: "Mixes, eigene Tracks und die „Rave in the City\" Reihe. Debüt-EP demnächst auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
     listenBtn: "Anhören",
@@ -165,16 +165,15 @@ const NEWS_ITEMS = [
     link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
     image: "images/thelastfuture.jpg", 
   },
-    {
+  {
     id: 3,
     date: "10.07.2026",
     category: "New Episode Rave in the City",
     title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix",
     excerpt: "Eine neue Episode Rave in the City ab jetzt Online.",
     link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
-    image: "images/Episode.jpg", 
+    image: "images/episode.jpg", 
   },
-
 ];
 
 const VIDEO_IDS = [
@@ -885,7 +884,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
