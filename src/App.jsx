@@ -154,7 +154,7 @@ const NEWS_ITEMS = [
     title: "Max Hefele presents Call Me [MYR]",
     excerpt: "Meine Vision für die kommende EP auf MYR Records.",
     link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", 
-    image: "images/chromatic-club.jpg",   
+    image: "images/chromaticclub.jpg",   
   },
   {
     id: 2,
