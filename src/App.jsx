@@ -170,7 +170,7 @@ const NEWS_ITEMS = [
     date: "10.07.2026",
     category: "New Episode Rave in the City",
     title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix",
-    excerpt: "Eine neue Episode Rave in the City ab jetzt Online.",
+    excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud.",
     link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
     image: "images/episode.jpg", 
   },
