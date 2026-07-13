@@ -464,7 +464,7 @@ const css = `
   .legal-section a { color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
   .legal-section a:hover { color: var(--text); }
   .legal-placeholder { background: var(--bg-card); border: 1px dashed var(--border-light); padding: 20px 24px; color: var(--text-dim); font-size: 12px; line-height: 1.7; letter-spacing: 0.3px; margin-top: 8px; }
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 200; opacity: 0.02; background-image: url("data:/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; }
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 200; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; }
 
   /* REVEAL */
   .rv { opacity: 0; transform: translateY(36px); transition: all 0.9s var(--ease); }
@@ -610,7 +610,7 @@ export default function MaxHefele() {
         <div className="about-layout">
           <Rv delay={100}>
             <div className="about-photo">
-              <img src={`${import.meta.env.BASE_URL}s/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
+              <img src={`${import.meta.env.BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
             </div>
           </Rv>
           <div>
@@ -769,7 +769,7 @@ export default function MaxHefele() {
                 <div className="n-img-wrap">
                   <img 
                     className="n-img" 
-                    src={item.image.startsWith('http') ? item. : `${import.meta.env.BASE_URL}${item.image}`} 
+                    src={item.image.startsWith('http') ? item.image : `${import.meta.env.BASE_URL}${item.image}`} 
                     alt={item.title} 
                     loading="lazy" 
                     onError={(e) => { e.target.style.display = 'none'; }} 
