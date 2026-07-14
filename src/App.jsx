@@ -51,6 +51,8 @@ const T = {
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die kommende EP auf MYR Records." },
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner einblick in meine neue EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." }
+      { title: "Mein Exclusiv Interview für Melodic Dancers", excerpt: "Hier ist mein Exclusiv Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
+
     ],
     readMore: "Mehr lesen auf",
     datesLabel: "Live",
@@ -119,6 +121,7 @@ const T = {
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the upcoming EP on MYR Records." },
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "Here is a quick look at my new EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." }
+      { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9."}
     ],
     readMore: "Read more on",
     datesLabel: "Live",
@@ -178,6 +181,14 @@ const NEWS_ITEMS = [
     link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
     image: "images/rvitc.jpg", 
   },
+    {
+    id: 4,
+    date: "14.07.2026",
+    category: "My exclusive interview for Melodic Dancers can be found on page 9.",
+    link: "https://www.melodicdancers.com/fourth-issue-printed-with-bubba-brothers-on-the-cover",
+    image: "images/melodicdancers.jpg", 
+  },
+
 ];
 
 const VIDEO_IDS = [
