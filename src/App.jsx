@@ -190,7 +190,7 @@ const NEWS_ITEMS = [
     image: "images/rvitc.jpg", 
   },
     {
-    id: 5v,
+    id: 5,
     date: "26.07.2026",
     category: "My exclusive interview for Melodic Dancers can be found on page 9.",
     link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ",
