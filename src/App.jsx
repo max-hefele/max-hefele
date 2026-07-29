@@ -49,6 +49,7 @@ const T = {
     newsTitle: "NEWS",
     newsItems: [
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die kommende EP auf MYR Records." },
+      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk Supportet meinen Track Better day of life aus meiner EP-Call ME." },
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner einblick in meine neue EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
       { title: "Mein Exclusiv Interview für Melodic Dancers", excerpt: "Hier ist mein Exclusiv Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
@@ -118,6 +119,7 @@ const T = {
     newsTitle: "NEWS",
     newsItems: [
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the upcoming EP on MYR Records." },
+      { title: "Paul van Dyk Supports Vonyc Session 1026", excerpt: "Paul van Dyk is supporting my track 'Better Day of Life' from my 'Call Me' EP." },
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "Here is a quick look at my new EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." },
       { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9."}
@@ -168,20 +170,27 @@ const NEWS_ITEMS = [
   },
   {
     id: 2,
+    date: "05.07.2026",
+    category: "Paul van Dyk's VONYC Sessions 1026 Support my Track Better Day of Life",
+    link: "https://www.youtube.com/watch?v=AIGRuvQBEvs",
+    image: "images/vonycsession.jpg", 
+  },
+   {
+    id: 3,
     date: "09.07.2026",
     category: "Interview with the last future",
     link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
     image: "images/thelastfuture.jpg", 
   },
   {
-    id: 3,
+    id: 4,
     date: "10.07.2026",
     category: "New Episode Rave in the City",
     link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
     image: "images/rvitc.jpg", 
   },
     {
-    id: 4,
+    id: 5v,
     date: "26.07.2026",
     category: "My exclusive interview for Melodic Dancers can be found on page 9.",
     link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ",
