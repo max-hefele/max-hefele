@@ -153,7 +153,7 @@ const SOCIAL_LINKS = [
   { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
   { name: "Spotify", url: "#", icon: "SP", soon: true },
-  { name: "Beatport", url: "#", icon: "BP", soon: true }
+  { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP",  }
 ];
 
 const GOOGLE_DRIVE = {
