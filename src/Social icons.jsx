@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
@@ -152,6 +153,9 @@ const T = {
 
 // ─── Config ───
 const ARTIST_NAME = "MAXHEFELE";
+
+// Sicheres Auslesen der Base URL, verhindert Abstürze bei Nicht-Vite-Systemen
+const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
 
 const SOCIAL_LINKS = [
   { name: "Instagram", url: "https://www.instagram.com/max.hefele.music/", icon: "IG" },
@@ -540,7 +544,7 @@ function useReveal(threshold = 0.12) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } }, { threshold, rootMargin: "0px 0px -40px 0px" });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, vis];
 }
 
@@ -558,12 +562,17 @@ export default function MaxHefele() {
   const [legalModal, setLegalModal] = useState(null);
   const [videosExpanded, setVideosExpanded] = useState(false);
   
-  const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
-    localStorage.getItem("consent-soundcloud") === "true"
-  );
-  const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
-    localStorage.getItem("consent-googledrive") === "true"
-  );
+  // States ohne localStorage Initialisierung (für Next.js SSR / Hydration Fix)
+  const [allowSoundCloud, setAllowSoundCloud] = useState(false);
+  const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
+
+  // localStorage abfragen erst im Client
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
+      setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
+    }
+  }, []);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
@@ -574,8 +583,10 @@ export default function MaxHefele() {
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
 
   const resetConsent = () => {
-    localStorage.removeItem("consent-soundcloud");
-    localStorage.removeItem("consent-googledrive");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("consent-soundcloud");
+      localStorage.removeItem("consent-googledrive");
+    }
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
     setVideosExpanded(false);
@@ -618,7 +629,7 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${import.meta.env.BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
         <div className="hero-grain" />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
@@ -646,7 +657,7 @@ export default function MaxHefele() {
         <div className="about-layout">
           <Rv delay={100}>
             <div className="about-photo">
-              <img src={`${import.meta.env.BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
+              <img src={`${BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
             </div>
           </Rv>
           <div>
@@ -745,7 +756,7 @@ export default function MaxHefele() {
                       </div>
                       <button className="media-consent-btn" onClick={() => {
                         setAllowSoundCloud(true);
-                        localStorage.setItem("consent-soundcloud", "true");
+                        if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
                       }}>{t.consentSC.btn}</button>
                     </div>
                   </div>
@@ -783,7 +794,7 @@ export default function MaxHefele() {
                           e.stopPropagation(); 
                           setAllowGoogleDrive(true); 
                           setVideosExpanded(true);
-                          localStorage.setItem("consent-googledrive", "true"); 
+                          if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true"); 
                         }}>{t.consentVD.btnLoad}</button>
                       ) : (
                         <button className="media-consent-btn">{t.consentVD.btnExpand}</button>
@@ -823,7 +834,7 @@ export default function MaxHefele() {
                 <div className="n-img-wrap">
                   <img 
                     className="n-img" 
-                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${import.meta.env.BASE_URL}${NEWS_ITEMS[index].image}`} 
+                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} 
                     alt={item.title} 
                     loading="lazy" 
                     onError={(e) => { e.target.style.display = 'none'; }} 
