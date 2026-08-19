@@ -28,8 +28,10 @@ const T = {
     scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP demnächst auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
-     bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
-     listenBtn: "Anhören",
+    bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
+    spDesc: "Meine neuesten Tracks, Releases und Playlists auf Spotify.",
+    amDesc: "Meine Musik in bester Qualität auf Apple Music.",
+    listenBtn: "Anhören",
     watchBtn: "Ansehen",
     consentSC: {
       title: "SoundCloud Audio",
@@ -99,6 +101,9 @@ const T = {
     scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP coming soon on MYR Records.",
     ytDesc: "Rave in the City — curated one-hour sets, new every two weeks.",
     mcDesc: "Complete DJ sets and live recordings — the full musical journey.",
+    bpDesc: "Tracks, releases and DJ music by Max Hefele on Beatport.",
+    spDesc: "My latest tracks, releases and playlists on Spotify.",
+    amDesc: "Listen to my music in premium quality on Apple Music.",
     listenBtn: "Listen",
     watchBtn: "Watch",
     consentSC: {
@@ -384,7 +389,7 @@ const css = `
   /* MUSIC */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .music-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .music-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .music-grid { display: grid; grid-template-columns: repeat( 3, 1fr); gap: 20px; }
   .m-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; }
   .m-card:hover { border-color: var(--border-light); transform: translateY(-3px); }
   .m-card-icon { color: var(--text-dim); }
@@ -706,6 +711,18 @@ export default function MaxHefele() {
                 <div className="m-card-desc">{t.bpDesc}</div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
+              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.SP /></div>
+                <div className="m-card-name">SPOTIFY</div>
+                <div className="m-card-desc">{t.spDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.AppleMusic /></div>
+                <div className="m-card-name">APPLE MUSIC</div>
+                <div className="m-card-desc">{t.amDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
             </div>
           </Rv>
           
@@ -921,7 +938,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
@@ -972,7 +989,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
 
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
