@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
@@ -28,6 +29,9 @@ const T = {
     scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP demnächst auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
+    bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
+    spDesc: "Meine neuesten Tracks, Releases und Playlists auf Spotify.",
+    amDesc: "Meine Musik in bester Qualität auf Apple Music.",
     listenBtn: "Anhören",
     watchBtn: "Ansehen",
     consentSC: {
@@ -98,6 +102,9 @@ const T = {
     scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP coming soon on MYR Records.",
     ytDesc: "Rave in the City — curated one-hour sets, new every two weeks.",
     mcDesc: "Complete DJ sets and live recordings — the full musical journey.",
+    bpDesc: "Tracks, releases and DJ music by Max Hefele on Beatport.",
+    spDesc: "My latest tracks, releases and playlists on Spotify.",
+    amDesc: "Listen to my music in premium quality on Apple Music.",
     listenBtn: "Listen",
     watchBtn: "Watch",
     consentSC: {
@@ -147,12 +154,16 @@ const T = {
 // ─── Config ───
 const ARTIST_NAME = "MAXHEFELE";
 
+// Sicheres Auslesen der Base URL, verhindert Abstürze bei Nicht-Vite-Systemen
+const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
+
 const SOCIAL_LINKS = [
   { name: "Instagram", url: "https://www.instagram.com/max.hefele.music/", icon: "IG" },
   { name: "SoundCloud", url: "https://soundcloud.com/maxhefele", icon: "SC" },
   { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
-  { name: "Spotify", url: "#", icon: "SP", soon: true },
+  { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", icon: "SP", },
+  { name: "Apple Music", url: "https://music.apple.com/de/artist/max-hefele/6779171915", icon: "AppleMusic" },
   { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP",  }
 ];
 
@@ -259,6 +270,11 @@ const Icons = {
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
+    </svg>
+  ),
+  AppleMusic: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16.8 3.2c-.9.1-2 .7-2.7 1.5-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.3.7-.8 1.1-1.9 1-3zM19.4 12.7c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.5 3.3 2.4 1.3-.1 1.8-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.3-1.2 3.2-2.4 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.2-1.2-3.2-4.1z"/>
     </svg>
   ),
   Mail: () => (
@@ -377,7 +393,7 @@ const css = `
   /* MUSIC */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .music-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .music-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .music-grid { display: grid; grid-template-columns: repeat( 3, 1fr); gap: 20px; }
   .m-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; }
   .m-card:hover { border-color: var(--border-light); transform: translateY(-3px); }
   .m-card-icon { color: var(--text-dim); }
@@ -502,7 +518,7 @@ const css = `
     .section, .music-inner, .contact-inner { padding: 100px 24px; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
-    .music-grid { grid-template-columns: 1fr; }
+    .music-grid { grid-template-columns: repeat(2, 1fr); }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
@@ -512,6 +528,7 @@ const css = `
   }
   @media (max-width: 480px) {
     .highlights { grid-template-columns: 1fr; }
+    .music-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .section, .music-inner, .contact-inner { padding: 80px 20px; }
   }
@@ -527,7 +544,7 @@ function useReveal(threshold = 0.12) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } }, { threshold, rootMargin: "0px 0px -40px 0px" });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, vis];
 }
 
@@ -545,12 +562,17 @@ export default function MaxHefele() {
   const [legalModal, setLegalModal] = useState(null);
   const [videosExpanded, setVideosExpanded] = useState(false);
   
-  const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
-    localStorage.getItem("consent-soundcloud") === "true"
-  );
-  const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
-    localStorage.getItem("consent-googledrive") === "true"
-  );
+  // States ohne localStorage Initialisierung (für Next.js SSR / Hydration Fix)
+  const [allowSoundCloud, setAllowSoundCloud] = useState(false);
+  const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
+
+  // localStorage abfragen erst im Client
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
+      setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
+    }
+  }, []);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
@@ -561,8 +583,10 @@ export default function MaxHefele() {
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
 
   const resetConsent = () => {
-    localStorage.removeItem("consent-soundcloud");
-    localStorage.removeItem("consent-googledrive");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("consent-soundcloud");
+      localStorage.removeItem("consent-googledrive");
+    }
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
     setVideosExpanded(false);
@@ -605,14 +629,14 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${import.meta.env.BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
         <div className="hero-grain" />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
           <div className="hero-line" />
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
-              const Icon = Icons[s.icon];
+              const Icon = Icons[s.icon] || Icons.Arrow;
               if (s.soon) {
                 return <span key={s.name} className="hero-social-soon" title={`${s.name} — ${t.soon}`}><Icon /></span>;
               }
@@ -633,7 +657,7 @@ export default function MaxHefele() {
         <div className="about-layout">
           <Rv delay={100}>
             <div className="about-photo">
-              <img src={`${import.meta.env.BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
+              <img src={`${BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
             </div>
           </Rv>
           <div>
@@ -692,6 +716,24 @@ export default function MaxHefele() {
                 <div className="m-card-desc">{t.mcDesc}</div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
+              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.BP /></div>
+                <div className="m-card-name">BEATPORT</div>
+                <div className="m-card-desc">{t.bpDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.SP /></div>
+                <div className="m-card-name">SPOTIFY</div>
+                <div className="m-card-desc">{t.spDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.AppleMusic /></div>
+                <div className="m-card-name">APPLE MUSIC</div>
+                <div className="m-card-desc">{t.amDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
             </div>
           </Rv>
           
@@ -714,7 +756,7 @@ export default function MaxHefele() {
                       </div>
                       <button className="media-consent-btn" onClick={() => {
                         setAllowSoundCloud(true);
-                        localStorage.setItem("consent-soundcloud", "true");
+                        if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
                       }}>{t.consentSC.btn}</button>
                     </div>
                   </div>
@@ -752,7 +794,7 @@ export default function MaxHefele() {
                           e.stopPropagation(); 
                           setAllowGoogleDrive(true); 
                           setVideosExpanded(true);
-                          localStorage.setItem("consent-googledrive", "true"); 
+                          if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true"); 
                         }}>{t.consentVD.btnLoad}</button>
                       ) : (
                         <button className="media-consent-btn">{t.consentVD.btnExpand}</button>
@@ -792,7 +834,7 @@ export default function MaxHefele() {
                 <div className="n-img-wrap">
                   <img 
                     className="n-img" 
-                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${import.meta.env.BASE_URL}${NEWS_ITEMS[index].image}`} 
+                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} 
                     alt={item.title} 
                     loading="lazy" 
                     onError={(e) => { e.target.style.display = 'none'; }} 
@@ -907,7 +949,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
@@ -958,7 +1000,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
 
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
