@@ -32,6 +32,7 @@ const T = {
     bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
     spDesc: "Meine neuesten Tracks, Releases und Playlists auf Spotify.",
     amDesc: "Meine Musik in bester Qualität auf Apple Music.",
+    azDesc: "Meine Releases und Tracks jetzt auch auf Amazon Music.",
     listenBtn: "Anhören",
     watchBtn: "Ansehen",
     consentSC: {
@@ -105,6 +106,7 @@ const T = {
     bpDesc: "Tracks, releases and DJ music by Max Hefele on Beatport.",
     spDesc: "My latest tracks, releases and playlists on Spotify.",
     amDesc: "Listen to my music in premium quality on Apple Music.",
+    azDesc: "My releases and tracks now on Amazon Music too.",
     listenBtn: "Listen",
     watchBtn: "Watch",
     consentSC: {
@@ -164,6 +166,7 @@ const SOCIAL_LINKS = [
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
   { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", icon: "SP", },
   { name: "Apple Music", url: "https://music.apple.com/de/artist/max-hefele/6779171915", icon: "AppleMusic" },
+  { name: "Amazon Music", url: "https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele", icon: "AmazonMusic" },
   { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP",  }
 ];
 
@@ -275,6 +278,11 @@ const Icons = {
   AppleMusic: () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M16.8 3.2c-.9.1-2 .7-2.7 1.5-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.3.7-.8 1.1-1.9 1-3zM19.4 12.7c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.5 3.3 2.4 1.3-.1 1.8-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.3-1.2 3.2-2.4 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.2-1.2-3.2-4.1z"/>
+    </svg>
+  ),
+  AmazonMusic: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4.6a5.4 5.4 0 0 1 4.68 2.7.7.7 0 0 1-1.2.7 4 4 0 0 0-6.96 0 .7.7 0 1 1-1.2-.7A5.4 5.4 0 0 1 12 6.6zM6.4 14.9c3.3 2 7.9 2 11.2 0a.5.5 0 0 1 .6.8c-3.6 2.3-8.8 2.3-12.4 0a.5.5 0 1 1 .6-.8zm-.7 2.1c3.8 2.3 8.8 2.3 12.6 0a.4.4 0 0 1 .44.67c-4 2.5-9.5 2.5-13.5 0a.4.4 0 0 1 .46-.67z"/>
     </svg>
   ),
   Mail: () => (
@@ -734,6 +742,12 @@ export default function MaxHefele() {
                 <div className="m-card-desc">{t.amDesc}</div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
+              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.AmazonMusic /></div>
+                <div className="m-card-name">AMAZON MUSIC</div>
+                <div className="m-card-desc">{t.azDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
             </div>
           </Rv>
           
@@ -1032,6 +1046,11 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>iTunes / Apple Music</h3>
                   <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Spotify & Amazon Music</h3>
+                  <p>Verlinkungen zu Spotify und Amazon Music sind ebenfalls statische Links. Erst nach einem Klick werden Sie zum jeweiligen Dienst weitergeleitet, wo dessen Datenschutzbestimmungen gelten. Weitere Informationen finden Sie bei Spotify (<a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://www.spotify.com/de/legal/privacy-policy/</a>) und Amazon (<a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010" target="_blank" rel="noopener noreferrer">amazon.de/datenschutz</a>).</p>
                 </div>
                 <p><strong>Stand 09. Juli 2026</strong></p>
               </>
