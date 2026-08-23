@@ -981,8 +981,8 @@ export default function MaxHefele() {
       {/* DYNAMIC MARQUEE TICKER */}
       <div className="marquee-container">
         <div className="marquee-track">
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ RAVE IN THE CITY ✦ STREAMING NOW ✦ </span>
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ RAVE IN THE CITY ✦ STREAMING NOW ✦ </span>
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
         </div>
       </div>
 
