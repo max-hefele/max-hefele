@@ -980,7 +980,7 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO SEKTION (EXAKT GLEICHES SCHWEBENDES LOGO-DESIGN) */}
+          {/* VIDEO SEKTION */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
