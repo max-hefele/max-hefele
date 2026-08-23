@@ -112,9 +112,9 @@ const T = {
     watchBtn: "Watch",
     consentSC: {
       title: "SoundCloud Audio",
-      text: "Laden des Players überträgt Daten an SoundCloud.",
-      link: "Datenschutzerklärung lesen",
-      btn: "Player laden"
+      text: "Loading the player transfers data to SoundCloud.",
+      link: "Read Privacy Policy",
+      btn: "Load Player"
     },
     consentVD: {
       title: (count) => `${count} Exclusive Videos`,
@@ -146,7 +146,7 @@ const T = {
     privacyBtn: "Privacy Policy",
     revokeBtn: "Revoke consents here",
     revokeAlert: "Your cookie and streaming consents have been successfully revoked.",
-    legalTitleImprint: "IMPRESSUM",
+    legalTitleImprint: "IMPRINT",
     legalSubtitleImprint: "Information according to § 5 DDG",
     legalTitlePrivacy: "PRIVACY POLICY",
     legalSubtitlePrivacy: "Privacy Statement",
@@ -493,7 +493,7 @@ const css = `
   .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); transition: all 0.3s; }
   .res-tag:hover { color: #fff; border-color: var(--border-hover); }
 
-  /* MUSIC SLIDER & 3D TILT CARDS */
+  /* MUSIC SLIDER & 3D TILT CARDS WITH SPOTLIGHT GLOW */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
@@ -527,6 +527,22 @@ const css = `
     cursor: pointer;
   }
   
+  /* SPOTLIGHT GLOW OVERLAY FOR TILTCARDS */
+  .m-card::before, .unified-consent-box::before, .video-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6, 182, 212, 0.18), transparent 80%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .m-card:hover::before, .unified-consent-box:hover::before, .video-frame:hover::before {
+    opacity: 1;
+  }
+
   .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
   .m-card[data-brand="spotify"] { --brand-color: #1db954; }
   .m-card[data-brand="youtube"] { --brand-color: #ff0000; }
@@ -544,11 +560,11 @@ const css = `
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
-  .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; position: relative; z-index: 2; }
   .m-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
   .m-card-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #fff; }
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
-  .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
+  .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; position: relative; z-index: 2; }
 
   /* CONSENT OVERLAYS */
   .unified-consent-box {
@@ -645,6 +661,7 @@ const css = `
   .video-block { margin-top: 80px; }
   .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .video-frame { 
+    position: relative;
     width: 100%; 
     aspect-ratio: 16/9; 
     border: 1px solid var(--border); 
@@ -657,7 +674,7 @@ const css = `
     from { opacity: 0; transform: translateY(12px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
-  .video-frame iframe { width: 100%; height: 100%; border: none; }
+  .video-frame iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 2; }
   .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
   .video-more:hover { color: var(--text); }
 
@@ -805,8 +822,16 @@ function TiltCard({ children, className = "", style = {}, ...props }) {
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current || window.innerWidth < 1024) return;
+    if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
+    
+    // Set mouse position properties for Spotlight Glow
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    cardRef.current.style.setProperty("--mouse-x", `${mouseX}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${mouseY}px`);
+
+    if (window.innerWidth < 1024) return;
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     const rotateX = (-y / rect.height) * 9;
@@ -846,6 +871,18 @@ export default function MaxHefele() {
 
   const orbRef = useRef(null);
   const mouseTargetRef = useRef({ x: 0, y: 0 });
+
+  // ESC Listener to close Modals & Mobile Menu
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setLegalModal(null);
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
