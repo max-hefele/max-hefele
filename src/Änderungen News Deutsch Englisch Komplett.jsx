@@ -11,7 +11,7 @@ const T = {
       { id: "dates", label: "Dates" },
       { id: "contact", label: "Contact" }
     ],
-    bookingBtn: "Booking",
+    bookingBtn: "Book Now",
     soon: "bald",
     aboutLabel: "About",
     aboutTitle: "MAX HEFELE",
@@ -85,7 +85,7 @@ const T = {
       { id: "dates", label: "Dates" },
       { id: "contact", label: "Contact" }
     ],
-    bookingBtn: "Booking",
+    bookingBtn: "Book Now",
     soon: "soon",
     aboutLabel: "About",
     aboutTitle: "MAX HEFELE",
@@ -253,14 +253,14 @@ const css = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;700;800&display=swap');
 
   :root {
-    --bg: #0b0c0e;
+    --bg: #0b0b0b;
     --bg-elevated: #111319;
     --bg-card: #161822;
-    --text: #f5f5f7;
+    --text: #f3f4f6;
     --text-dim: #6c7385;
     --text-mid: #9ea5b5;
     --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.25);
+    --border-hover: rgba(6, 182, 212, 0.4);
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -289,7 +289,7 @@ const css = `
     left: -100px;
     width: 200px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.25), transparent);
     animation: streamHorizontal 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
@@ -300,7 +300,7 @@ const css = `
     right: 20%;
     width: 1px;
     height: 200px;
-    background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.3), transparent);
     animation: streamVertical 16s cubic-bezier(0.4, 0, 0.2, 1) infinite 4s;
     pointer-events: none;
     z-index: 0;
@@ -324,10 +324,10 @@ const css = `
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
     pointer-events: none;
     z-index: 0;
-    transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+    will-change: transform;
     top: -300px;
     left: -300px;
   }
@@ -350,8 +350,8 @@ const css = `
 
   @keyframes glitchTrigger {
     0%, 95%, 100% { transform: translate(0); filter: none; }
-    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 #ff0055) drop-shadow(-2px 0 #00ffff); }
-    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 #ff0055) drop-shadow(2px 0 #00ffff); }
+    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 #06b6d4) drop-shadow(-2px 0 #00ffff); }
+    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 #06b6d4) drop-shadow(2px 0 #00ffff); }
     98% { transform: translate(0); filter: none; }
   }
 
@@ -369,8 +369,8 @@ const css = `
 
   /* NAV & MODERN MENU */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { padding: 16px 60px; background: rgba(11, 12, 14, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
+  .nav.scrolled { padding: 16px 60px; background: rgba(11, 11, 11, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
   
   .nav-right { display: flex; align-items: center; gap: 40px; }
   .nav-links { display: flex; gap: 32px; list-style: none; position: relative; }
@@ -379,20 +379,22 @@ const css = `
 
   /* BOOKING BUTTON IN HEADER */
   .nav-booking-btn {
-    background: #fff;
-    color: #0b0c0e;
+    background: #06b6d4;
+    color: #0b0b0b;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 10px 24px;
+    border-radius: 9999px;
     text-decoration: none;
-    transition: transform 0.2s var(--ease), background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    transition: all 0.3s ease;
   }
   .nav-booking-btn:hover {
-    background: #e2e8f0;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    background: #22d3ee;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+    transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
@@ -412,51 +414,15 @@ const css = `
   
   .hero-name { 
     font-family: var(--font-display); 
-    font-size: clamp(28px, 5.5vw, 68px); 
+    font-size: clamp(36px, 7vw, 84px); 
     font-weight: 800; 
-    letter-spacing: 4px; 
+    letter-spacing: 6px; 
     line-height: 1.1; 
     text-transform: uppercase; 
-    margin-bottom: 16px; 
+    margin-bottom: 24px; 
     background: linear-gradient(180deg, #ffffff 0%, #8d95a5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  .hero-subtitle-badge {
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    margin-bottom: 24px;
-    border: 1px solid var(--border);
-    padding: 6px 16px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .hero-cta-group {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-top: 16px;
-  }
-
-  .hero-main-btn {
-    background: #fff;
-    color: #000;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: transform 0.2s var(--ease), box-shadow 0.3s;
-    box-shadow: 0 0 30px rgba(255,255,255,0.2);
-  }
-  .hero-main-btn:hover {
-    box-shadow: 0 0 40px rgba(255,255,255,0.4);
   }
 
   .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
@@ -632,24 +598,20 @@ const css = `
   .media-play-btn {
     width: 56px;
     height: 56px;
-    background: #fff;
+    background: #06b6d4;
     border: none;
     border-radius: 50%;
-    color: #000;
+    color: #0b0b0b;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-    animation: whitePulse 2s infinite;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
     will-change: transform;
   }
-
-  @keyframes whitePulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-    70% { box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  .media-play-btn:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.7);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
@@ -707,7 +669,7 @@ const css = `
   .footer-link:hover { color: var(--text); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(11, 12, 14, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 720px; width: 100%; padding: 48px; position: relative; }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; }
   .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
@@ -857,16 +819,40 @@ export default function MaxHefele() {
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const orbRef = useRef(null);
+  const mouseTargetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
       setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
     }
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+
+    const handleMouseMove = (e) => {
+      mouseTargetRef.current = { x: e.clientX, y: e.clientY };
+    };
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    let animationFrameId;
+    let currentX = 0;
+    let currentY = 0;
+
+    const render = () => {
+      currentX += (mouseTargetRef.current.x - currentX) * 0.08;
+      currentY += (mouseTargetRef.current.y - currentY) * 0.08;
+
+      if (orbRef.current) {
+        orbRef.current.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      }
+      animationFrameId = requestAnimationFrame(render);
+    };
+    render();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {
@@ -893,12 +879,13 @@ export default function MaxHefele() {
       <div className="noise-overlay" />
       <div className="laser-stream-h" />
       <div className="laser-stream-v" />
-      <div className="bg-glow-orb" style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }} />
+      <div ref={orbRef} className="bg-glow-orb" />
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <ElegantFadeText text={ARTIST_NAME} />
+          <span className="text-cyan-400">.</span>
         </span>
         
         <div className="nav-right">
@@ -930,27 +917,18 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#0b0c0e', background: '#fff', padding: '12px 32px', borderRadius: '4px', fontSize: '18px' }}>{t.bookingBtn}</a>
+        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#0b0b0b', background: '#06b6d4', padding: '12px 32px', borderRadius: '9999px', fontSize: '18px' }}>{t.bookingBtn}</a>
       </div>
 
       {/* HERO */}
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
-          <div className="hero-subtitle-badge">20 Years of Club Culture • Melodic Techno</div>
           <h1 className="hero-name">
             <ElegantFadeText text={ARTIST_NAME} />
           </h1>
-          
-          <div className="hero-cta-group">
-            <MagneticButton>
-              <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} className="hero-main-btn">
-                Direct Booking Inquiry
-              </a>
-            </MagneticButton>
-          </div>
 
-          <div className="hero-socials" style={{ marginTop: '30px' }}>
+          <div className="hero-socials" style={{ marginTop: '16px' }}>
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
               return (

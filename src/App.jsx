@@ -20,14 +20,14 @@ const T = {
       "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh, Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
       "Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.",
       "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat. Der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
-      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio: Mit seiner Debüt-EP CALL ME auf MYR Records hat er ein echtes Ausrufezeichen gesetzt. Der Release wurde unter anderem von Paul van Dyk in seiner Radioshow Vonyc Sessions (Folge 1026) gefeiert und kletterte direkt auf Platz 39 der Beatport Top 100 Melodic Techno Releases, wo sich die EP über sechs Tage halten konnte.",
+      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio: Mit seiner Debüt-EP CALL ME auf MYR Records hat er ein echtes Ausrufezeichen gesetzt. Der Release wurde unter anderem von Paul van Dyk in seiner Radioshow Vonyc Sessions (Folge 1026) gefeiert.",
       "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe Rave in the City. Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
       "Max Hefele bringt etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
     musicTitle: "MUSIC",
-    scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP demnächst auf MYR Records.",
+    scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP CALL ME out now auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
     bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
@@ -53,11 +53,11 @@ const T = {
     newsLabel: "Latest Updates",
     newsTitle: "NEWS",
     newsItems: [
-      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die kommende EP auf MYR Records." },
-      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk Supportet meinen Track Better day of life aus meiner EP-Call ME." },
-      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner einblick in meine neue EP." },
+      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die EP auf MYR Records." },
+      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supportet meinen Track Better day of life aus meiner EP Call Me." },
+      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner Einblick in meine neue EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
-      { title: "Mein Exclusiv Interview für Melodic Dancers", excerpt: "Hier ist mein Exclusiv Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
+      { title: "Mein Exklusiv-Interview für Melodic Dancers", excerpt: "Hier ist mein Exklusiv-Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
     ],
     readMore: "Mehr lesen auf",
     datesLabel: "Live",
@@ -94,14 +94,14 @@ const T = {
       "Starting out as a resident under the name Mexx Pain, he emerged from the Hip-Hop scene and learned early on that two turntables are more than just technique. With instinct, precision, and perfect timing, he shapes entire nights. He knows exactly how to move crowds and command the energy of a room.",
       "Exactly this experience characterizes his Melodic Techno sets today. Max Hefele doesn't play stock setlists. He reads the room, builds tension, sustains it, and knows exactly when a track needs to hit.",
       "After two decades behind the decks, his name now reflects the very forces that shaped him. It is a journey from Hip-Hop to electronic music, all without ever severing those roots.",
-      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This confidence can also be heard in the studio: With his debut EP CALL ME on MYR Records, he has set a real statement. The release was celebrated by Paul van Dyk on his radio show Vonyc Sessions (episode 1026) among others, and climbed directly to #39 on the Beatport Top 100 Melodic Techno Releases, holding its position in the charts for six days.",
+      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This confidence can also be heard in the studio: With his debut EP CALL ME on MYR Records, he has set a real statement. The release was celebrated by Paul van Dyk on his radio show Vonyc Sessions (episode 1026) among others.",
       "In parallel, he shares his musical vision every two weeks through the YouTube series 'Rave in the City.' One hour that captures the essence of what it’s all about: quality over quantity, experience over chance. No gimmicks. Just music.",
       "Max Hefele brings something that has become rare genuine club experience and the ability to craft entire nights without losing the thread."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
     musicTitle: "MUSIC",
-    scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP coming soon on MYR Records.",
+    scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP CALL ME out now on MYR Records.",
     ytDesc: "Rave in the City — curated one-hour sets, new every two weeks.",
     mcDesc: "Complete DJ sets and live recordings — the full musical journey.",
     bpDesc: "Tracks, releases and DJ music by Max Hefele on Beatport.",
@@ -127,7 +127,7 @@ const T = {
     newsLabel: "Latest Updates",
     newsTitle: "NEWS",
     newsItems: [
-      { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the upcoming EP on MYR Records." },
+      { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the EP on MYR Records." },
       { title: "Paul van Dyk Supports Vonyc Session 1026", excerpt: "Paul van Dyk is supporting my track 'Better Day of Life' from my 'Call Me' EP." },
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "Here is a quick look at my new EP." },
       { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." },
@@ -367,6 +367,30 @@ const css = `
     to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
   }
 
+  /* MARQUEE TICKER */
+  .marquee-container {
+    background: #06b6d4;
+    color: #0b0b0b;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marqueeScroll 22s linear infinite;
+  }
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   /* NAV & MODERN MENU */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
   .nav.scrolled { padding: 16px 60px; background: rgba(11, 11, 11, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
@@ -407,9 +431,9 @@ const css = `
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 32px; font-weight: 700; text-transform: uppercase; }
 
-  /* HERO */
+  /* HERO & PARALLAX */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
-  .hero-bg { position: absolute; inset: 0; filter: brightness(0.65) contrast(1.05); transition: transform 0.1s ease-out; }
+  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.65) contrast(1.05); will-change: transform; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
   .hero-name { 
@@ -441,7 +465,7 @@ const css = `
     will-change: transform;
   }
   .hero-socials a:hover { color: #fff; border-color: var(--border-hover); background: rgba(255, 255, 255, 0.08); }
-  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; }
   .scroll-hint:hover { color: var(--text); transform: translateY(3px); }
 
   /* SECTIONS */
@@ -451,8 +475,8 @@ const css = `
 
   /* ABOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
-  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; position: relative; }
+  .about-photo img { width: 100%; height: 120%; object-fit: cover; position: relative; top: -10%; will-change: transform; transition: transform 0.7s var(--ease); }
   .about-photo:hover img { transform: scale(1.04); }
   .about-text p { color: var(--text-mid); font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
   .about-text p:first-child { color: var(--text); font-size: 18px; font-weight: 400; line-height: 1.6; }
@@ -834,6 +858,21 @@ export default function MaxHefele() {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
+    // Parallax Scroll Listener
+    const handleScrollParallax = () => {
+      const scrollY = window.scrollY;
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) {
+        heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
+      }
+      const aboutImg = document.querySelector('.about-photo img');
+      if (aboutImg) {
+        aboutImg.style.transform = `translateY(${scrollY * 0.05}px) scale(1.04)`;
+      }
+      setScrolled(scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScrollParallax, { passive: true });
+
     let animationFrameId;
     let currentX = 0;
     let currentY = 0;
@@ -851,14 +890,9 @@ export default function MaxHefele() {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScrollParallax);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
-
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
   }, []);
 
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
@@ -943,6 +977,14 @@ export default function MaxHefele() {
         </div>
         <div className="scroll-hint" onClick={() => go("about")}><Icons.ChevronDown /></div>
       </section>
+
+      {/* DYNAMIC MARQUEE TICKER */}
+      <div className="marquee-container">
+        <div className="marquee-track">
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ RAVE IN THE CITY ✦ STREAMING NOW ✦ </span>
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ RAVE IN THE CITY ✦ STREAMING NOW ✦ </span>
+        </div>
+      </div>
 
       {/* ABOUT */}
       <section className="section" id="about">
