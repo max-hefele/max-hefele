@@ -377,7 +377,7 @@ const css = `
   .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; padding: 4px 0; display: inline-block; }
   .nav-links a:hover, .nav-links a.active { color: #fff; }
 
-  /* BOOKING BUTTON IN HEADER (Glow-Effekt aus Code 2 integriert) */
+  /* BOOKING BUTTON IN HEADER */
   .nav-booking-btn {
     background: #06b6d4;
     color: #0b0b0b;
@@ -1267,7 +1267,7 @@ export default function MaxHefele() {
             )}
           </div>
         </div>
-      </footer>
+      )}
     </>
   );
 }
