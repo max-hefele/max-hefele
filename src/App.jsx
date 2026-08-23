@@ -294,10 +294,22 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-  /* FUTURISTIC TEXT DECODER GLOW */
-  .cyber-text {
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  /* ELEGANTE ERSCHEINUNGS-ANIMATION FÜR LOGO & HEADING */
+  .fade-logo {
+    display: inline-flex;
+    letter-spacing: 4px;
+  }
+  .fade-char {
     display: inline-block;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: elegantFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  @keyframes elegantFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* NAV */
@@ -323,14 +335,13 @@ const css = `
   /* HERO */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { position: absolute; inset: 0; filter: brightness(0.7) contrast(1.05); }
-  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
-  /* NAME DEUTLICH KLEINER GEMACHT */
   .hero-name { 
     font-family: var(--font-display); 
-    font-size: clamp(28px, 5vw, 64px); 
+    font-size: clamp(26px, 5vw, 64px); 
     font-weight: 800; 
-    letter-spacing: 4px; 
+    letter-spacing: 3px; 
     line-height: 1.1; 
     text-transform: uppercase; 
     margin-bottom: 20px; 
@@ -339,18 +350,31 @@ const css = `
     -webkit-text-fill-color: transparent;
   }
 
-  .hero-socials { display: flex; gap: 14px; margin-top: 8px; }
-  .hero-socials a { color: var(--text-mid); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 50%; transition: all 0.4s var(--ease); text-decoration: none; background: rgba(255, 255, 255, 0.03); }
+  /* MOBILE OPTIMIERTE SOCIAL ICONS */
+  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+  .hero-socials a { 
+    color: var(--text-mid); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 40px; 
+    height: 40px; 
+    border: 1px solid var(--border); 
+    border-radius: 50%; 
+    transition: all 0.4s var(--ease); 
+    text-decoration: none; 
+    background: rgba(255, 255, 255, 0.03); 
+  }
   .hero-socials a:hover { color: #fff; border-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); background: rgba(255, 255, 255, 0.1); }
-  .scroll-hint { position: absolute; bottom: 40px; color: var(--text-dim); cursor: pointer; transition: color 0.3s; }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s; }
   .scroll-hint:hover { color: var(--text); }
 
   /* SECTIONS */
   .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; }
   .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; font-weight: 500; }
-  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
+  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
 
-  /* ABOUT (FARBE ERHALTEN) */
+  /* ABOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; }
   .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: none; transition: transform 0.5s ease; }
@@ -368,7 +392,7 @@ const css = `
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); }
 
-  /* MUSIC (SLIDER) */
+  /* MUSIC (SLIDER) WITH SUBTLE BRAND ACCENTS */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
@@ -393,12 +417,32 @@ const css = `
     display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
-    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease); 
+    transition: all 0.4s var(--ease); 
+    position: relative;
+    overflow: hidden;
   }
-  .m-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  
+  /* Brand Specific Subtle Accents */
+  .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
+  .m-card[data-brand="spotify"] { --brand-color: #1db954; }
+  .m-card[data-brand="youtube"] { --brand-color: #ff0000; }
+  .m-card[data-brand="beatport"] { --brand-color: #00ff8f; }
+  .m-card[data-brand="applemusic"] { --brand-color: #fa243c; }
+  .m-card[data-brand="mixcloud"] { --brand-color: #5000ff; }
+  .m-card[data-brand="amazonmusic"] { --brand-color: #00a8e1; }
+
+  .m-card .m-badge { color: var(--brand-color, var(--text-mid)); }
+  .m-card .brand-icon { color: var(--brand-color, var(--text)); transition: transform 0.3s ease; }
+  
+  .m-card:hover { 
+    border-color: var(--brand-color, var(--border-hover)); 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5), 0 0 20px -5px var(--brand-color);
+  }
+  .m-card:hover .brand-icon { transform: scale(1.1); }
   
   .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-  .m-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); }
+  .m-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
   .m-card-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #fff; }
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
@@ -414,7 +458,7 @@ const css = `
   .media-consent-btn { background: #fff; border: none; color: #000; padding: 12px 24px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: opacity 0.3s; white-space: nowrap; }
   .media-consent-btn:hover { opacity: 0.85; }
 
-  /* NEWS SLIDER (FARBE ERHALTEN) */
+  /* NEWS SLIDER */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
   .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.4s ease; display: flex; flex-direction: column; }
   .n-card:hover { border-color: var(--border-hover); }
@@ -468,10 +512,11 @@ const css = `
   .rv { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease); }
   .rv.vis { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE & MOBILE FEINJUSTIERUNG */
   @media (max-width: 1024px) {
-    .section, .music-inner, .contact-inner { padding: 100px 30px; }
-    .nav { padding: 20px 30px; }
+    .section, .music-inner, .contact-inner { padding: 80px 24px; }
+    .nav { padding: 20px 24px; }
+    .nav.scrolled { padding: 16px 24px; }
     .nav-links { display: none; }
     .menu-btn { display: block; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
@@ -481,42 +526,35 @@ const css = `
     .footer { flex-direction: column; gap: 20px; text-align: center; }
   }
   @media (max-width: 640px) {
+    .hero-socials a { width: 36px; height: 36px; }
+    .hero-socials svg { width: 16px; height: 16px; }
+    .highlights { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
-    .m-card { flex: 0 0 280px; }
-    .n-card { flex: 0 0 300px; }
-    .media-consent-inner { flex-direction: column; text-align: center; }
+    .m-card { flex: 0 0 260px; padding: 20px; }
+    .n-card { flex: 0 0 280px; }
+    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; }
+    .legal-box { padding: 24px; }
   }
 `;
 
-// ─── Cyber Text Decoder Component ───
-function CyberText({ text }) {
-  const [displayText, setDisplayText] = useState(text);
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%&$#@!";
-
-  useEffect(() => {
-    let iteration = 0;
-    const interval = setInterval(() => {
-      setDisplayText(
-        text
-          .split("")
-          .map((letter, index) => {
-            if (letter === " ") return " ";
-            if (index < iteration) return text[index];
-            return chars[Math.floor(Math.random() * chars.length)];
-          })
-          .join("")
-      );
-
-      if (iteration >= text.length) {
-        clearInterval(interval);
-      }
-      iteration += 1 / 3;
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [text]);
-
-  return <span className="cyber-text">{displayText}</span>;
+// ─── Elegant Fade Text Component (Logo/Header) ───
+function ElegantFadeText({ text }) {
+  return (
+    <span className="fade-logo">
+      {text.split("").map((char, index) => (
+        <span
+          key={index}
+          className="fade-char"
+          style={{
+            animationDelay: `${index * 0.05}s`,
+            marginRight: char === " " ? "6px" : "0px"
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </span>
+  );
 }
 
 // ─── Reveal Hook ───
@@ -583,7 +621,7 @@ export default function MaxHefele() {
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <CyberText text={ARTIST_NAME} />
+          <ElegantFadeText text={ARTIST_NAME} />
         </span>
         
         <div className="nav-right">
@@ -616,7 +654,7 @@ export default function MaxHefele() {
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
           <h1 className="hero-name">
-            <CyberText text={ARTIST_NAME} />
+            <ElegantFadeText text={ARTIST_NAME} />
           </h1>
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
@@ -668,7 +706,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC SLIDER */}
+      {/* MUSIC SLIDER WITH DECENT COLOR ACCENTS */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
@@ -678,11 +716,11 @@ export default function MaxHefele() {
           <Rv delay={100}>
             <div className="music-slider">
               
-              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="soundcloud" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">SoundCloud</span>
-                    <Icons.SC size={22} />
+                    <span className="brand-icon"><Icons.SC size={22} /></span>
                   </div>
                   <h3 className="m-card-name">SoundCloud</h3>
                   <p className="m-card-desc">{t.scDesc}</p>
@@ -690,11 +728,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="spotify" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Spotify</span>
-                    <Icons.SP size={22} />
+                    <span className="brand-icon"><Icons.SP size={22} /></span>
                   </div>
                   <h3 className="m-card-name">Spotify</h3>
                   <p className="m-card-desc">{t.spDesc}</p>
@@ -702,11 +740,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="youtube" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">YouTube</span>
-                    <Icons.YT size={22} />
+                    <span className="brand-icon"><Icons.YT size={22} /></span>
                   </div>
                   <h3 className="m-card-name">YouTube</h3>
                   <p className="m-card-desc">{t.ytDesc}</p>
@@ -714,11 +752,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.watchBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="beatport" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Beatport</span>
-                    <Icons.BP size={22} />
+                    <span className="brand-icon"><Icons.BP size={22} /></span>
                   </div>
                   <h3 className="m-card-name">Beatport</h3>
                   <p className="m-card-desc">{t.bpDesc}</p>
@@ -726,11 +764,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="applemusic" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Apple Music</span>
-                    <Icons.AppleMusic size={22} />
+                    <span className="brand-icon"><Icons.AppleMusic size={22} /></span>
                   </div>
                   <h3 className="m-card-name">Apple Music</h3>
                   <p className="m-card-desc">{t.amDesc}</p>
@@ -738,11 +776,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="mixcloud" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Mixcloud</span>
-                    <Icons.MC size={22} />
+                    <span className="brand-icon"><Icons.MC size={22} /></span>
                   </div>
                   <h3 className="m-card-name">Mixcloud</h3>
                   <p className="m-card-desc">{t.mcDesc}</p>
@@ -750,11 +788,11 @@ export default function MaxHefele() {
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
+              <a className="m-card" data-brand="amazonmusic" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Amazon Music</span>
-                    <Icons.AmazonMusic size={22} />
+                    <span className="brand-icon"><Icons.AmazonMusic size={22} /></span>
                   </div>
                   <h3 className="m-card-name">Amazon Music</h3>
                   <p className="m-card-desc">{t.azDesc}</p>
