@@ -11,6 +11,7 @@ const T = {
       { id: "dates", label: "Dates" },
       { id: "contact", label: "Contact" }
     ],
+    bookingBtn: "Booking",
     soon: "bald",
     aboutLabel: "About",
     aboutTitle: "MAX HEFELE",
@@ -21,7 +22,7 @@ const T = {
       "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat. Der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
       "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio: Mit seiner Debüt-EP CALL ME auf MYR Records hat er ein echtes Ausrufezeichen gesetzt. Der Release wurde unter anderem von Paul van Dyk in seiner Radioshow Vonyc Sessions (Folge 1026) gefeiert und kletterte direkt auf Platz 39 der Beatport Top 100 Melodic Techno Releases, wo sich die EP über sechs Tage halten konnte.",
       "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe Rave in the City. Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
-      "Max Hefele brings etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
+      "Max Hefele bringt etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
     resTitle: "Residencies",
     musicLabel: "Listen",
@@ -84,6 +85,7 @@ const T = {
       { id: "dates", label: "Dates" },
       { id: "contact", label: "Contact" }
     ],
+    bookingBtn: "Booking",
     soon: "soon",
     aboutLabel: "About",
     aboutTitle: "MAX HEFELE",
@@ -151,7 +153,6 @@ const T = {
   }
 };
 
-// ─── Config ───
 const ARTIST_NAME = "MAX HEFELE";
 const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
 
@@ -210,65 +211,40 @@ const HIGHLIGHTS = [
 // ─── SVG Icons ───
 const Icons = {
   IG: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
   ),
   SP: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11a.62.62 0 0 1 .21.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34a.78.78 0 0 1 .25 1.07zm.11-2.84C14.8 8.99 9.4 8.78 6.3 9.72a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 0 1-.96 1.61z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11a.62.62 0 0 1 .21.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34a.78.78 0 0 1 .25 1.07zm.11-2.84C14.8 8.99 9.4 8.78 6.3 9.72a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 0 1-.96 1.61z"/></svg>
   ),
   BP: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5.5a1 1 0 0 1 2 0v4.05l3.04 1.76a1 1 0 0 1-1 1.73l-3.54-2.04A1 1 0 0 1 11 12V7.5z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5.5a1 1 0 0 1 2 0v4.05l3.04 1.76a1 1 0 0 1-1 1.73l-3.54-2.04A1 1 0 0 1 11 12V7.5z"/></svg>
   ),
   SC: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M1.175 12.225a.822.822 0 00-.825.825v4.35c0 .45.375.825.825.825s.825-.375.825-.825v-4.35a.822.822 0 00-.825-.825zm2.4 2.1a.822.822 0 00-.825.825v2.25c0 .45.375.825.825.825s.825-.375.825-.825v-2.25a.822.822 0 00-.825-.825zm2.4-3.6a.822.822 0 00-.825.825v5.85c0 .45.375.825.825.825s.825-.375.825-.825v-5.85a.822.822 0 00-.825-.825zm2.4-1.8a.822.822 0 00-.825.825v7.65c0 .45.375.825.825.825s.825-.375.825-.825V9.75a.822.822 0 00-.825-.825zm2.4-1.2a.822.822 0 00-.825.825v8.85c0 .45.375.825.825.825s.825-.375.825-.825V8.55a.822.822 0 00-.825-.825zm11.225 3.3a5.526 5.526 0 00-4.025-1.725 5.552 5.552 0 00-1.2.125V6.75a.822.822 0 00-.825-.825.822.822 0 00-.825.825v10.65c0 .45.375.825.825.825h6.05a3.875 3.875 0 000-7.75z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225a.822.822 0 00-.825.825v4.35c0 .45.375.825.825.825s.825-.375.825-.825v-4.35a.822.822 0 00-.825-.825zm2.4 2.1a.822.822 0 00-.825.825v2.25c0 .45.375.825.825.825s.825-.375.825-.825v-2.25a.822.822 0 00-.825-.825zm2.4-3.6a.822.822 0 00-.825.825v5.85c0 .45.375.825.825.825s.825-.375.825-.825v-5.85a.822.822 0 00-.825-.825zm2.4-1.8a.822.822 0 00-.825.825v7.65c0 .45.375.825.825.825s.825-.375.825-.825V9.75a.822.822 0 00-.825-.825zm2.4-1.2a.822.822 0 00-.825.825v8.85c0 .45.375.825.825.825s.825-.375.825-.825V8.55a.822.822 0 00-.825-.825zm11.225 3.3a5.526 5.526 0 00-4.025-1.725 5.552 5.552 0 00-1.2.125V6.75a.822.822 0 00-.825-.825.822.822 0 00-.825.825v10.65c0 .45.375.825.825.825h6.05a3.875 3.875 0 000-7.75z"/></svg>
   ),
   MC: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M2.5 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012.5 12zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 016.5 9zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 0110.5 6zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012.5 12zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 016.5 9zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 0110.5 6zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75z"/></svg>
   ),
   YT: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
-      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
   ),
   AppleMusic: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.1c.67-.82 1.12-1.96.99-3.1-.97.04-2.14.65-2.83 1.46-.62.72-1.16 1.88-1.01 3.01 1.08.08 2.18-.55 2.85-1.37z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.1c.67-.82 1.12-1.96.99-3.1-.97.04-2.14.65-2.83 1.46-.62.72-1.16 1.88-1.01 3.01 1.08.08 2.18-.55 2.85-1.37z"/></svg>
   ),
   AmazonMusic: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-    </svg>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
   ),
   Mail: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-    </svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
   ),
   Arrow: () => (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-    </svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
   ),
   ChevronDown: () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="6 9 12 15 18 9"/>
-    </svg>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   ),
   Play: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
   )
 };
 
@@ -295,7 +271,7 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
 
-  /* DYNAMISCHER NOISE HINTERGRUND */
+  /* NOISE OVERLAY */
   .noise-overlay {
     position: fixed;
     inset: 0;
@@ -306,7 +282,7 @@ const css = `
     z-index: 999;
   }
 
-  /* FLIESSENDE MIKRO-LINIEN */
+  /* LASER STREAM ANIMATION */
   .laser-stream-h {
     position: fixed;
     top: 30%;
@@ -343,7 +319,6 @@ const css = `
     100% { transform: translateY(110vh); opacity: 0; }
   }
 
-  /* DYNAMISCHER BACKGROUND GLOW (Follows Mouse) */
   .bg-glow-orb {
     position: fixed;
     width: 600px;
@@ -357,7 +332,6 @@ const css = `
     left: -300px;
   }
 
-  /* LOGO FLOATING ANIMATION */
   .floating-logo-wrap {
     animation: gentleFloat 4s ease-in-out infinite alternate;
     display: inline-block;
@@ -368,7 +342,6 @@ const css = `
     100% { transform: translateY(-6px); }
   }
 
-  /* SUBTIL ERBER CYBER-GLITCH (Alle ~10 Sek) */
   .cyber-glitch-title {
     position: relative;
     display: inline-block;
@@ -376,25 +349,12 @@ const css = `
   }
 
   @keyframes glitchTrigger {
-    0%, 95%, 100% {
-      transform: translate(0);
-      filter: none;
-    }
-    96% {
-      transform: translate(-1px, 1px);
-      filter: drop-shadow(2px 0 #ff0055) drop-shadow(-2px 0 #00ffff);
-    }
-    97% {
-      transform: translate(2px, -1px);
-      filter: drop-shadow(-2px 0 #ff0055) drop-shadow(2px 0 #00ffff);
-    }
-    98% {
-      transform: translate(0);
-      filter: none;
-    }
+    0%, 95%, 100% { transform: translate(0); filter: none; }
+    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 #ff0055) drop-shadow(-2px 0 #00ffff); }
+    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 #ff0055) drop-shadow(2px 0 #00ffff); }
+    98% { transform: translate(0); filter: none; }
   }
 
-  /* ELEGANTE CHAR-FADE ANIMATION MIT BLUR-EASING */
   .fade-logo { display: inline-flex; letter-spacing: 4px; }
   .fade-char {
     display: inline-block;
@@ -404,22 +364,37 @@ const css = `
     animation: elegantFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   @keyframes elegantFadeIn {
-    to { 
-      opacity: 1; 
-      transform: translateY(0) scale(1);
-      filter: blur(0px);
-    }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
   }
 
-  /* NAV */
+  /* NAV & MODERN MENU */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { padding: 16px 60px; background: rgba(11, 12, 14, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .nav.scrolled { padding: 16px 60px; background: rgba(11, 12, 14, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
-  .nav-right { display: flex; align-items: center; gap: 40px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
-  .nav-links a:hover { color: #fff; }
   
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; position: relative; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; padding: 4px 0; display: inline-block; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+
+  /* BOOKING BUTTON IN HEADER */
+  .nav-booking-btn {
+    background: #fff;
+    color: #0b0c0e;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease), background 0.3s, box-shadow 0.3s;
+  }
+  .nav-booking-btn:hover {
+    background: #e2e8f0;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 500; transition: color 0.3s; }
   .lang-switch button.active { color: #fff; font-weight: 700; }
@@ -442,13 +417,49 @@ const css = `
     letter-spacing: 4px; 
     line-height: 1.1; 
     text-transform: uppercase; 
-    margin-bottom: 24px; 
+    margin-bottom: 16px; 
     background: linear-gradient(180deg, #ffffff 0%, #8d95a5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+  .hero-subtitle-badge {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .hero-main-btn {
+    background: #fff;
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s var(--ease), box-shadow 0.3s;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  }
+  .hero-main-btn:hover {
+    box-shadow: 0 0 40px rgba(255,255,255,0.4);
+  }
+
+  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
   .hero-socials a { 
     color: var(--text-mid); 
     display: flex; 
@@ -523,6 +534,7 @@ const css = `
     overflow: hidden;
     transform-style: preserve-3d;
     will-change: transform;
+    cursor: pointer;
   }
   
   .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
@@ -548,7 +560,7 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
 
-  /* UNIFIED PLAYER & CONSENT OVERLAYS */
+  /* CONSENT OVERLAYS */
   .unified-consent-box {
     position: relative;
     width: 100%;
@@ -575,7 +587,6 @@ const css = `
     opacity: 0.15;
     pointer-events: none;
   }
-
   .consent-bg-wave span {
     width: 8px;
     height: 40%;
@@ -583,7 +594,6 @@ const css = `
     border-radius: 4px;
     animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
-
   .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; }
   .consent-bg-wave span:nth-child(3n) { animation-delay: 0.4s; }
   .consent-bg-wave span:nth-child(4n) { animation-delay: 0.6s; }
@@ -642,27 +652,12 @@ const css = `
     100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
   }
 
-  .media-consent-text {
-    font-size: 11px;
-    color: var(--text-mid);
-    margin-top: 14px;
-    max-width: 440px;
-    line-height: 1.5;
-  }
+  .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
+  .media-privacy-link { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 11px; }
 
-  .media-privacy-link {
-    background: none;
-    border: none;
-    color: #fff;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 11px;
-  }
-
-  /* VIDEO GRID STAGGERED FADE-IN */
+  /* VIDEO GRID */
   .video-block { margin-top: 80px; }
   .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  
   .video-frame { 
     width: 100%; 
     aspect-ratio: 16/9; 
@@ -672,17 +667,15 @@ const css = `
     background: #000; 
     animation: gridPop 0.6s var(--ease) forwards;
   }
-  
   @keyframes gridPop {
     from { opacity: 0; transform: translateY(12px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
-
   .video-frame iframe { width: 100%; height: 100%; border: none; }
   .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
   .video-more:hover { color: var(--text); }
 
-  /* NEWS SLIDER */
+  /* NEWS */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
   .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s var(--ease); display: flex; flex-direction: column; }
   .n-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
@@ -695,7 +688,7 @@ const css = `
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
   .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
-  /* DATES & CONTACT & FOOTER */
+  /* DATES & CONTACT */
   .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; }
   .dates-empty-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
@@ -724,7 +717,7 @@ const css = `
   .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
   .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
 
-  /* SCHONENDER BLUR-REVEAL BEIM SCROLLEN */
+  /* REVEAL ANIMATION */
   .rv { 
     opacity: 0; 
     filter: blur(12px);
@@ -762,7 +755,6 @@ const css = `
   }
 `;
 
-// ─── Component for Animated Text ───
 function ElegantFadeText({ text }) {
   return (
     <span className="fade-logo cyber-glitch-title">
@@ -775,7 +767,6 @@ function ElegantFadeText({ text }) {
   );
 }
 
-// ─── Reveal Hook ───
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
   const [vis, setVis] = useState(false);
@@ -794,9 +785,6 @@ function Rv({ children, delay = 0, className = "" }) {
   return <div ref={ref} className={`rv ${vis ? "vis" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
 }
 
-// ─── Subtile Helper-Kompontenten für Interaktionen ───
-
-// 1. Magnetic Button Wrapper
 function MagneticButton({ children, className = "", style = {}, ...props }) {
   const btnRef = useRef(null);
 
@@ -805,7 +793,6 @@ function MagneticButton({ children, className = "", style = {}, ...props }) {
     const rect = btnRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    // Sanfte magnetische Wirkung (max. 8px)
     btnRef.current.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
   };
 
@@ -828,7 +815,6 @@ function MagneticButton({ children, className = "", style = {}, ...props }) {
   );
 }
 
-// 2. 3D-Tilt Card Wrapper
 function TiltCard({ children, className = "", style = {}, ...props }) {
   const cardRef = useRef(null);
 
@@ -837,10 +823,8 @@ function TiltCard({ children, className = "", style = {}, ...props }) {
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    // Maximale Neigung auf sehr dezente 4.5 Grad begrenzen
     const rotateX = (-y / rect.height) * 9;
     const rotateY = (x / rect.width) * 9;
-
     cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
@@ -873,8 +857,6 @@ export default function MaxHefele() {
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
-
-  // Mouse Glow Position Effect
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -882,11 +864,7 @@ export default function MaxHefele() {
       setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
       setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
     }
-
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
@@ -912,19 +890,10 @@ export default function MaxHefele() {
   return (
     <>
       <style>{css}</style>
-
-      {/* DYNAMISCHES FILM GRAIN / NOISE OVERLAY */}
       <div className="noise-overlay" />
-
-      {/* SUBTILE MIKRO-LASERLINIEN */}
       <div className="laser-stream-h" />
       <div className="laser-stream-v" />
-
-      {/* DYNAMISCHER MOUSE GLOW ORB */}
-      <div 
-        className="bg-glow-orb" 
-        style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }} 
-      />
+      <div className="bg-glow-orb" style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }} />
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
@@ -939,6 +908,12 @@ export default function MaxHefele() {
             ))}
           </ul>
           
+          <MagneticButton>
+            <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} className="nav-booking-btn">
+              {t.bookingBtn}
+            </a>
+          </MagneticButton>
+
           <div className="lang-switch">
             <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
             <span>/</span>
@@ -955,16 +930,27 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
+        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#0b0c0e', background: '#fff', padding: '12px 32px', borderRadius: '4px', fontSize: '18px' }}>{t.bookingBtn}</a>
       </div>
 
       {/* HERO */}
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
+          <div className="hero-subtitle-badge">20 Years of Club Culture • Melodic Techno</div>
           <h1 className="hero-name">
             <ElegantFadeText text={ARTIST_NAME} />
           </h1>
-          <div className="hero-socials">
+          
+          <div className="hero-cta-group">
+            <MagneticButton>
+              <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} className="hero-main-btn">
+                Direct Booking Inquiry
+              </a>
+            </MagneticButton>
+          </div>
+
+          <div className="hero-socials" style={{ marginTop: '30px' }}>
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
               return (
@@ -1032,10 +1018,7 @@ export default function MaxHefele() {
               
               <TiltCard className="m-card" data-brand="soundcloud" onClick={() => window.open("https://soundcloud.com/maxhefele", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">SoundCloud</span>
-                    <span className="brand-icon"><Icons.SC size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">SoundCloud</span><span className="brand-icon"><Icons.SC size={22} /></span></div>
                   <h3 className="m-card-name">SoundCloud</h3>
                   <p className="m-card-desc">{t.scDesc}</p>
                 </div>
@@ -1044,10 +1027,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="spotify" onClick={() => window.open("https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">Spotify</span>
-                    <span className="brand-icon"><Icons.SP size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">Spotify</span><span className="brand-icon"><Icons.SP size={22} /></span></div>
                   <h3 className="m-card-name">Spotify</h3>
                   <p className="m-card-desc">{t.spDesc}</p>
                 </div>
@@ -1056,10 +1036,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="youtube" onClick={() => window.open("https://www.youtube.com/@MaxHefele", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">YouTube</span>
-                    <span className="brand-icon"><Icons.YT size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">YouTube</span><span className="brand-icon"><Icons.YT size={22} /></span></div>
                   <h3 className="m-card-name">YouTube</h3>
                   <p className="m-card-desc">{t.ytDesc}</p>
                 </div>
@@ -1068,10 +1045,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="beatport" onClick={() => window.open("https://www.beatport.com/artist/max-hefele/2396410", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">Beatport</span>
-                    <span className="brand-icon"><Icons.BP size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">Beatport</span><span className="brand-icon"><Icons.BP size={22} /></span></div>
                   <h3 className="m-card-name">Beatport</h3>
                   <p className="m-card-desc">{t.bpDesc}</p>
                 </div>
@@ -1080,10 +1054,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="applemusic" onClick={() => window.open("https://music.apple.com/de/artist/max-hefele/6779171915", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">Apple Music</span>
-                    <span className="brand-icon"><Icons.AppleMusic size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">Apple Music</span><span className="brand-icon"><Icons.AppleMusic size={22} /></span></div>
                   <h3 className="m-card-name">Apple Music</h3>
                   <p className="m-card-desc">{t.amDesc}</p>
                 </div>
@@ -1092,10 +1063,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="mixcloud" onClick={() => window.open("https://www.mixcloud.com/MaxHefele/", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">Mixcloud</span>
-                    <span className="brand-icon"><Icons.MC size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">Mixcloud</span><span className="brand-icon"><Icons.MC size={22} /></span></div>
                   <h3 className="m-card-name">Mixcloud</h3>
                   <p className="m-card-desc">{t.mcDesc}</p>
                 </div>
@@ -1104,10 +1072,7 @@ export default function MaxHefele() {
 
               <TiltCard className="m-card" data-brand="amazonmusic" onClick={() => window.open("https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele", "_blank")}>
                 <div>
-                  <div className="m-card-header">
-                    <span className="m-badge">Amazon Music</span>
-                    <span className="brand-icon"><Icons.AmazonMusic size={22} /></span>
-                  </div>
+                  <div className="m-card-header"><span className="m-badge">Amazon Music</span><span className="brand-icon"><Icons.AmazonMusic size={22} /></span></div>
                   <h3 className="m-card-name">Amazon Music</h3>
                   <p className="m-card-desc">{t.azDesc}</p>
                 </div>
@@ -1117,33 +1082,22 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD PLAYER WITH TILT & MAGNETIC CONSENT BUTTON */}
           <Rv delay={150}>
             <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
                 <TiltCard className="unified-consent-box sc-height">
-                  <div className="consent-bg-wave">
-                    <span/><span/><span/><span/><span/><span/><span/><span/>
-                  </div>
+                  <div className="consent-bg-wave"><span/><span/><span/><span/><span/><span/><span/><span/></div>
                   <div className="consent-overlay-content">
-                    <div className="floating-logo-wrap">
-                      <div className="overlay-brand-logo">{ARTIST_NAME}</div>
-                    </div>
-                    
+                    <div className="floating-logo-wrap"><div className="overlay-brand-logo">{ARTIST_NAME}</div></div>
                     <MagneticButton>
                       <button className="media-play-btn" aria-label="Player laden" onClick={() => {
                         setAllowSoundCloud(true);
                         if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
-                      }}>
-                        <Icons.Play />
-                      </button>
+                      }}><Icons.Play /></button>
                     </MagneticButton>
-                    
                     <p className="media-consent-text">
                       {t.consentSC.text}{' '}
-                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>
-                        {t.consentSC.link}
-                      </button>
+                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button>
                     </p>
                   </div>
                 </TiltCard>
@@ -1155,35 +1109,24 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO SEKTION WITH TILT & MAGNETIC CONSENT BUTTON */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
               
               {!allowGoogleDrive ? (
                 <TiltCard className="unified-consent-box vd-height">
-                  <div className="consent-bg-wave">
-                    <span/><span/><span/><span/><span/><span/><span/><span/>
-                  </div>
+                  <div className="consent-bg-wave"><span/><span/><span/><span/><span/><span/><span/><span/></div>
                   <div className="consent-overlay-content">
-                    <div className="floating-logo-wrap">
-                      <div className="overlay-brand-logo">{ARTIST_NAME}</div>
-                    </div>
-
+                    <div className="floating-logo-wrap"><div className="overlay-brand-logo">{ARTIST_NAME}</div></div>
                     <MagneticButton>
                       <button className="media-play-btn" aria-label="Videos freischalten" onClick={() => {
                         setAllowGoogleDrive(true);
                         if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true");
-                      }}>
-                        <Icons.Play />
-                      </button>
+                      }}><Icons.Play /></button>
                     </MagneticButton>
-
                     <p className="media-consent-text">
                       {t.consentVD.title(VIDEO_IDS.length)} — {t.consentVD.text}{' '}
-                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>
-                        {t.consentVD.link}
-                      </button>
+                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>{t.consentVD.link}</button>
                     </p>
                   </div>
                 </TiltCard>
@@ -1216,19 +1159,10 @@ export default function MaxHefele() {
             {t.newsItems.map((item, index) => (
               <a key={index} className="n-card" href={NEWS_ITEMS[index].link} target="_blank" rel="noopener noreferrer">
                 <div className="n-img-wrap">
-                  <img 
-                    className="n-img" 
-                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} 
-                    alt={item.title} 
-                    loading="lazy" 
-                    onError={(e) => { e.target.style.display = 'none'; }} 
-                  />
+                  <img className="n-img" src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} alt={item.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
                 <div className="n-content">
-                  <div className="n-meta">
-                    <span>{NEWS_ITEMS[index].date}</span>
-                    <span>{NEWS_ITEMS[index].category}</span>
-                  </div>
+                  <div className="n-meta"><span>{NEWS_ITEMS[index].date}</span><span>{NEWS_ITEMS[index].category}</span></div>
                   <h3 className="n-title">{item.title}</h3>
                   <p className="n-excerpt">{item.excerpt}</p>
                   <div className="n-link">{t.readMore} <Icons.Arrow /></div>
@@ -1263,20 +1197,14 @@ export default function MaxHefele() {
           <div className="contact-grid">
             <div>
               <Rv delay={100}>
-                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>
-                  {t.contactText}
-                </p>
-                <a className="contact-email" href="mailto:info@maxhefele.de">
-                  <Icons.Mail /> info@maxhefele.de
-                </a>
+                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>{t.contactText}</p>
+                <a className="contact-email" href="mailto:info@maxhefele.de"><Icons.Mail /> info@maxhefele.de</a>
               </Rv>
             </div>
             <div>
               <Rv delay={200}>
                 {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
-                    {s.name} <Icons.Arrow />
-                  </a>
+                  <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">{s.name} <Icons.Arrow /></a>
                 ))}
               </Rv>
             </div>
@@ -1292,7 +1220,6 @@ export default function MaxHefele() {
         </div>
       </footer>
 
-      {/* LEGAL MODALS */}
       {legalModal && (
         <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
           <div className="legal-box">
@@ -1302,28 +1229,17 @@ export default function MaxHefele() {
               <>
                 <h2 className="legal-title">{t.legalTitleImprint}</h2>
                 <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
-
                 <div className="legal-section">
                   <h3>Verantwortlich</h3>
-                  <div className="legal-placeholder">
-                    Max Hefele<br />
-                    Kapellenfeld 3<br />
-                    86865 Markt Wald<br />
-                    Deutschland
-                  </div>
+                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />Deutschland</div>
                 </div>
-
                 <div className="legal-section">
                   <h3>Contact</h3>
                   <p>E-Mail: <a href="mailto:info@maxhefele.de" style={{ color: '#fff' }}>info@maxhefele.de</a></p>
                 </div>
-
                 <div className="legal-section">
                   <h3>EU-Streitschlichtung</h3>
-                  <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-                  </p>
+                  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>https://ec.europa.eu/consumers/odr/</a>.</p>
                 </div>
               </>
             )}
@@ -1332,37 +1248,18 @@ export default function MaxHefele() {
               <>
                 <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
                 <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
-                
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich.</p>
                 </div>
-
                 <div className="legal-section">
                   <h3>Verantwortliche Stelle</h3>
-                  <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-                  <div className="legal-placeholder">
-                    Max Hefele<br />
-                    Kapellenfeld 3<br />
-                    86865 Markt Wald<br />
-                    E-Mail: info@maxhefele.de
-                  </div>
+                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de</div>
                 </div>
-
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
-                  <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', marginTop: '12px' }}>
-                    {t.revokeBtn}
-                  </button>
-                </div>
-
-                <div className="legal-section">
-                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
-                  <p><strong>GitHub Pages:</strong> Wir hosten diese Website über GitHub Pages (GitHub Inc.).</p>
-                  <p><strong>Google Drive:</strong> Eingebundene Inhalte/Videos laden erst nach expliziter Aktivierung.</p>
-                  <p><strong>SoundCloud:</strong> Audio-Player werden erst nach Zustimmung geladen.</p>
-                  <p><strong>Externe Verlinkungen:</strong> Beatport, Instagram, YouTube, Spotify, Apple Music, Mixcloud & Amazon Music sind statische Links ohne Datentransfer vor dem Klick.</p>
+                  <p>Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
+                  <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', marginTop: '12px' }}>{t.revokeBtn}</button>
                 </div>
                 <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 23. August 2026</strong></p>
               </>
