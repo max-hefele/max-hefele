@@ -414,49 +414,15 @@ const css = `
   
   .hero-name { 
     font-family: var(--font-display); 
-    font-size: clamp(32px, 6vw, 72px); 
+    font-size: clamp(36px, 7vw, 84px); 
     font-weight: 800; 
-    letter-spacing: 4px; 
+    letter-spacing: 6px; 
     line-height: 1.1; 
     text-transform: uppercase; 
-    margin-bottom: 16px; 
+    margin-bottom: 24px; 
     background: linear-gradient(180deg, #ffffff 0%, #8d95a5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-
-  .hero-subtitle-badge {
-    font-size: 12px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #22d3ee;
-    margin-bottom: 24px;
-    font-weight: 600;
-  }
-
-  .hero-cta-group {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-top: 16px;
-  }
-
-  .hero-main-btn {
-    background: #06b6d4;
-    color: #0b0b0b;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 32px;
-    border-radius: 9999px;
-    text-decoration: none;
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-    transition: all 0.3s ease;
-  }
-  .hero-main-btn:hover {
-    box-shadow: 0 0 35px rgba(6, 182, 212, 0.6);
-    transform: translateY(-1px);
   }
 
   .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
@@ -854,7 +820,6 @@ export default function MaxHefele() {
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
 
-  // Gleit-Effekt Ref für den Hintergrund-Glow-Orb (High-Performance Lerp Animation)
   const orbRef = useRef(null);
   const mouseTargetRef = useRef({ x: 0, y: 0 });
 
@@ -874,7 +839,6 @@ export default function MaxHefele() {
     let currentY = 0;
 
     const render = () => {
-      // Lerp-Faktor (0.08 sorgt für das butterweiche Nachgleiten)
       currentX += (mouseTargetRef.current.x - currentX) * 0.08;
       currentY += (mouseTargetRef.current.y - currentY) * 0.08;
 
@@ -960,24 +924,11 @@ export default function MaxHefele() {
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
-          <span className="hero-subtitle-badge">Immersive Grooves & Deep Melodies</span>
           <h1 className="hero-name">
             <ElegantFadeText text={ARTIST_NAME} />
           </h1>
-          
-          <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-base" style={{ marginBottom: '24px' }}>
-            Hypnotic rhythms and emotional soundscapes pushing the boundaries of modern club culture.
-          </p>
 
-          <div className="hero-cta-group">
-            <MagneticButton>
-              <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} className="hero-main-btn">
-                {t.bookingBtn}
-              </a>
-            </MagneticButton>
-          </div>
-
-          <div className="hero-socials" style={{ marginTop: '30px' }}>
+          <div className="hero-socials" style={{ marginTop: '16px' }}>
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
               return (
