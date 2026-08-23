@@ -1,3 +1,6 @@
+Hier ist dein vollständiger, aktualisierter Code basierend auf dem bereitgestellten Quellcode, bei dem das EPK wie gewünscht weggelassen wurde:
+
+```tsx
 "use client";
 import { useState, useEffect, useRef } from "react";
 
@@ -1271,3 +1274,5 @@ export default function MaxHefele() {
     </>
   );
 }
+
+```
