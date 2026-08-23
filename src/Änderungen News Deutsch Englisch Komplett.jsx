@@ -154,7 +154,7 @@ const T = {
 };
 
 // ─── Config ───
-const ARTIST_NAME = "MAXHEFELE";
+const ARTIST_NAME = "MAX HEFELE";
 
 const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
 
@@ -163,10 +163,10 @@ const SOCIAL_LINKS = [
   { name: "SoundCloud", url: "https://soundcloud.com/maxhefele", icon: "SC" },
   { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
-  { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", icon: "SP", },
+  { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", icon: "SP" },
   { name: "Apple Music", url: "https://music.apple.com/de/artist/max-hefele/6779171915", icon: "AppleMusic" },
   { name: "Amazon Music", url: "https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele", icon: "AmazonMusic" },
-  { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP",  }
+  { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP" }
 ];
 
 const GOOGLE_DRIVE = {
@@ -174,41 +174,11 @@ const GOOGLE_DRIVE = {
 };
 
 const NEWS_ITEMS = [
-  {
-    id: 1,
-    date: "09.07.2026",
-    category: "Interview",
-    link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", 
-    image: "images/chromaticclub.jpg",   
-  },
-  {
-    id: 2,
-    date: "05.07.2026",
-    category: "Paul van Dyk's VONYC Sessions 1026 Support my Track Better Day of Life",
-    link: "https://www.youtube.com/watch?v=AIGRuvQBEvs",
-    image: "images/vonycsession.jpg", 
-  },
-   {
-    id: 3,
-    date: "09.07.2026",
-    category: "Interview with the last future",
-    link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
-    image: "images/thelastfuture.jpg", 
-  },
-  {
-    id: 4,
-    date: "10.07.2026",
-    category: "New Episode Rave in the City",
-    link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
-    image: "images/rvitc.jpg", 
-  },
-    {
-    id: 5,
-    date: "26.07.2026",
-    category: "My exclusive interview for Melodic Dancers can be found on page 9.",
-    link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ",
-    image: "images/melodicdancers.jpg", 
-  },
+  { id: 1, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
+  { id: 2, date: "05.07.2026", category: "Paul van Dyk's VONYC Sessions 1026 Support my Track Better Day of Life", link: "https://www.youtube.com/watch?v=AIGRuvQBEvs", image: "images/vonycsession.jpg" },
+  { id: 3, date: "09.07.2026", category: "Interview with the last future", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
+  { id: 4, date: "10.07.2026", category: "New Episode Rave in the City", link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM", image: "images/rvitc.jpg" },
+  { id: 5, date: "26.07.2026", category: "My exclusive interview for Melodic Dancers can be found on page 9.", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
 ];
 
 const VIDEO_IDS = [
@@ -242,45 +212,45 @@ const HIGHLIGHTS = [
 
 // ─── SVG Icons ───
 const Icons = {
-  IG: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  IG: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
     </svg>
   ),
-  SP: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
+  SP: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11a.62.62 0 0 1 .21.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34a.78.78 0 0 1 .25 1.07zm.11-2.84C14.8 8.99 9.4 8.78 6.3 9.72a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 0 1-.96 1.61z"/>
     </svg>
   ),
-  BP: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
+  BP: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5.5a1 1 0 0 1 2 0v4.05l3.04 1.76a1 1 0 0 1-1 1.73l-3.54-2.04A1 1 0 0 1 11 12V7.5z"/>
     </svg>
   ),
-  SC: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M1 18V14h1v4H1zm2-5v5h1v-5H3zm2 2v3h1v-3H5zm2-4v7h1V11H7zm2 1v6h1v-6H9zm2-3v9h1V9h-1zm2 2v7h1v-7h-1zm3.5-2c-.28 0-.55.03-.81.1A5 5 0 0 0 11 5v14h7.5a3.5 3.5 0 0 0 0-7z"/>
+  SC: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M1.175 12.225a.822.822 0 00-.825.825v4.35c0 .45.375.825.825.825s.825-.375.825-.825v-4.35a.822.822 0 00-.825-.825zm2.4 2.1a.822.822 0 00-.825.825v2.25c0 .45.375.825.825.825s.825-.375.825-.825v-2.25a.822.822 0 00-.825-.825zm2.4-3.6a.822.822 0 00-.825.825v5.85c0 .45.375.825.825.825s.825-.375.825-.825v-5.85a.822.822 0 00-.825-.825zm2.4-1.8a.822.822 0 00-.825.825v7.65c0 .45.375.825.825.825s.825-.375.825-.825V9.75a.822.822 0 00-.825-.825zm2.4-1.2a.822.822 0 00-.825.825v8.85c0 .45.375.825.825.825s.825-.375.825-.825V8.55a.822.822 0 00-.825-.825zm11.225 3.3a5.526 5.526 0 00-4.025-1.725 5.552 5.552 0 00-1.2.125V6.75a.822.822 0 00-.825-.825.822.822 0 00-.825.825v10.65c0 .45.375.825.825.825h6.05a3.875 3.875 0 000-7.75z"/>
     </svg>
   ),
-  MC: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M4 14v-4h1v4H4zm3 1V9h1v6H7zm3 0V8h1v7h-1zm3 0V7h1v8h-1zm3 0V9h1v6h-1zm3 0v-4h1v4h-1z"/>
+  MC: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M2.5 12a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 012.5 12zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 016.5 9zm4-3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 0110.5 6zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zm4 3a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75z"/>
     </svg>
   ),
-  YT: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+  YT: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
     </svg>
   ),
-  AppleMusic: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M16.8 3.2c-.9.1-2 .7-2.7 1.5-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.3.7-.8 1.1-1.9 1-3zM19.4 12.7c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.5 3.3 2.4 1.3-.1 1.8-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.3-1.2 3.2-2.4 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.2-1.2-3.2-4.1z"/>
+  AppleMusic: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.1c.67-.82 1.12-1.96.99-3.1-.97.04-2.14.65-2.83 1.46-.62.72-1.16 1.88-1.01 3.01 1.08.08 2.18-.55 2.85-1.37z"/>
     </svg>
   ),
-  AmazonMusic: ({ className = "w-4 h-4", style = {} }) => (
-    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4.6a5.4 5.4 0 0 1 4.68 2.7.7.7 0 0 1-1.2.7 4 4 0 0 0-6.96 0 .7.7 0 1 1-1.2-.7A5.4 5.4 0 0 1 12 6.6zM6.4 14.9c3.3 2 7.9 2 11.2 0a.5.5 0 0 1 .6.8c-3.6 2.3-8.8 2.3-12.4 0a.5.5 0 1 1 .6-.8zm-.7 2.1c3.8 2.3 8.8 2.3 12.6 0a.4.4 0 0 1 .44.67c-4 2.5-9.5 2.5-13.5 0a.4.4 0 0 1 .46-.67z"/>
+  AmazonMusic: ({ size = 20 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
     </svg>
   ),
   Mail: () => (
@@ -298,309 +268,228 @@ const Icons = {
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   ),
-  Play: () => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-  ),
 };
 
-// ─── Styles ───
+// ─── Visual & Colorful Agency Styles ───
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;700;800&display=swap');
 
   :root {
-    --bg: #060606;
-    --bg-elevated: #0a0a0a;
-    --bg-card: #0f0f0f;
-    --text: #ededed;
-    --text-dim: #555;
-    --text-mid: #888;
-    --accent: #c8c8c8;
-    --border: #181818;
-    --border-light: #222;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'Syne', sans-serif;
+    --bg: #0d0e12;
+    --bg-elevated: #13151c;
+    --bg-card: #181b24;
+    --text: #f5f5f7;
+    --text-dim: #798196;
+    --text-mid: #a0a7b8;
+    --accent: #3b82f6;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.3);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #333 transparent; }
+  html { scroll-behavior: smooth; scrollbar-width: none; }
+  ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  ::selection { background: rgba(255,255,255,0.12); color: #fff; }
 
   /* NAV */
-  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { background: rgba(6,6,6,0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); padding: 16px 48px; border-bottom: 1px solid var(--border); }
-  .nav-logo { font-family: var(--font-display); font-size: 20px; letter-spacing: 4px; color: var(--text); text-decoration: none; opacity: 0; transition: opacity 0.4s; cursor: pointer; }
-  .nav.scrolled .nav-logo { opacity: 1; }
-  .nav-right { display: flex; align-items: center; gap: 36px; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; transition: color 0.3s; position: relative; }
-  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--text); transition: width 0.4s var(--ease); }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { width: 100%; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
+  .nav.scrolled { padding: 16px 60px; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: #fff; }
   
-  /* LANGUAGE SWITCHER */
-  .lang-switch { display: flex; gap: 8px; align-items: center; }
-  .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 10px; letter-spacing: 2px; transition: color 0.3s; font-weight: 600; padding: 0; }
-  .lang-switch button.active { color: var(--text); }
-  .lang-switch span { color: var(--border-light); font-size: 10px; }
+  /* LANG SWITCHER */
+  .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
+  .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 500; transition: color 0.3s; }
+  .lang-switch button.active { color: #fff; font-weight: 700; }
 
   .menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; z-index: 101; }
-  .menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--text); margin: 6px 0; transition: all 0.3s; }
-  .menu-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .menu-btn.open span:nth-child(2) { opacity: 0; }
-  .menu-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(6,6,6,0.97); backdrop-filter: blur(30px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 36px; }
+  .menu-btn span { display: block; width: 22px; height: 1px; background: var(--text); margin: 5px 0; transition: all 0.3s; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 32px; }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 52px; letter-spacing: 6px; transition: opacity 0.3s; }
-  .mobile-nav a:hover { opacity: 0.4; }
+  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 32px; font-weight: 700; text-transform: uppercase; }
 
   /* HERO */
-  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(25,22,18,0.5) 0%, rgba(6,6,6,0.85) 60%, rgba(6,6,6,1) 100%); }
-  .hero-grain { position: absolute; inset: 0; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; pointer-events: none; }
-  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
-  .hero-name { font-family: var(--font-display); font-size: clamp(52px, 13vw, 160px); letter-spacing: clamp(4px, 2vw, 18px); line-height: 0.9; text-align: center; animation: heroIn 1.4s var(--ease) forwards; opacity: 0; }
-  .hero-line { width: 40px; height: 1px; background: var(--text-dim); margin: 32px 0; animation: heroIn 1.4s var(--ease) 0.15s forwards; opacity: 0; }
-  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 90vw; animation: heroIn 1.4s var(--ease) 0.25s forwards; opacity: 0; }
-  .hero-socials a { color: var(--text-dim); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border-light); border-radius: 50%; transition: all 0.3s var(--ease); text-decoration: none; }
-  .hero-socials a:hover { color: var(--text); border-color: var(--text-mid); transform: translateY(-3px); }
-  .hero-social-soon { color: #333; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px dashed var(--border-light); border-radius: 50%; cursor: default; opacity: 0.5; }
-  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); animation: heroIn 1.4s var(--ease) 0.45s forwards, bob 2.5s ease-in-out 1.8s infinite; opacity: 0; color: var(--text-dim); cursor: pointer; }
-  @keyframes heroIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
+  .hero-bg { position: absolute; inset: 0; filter: brightness(0.7) contrast(1.05); }
+  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  
+  /* NAME DEUTLICH KLEINER GEMACHT */
+  .hero-name { 
+    font-family: var(--font-display); 
+    font-size: clamp(28px, 5vw, 64px); 
+    font-weight: 800; 
+    letter-spacing: 4px; 
+    line-height: 1.1; 
+    text-transform: uppercase; 
+    margin-bottom: 20px; 
+    background: linear-gradient(180deg, #ffffff 0%, #a0a7b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-socials { display: flex; gap: 14px; margin-top: 8px; }
+  .hero-socials a { color: var(--text-mid); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 50%; transition: all 0.4s var(--ease); text-decoration: none; background: rgba(255, 255, 255, 0.03); }
+  .hero-socials a:hover { color: #fff; border-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); background: rgba(255, 255, 255, 0.1); }
+  .scroll-hint { position: absolute; bottom: 40px; color: var(--text-dim); cursor: pointer; transition: color 0.3s; }
+  .scroll-hint:hover { color: var(--text); }
 
   /* SECTIONS */
-  .section { padding: 140px 48px; max-width: 1140px; margin: 0 auto; }
-  .section-label { font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; font-weight: 600; }
-  .section-title { font-family: var(--font-display); font-size: clamp(52px, 8vw, 88px); letter-spacing: 4px; line-height: 0.95; margin-bottom: 16px; }
-  .section-line { width: 48px; height: 1px; background: var(--border-light); margin-bottom: 56px; }
+  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; }
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; font-weight: 500; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
 
-  /* ABOUT */
-  .about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 72px; align-items: start; }
-  .about-photo { width: 100%; aspect-ratio: 2/3; background: var(--bg-card); border: 1px solid var(--border); position: relative; overflow: hidden; }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .about-text p { color: var(--text-mid); font-size: 14.5px; line-height: 1.85; margin-bottom: 20px; }
-  .about-text p:first-child { color: var(--accent); font-size: 15.5px; }
-  .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
-  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; transition: all 0.3s var(--ease); }
-  .h-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
-  .h-card-label { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; }
-  .h-card-detail { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; margin-top: 2px; }
-  .residencies { margin-top: 36px; }
-  .res-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 600; }
-  .res-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .res-tag { font-size: 11px; color: var(--text-dim); padding: 5px 12px; border: 1px solid var(--border); letter-spacing: 0.3px; transition: all 0.3s; }
-  .res-tag:hover { border-color: var(--text-dim); color: var(--text-mid); }
+  /* ABOUT (FARBE ERHALTEN) */
+  .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
+  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: none; transition: transform 0.5s ease; }
+  .about-photo:hover img { transform: scale(1.02); }
+  .about-text p { color: var(--text-mid); font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
+  .about-text p:first-child { color: var(--text); font-size: 18px; font-weight: 400; line-height: 1.6; }
+  
+  .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; }
+  .h-card-label { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; }
+  .h-card-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 
-  /* MUSIC (VISUELLE KARTEN) */
-  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .music-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .music-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .residencies { margin-top: 40px; }
+  .res-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 500; }
+  .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); }
+
+  /* MUSIC (SLIDER) */
+  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; }
+  .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  
+  .music-slider { 
+    display: flex; 
+    gap: 20px; 
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    padding-bottom: 20px; 
+    margin-bottom: 40px;
+  }
   
   .m-card { 
-    position: relative; 
-    overflow: hidden; 
-    border-radius: 24px; 
-    background: var(--bg-card); 
-    border: 1px solid var(--border); 
-    padding: 32px; 
-    transition: all 0.3s var(--ease); 
-    display: flex; 
-    flex-direction: column; 
-    sm-flex-direction: row; 
-    gap: 24px; 
-    text-decoration: none; 
-    color: inherit; 
-    align-items: center; 
-  }
-  .m-card:hover { 
-    transform: translateY(-4px); 
-    border-color: var(--border-light); 
-  }
-  
-  /* Farbige Cover-Box links in der Karte */
-  .m-card-logo-box {
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    transition: transform 0.3s var(--ease);
-  }
-  .m-card:hover .m-card-logo-box {
-    transform: scale(1.05);
-  }
-
-  .m-card-content {
-    flex: 1;
-    text-align: center;
-  }
-  @media(min-width: 640px) {
-    .m-card { flex-direction: row; align-items: center; }
-    .m-card-content { text-align: left; }
-  }
-
-  .m-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .m-card-name { font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; line-height: 1.1; margin-bottom: 6px; transition: color 0.3s; }
-  .m-card-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
-  .m-card-link { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 700; }
-
-  /* PRIVACY OVERLAY & GLASSMORPHISM & DYNAMIC BACKGROUND FIX */
-  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: var(--bg-card); }
-  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(10, 10, 10, 0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 16px; }
-  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(18, 18, 18, 0.95); padding: 24px 32px; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.8); max-width: 100%; width: 100%; justify-content: space-between; }
-  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #333; flex-shrink: 0; }
-  .media-consent-text-wrap { text-align: left; flex: 1; }
-  .media-consent-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; color: var(--text); margin-bottom: 4px; line-height: 1; }
-  .media-consent-text { font-size: 11px; color: #aaa; line-height: 1.5; margin: 0; letter-spacing: 0.2px; }
-  .media-consent-link { background: none; border: none; padding: 0; color: var(--text-mid); font-family: var(--font-body); font-size: 11px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color 0.3s; }
-  .media-consent-link:hover { color: var(--text); }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; flex-shrink: 0; }
-  .media-consent-btn:hover { background: transparent; color: var(--text); }
-
-  /* DYNAMIC BACKGROUND PATTERNS */
-  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 32px; opacity: 0.5; background: var(--bg-card); }
-  .fake-waveform-bg > div { flex: 1; background: linear-gradient(180deg, #333 0%, #111 100%); border-radius: 2px; }
-  
-  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; opacity: 0.5; background: var(--bg-card); }
-  .fake-video-bg > div { background: #222; border-radius: 4px; border: 1px solid var(--border); }
-
-  /* VIDEO GRID */
-  .video-block { margin-top: 56px; }
-  .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
-  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
-  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); background: #000; overflow: hidden; }
-  .video-frame iframe { width: 100%; height: 100%; border: none; }
-  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--text); }
-
-  /* NEWS SECTION */
-  .news-grid { 
-    display: flex; 
-    gap: 24px; 
-    margin-top: 20px; 
-    overflow-x: auto; 
-    padding-bottom: 24px; 
-    scroll-snap-type: x mandatory; 
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; 
-  }
-  .news-grid::-webkit-scrollbar {
-    display: none; 
-  }
-  .n-card { 
-    background: var(--bg-card); 
-    border: 1px solid var(--border); 
-    display: flex; 
-    flex-direction: column; 
-    overflow: hidden; 
-    text-decoration: none; 
-    color: inherit; 
-    transition: all 0.3s var(--ease); 
     flex: 0 0 320px; 
     scroll-snap-align: start; 
+    background: var(--bg-card); 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    padding: 24px; 
+    text-decoration: none; 
+    color: inherit; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease); 
   }
-  .n-card:hover { border-color: var(--border-light); transform: translateY(-4px); }
-  .n-img-wrap { width: 100%; aspect-ratio: 16/10; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; position: relative; }
-  .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-  .n-card:hover .n-img { transform: scale(1.02); }
-  .n-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
-  .n-meta { display: flex; justify-content: space-between; align-items: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
-  .n-cat { color: var(--text); font-weight: 600; border: 1px solid var(--border-light); padding: 3px 10px; font-size: 9px; letter-spacing: 1.5px; }
-  .n-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 1px; margin-bottom: 12px; line-height: 1.15; }
-  .n-excerpt { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; flex: 1; margin-bottom: 24px; }
-  .n-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; font-weight: 600; }
-  .n-card:hover .n-link { color: var(--text); }
+  .m-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  
+  .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .m-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); }
+  .m-card-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #fff; }
+  .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
+  .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
 
-  /* DATES & CONTACT & FOOTER & LEGAL */
-  .dates-empty { text-align: center; padding: 72px 0; }
-  .dates-empty-title { font-family: var(--font-display); font-size: 28px; letter-spacing: 3px; color: var(--text-mid); margin-bottom: 10px; }
+  /* PRIVACY & CONSENT OVERLAYS */
+  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg-card); }
+  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 24px; }
+  .media-consent-inner { display: flex; align-items: center; gap: 24px; max-width: 600px; width: 100%; justify-content: space-between; }
+  .media-consent-text-wrap { text-align: left; }
+  .media-consent-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .media-consent-text { font-size: 12px; color: var(--text-mid); line-height: 1.5; margin: 0; }
+  .media-consent-link { background: none; border: none; padding: 0; color: #fff; font-size: 12px; text-decoration: underline; cursor: pointer; }
+  .media-consent-btn { background: #fff; border: none; color: #000; padding: 12px 24px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: opacity 0.3s; white-space: nowrap; }
+  .media-consent-btn:hover { opacity: 0.85; }
+
+  /* NEWS SLIDER (FARBE ERHALTEN) */
+  .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
+  .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.4s ease; display: flex; flex-direction: column; }
+  .n-card:hover { border-color: var(--border-hover); }
+  .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .n-img { width: 100%; height: 100%; object-fit: cover; filter: none; transition: transform 0.6s var(--ease); }
+  .n-card:hover .n-img { transform: scale(1.04); }
+  .n-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
+  .n-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
+  .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
+  .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+
+  /* VIDEO GRID */
+  .video-block { margin-top: 80px; }
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #000; }
+  .video-frame iframe { width: 100%; height: 100%; border: none; }
+  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
+  .video-more:hover { color: var(--text); }
+
+  /* DATES & CONTACT & FOOTER */
+  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; }
+  .dates-empty-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
-  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); }
-  .contact-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
-  .contact-email { display: flex; align-items: center; gap: 14px; color: var(--text); text-decoration: none; font-size: 14px; letter-spacing: 0.5px; padding: 20px 0; border-bottom: 1px solid var(--border); transition: all 0.3s; }
-  .contact-email:hover { padding-left: 8px; }
-  .contact-email svg { color: var(--text-dim); flex-shrink: 0; }
-  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-dim); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s; font-weight: 500; }
-  .contact-social:first-child { border-top: 1px solid var(--border); }
-  .contact-social:hover { color: var(--text); padding-left: 8px; }
-  .contact-social-soon { color: #444; cursor: default; }
-  .contact-social-soon:hover { padding-left: 0; color: #444; }
-  .soon-badge { font-size: 9px; letter-spacing: 1px; padding: 3px 8px; border: 1px solid var(--border-light); color: var(--text-dim); border-radius: 2px; }
-  .footer { padding: 36px 48px; text-align: center; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; border-top: 1px solid var(--border); }
-  .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 24px; }
-  .footer-link { background: none; border: none; color: var(--text-dim); font-family: var(--font-body); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: color 0.3s; padding: 0; }
-  .footer-link:hover { color: var(--text-mid); }
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: flex-start; padding: 60px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg); border: 1px solid var(--border-light); max-width: 720px; width: 100%; padding: 56px 48px; position: relative; }
-  .legal-close { position: absolute; top: 20px; right: 20px; background: none; border: 1px solid var(--border); color: var(--text-dim); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: all 0.3s; font-family: var(--font-body); }
-  .legal-close:hover { color: var(--text); border-color: var(--text-mid); }
-  .legal-title { font-family: var(--font-display); font-size: 36px; letter-spacing: 3px; margin-bottom: 8px; }
-  .legal-subtitle { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 36px; font-weight: 600; }
-  .legal-section { margin-bottom: 28px; }
-  .legal-section h3 { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; margin-bottom: 10px; color: var(--accent); }
-  .legal-section p, .legal-section li { color: var(--text-mid); font-size: 13px; line-height: 1.8; margin-bottom: 12px; }
-  .legal-section ul { list-style: none; padding: 0; }
-  .legal-section ul li::before { content: '—'; color: var(--text-dim); margin-right: 10px; }
-  .legal-section a { color: var(--text-mid); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
-  .legal-section a:hover { color: var(--text); }
-  .legal-placeholder { background: var(--bg-card); border: 1px dashed var(--border-light); padding: 20px 24px; color: var(--text-dim); font-size: 12px; line-height: 1.7; letter-spacing: 0.3px; margin-top: 8px; }
-  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 200; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; }
 
-  /* REVEAL */
-  .rv { opacity: 0; transform: translateY(36px); transition: all 0.9s var(--ease); }
+  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; }
+  .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s; }
+  .contact-email:hover { border-color: var(--border-hover); }
+  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+  .contact-social:hover { color: #fff; }
+
+  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
+  .footer-link:hover { color: var(--text); }
+
+  /* MODALS */
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(13, 14, 18, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 720px; width: 100%; padding: 48px; position: relative; }
+  .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; }
+  .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+  .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 32px; }
+  .legal-section { margin-bottom: 24px; }
+  .legal-section h3 { font-size: 16px; margin-bottom: 8px; color: var(--text); }
+  .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
+  .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
+
+  /* REVEAL ANIMATION */
+  .rv { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease); }
   .rv.vis { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE & MOBILE ICON FIXES */
-  @media (max-width: 900px) {
-    .nav { padding: 18px 24px; }
-    .nav.scrolled { padding: 14px 24px; }
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .section, .music-inner, .contact-inner { padding: 100px 30px; }
+    .nav { padding: 20px 30px; }
     .nav-links { display: none; }
     .menu-btn { display: block; }
-    .section, .music-inner, .contact-inner { padding: 100px 24px; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
-    .about-photo { max-width: 300px; }
-    .music-grid { grid-template-columns: 1fr; }
-    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-photo { max-width: 320px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .highlights { grid-template-columns: 1fr 1fr; }
-    .hero-name { letter-spacing: 4px; }
-    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; padding: 20px; }
-    .media-consent-text-wrap { text-align: center; }
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer { flex-direction: column; gap: 20px; text-align: center; }
   }
-  @media (max-width: 480px) {
-    .highlights { grid-template-columns: 1fr; }
+  @media (max-width: 640px) {
     .video-grid { grid-template-columns: 1fr; }
-    .section, .music-inner, .contact-inner { padding: 80px 20px; }
-    .hero-socials { gap: 8px; }
-    .hero-socials a, .hero-social-soon { width: 38px; height: 38px; }
+    .m-card { flex: 0 0 280px; }
+    .n-card { flex: 0 0 300px; }
+    .media-consent-inner { flex-direction: column; text-align: center; }
   }
 `;
 
 // ─── Reveal Hook ───
-function useReveal(threshold = 0.12) {
+function useReveal(threshold = 0.1) {
   const ref = useRef(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } }, { threshold, rootMargin: "0px 0px -40px 0px" });
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } }, { threshold });
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
@@ -632,7 +521,7 @@ export default function MaxHefele() {
   }, []);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 80);
+    const h = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
@@ -653,7 +542,6 @@ export default function MaxHefele() {
   return (
     <>
       <style>{css}</style>
-      <div className="grain" />
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
@@ -668,12 +556,12 @@ export default function MaxHefele() {
           
           <div className="lang-switch">
             <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
-            <span>|</span>
+            <span>/</span>
             <button onClick={() => setLang('en')} className={lang === 'en' ? 'active' : ''}>EN</button>
           </div>
 
           <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-            <span /><span /><span />
+            <span /><span />
           </button>
         </div>
       </nav>
@@ -686,18 +574,13 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
-        <div className="hero-grain" />
+        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
-          <div className="hero-line" />
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
-              if (s.soon) {
-                return <span key={s.name} className="hero-social-soon" title={`${s.name} — ${t.soon}`}><Icon /></span>;
-              }
-              return <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}><Icon /></a>;
+              return <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}><Icon size={18} /></a>;
             })}
           </div>
         </div>
@@ -709,12 +592,11 @@ export default function MaxHefele() {
         <Rv>
           <p className="section-label">{t.aboutLabel}</p>
           <h2 className="section-title">{t.aboutTitle}</h2>
-          <div className="section-line" />
         </Rv>
         <div className="about-layout">
           <Rv delay={100}>
             <div className="about-photo">
-              <img src={`${BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
+              <img src={`${BASE_URL}images/about.jpg`} alt="Max Hefele" loading="lazy" />
             </div>
           </Rv>
           <div>
@@ -723,7 +605,7 @@ export default function MaxHefele() {
                 {t.aboutText.map((para, i) => <p key={i}>{para}</p>)}
               </div>
             </Rv>
-            <Rv delay={250}>
+            <Rv delay={200}>
               <div className="highlights">
                 {HIGHLIGHTS.map(h => (
                   <div className="h-card" key={h.label}>
@@ -733,7 +615,7 @@ export default function MaxHefele() {
                 ))}
               </div>
             </Rv>
-            <Rv delay={300}>
+            <Rv delay={250}>
               <div className="residencies">
                 <div className="res-title">{t.resTitle}</div>
                 <div className="res-list">
@@ -745,160 +627,139 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC & VIDEOS */}
+      {/* MUSIC SLIDER */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
             <p className="section-label">{t.musicLabel}</p>
             <h2 className="section-title">{t.musicTitle}</h2>
-            <div className="section-line" />
           </Rv>
           <Rv delay={100}>
-            <div className="music-grid">
+            <div className="music-slider">
               
-              {/* SoundCloud */}
-              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(249,115,22,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f97316, #c2410c)' }}>
-                  <Icons.SC className="w-12 h-12 text-white" style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">SoundCloud</span>
+                    <Icons.SC size={22} />
+                  </div>
+                  <h3 className="m-card-name">SoundCloud</h3>
+                  <p className="m-card-desc">{t.scDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(249,115,22,0.15)', color: '#fb923c' }}>SoundCloud</span>
-                  <h3 className="m-card-name">SOUNDCLOUD</h3>
-                  <div className="m-card-desc">{t.scDesc}</div>
-                  <div className="m-card-link" style={{ color: '#fb923c' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* YouTube */}
-              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(239,68,68,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #ef4444, #991b1b)' }}>
-                  <Icons.YT style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">Spotify</span>
+                    <Icons.SP size={22} />
+                  </div>
+                  <h3 className="m-card-name">Spotify</h3>
+                  <p className="m-card-desc">{t.spDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171' }}>YouTube</span>
-                  <h3 className="m-card-name">YOUTUBE</h3>
-                  <div className="m-card-desc">{t.ytDesc}</div>
-                  <div className="m-card-link" style={{ color: '#f87171' }}>{t.watchBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* Mixcloud */}
-              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(59,130,246,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
-                  <Icons.MC style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">YouTube</span>
+                    <Icons.YT size={22} />
+                  </div>
+                  <h3 className="m-card-name">YouTube</h3>
+                  <p className="m-card-desc">{t.ytDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>Mixcloud</span>
-                  <h3 className="m-card-name">MIXCLOUD</h3>
-                  <div className="m-card-desc">{t.mcDesc}</div>
-                  <div className="m-card-link" style={{ color: '#60a5fa' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.watchBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* Beatport */}
-              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(16,185,129,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #10b981, #047857)' }}>
-                  <Icons.BP style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">Beatport</span>
+                    <Icons.BP size={22} />
+                  </div>
+                  <h3 className="m-card-name">Beatport</h3>
+                  <p className="m-card-desc">{t.bpDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(16,185,129,0.15)', color: '#34d399' }}>Beatport</span>
-                  <h3 className="m-card-name">BEATPORT</h3>
-                  <div className="m-card-desc">{t.bpDesc}</div>
-                  <div className="m-card-link" style={{ color: '#34d399' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* Spotify */}
-              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(34,197,94,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #22c55e, #15803d)' }}>
-                  <Icons.SP style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">Apple Music</span>
+                    <Icons.AppleMusic size={22} />
+                  </div>
+                  <h3 className="m-card-name">Apple Music</h3>
+                  <p className="m-card-desc">{t.amDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>Spotify</span>
-                  <h3 className="m-card-name">SPOTIFY</h3>
-                  <div className="m-card-desc">{t.spDesc}</div>
-                  <div className="m-card-link" style={{ color: '#4ade80' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* Apple Music */}
-              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(244,63,94,0.3)' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f43f5e, #be123c)' }}>
-                  <Icons.AppleMusic style={{ width: '42px', height: '42px', color: '#fff' }} />
+              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">Mixcloud</span>
+                    <Icons.MC size={22} />
+                  </div>
+                  <h3 className="m-card-name">Mixcloud</h3>
+                  <p className="m-card-desc">{t.mcDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(244,63,94,0.15)', color: '#fb7185' }}>Apple Music</span>
-                  <h3 className="m-card-name">APPLE MUSIC</h3>
-                  <div className="m-card-desc">{t.amDesc}</div>
-                  <div className="m-card-link" style={{ color: '#fb7185' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
-              {/* Amazon Music */}
-              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(245,158,11,0.3)', gridColumn: '1 / -1' }}>
-                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f59e0b, #b45309)' }}>
-                  <Icons.AmazonMusic style={{ width: '42px', height: '42px', color: '#000' }} />
+              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
+                <div>
+                  <div className="m-card-header">
+                    <span className="m-badge">Amazon Music</span>
+                    <Icons.AmazonMusic size={22} />
+                  </div>
+                  <h3 className="m-card-name">Amazon Music</h3>
+                  <p className="m-card-desc">{t.azDesc}</p>
                 </div>
-                <div className="m-card-content">
-                  <span className="m-badge" style={{ background: 'rgba(245,158,11,0.15)', color: '#fbbf24' }}>Amazon Music</span>
-                  <h3 className="m-card-name">AMAZON MUSIC</h3>
-                  <div className="m-card-desc">{t.azDesc}</div>
-                  <div className="m-card-link" style={{ color: '#fbbf24' }}>{t.listenBtn} <Icons.Arrow /></div>
-                </div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
 
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD-BEREICH */}
+          {/* SOUNDCLOUD PLAYER */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ height: '166px', marginTop: '32px' }}>
+            <div className="privacy-wrapper" style={{ height: '166px', marginTop: '20px' }}>
               {!allowSoundCloud ? (
-                <>
-                  <div className="fake-waveform-bg">
-                    {Array.from({ length: 45 }).map((_, i) => (
-                      <div key={i} style={{ height: `${Math.max(10, Math.random() * 100)}%` }} />
-                    ))}
-                  </div>
-                  <div className="privacy-blur-overlay">
-                    <div className="media-consent-inner">
-                      <div className="media-consent-icon"><Icons.SC /></div>
-                      <div className="media-consent-text-wrap">
-                        <h4 className="media-consent-title">{t.consentSC.title}</h4>
-                        <p className="media-consent-text">{t.consentSC.text} <br/><button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button></p>
-                      </div>
-                      <button className="media-consent-btn" onClick={() => {
-                        setAllowSoundCloud(true);
-                        if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
-                      }}>{t.consentSC.btn}</button>
+                <div className="privacy-blur-overlay">
+                  <div className="media-consent-inner">
+                    <div className="media-consent-text-wrap">
+                      <h4 className="media-consent-title">{t.consentSC.title}</h4>
+                      <p className="media-consent-text">{t.consentSC.text} <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button></p>
                     </div>
+                    <button className="media-consent-btn" onClick={() => {
+                      setAllowSoundCloud(true);
+                      if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
+                    }}>{t.consentSC.btn}</button>
                   </div>
-                </>
+                </div>
               ) : (
-                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23333333&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
               )}
             </div>
           </Rv>
 
-          {/* VIDEO-BEREICH */}
+          {/* VIDEO GRID */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
-              <div className="video-label">{t.videoLabel}</div>
+              <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
               
               {(!allowGoogleDrive || !videosExpanded) ? (
                 <div className="privacy-wrapper" style={{ height: '220px', cursor: allowGoogleDrive ? 'pointer' : 'default' }} onClick={() => { if(allowGoogleDrive) setVideosExpanded(true); }}>
-                  <div className="fake-video-bg">
-                    {Array.from({ length: 3 }).map((_, i) => <div key={i} />)}
-                  </div>
                   <div className="privacy-blur-overlay">
                     <div className="media-consent-inner">
-                      <div className="media-consent-icon"><Icons.Play /></div>
                       <div className="media-consent-text-wrap">
                         <h4 className="media-consent-title">{t.consentVD.title(VIDEO_IDS.length)}</h4>
                         {!allowGoogleDrive && (
                           <p className="media-consent-text">
-                            {t.consentVD.text} <br/>
-                            <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>{t.consentVD.link}</button>
+                            {t.consentVD.text} <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>{t.consentVD.link}</button>
                           </p>
                         )}
                       </div>
@@ -933,12 +794,11 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* NEWS SECTION */}
+      {/* NEWS */}
       <section className="section" id="news">
         <Rv>
           <p className="section-label">{t.newsLabel}</p>
           <h2 className="section-title">{t.newsTitle}</h2>
-          <div className="section-line" />
         </Rv>
         <Rv delay={100}>
           <div className="news-grid">
@@ -955,12 +815,12 @@ export default function MaxHefele() {
                 </div>
                 <div className="n-content">
                   <div className="n-meta">
-                    <span className="n-date">{NEWS_ITEMS[index].date}</span>
-                    <span className="n-cat">{NEWS_ITEMS[index].category}</span>
+                    <span>{NEWS_ITEMS[index].date}</span>
+                    <span>{NEWS_ITEMS[index].category}</span>
                   </div>
                   <h3 className="n-title">{item.title}</h3>
                   <p className="n-excerpt">{item.excerpt}</p>
-                  <div className="n-link">{t.readMore} {new URL(NEWS_ITEMS[index].link).hostname.replace('www.', '')} <Icons.Arrow /></div>
+                  <div className="n-link">{t.readMore} <Icons.Arrow /></div>
                 </div>
               </a>
             ))}
@@ -973,7 +833,6 @@ export default function MaxHefele() {
         <Rv>
           <p className="section-label">{t.datesLabel}</p>
           <h2 className="section-title">{t.datesTitle}</h2>
-          <div className="section-line" />
         </Rv>
         <Rv delay={100}>
           <div className="dates-empty">
@@ -989,32 +848,24 @@ export default function MaxHefele() {
           <Rv>
             <p className="section-label">{t.contactLabel}</p>
             <h2 className="section-title">{t.contactTitle}</h2>
-            <div className="section-line" />
           </Rv>
           <div className="contact-grid">
             <div>
               <Rv delay={100}>
-                <p style={{ color: "var(--text-dim)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "28px" }}>
+                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>
                   {t.contactText}
                 </p>
                 <a className="contact-email" href="mailto:info@maxhefele.de">
-                  <Icons.Mail />
-                  info@maxhefele.de
+                  <Icons.Mail /> info@maxhefele.de
                 </a>
               </Rv>
             </div>
             <div>
               <Rv delay={200}>
                 {SOCIAL_LINKS.map(s => (
-                  s.soon ? (
-                    <span key={s.name} className="contact-social contact-social-soon">
-                      {s.name} <span className="soon-badge">{t.soon}</span>
-                    </span>
-                  ) : (
-                    <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
-                      {s.name} <Icons.Arrow />
-                    </a>
-                  )
+                  <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">
+                    {s.name} <Icons.Arrow />
+                  </a>
                 ))}
               </Rv>
             </div>
@@ -1034,7 +885,7 @@ export default function MaxHefele() {
       {legalModal && (
         <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
           <div className="legal-box">
-            <button className="legal-close" onClick={() => setLegalModal(null)}>×</button>
+            <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
 
             {legalModal === "impressum" && (
               <>
@@ -1053,15 +904,13 @@ export default function MaxHefele() {
 
                 <div className="legal-section">
                   <h3>Contact</h3>
-                  <p>
-                    E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
-                  </p>
+                  <p>E-Mail: <a href="mailto:info@maxhefele.de" style={{ color: '#fff' }}>info@maxhefele.de</a></p>
                 </div>
 
                 <div className="legal-section">
                   <h3>EU-Streitschlichtung</h3>
                   <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>https://ec.europa.eu/consumers/odr/</a>.<br/>
                     Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
@@ -1075,9 +924,7 @@ export default function MaxHefele() {
                 
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <h3>Allgemeine Hinweise</h3>
                   <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-                  <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
                 </div>
 
                 <div className="legal-section">
@@ -1089,69 +936,24 @@ export default function MaxHefele() {
                     86865 Markt Wald<br />
                     E-Mail: info@maxhefele.de
                   </div>
-                  <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
                 </div>
 
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
-                  <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
+                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
+                  <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px' }}>
                     {t.revokeBtn}
                   </button>
                 </div>
 
                 <div className="legal-section">
-                  <h3>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde</h3>
-                  <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.</p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Recht auf Auskunft, Löschung und Berichtigung</h3>
-                  <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
-                </div>
-
-                <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
-                  <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
-
-                  <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
-                  <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
-                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
-                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
-                  <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
+                  <p><strong>GitHub Pages:</strong> Wir hosten diese Website über GitHub Pages (GitHub Inc.).</p>
+                  <p><strong>Google Drive:</strong> Eingebundene Inhalte/Videos laden erst nach expliziter Aktivierung.</p>
+                  <p><strong>SoundCloud:</strong> Audio-Player werden erst nach Zustimmung geladen.</p>
+                  <p><strong>Externe Verlinkungen:</strong> Beatport, Instagram, YouTube, Spotify, Apple Music, Mixcloud & Amazon Music sind statische Links ohne Datentransfer vor dem Klick.</p>
                 </div>
-
-                <div className="legal-section">
-                  <h3>SoundCloud</h3>
-                  <p>Auf unseren Seiten können Plugins des sozialen Netzwerks SoundCloud (SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland) integriert sein. Die SoundCloud-Plugins erkennen Sie an dem SoundCloud-Logo auf den betroffenen Inhalten.</p>
-                  <p>Wenn Sie die SoundCloud-Inhalte über unser Zwei-Klick-System aktivieren, wird eine direkte Verbindung zwischen Ihrem Browser und dem SoundCloud-Server hergestellt. SoundCloud erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie den SoundCloud-Button anklicken während Sie in Ihrem SoundCloud-Benutzerkonto eingeloggt sind, können Sie die Inhalte unserer Seiten mit Ihrem SoundCloud-Profil verlinken. Dadurch kann SoundCloud den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch SoundCloud erhalten.</p>
-                  <p>Die Datenverarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von SoundCloud unter: <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">https://soundcloud.com/pages/privacy</a>.</p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Mixcloud</h3>
-                  <p>Auf unserer Website sind Links oder Plugins des Audio-Dienstes Mixcloud integriert. Anbieter ist die Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien.</p>
-                  <p>Bei der Nutzung oder beim Aufruf von Mixcloud-Elementen stellt Ihr Browser eine direkte Verbindung zu den Servern von Mixcloud her. Hierdurch erhält Mixcloud die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Die Nutzung von Mixcloud erfolgt auf Grundlage unseres berechtigten Interesses an der ansprechenden Gestaltung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Für den Datentransfer nach Großbritannien liegt ein Angemessenheitsbeschluss der Europäischen Kommission vor.</p>
-                  <p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Mixcloud: <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">https://www.mixcloud.com/privacy/</a>.</p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Beatport, Instagram & YouTube (Externe Verlinkungen)</h3>
-                  <p>Auf unserer Webseite befinden sich Hyperlinks zu externen Social-Media-Plattformen und Musikdiensten (Beatport, Instagram, YouTube). Es handelt sich hierbei um reine Text- bzw. Grafiklinks, die beim Laden unserer Webseite **keine** Daten an diese Netzwerke senden. Erst wenn Sie aktiv auf einen dieser Links klicken, werden Sie auf die Plattform des Drittanbieters weitergeleitet. Dort gelten die jeweiligen Datenschutzbestimmungen der Betreiber.</p>
-                  <p>Informationen zum Umgang mit Ihren Daten finden Sie in den Datenschutzrichtlinien von Beatport (<a href="https://www.beatport.com/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.beatport.com/privacy-policy</a>), Instagram (<a href="https://help.instagram.com/519522125107875" target="_blank" rel="noopener noreferrer">https://help.instagram.com/519522125107875</a>) und YouTube/Google (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>).</p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>iTunes / Apple Music</h3>
-                  <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
-                </div>
-
-                <div className="legal-section">
-                  <h3>Spotify & Amazon Music</h3>
-                  <p>Verlinkungen zu Spotify und Amazon Music sind ebenfalls statische Links. Erst nach einem Klick werden Sie zum jeweiligen Dienst weitergeleitet, wo dessen Datenschutzbestimmungen gelten. Weitere Informationen finden Sie bei Spotify (<a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://www.spotify.com/de/legal/privacy-policy/</a>) und Amazon (<a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010" target="_blank" rel="noopener noreferrer">amazon.de/datenschutz</a>).</p>
-                </div>
-                <p><strong>Stand 09. Juli 2026</strong></p>
+                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 09. Juli 2026</strong></p>
               </>
             )}
           </div>

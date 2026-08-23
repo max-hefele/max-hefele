@@ -294,6 +294,12 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
+  /* FUTURISTIC TEXT DECODER GLOW */
+  .cyber-text {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    display: inline-block;
+  }
+
   /* NAV */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
   .nav.scrolled { padding: 16px 60px; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
@@ -482,6 +488,37 @@ const css = `
   }
 `;
 
+// ─── Cyber Text Decoder Component ───
+function CyberText({ text }) {
+  const [displayText, setDisplayText] = useState(text);
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%&$#@!";
+
+  useEffect(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplayText(
+        text
+          .split("")
+          .map((letter, index) => {
+            if (letter === " ") return " ";
+            if (index < iteration) return text[index];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+
+      if (iteration >= text.length) {
+        clearInterval(interval);
+      }
+      iteration += 1 / 3;
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span className="cyber-text">{displayText}</span>;
+}
+
 // ─── Reveal Hook ───
 function useReveal(threshold = 0.1) {
   const ref = useRef(null);
@@ -545,7 +582,9 @@ export default function MaxHefele() {
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
-        <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>{ARTIST_NAME}</span>
+        <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <CyberText text={ARTIST_NAME} />
+        </span>
         
         <div className="nav-right">
           <ul className="nav-links">
@@ -576,7 +615,9 @@ export default function MaxHefele() {
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
-          <h1 className="hero-name">{ARTIST_NAME}</h1>
+          <h1 className="hero-name">
+            <CyberText text={ARTIST_NAME} />
+          </h1>
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
