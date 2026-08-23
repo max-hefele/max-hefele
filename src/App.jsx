@@ -111,9 +111,9 @@ const T = {
     watchBtn: "Watch",
     consentSC: {
       title: "SoundCloud Audio",
-      text: "Loading the player transfers data to SoundCloud.",
-      link: "Read Privacy Policy",
-      btn: "Load Player"
+      text: "Laden des Players überträgt Daten an SoundCloud.",
+      link: "Datenschutzerklärung lesen",
+      btn: "Player laden"
     },
     consentVD: {
       title: (count) => `Watch ${count} Videos`,
@@ -268,6 +268,11 @@ const Icons = {
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   ),
+  Play: () => (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  )
 };
 
 // ─── Visual & Colorful Agency Styles ───
@@ -447,7 +452,112 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
 
-  /* PRIVACY & CONSENT OVERLAYS */
+  /* SOUNDCLOUD SPEZIELLER CONTAINER MIT ANIMATION & ZENTRIERTEM LOGO */
+  .sc-custom-player {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    background-color: #111;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .sc-waveform-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    opacity: 0.35;
+  }
+
+  .sc-waveform-bg span {
+    width: 6px;
+    height: 30%;
+    background: linear-gradient(180deg, #ff5500, #ff8800);
+    border-radius: 3px;
+    animation: scWave 1.2s infinite ease-in-out alternate;
+  }
+
+  .sc-waveform-bg span:nth-child(2n) { animation-delay: 0.2s; }
+  .sc-waveform-bg span:nth-child(3n) { animation-delay: 0.4s; }
+  .sc-waveform-bg span:nth-child(4n) { animation-delay: 0.6s; }
+
+  @keyframes scWave {
+    0% { height: 15%; }
+    100% { height: 80%; }
+  }
+
+  .sc-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 14, 18, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .sc-centered-logo {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .sc-play-btn {
+    width: 52px;
+    height: 52px;
+    background: #ff5500;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.7);
+    animation: scPulse 1.8s infinite;
+    transition: transform 0.2s ease;
+  }
+
+  .sc-play-btn:hover {
+    transform: scale(1.08);
+  }
+
+  @keyframes scPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 85, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0); }
+  }
+
+  .sc-gdpr-text {
+    font-size: 11px;
+    color: var(--text-mid);
+    margin-top: 12px;
+    max-width: 80%;
+  }
+
+  .sc-privacy-link {
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  /* PRIVACY & CONSENT OVERLAYS FOR VIDEOS */
   .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg-card); }
   .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 24px; }
   .media-consent-inner { display: flex; align-items: center; gap: 24px; max-width: 600px; width: 100%; justify-content: space-between; }
@@ -803,24 +913,40 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD PLAYER */}
+          {/* SOUNDCLOUD PLAYER WITH ANIMATED WAVEFORM & CENTERED LOGO */}
           <Rv delay={150}>
-            <div className="privacy-wrapper" style={{ height: '166px', marginTop: '20px' }}>
+            <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
-                <div className="privacy-blur-overlay">
-                  <div className="media-consent-inner">
-                    <div className="media-consent-text-wrap">
-                      <h4 className="media-consent-title">{t.consentSC.title}</h4>
-                      <p className="media-consent-text">{t.consentSC.text} <button className="media-consent-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button></p>
-                    </div>
-                    <button className="media-consent-btn" onClick={() => {
+                <div className="sc-custom-player">
+                  <div className="sc-waveform-bg">
+                    <span/><span/><span/><span/><span/>
+                    <span/><span/><span/><span/><span/>
+                    <span/><span/><span/><span/><span/>
+                  </div>
+                  <div className="sc-overlay">
+                    {/* Zentriertes Logo / Name */}
+                    <div className="sc-centered-logo">{ARTIST_NAME}</div>
+                    
+                    {/* Pulsierender Button */}
+                    <button className="sc-play-btn" aria-label="Player laden" onClick={() => {
                       setAllowSoundCloud(true);
                       if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
-                    }}>{t.consentSC.btn}</button>
+                    }}>
+                      <Icons.Play />
+                    </button>
+                    
+                    <p className="sc-gdpr-text">
+                      {t.consentSC.text}{' '}
+                      <button className="sc-privacy-link" onClick={() => setLegalModal("datenschutz")}>
+                        {t.consentSC.link}
+                      </button>
+                    </p>
                   </div>
                 </div>
               ) : (
-                <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                <div className="privacy-wrapper" style={{ height: '166px' }}>
+                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                </div>
               )}
             </div>
           </Rv>
