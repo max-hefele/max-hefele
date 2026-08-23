@@ -42,11 +42,10 @@ const T = {
       btn: "Player laden"
     },
     consentVD: {
-      title: (count) => `${count} Videos ansehen`,
-      text: "Zum Abspielen werden Inhalte von Google Drive geladen.",
+      title: (count) => `${count} Exklusive Videos`,
+      text: "Beim Aktivieren werden Medieninhalte von Google Drive geladen.",
       link: "Datenschutzerklärung lesen",
-      btnLoad: "Videos laden & öffnen",
-      btnExpand: "Jetzt aufklappen"
+      btnLoad: "Videos freischalten"
     },
     videoLabel: "Videos",
     videoMore: "Alle Videos auf Google Drive",
@@ -116,11 +115,10 @@ const T = {
       btn: "Player laden"
     },
     consentVD: {
-      title: (count) => `Watch ${count} Videos`,
-      text: "Content from Google Drive is loaded for playback.",
+      title: (count) => `${count} Exclusive Videos`,
+      text: "Loading videos will transfer data to Google Drive.",
       link: "Read Privacy Policy",
-      btnLoad: "Load & open videos",
-      btnExpand: "Expand now"
+      btnLoad: "Unlock Videos"
     },
     videoLabel: "Videos",
     videoMore: "All videos on Google Drive",
@@ -155,7 +153,6 @@ const T = {
 
 // ─── Config ───
 const ARTIST_NAME = "MAX HEFELE";
-
 const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
 
 const SOCIAL_LINKS = [
@@ -269,26 +266,25 @@ const Icons = {
     </svg>
   ),
   Play: () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 5v14l11-7z"/>
     </svg>
   )
 };
 
-// ─── Visual & Colorful Agency Styles ───
+// ─── Visual & Dynamic Styles ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;700;800&display=swap');
 
   :root {
-    --bg: #0d0e12;
-    --bg-elevated: #13151c;
-    --bg-card: #181b24;
+    --bg: #0b0c0e;
+    --bg-elevated: #111319;
+    --bg-card: #161822;
     --text: #f5f5f7;
-    --text-dim: #798196;
-    --text-mid: #a0a7b8;
-    --accent: #3b82f6;
-    --border: rgba(255, 255, 255, 0.1);
-    --border-hover: rgba(255, 255, 255, 0.3);
+    --text-dim: #6c7385;
+    --text-mid: #9ea5b5;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.25);
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -299,34 +295,52 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-  /* ELEGANTE ERSCHEINUNGS-ANIMATION FÜR LOGO & HEADING */
-  .fade-logo {
-    display: inline-flex;
-    letter-spacing: 4px;
+  /* DYNAMISCHER BACKGROUND GLOW (Follows Mouse) */
+  .bg-glow-orb {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+    transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+    top: -300px;
+    left: -300px;
   }
+
+  /* LOGO FLOATING ANIMATION */
+  .floating-logo-wrap {
+    animation: gentleFloat 4s ease-in-out infinite alternate;
+    display: inline-block;
+  }
+
+  @keyframes gentleFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-6px); }
+  }
+
+  /* ELEGANTE CHAR-FADE ANIMATION */
+  .fade-logo { display: inline-flex; letter-spacing: 4px; }
   .fade-char {
     display: inline-block;
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
     animation: elegantFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
   @keyframes elegantFadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* NAV */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { padding: 16px 60px; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .nav.scrolled { padding: 16px 60px; background: rgba(11, 12, 14, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
   .nav-right { display: flex; align-items: center; gap: 40px; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; }
   .nav-links a:hover { color: #fff; }
   
-  /* LANG SWITCHER */
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 500; transition: color 0.3s; }
   .lang-switch button.active { color: #fff; font-weight: 700; }
@@ -339,66 +353,67 @@ const css = `
 
   /* HERO */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
-  .hero-bg { position: absolute; inset: 0; filter: brightness(0.7) contrast(1.05); }
+  .hero-bg { position: absolute; inset: 0; filter: brightness(0.65) contrast(1.05); transition: transform 0.1s ease-out; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
   .hero-name { 
     font-family: var(--font-display); 
-    font-size: clamp(26px, 5vw, 64px); 
+    font-size: clamp(28px, 5.5vw, 68px); 
     font-weight: 800; 
-    letter-spacing: 3px; 
+    letter-spacing: 4px; 
     line-height: 1.1; 
     text-transform: uppercase; 
-    margin-bottom: 20px; 
-    background: linear-gradient(180deg, #ffffff 0%, #a0a7b8 100%);
+    margin-bottom: 24px; 
+    background: linear-gradient(180deg, #ffffff 0%, #8d95a5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* MOBILE OPTIMIERTE SOCIAL ICONS */
   .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
   .hero-socials a { 
     color: var(--text-mid); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    width: 40px; 
-    height: 40px; 
+    width: 42px; 
+    height: 42px; 
     border: 1px solid var(--border); 
     border-radius: 50%; 
     transition: all 0.4s var(--ease); 
     text-decoration: none; 
-    background: rgba(255, 255, 255, 0.03); 
+    background: rgba(255, 255, 255, 0.02); 
   }
-  .hero-socials a:hover { color: #fff; border-color: rgba(255, 255, 255, 0.4); transform: translateY(-2px); background: rgba(255, 255, 255, 0.1); }
-  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s; }
-  .scroll-hint:hover { color: var(--text); }
+  .hero-socials a:hover { color: #fff; border-color: var(--border-hover); transform: translateY(-3px) scale(1.05); background: rgba(255, 255, 255, 0.08); }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; }
+  .scroll-hint:hover { color: var(--text); transform: translateY(3px); }
 
   /* SECTIONS */
-  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; }
+  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
   .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; font-weight: 500; }
   .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
 
   /* ABOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; filter: none; transition: transform 0.5s ease; }
-  .about-photo:hover img { transform: scale(1.02); }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+  .about-photo:hover img { transform: scale(1.04); }
   .about-text p { color: var(--text-mid); font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
   .about-text p:first-child { color: var(--text); font-size: 18px; font-weight: 400; line-height: 1.6; }
   
   .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
-  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; }
+  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; transition: border-color 0.3s; }
+  .h-card:hover { border-color: var(--border-hover); }
   .h-card-label { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; }
   .h-card-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 
   .residencies { margin-top: 40px; }
   .res-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 500; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); transition: all 0.3s; }
+  .res-tag:hover { color: #fff; border-color: var(--border-hover); }
 
-  /* MUSIC (SLIDER) WITH SUBTLE BRAND ACCENTS */
-  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; }
+  /* MUSIC SLIDER */
+  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
   .music-slider { 
@@ -427,7 +442,6 @@ const css = `
     overflow: hidden;
   }
   
-  /* Brand Specific Subtle Accents */
   .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
   .m-card[data-brand="spotify"] { --brand-color: #1db954; }
   .m-card[data-brand="youtube"] { --brand-color: #ff0000; }
@@ -437,14 +451,14 @@ const css = `
   .m-card[data-brand="amazonmusic"] { --brand-color: #00a8e1; }
 
   .m-card .m-badge { color: var(--brand-color, var(--text-mid)); }
-  .m-card .brand-icon { color: var(--brand-color, var(--text)); transition: transform 0.3s ease; }
+  .m-card .brand-icon { color: var(--brand-color, var(--text)); transition: transform 0.4s var(--ease); }
   
   .m-card:hover { 
     border-color: var(--brand-color, var(--border-hover)); 
-    transform: translateY(-4px); 
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5), 0 0 20px -5px var(--brand-color);
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.6), 0 0 15px -5px var(--brand-color);
   }
-  .m-card:hover .brand-icon { transform: scale(1.1); }
+  .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
   .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
   .m-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
@@ -452,103 +466,112 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
 
-  /* SOUNDCLOUD SPEZIELLER CONTAINER MIT ANIMATION & ZENTRIERTEM LOGO */
-  .sc-custom-player {
+  /* UNIFIED PLAYER & CONSENT OVERLAYS (Soundcloud + Video) */
+  .unified-consent-box {
     position: relative;
     width: 100%;
-    height: 190px;
-    background-color: #111;
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
+    background: var(--bg-card);
+    transition: border-color 0.4s ease;
   }
+  .unified-consent-box:hover { border-color: var(--border-hover); }
 
-  .sc-waveform-bg {
+  .sc-height { height: 180px; }
+  .vd-height { height: 260px; }
+
+  /* ANIMATED BACKDROP WAVE */
+  .consent-bg-wave {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    opacity: 0.35;
+    gap: 8px;
+    opacity: 0.15;
+    pointer-events: none;
   }
 
-  .sc-waveform-bg span {
-    width: 6px;
-    height: 30%;
-    background: linear-gradient(180deg, #ff5500, #ff8800);
-    border-radius: 3px;
-    animation: scWave 1.2s infinite ease-in-out alternate;
+  .consent-bg-wave span {
+    width: 8px;
+    height: 40%;
+    background: #fff;
+    border-radius: 4px;
+    animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
 
-  .sc-waveform-bg span:nth-child(2n) { animation-delay: 0.2s; }
-  .sc-waveform-bg span:nth-child(3n) { animation-delay: 0.4s; }
-  .sc-waveform-bg span:nth-child(4n) { animation-delay: 0.6s; }
+  .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; }
+  .consent-bg-wave span:nth-child(3n) { animation-delay: 0.4s; }
+  .consent-bg-wave span:nth-child(4n) { animation-delay: 0.6s; }
 
-  @keyframes scWave {
-    0% { height: 15%; }
-    100% { height: 80%; }
+  @keyframes wavePulse {
+    0% { height: 20%; opacity: 0.2; }
+    100% { height: 85%; opacity: 0.8; }
   }
 
-  .sc-overlay {
+  .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(13, 14, 18, 0.7);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(13, 14, 18, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
     text-align: center;
     z-index: 2;
   }
 
-  .sc-centered-logo {
+  /* UNIFIED FLOATING LOGO OVER MEDIA PLAYERS */
+  .overlay-brand-logo {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    opacity: 0.9;
   }
 
-  .sc-play-btn {
-    width: 52px;
-    height: 52px;
-    background: #ff5500;
+  .media-play-btn {
+    width: 56px;
+    height: 56px;
+    background: #fff;
     border: none;
     border-radius: 50%;
-    color: #fff;
+    color: #000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.7);
-    animation: scPulse 1.8s infinite;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    animation: whitePulse 2s infinite;
   }
 
-  .sc-play-btn:hover {
-    transform: scale(1.08);
+  .media-play-btn:hover {
+    transform: scale(1.1);
   }
 
-  @keyframes scPulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(255, 85, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0); }
+  @keyframes whitePulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
   }
 
-  .sc-gdpr-text {
+  .media-consent-text {
     font-size: 11px;
     color: var(--text-mid);
-    margin-top: 12px;
-    max-width: 80%;
+    margin-top: 14px;
+    max-width: 440px;
+    line-height: 1.5;
   }
 
-  .sc-privacy-link {
+  .media-privacy-link {
     background: none;
     border: none;
     color: #fff;
@@ -557,44 +580,48 @@ const css = `
     font-size: 11px;
   }
 
-  /* PRIVACY & CONSENT OVERLAYS FOR VIDEOS */
-  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg-card); }
-  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 24px; }
-  .media-consent-inner { display: flex; align-items: center; gap: 24px; max-width: 600px; width: 100%; justify-content: space-between; }
-  .media-consent-text-wrap { text-align: left; }
-  .media-consent-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .media-consent-text { font-size: 12px; color: var(--text-mid); line-height: 1.5; margin: 0; }
-  .media-consent-link { background: none; border: none; padding: 0; color: #fff; font-size: 12px; text-decoration: underline; cursor: pointer; }
-  .media-consent-btn { background: #fff; border: none; color: #000; padding: 12px 24px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: opacity 0.3s; white-space: nowrap; }
-  .media-consent-btn:hover { opacity: 0.85; }
+  /* VIDEO GRID STAGGERED FADE-IN */
+  .video-block { margin-top: 80px; }
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  
+  .video-frame { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background: #000; 
+    animation: gridPop 0.6s var(--ease) forwards;
+  }
+  
+  @keyframes gridPop {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .video-frame iframe { width: 100%; height: 100%; border: none; }
+  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
+  .video-more:hover { color: var(--text); }
 
   /* NEWS SLIDER */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
-  .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.4s ease; display: flex; flex-direction: column; }
-  .n-card:hover { border-color: var(--border-hover); }
+  .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s var(--ease); display: flex; flex-direction: column; }
+  .n-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
-  .n-img { width: 100%; height: 100%; object-fit: cover; filter: none; transition: transform 0.6s var(--ease); }
-  .n-card:hover .n-img { transform: scale(1.04); }
+  .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .n-card:hover .n-img { transform: scale(1.05); }
   .n-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
   .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
   .n-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
   .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
-  /* VIDEO GRID */
-  .video-block { margin-top: 80px; }
-  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .video-frame { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #000; }
-  .video-frame iframe { width: 100%; height: 100%; border: none; }
-  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--text); }
-
   /* DATES & CONTACT & FOOTER */
   .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; }
   .dates-empty-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
-  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; }
+  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s; }
@@ -602,13 +629,13 @@ const css = `
   .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
   .contact-social:hover { color: #fff; }
 
-  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); }
+  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
   .footer-link:hover { color: var(--text); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(13, 14, 18, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(11, 12, 14, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 720px; width: 100%; padding: 48px; position: relative; }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; }
   .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
@@ -619,10 +646,9 @@ const css = `
   .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
 
   /* REVEAL ANIMATION */
-  .rv { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease); }
+  .rv { opacity: 0; transform: translateY(24px); transition: all 0.8s var(--ease); }
   .rv.vis { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE & MOBILE FEINJUSTIERUNG */
   @media (max-width: 1024px) {
     .section, .music-inner, .contact-inner { padding: 80px 24px; }
     .nav { padding: 20px 24px; }
@@ -636,30 +662,21 @@ const css = `
     .footer { flex-direction: column; gap: 20px; text-align: center; }
   }
   @media (max-width: 640px) {
-    .hero-socials a { width: 36px; height: 36px; }
-    .hero-socials svg { width: 16px; height: 16px; }
+    .hero-socials a { width: 38px; height: 38px; }
     .highlights { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .m-card { flex: 0 0 260px; padding: 20px; }
     .n-card { flex: 0 0 280px; }
-    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; }
     .legal-box { padding: 24px; }
   }
 `;
 
-// ─── Elegant Fade Text Component (Logo/Header) ───
+// ─── Component for Animated Text ───
 function ElegantFadeText({ text }) {
   return (
     <span className="fade-logo">
       {text.split("").map((char, index) => (
-        <span
-          key={index}
-          className="fade-char"
-          style={{
-            animationDelay: `${index * 0.05}s`,
-            marginRight: char === " " ? "6px" : "0px"
-          }}
-        >
+        <span key={index} className="fade-char" style={{ animationDelay: `${index * 0.04}s`, marginRight: char === " " ? "6px" : "0px" }}>
           {char === " " ? "\u00A0" : char}
         </span>
       ))}
@@ -693,16 +710,25 @@ export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
-  const [videosExpanded, setVideosExpanded] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
+
+  // Mouse Glow Position Effect
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
       setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
     }
+
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
@@ -720,13 +746,18 @@ export default function MaxHefele() {
     }
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
-    setVideosExpanded(false);
     alert(t.revokeAlert);
   };
 
   return (
     <>
       <style>{css}</style>
+
+      {/* DYNAMISCHER MOUSE GLOW ORB */}
+      <div 
+        className="bg-glow-orb" 
+        style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }} 
+      />
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
@@ -816,7 +847,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC SLIDER WITH DECENT COLOR ACCENTS */}
+      {/* MUSIC SLIDER */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
@@ -913,78 +944,76 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD PLAYER WITH ANIMATED WAVEFORM & CENTERED LOGO */}
+          {/* SOUNDCLOUD PLAYER */}
           <Rv delay={150}>
             <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
-                <div className="sc-custom-player">
-                  <div className="sc-waveform-bg">
-                    <span/><span/><span/><span/><span/>
-                    <span/><span/><span/><span/><span/>
-                    <span/><span/><span/><span/><span/>
+                <div className="unified-consent-box sc-height">
+                  <div className="consent-bg-wave">
+                    <span/><span/><span/><span/><span/><span/><span/><span/>
                   </div>
-                  <div className="sc-overlay">
-                    {/* Zentriertes Logo / Name */}
-                    <div className="sc-centered-logo">{ARTIST_NAME}</div>
+                  <div className="consent-overlay-content">
+                    <div className="floating-logo-wrap">
+                      <div className="overlay-brand-logo">{ARTIST_NAME}</div>
+                    </div>
                     
-                    {/* Pulsierender Button */}
-                    <button className="sc-play-btn" aria-label="Player laden" onClick={() => {
+                    <button className="media-play-btn" aria-label="Player laden" onClick={() => {
                       setAllowSoundCloud(true);
                       if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
                     }}>
                       <Icons.Play />
                     </button>
                     
-                    <p className="sc-gdpr-text">
+                    <p className="media-consent-text">
                       {t.consentSC.text}{' '}
-                      <button className="sc-privacy-link" onClick={() => setLegalModal("datenschutz")}>
+                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>
                         {t.consentSC.link}
                       </button>
                     </p>
                   </div>
                 </div>
               ) : (
-                <div className="privacy-wrapper" style={{ height: '166px' }}>
+                <div className="unified-consent-box" style={{ height: '166px' }}>
                   <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
                 </div>
               )}
             </div>
           </Rv>
 
-          {/* VIDEO GRID */}
+          {/* VIDEO SEKTION (EXAKT GLEICHES SCHWEBENDES LOGO-DESIGN) */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
               
-              {(!allowGoogleDrive || !videosExpanded) ? (
-                <div className="privacy-wrapper" style={{ height: '220px', cursor: allowGoogleDrive ? 'pointer' : 'default' }} onClick={() => { if(allowGoogleDrive) setVideosExpanded(true); }}>
-                  <div className="privacy-blur-overlay">
-                    <div className="media-consent-inner">
-                      <div className="media-consent-text-wrap">
-                        <h4 className="media-consent-title">{t.consentVD.title(VIDEO_IDS.length)}</h4>
-                        {!allowGoogleDrive && (
-                          <p className="media-consent-text">
-                            {t.consentVD.text} <button className="media-consent-link" onClick={(e) => { e.stopPropagation(); setLegalModal("datenschutz"); }}>{t.consentVD.link}</button>
-                          </p>
-                        )}
-                      </div>
-                      {!allowGoogleDrive ? (
-                        <button className="media-consent-btn" onClick={(e) => { 
-                          e.stopPropagation(); 
-                          setAllowGoogleDrive(true); 
-                          setVideosExpanded(true);
-                          if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true"); 
-                        }}>{t.consentVD.btnLoad}</button>
-                      ) : (
-                        <button className="media-consent-btn">{t.consentVD.btnExpand}</button>
-                      )}
+              {!allowGoogleDrive ? (
+                <div className="unified-consent-box vd-height">
+                  <div className="consent-bg-wave">
+                    <span/><span/><span/><span/><span/><span/><span/><span/>
+                  </div>
+                  <div className="consent-overlay-content">
+                    <div className="floating-logo-wrap">
+                      <div className="overlay-brand-logo">{ARTIST_NAME}</div>
                     </div>
+
+                    <button className="media-play-btn" aria-label="Videos freischalten" onClick={() => {
+                      setAllowGoogleDrive(true);
+                      if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true");
+                    }}>
+                      <Icons.Play />
+                    </button>
+
+                    <p className="media-consent-text">
+                      {t.consentVD.title(VIDEO_IDS.length)} — {t.consentVD.text}{' '}
+                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>
+                        {t.consentVD.link}
+                      </button>
+                    </p>
                   </div>
                 </div>
               ) : (
                 <div className="video-grid">
                   {VIDEO_IDS.map((id, i) => (
-                    <div className="video-frame" key={id}>
+                    <div className="video-frame" key={id} style={{ animationDelay: `${i * 0.08}s` }}>
                       <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
                     </div>
                   ))}
@@ -1146,7 +1175,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
                   <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
-                  <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px' }}>
+                  <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', marginTop: '12px' }}>
                     {t.revokeBtn}
                   </button>
                 </div>
@@ -1158,7 +1187,7 @@ export default function MaxHefele() {
                   <p><strong>SoundCloud:</strong> Audio-Player werden erst nach Zustimmung geladen.</p>
                   <p><strong>Externe Verlinkungen:</strong> Beatport, Instagram, YouTube, Spotify, Apple Music, Mixcloud & Amazon Music sind statische Links ohne Datentransfer vor dem Klick.</p>
                 </div>
-                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 09. Juli 2026</strong></p>
+                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 23. August 2026</strong></p>
               </>
             )}
           </div>
