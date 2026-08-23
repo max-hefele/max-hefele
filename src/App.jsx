@@ -1,6 +1,3 @@
-Hier ist dein vollständiger, aktualisierter Code basierend auf dem bereitgestellten Quellcode, bei dem das EPK wie gewünscht weggelassen wurde:
-
-```tsx
 "use client";
 import { useState, useEffect, useRef } from "react";
 
@@ -330,7 +327,7 @@ const css = `
     background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
     pointer-events: none;
     z-index: 0;
-    transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+    will-change: transform;
     top: -300px;
     left: -300px;
   }
@@ -856,16 +853,42 @@ export default function MaxHefele() {
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Gleit-Effekt Ref für den Hintergrund-Glow-Orb (High-Performance Lerp Animation)
+  const orbRef = useRef(null);
+  const mouseTargetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
       setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
     }
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+
+    const handleMouseMove = (e) => {
+      mouseTargetRef.current = { x: e.clientX, y: e.clientY };
+    };
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    let animationFrameId;
+    let currentX = 0;
+    let currentY = 0;
+
+    const render = () => {
+      // Lerp-Faktor (0.08 sorgt für das butterweiche Nachgleiten)
+      currentX += (mouseTargetRef.current.x - currentX) * 0.08;
+      currentY += (mouseTargetRef.current.y - currentY) * 0.08;
+
+      if (orbRef.current) {
+        orbRef.current.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      }
+      animationFrameId = requestAnimationFrame(render);
+    };
+    render();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   useEffect(() => {
@@ -892,7 +915,7 @@ export default function MaxHefele() {
       <div className="noise-overlay" />
       <div className="laser-stream-h" />
       <div className="laser-stream-v" />
-      <div className="bg-glow-orb" style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }} />
+      <div ref={orbRef} className="bg-glow-orb" />
 
       {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
@@ -1274,5 +1297,3 @@ export default function MaxHefele() {
     </>
   );
 }
-
-```
