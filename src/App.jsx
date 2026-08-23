@@ -293,7 +293,55 @@ const css = `
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; scrollbar-width: none; }
   ::-webkit-scrollbar { display: none; }
-  body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
+
+  /* DYNAMISCHER NOISE HINTERGRUND */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* FLIESSENDE MIKRO-LINIEN */
+  .laser-stream-h {
+    position: fixed;
+    top: 30%;
+    left: -100px;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    animation: streamHorizontal 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .laser-stream-v {
+    position: fixed;
+    top: -100px;
+    right: 20%;
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    animation: streamVertical 16s cubic-bezier(0.4, 0, 0.2, 1) infinite 4s;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes streamHorizontal {
+    0% { transform: translateX(0); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateX(110vw); opacity: 0; }
+  }
+  @keyframes streamVertical {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(110vh); opacity: 0; }
+  }
 
   /* DYNAMISCHER BACKGROUND GLOW (Follows Mouse) */
   .bg-glow-orb {
@@ -320,16 +368,47 @@ const css = `
     100% { transform: translateY(-6px); }
   }
 
-  /* ELEGANTE CHAR-FADE ANIMATION */
+  /* SUBTIL ERBER CYBER-GLITCH (Alle ~10 Sek) */
+  .cyber-glitch-title {
+    position: relative;
+    display: inline-block;
+    animation: glitchTrigger 10s infinite;
+  }
+
+  @keyframes glitchTrigger {
+    0%, 95%, 100% {
+      transform: translate(0);
+      filter: none;
+    }
+    96% {
+      transform: translate(-1px, 1px);
+      filter: drop-shadow(2px 0 #ff0055) drop-shadow(-2px 0 #00ffff);
+    }
+    97% {
+      transform: translate(2px, -1px);
+      filter: drop-shadow(-2px 0 #ff0055) drop-shadow(2px 0 #00ffff);
+    }
+    98% {
+      transform: translate(0);
+      filter: none;
+    }
+  }
+
+  /* ELEGANTE CHAR-FADE ANIMATION MIT BLUR-EASING */
   .fade-logo { display: inline-flex; letter-spacing: 4px; }
   .fade-char {
     display: inline-block;
     opacity: 0;
-    transform: translateY(8px);
-    animation: elegantFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transform: translateY(12px) scale(0.96);
+    filter: blur(10px);
+    animation: elegantFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   @keyframes elegantFadeIn {
-    to { opacity: 1; transform: translateY(0); }
+    to { 
+      opacity: 1; 
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
   }
 
   /* NAV */
@@ -379,11 +458,12 @@ const css = `
     height: 42px; 
     border: 1px solid var(--border); 
     border-radius: 50%; 
-    transition: all 0.4s var(--ease); 
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s; 
     text-decoration: none; 
     background: rgba(255, 255, 255, 0.02); 
+    will-change: transform;
   }
-  .hero-socials a:hover { color: #fff; border-color: var(--border-hover); transform: translateY(-3px) scale(1.05); background: rgba(255, 255, 255, 0.08); }
+  .hero-socials a:hover { color: #fff; border-color: var(--border-hover); background: rgba(255, 255, 255, 0.08); }
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; }
   .scroll-hint:hover { color: var(--text); transform: translateY(3px); }
 
@@ -412,7 +492,7 @@ const css = `
   .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); transition: all 0.3s; }
   .res-tag:hover { color: #fff; border-color: var(--border-hover); }
 
-  /* MUSIC SLIDER */
+  /* MUSIC SLIDER & 3D TILT CARDS */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
@@ -421,8 +501,9 @@ const css = `
     gap: 20px; 
     overflow-x: auto; 
     scroll-snap-type: x mandatory; 
-    padding-bottom: 20px; 
+    padding: 10px 10px 30px 10px; 
     margin-bottom: 40px;
+    perspective: 1000px;
   }
   
   .m-card { 
@@ -437,9 +518,11 @@ const css = `
     display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
-    transition: all 0.4s var(--ease); 
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s; 
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
   }
   
   .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
@@ -455,7 +538,6 @@ const css = `
   
   .m-card:hover { 
     border-color: var(--brand-color, var(--border-hover)); 
-    transform: translateY(-5px); 
     box-shadow: 0 12px 30px -10px rgba(0,0,0,0.6), 0 0 15px -5px var(--brand-color);
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
@@ -466,7 +548,7 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fff; }
 
-  /* UNIFIED PLAYER & CONSENT OVERLAYS (Soundcloud + Video) */
+  /* UNIFIED PLAYER & CONSENT OVERLAYS */
   .unified-consent-box {
     position: relative;
     width: 100%;
@@ -474,14 +556,15 @@ const css = `
     border-radius: 8px;
     overflow: hidden;
     background: var(--bg-card);
-    transition: border-color 0.4s ease;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+    transform-style: preserve-3d;
+    will-change: transform;
   }
   .unified-consent-box:hover { border-color: var(--border-hover); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
 
-  /* ANIMATED BACKDROP WAVE */
   .consent-bg-wave {
     position: absolute;
     inset: 0;
@@ -525,7 +608,6 @@ const css = `
     z-index: 2;
   }
 
-  /* UNIFIED FLOATING LOGO OVER MEDIA PLAYERS */
   .overlay-brand-logo {
     font-family: var(--font-display);
     font-size: 15px;
@@ -548,13 +630,10 @@ const css = `
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
     animation: whitePulse 2s infinite;
-  }
-
-  .media-play-btn:hover {
-    transform: scale(1.1);
+    will-change: transform;
   }
 
   @keyframes whitePulse {
@@ -645,9 +724,21 @@ const css = `
   .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
   .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
 
-  /* REVEAL ANIMATION */
-  .rv { opacity: 0; transform: translateY(24px); transition: all 0.8s var(--ease); }
-  .rv.vis { opacity: 1; transform: translateY(0); }
+  /* SCHONENDER BLUR-REVEAL BEIM SCROLLEN */
+  .rv { 
+    opacity: 0; 
+    filter: blur(12px);
+    transform: translateY(24px) scale(0.98); 
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); 
+    will-change: opacity, filter, transform;
+  }
+  .rv.vis { 
+    opacity: 1; 
+    filter: blur(0px);
+    transform: translateY(0) scale(1); 
+  }
 
   @media (max-width: 1024px) {
     .section, .music-inner, .contact-inner { padding: 80px 24px; }
@@ -674,9 +765,9 @@ const css = `
 // ─── Component for Animated Text ───
 function ElegantFadeText({ text }) {
   return (
-    <span className="fade-logo">
+    <span className="fade-logo cyber-glitch-title">
       {text.split("").map((char, index) => (
-        <span key={index} className="fade-char" style={{ animationDelay: `${index * 0.04}s`, marginRight: char === " " ? "6px" : "0px" }}>
+        <span key={index} className="fade-char" style={{ animationDelay: `${index * 0.05}s`, marginRight: char === " " ? "6px" : "0px" }}>
           {char === " " ? "\u00A0" : char}
         </span>
       ))}
@@ -685,7 +776,7 @@ function ElegantFadeText({ text }) {
 }
 
 // ─── Reveal Hook ───
-function useReveal(threshold = 0.1) {
+function useReveal(threshold = 0.15) {
   const ref = useRef(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
@@ -701,6 +792,75 @@ function useReveal(threshold = 0.1) {
 function Rv({ children, delay = 0, className = "" }) {
   const [ref, vis] = useReveal();
   return <div ref={ref} className={`rv ${vis ? "vis" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
+}
+
+// ─── Subtile Helper-Kompontenten für Interaktionen ───
+
+// 1. Magnetic Button Wrapper
+function MagneticButton({ children, className = "", style = {}, ...props }) {
+  const btnRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!btnRef.current || window.innerWidth < 1024) return;
+    const rect = btnRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    // Sanfte magnetische Wirkung (max. 8px)
+    btnRef.current.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!btnRef.current) return;
+    btnRef.current.style.transform = `translate(0px, 0px)`;
+  };
+
+  return (
+    <div
+      ref={btnRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{ display: "inline-block", ...style }}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+// 2. 3D-Tilt Card Wrapper
+function TiltCard({ children, className = "", style = {}, ...props }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current || window.innerWidth < 1024) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    // Maximale Neigung auf sehr dezente 4.5 Grad begrenzen
+    const rotateX = (-y / rect.height) * 9;
+    const rotateY = (x / rect.width) * 9;
+
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={style}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default function MaxHefele() {
@@ -753,6 +913,13 @@ export default function MaxHefele() {
     <>
       <style>{css}</style>
 
+      {/* DYNAMISCHES FILM GRAIN / NOISE OVERLAY */}
+      <div className="noise-overlay" />
+
+      {/* SUBTILE MIKRO-LASERLINIEN */}
+      <div className="laser-stream-h" />
+      <div className="laser-stream-v" />
+
       {/* DYNAMISCHER MOUSE GLOW ORB */}
       <div 
         className="bg-glow-orb" 
@@ -800,7 +967,13 @@ export default function MaxHefele() {
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
-              return <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}><Icon size={18} /></a>;
+              return (
+                <MagneticButton key={s.name}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}>
+                    <Icon size={18} />
+                  </a>
+                </MagneticButton>
+              );
             })}
           </div>
         </div>
@@ -857,7 +1030,7 @@ export default function MaxHefele() {
           <Rv delay={100}>
             <div className="music-slider">
               
-              <a className="m-card" data-brand="soundcloud" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="soundcloud" onClick={() => window.open("https://soundcloud.com/maxhefele", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">SoundCloud</span>
@@ -867,9 +1040,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.scDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="spotify" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="spotify" onClick={() => window.open("https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Spotify</span>
@@ -879,9 +1052,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.spDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="youtube" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="youtube" onClick={() => window.open("https://www.youtube.com/@MaxHefele", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">YouTube</span>
@@ -891,9 +1064,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.ytDesc}</p>
                 </div>
                 <div className="m-card-link">{t.watchBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="beatport" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="beatport" onClick={() => window.open("https://www.beatport.com/artist/max-hefele/2396410", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Beatport</span>
@@ -903,9 +1076,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.bpDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="applemusic" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="applemusic" onClick={() => window.open("https://music.apple.com/de/artist/max-hefele/6779171915", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Apple Music</span>
@@ -915,9 +1088,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.amDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="mixcloud" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="mixcloud" onClick={() => window.open("https://www.mixcloud.com/MaxHefele/", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Mixcloud</span>
@@ -927,9 +1100,9 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.mcDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
-              <a className="m-card" data-brand="amazonmusic" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
+              <TiltCard className="m-card" data-brand="amazonmusic" onClick={() => window.open("https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele", "_blank")}>
                 <div>
                   <div className="m-card-header">
                     <span className="m-badge">Amazon Music</span>
@@ -939,16 +1112,16 @@ export default function MaxHefele() {
                   <p className="m-card-desc">{t.azDesc}</p>
                 </div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
-              </a>
+              </TiltCard>
 
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD PLAYER */}
+          {/* SOUNDCLOUD PLAYER WITH TILT & MAGNETIC CONSENT BUTTON */}
           <Rv delay={150}>
             <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
-                <div className="unified-consent-box sc-height">
+                <TiltCard className="unified-consent-box sc-height">
                   <div className="consent-bg-wave">
                     <span/><span/><span/><span/><span/><span/><span/><span/>
                   </div>
@@ -957,12 +1130,14 @@ export default function MaxHefele() {
                       <div className="overlay-brand-logo">{ARTIST_NAME}</div>
                     </div>
                     
-                    <button className="media-play-btn" aria-label="Player laden" onClick={() => {
-                      setAllowSoundCloud(true);
-                      if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
-                    }}>
-                      <Icons.Play />
-                    </button>
+                    <MagneticButton>
+                      <button className="media-play-btn" aria-label="Player laden" onClick={() => {
+                        setAllowSoundCloud(true);
+                        if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
+                      }}>
+                        <Icons.Play />
+                      </button>
+                    </MagneticButton>
                     
                     <p className="media-consent-text">
                       {t.consentSC.text}{' '}
@@ -971,7 +1146,7 @@ export default function MaxHefele() {
                       </button>
                     </p>
                   </div>
-                </div>
+                </TiltCard>
               ) : (
                 <div className="unified-consent-box" style={{ height: '166px' }}>
                   <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
@@ -980,13 +1155,13 @@ export default function MaxHefele() {
             </div>
           </Rv>
 
-          {/* VIDEO SEKTION */}
+          {/* VIDEO SEKTION WITH TILT & MAGNETIC CONSENT BUTTON */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
               
               {!allowGoogleDrive ? (
-                <div className="unified-consent-box vd-height">
+                <TiltCard className="unified-consent-box vd-height">
                   <div className="consent-bg-wave">
                     <span/><span/><span/><span/><span/><span/><span/><span/>
                   </div>
@@ -995,12 +1170,14 @@ export default function MaxHefele() {
                       <div className="overlay-brand-logo">{ARTIST_NAME}</div>
                     </div>
 
-                    <button className="media-play-btn" aria-label="Videos freischalten" onClick={() => {
-                      setAllowGoogleDrive(true);
-                      if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true");
-                    }}>
-                      <Icons.Play />
-                    </button>
+                    <MagneticButton>
+                      <button className="media-play-btn" aria-label="Videos freischalten" onClick={() => {
+                        setAllowGoogleDrive(true);
+                        if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true");
+                      }}>
+                        <Icons.Play />
+                      </button>
+                    </MagneticButton>
 
                     <p className="media-consent-text">
                       {t.consentVD.title(VIDEO_IDS.length)} — {t.consentVD.text}{' '}
@@ -1009,13 +1186,13 @@ export default function MaxHefele() {
                       </button>
                     </p>
                   </div>
-                </div>
+                </TiltCard>
               ) : (
                 <div className="video-grid">
                   {VIDEO_IDS.map((id, i) => (
-                    <div className="video-frame" key={id} style={{ animationDelay: `${i * 0.08}s` }}>
+                    <TiltCard key={id} className="video-frame" style={{ animationDelay: `${i * 0.08}s` }}>
                       <iframe src={`https://drive.google.com/file/d/${id}/preview`} allow="autoplay; encrypted-media" allowFullScreen title={`Video ${i + 1}`} loading="lazy" />
-                    </div>
+                    </TiltCard>
                   ))}
                 </div>
               )}
