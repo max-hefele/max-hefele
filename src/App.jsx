@@ -146,7 +146,7 @@ const T = {
     privacyBtn: "Privacy Policy",
     revokeBtn: "Revoke consents here",
     revokeAlert: "Your cookie and streaming consents have been successfully revoked.",
-    legalTitleImprint: "IMPRINT",
+    legalTitleImprint: "IMPRESSUM",
     legalSubtitleImprint: "Information according to § 5 DDG",
     legalTitlePrivacy: "PRIVACY POLICY",
     legalSubtitlePrivacy: "Privacy Statement",
@@ -247,39 +247,39 @@ const Icons = {
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
     </svg>
   ),
-  SP: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  SP: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.59 14.42a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11a.62.62 0 0 1 .21.86zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34a.78.78 0 0 1 .25 1.07zm.11-2.84C14.8 8.99 9.4 8.78 6.3 9.72a.94.94 0 1 1-.54-1.8c3.56-1.08 9.52-.87 13.27 1.35a.94.94 0 0 1-.96 1.61z"/>
     </svg>
   ),
-  BP: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  BP: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5.5a1 1 0 0 1 2 0v4.05l3.04 1.76a1 1 0 0 1-1 1.73l-3.54-2.04A1 1 0 0 1 11 12V7.5z"/>
     </svg>
   ),
-  SC: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  SC: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M1 18V14h1v4H1zm2-5v5h1v-5H3zm2 2v3h1v-3H5zm2-4v7h1V11H7zm2 1v6h1v-6H9zm2-3v9h1V9h-1zm2 2v7h1v-7h-1zm3.5-2c-.28 0-.55.03-.81.1A5 5 0 0 0 11 5v14h7.5a3.5 3.5 0 0 0 0-7z"/>
     </svg>
   ),
-  MC: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  MC: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M4 14v-4h1v4H4zm3 1V9h1v6H7zm3 0V8h1v7h-1zm3 0V7h1v8h-1zm3 0V9h1v6h-1zm3 0v-4h1v4h-1z"/>
     </svg>
   ),
-  YT: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+  YT: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
     </svg>
   ),
-  AppleMusic: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  AppleMusic: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M16.8 3.2c-.9.1-2 .7-2.7 1.5-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.3.7-.8 1.1-1.9 1-3zM19.4 12.7c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.5 3.3 2.4 1.3-.1 1.8-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.3-1.2 3.2-2.4 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.2-1.2-3.2-4.1z"/>
     </svg>
   ),
-  AmazonMusic: () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  AmazonMusic: ({ className = "w-4 h-4", style = {} }) => (
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4.6a5.4 5.4 0 0 1 4.68 2.7.7.7 0 0 1-1.2.7 4 4 0 0 0-6.96 0 .7.7 0 1 1-1.2-.7A5.4 5.4 0 0 1 12 6.6zM6.4 14.9c3.3 2 7.9 2 11.2 0a.5.5 0 0 1 .6.8c-3.6 2.3-8.8 2.3-12.4 0a.5.5 0 1 1 .6-.8zm-.7 2.1c3.8 2.3 8.8 2.3 12.6 0a.4.4 0 0 1 .44.67c-4 2.5-9.5 2.5-13.5 0a.4.4 0 0 1 .46-.67z"/>
     </svg>
   ),
@@ -384,7 +384,6 @@ const css = `
   .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-text p { color: var(--text-mid); font-size: 14.5px; line-height: 1.85; margin-bottom: 20px; }
   .about-text p:first-child { color: var(--accent); font-size: 15.5px; }
-  .about-note { font-size: 12.5px !important; color: var(--text-dim) !important; font-style: italic; padding-top: 8px; border-top: 1px solid var(--border); margin-top: 12px; }
   .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; }
   .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; transition: all 0.3s var(--ease); }
   .h-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
@@ -396,17 +395,70 @@ const css = `
   .res-tag { font-size: 11px; color: var(--text-dim); padding: 5px 12px; border: 1px solid var(--border); letter-spacing: 0.3px; transition: all 0.3s; }
   .res-tag:hover { border-color: var(--text-dim); color: var(--text-mid); }
 
-  /* MUSIC */
+  /* MUSIC (VISUELLE KARTEN) */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .music-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .music-grid { display: grid; grid-template-columns: repeat( 3, 1fr); gap: 20px; }
-  .m-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; }
-  .m-card:hover { border-color: var(--border-light); transform: translateY(-3px); }
-  .m-card-icon { color: var(--text-dim); }
-  .m-card-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 1px; }
-  .m-card-desc { font-size: 12.5px; color: var(--text-dim); line-height: 1.65; flex: 1; }
-  .m-card-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
-  .m-card:hover .m-card-link { color: var(--text); }
+  .music-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  
+  .m-card { 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 24px; 
+    background: var(--bg-card); 
+    border: 1px solid var(--border); 
+    padding: 32px; 
+    transition: all 0.3s var(--ease); 
+    display: flex; 
+    flex-direction: column; 
+    sm-flex-direction: row; 
+    gap: 24px; 
+    text-decoration: none; 
+    color: inherit; 
+    align-items: center; 
+  }
+  .m-card:hover { 
+    transform: translateY(-4px); 
+    border-color: var(--border-light); 
+  }
+  
+  /* Farbige Cover-Box links in der Karte */
+  .m-card-logo-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.3s var(--ease);
+  }
+  .m-card:hover .m-card-logo-box {
+    transform: scale(1.05);
+  }
+
+  .m-card-content {
+    flex: 1;
+    text-align: center;
+  }
+  @media(min-width: 640px) {
+    .m-card { flex-direction: row; align-items: center; }
+    .m-card-content { text-align: left; }
+  }
+
+  .m-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .m-card-name { font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; line-height: 1.1; margin-bottom: 6px; transition: color 0.3s; }
+  .m-card-desc { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
+  .m-card-link { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 700; }
 
   /* PRIVACY OVERLAY & GLASSMORPHISM & DYNAMIC BACKGROUND FIX */
   .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: var(--bg-card); }
@@ -524,7 +576,7 @@ const css = `
     .section, .music-inner, .contact-inner { padding: 100px 24px; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
-    .music-grid { grid-template-columns: repeat(2, 1fr); }
+    .music-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
@@ -534,7 +586,6 @@ const css = `
   }
   @media (max-width: 480px) {
     .highlights { grid-template-columns: 1fr; }
-    .music-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .section, .music-inner, .contact-inner { padding: 80px 20px; }
     .hero-socials { gap: 8px; }
@@ -704,48 +755,98 @@ export default function MaxHefele() {
           </Rv>
           <Rv delay={100}>
             <div className="music-grid">
-              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.SC /></div>
-                <div className="m-card-name">SOUNDCLOUD</div>
-                <div className="m-card-desc">{t.scDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              
+              {/* SoundCloud */}
+              <a className="m-card" href="https://soundcloud.com/maxhefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(249,115,22,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f97316, #c2410c)' }}>
+                  <Icons.SC className="w-12 h-12 text-white" style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(249,115,22,0.15)', color: '#fb923c' }}>SoundCloud</span>
+                  <h3 className="m-card-name">SOUNDCLOUD</h3>
+                  <div className="m-card-desc">{t.scDesc}</div>
+                  <div className="m-card-link" style={{ color: '#fb923c' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.YT /></div>
-                <div className="m-card-name">YOUTUBE</div>
-                <div className="m-card-desc">{t.ytDesc}</div>
-                <div className="m-card-link">{t.watchBtn} <Icons.Arrow /></div>
+
+              {/* YouTube */}
+              <a className="m-card" href="https://www.youtube.com/@MaxHefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(239,68,68,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #ef4444, #991b1b)' }}>
+                  <Icons.YT style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(239,68,68,0.15)', color: '#f87171' }}>YouTube</span>
+                  <h3 className="m-card-name">YOUTUBE</h3>
+                  <div className="m-card-desc">{t.ytDesc}</div>
+                  <div className="m-card-link" style={{ color: '#f87171' }}>{t.watchBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.MC /></div>
-                <div className="m-card-name">MIXCLOUD</div>
-                <div className="m-card-desc">{t.mcDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+
+              {/* Mixcloud */}
+              <a className="m-card" href="https://www.mixcloud.com/MaxHefele/" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(59,130,246,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
+                  <Icons.MC style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>Mixcloud</span>
+                  <h3 className="m-card-name">MIXCLOUD</h3>
+                  <div className="m-card-desc">{t.mcDesc}</div>
+                  <div className="m-card-link" style={{ color: '#60a5fa' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.BP /></div>
-                <div className="m-card-name">BEATPORT</div>
-                <div className="m-card-desc">{t.bpDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+
+              {/* Beatport */}
+              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(16,185,129,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #10b981, #047857)' }}>
+                  <Icons.BP style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(16,185,129,0.15)', color: '#34d399' }}>Beatport</span>
+                  <h3 className="m-card-name">BEATPORT</h3>
+                  <div className="m-card-desc">{t.bpDesc}</div>
+                  <div className="m-card-link" style={{ color: '#34d399' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.SP /></div>
-                <div className="m-card-name">SPOTIFY</div>
-                <div className="m-card-desc">{t.spDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+
+              {/* Spotify */}
+              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(34,197,94,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #22c55e, #15803d)' }}>
+                  <Icons.SP style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>Spotify</span>
+                  <h3 className="m-card-name">SPOTIFY</h3>
+                  <div className="m-card-desc">{t.spDesc}</div>
+                  <div className="m-card-link" style={{ color: '#4ade80' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.AppleMusic /></div>
-                <div className="m-card-name">APPLE MUSIC</div>
-                <div className="m-card-desc">{t.amDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+
+              {/* Apple Music */}
+              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(244,63,94,0.3)' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f43f5e, #be123c)' }}>
+                  <Icons.AppleMusic style={{ width: '42px', height: '42px', color: '#fff' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(244,63,94,0.15)', color: '#fb7185' }}>Apple Music</span>
+                  <h3 className="m-card-name">APPLE MUSIC</h3>
+                  <div className="m-card-desc">{t.amDesc}</div>
+                  <div className="m-card-link" style={{ color: '#fb7185' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
-              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
-                <div className="m-card-icon"><Icons.AmazonMusic /></div>
-                <div className="m-card-name">AMAZON MUSIC</div>
-                <div className="m-card-desc">{t.azDesc}</div>
-                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+
+              {/* Amazon Music */}
+              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer" style={{ borderColor: 'rgba(245,158,11,0.3)', gridColumn: '1 / -1' }}>
+                <div className="m-card-logo-box" style={{ background: 'linear-gradient(135deg, #f59e0b, #b45309)' }}>
+                  <Icons.AmazonMusic style={{ width: '42px', height: '42px', color: '#000' }} />
+                </div>
+                <div className="m-card-content">
+                  <span className="m-badge" style={{ background: 'rgba(245,158,11,0.15)', color: '#fbbf24' }}>Amazon Music</span>
+                  <h3 className="m-card-name">AMAZON MUSIC</h3>
+                  <div className="m-card-desc">{t.azDesc}</div>
+                  <div className="m-card-link" style={{ color: '#fbbf24' }}>{t.listenBtn} <Icons.Arrow /></div>
+                </div>
               </a>
+
             </div>
           </Rv>
           

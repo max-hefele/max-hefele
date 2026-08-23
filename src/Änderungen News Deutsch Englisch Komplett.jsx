@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
@@ -28,6 +29,10 @@ const T = {
     scDesc: "Mixes, eigene Tracks und die Rave in the City Reihe. Debüt-EP demnächst auf MYR Records.",
     ytDesc: "Rave in the City — kuratierte Ein-Stunden-Sets, alle zwei Wochen neu.",
     mcDesc: "Komplette DJ-Sets und Live-Mitschnitte — die volle musikalische Reise.",
+    bpDesc: "Tracks, Releases und DJ-Musik von Max Hefele auf Beatport.",
+    spDesc: "Meine neuesten Tracks, Releases und Playlists auf Spotify.",
+    amDesc: "Meine Musik in bester Qualität auf Apple Music.",
+    azDesc: "Meine Releases und Tracks jetzt auch auf Amazon Music.",
     listenBtn: "Anhören",
     watchBtn: "Ansehen",
     consentSC: {
@@ -49,8 +54,10 @@ const T = {
     newsTitle: "NEWS",
     newsItems: [
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die kommende EP auf MYR Records." },
+      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk Supportet meinen Track Better day of life aus meiner EP-Call ME." },
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner einblick in meine neue EP." },
-      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." }
+      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
+      { title: "Mein Exclusiv Interview für Melodic Dancers", excerpt: "Hier ist mein Exclusiv Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
     ],
     readMore: "Mehr lesen auf",
     datesLabel: "Live",
@@ -96,6 +103,10 @@ const T = {
     scDesc: "Mixes, own tracks and the 'Rave in the City' series. Debut EP coming soon on MYR Records.",
     ytDesc: "Rave in the City — curated one-hour sets, new every two weeks.",
     mcDesc: "Complete DJ sets and live recordings — the full musical journey.",
+    bpDesc: "Tracks, releases and DJ music by Max Hefele on Beatport.",
+    spDesc: "My latest tracks, releases and playlists on Spotify.",
+    amDesc: "Listen to my music in premium quality on Apple Music.",
+    azDesc: "My releases and tracks now on Amazon Music too.",
     listenBtn: "Listen",
     watchBtn: "Watch",
     consentSC: {
@@ -117,8 +128,10 @@ const T = {
     newsTitle: "NEWS",
     newsItems: [
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the upcoming EP on MYR Records." },
+      { title: "Paul van Dyk Supports Vonyc Session 1026", excerpt: "Paul van Dyk is supporting my track 'Better Day of Life' from my 'Call Me' EP." },
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "Here is a quick look at my new EP." },
-      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." }
+      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." },
+      { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9."}
     ],
     readMore: "Read more on",
     datesLabel: "Live",
@@ -143,13 +156,17 @@ const T = {
 // ─── Config ───
 const ARTIST_NAME = "MAXHEFELE";
 
+const BASE_URL = typeof import.meta !== "undefined" && import.meta.env ? (import.meta.env.BASE_URL || "") : "";
+
 const SOCIAL_LINKS = [
   { name: "Instagram", url: "https://www.instagram.com/max.hefele.music/", icon: "IG" },
   { name: "SoundCloud", url: "https://soundcloud.com/maxhefele", icon: "SC" },
   { name: "YouTube", url: "https://www.youtube.com/@MaxHefele", icon: "YT" },
   { name: "Mixcloud", url: "https://www.mixcloud.com/MaxHefele/", icon: "MC" },
-  { name: "Spotify", url: "#", icon: "SP", soon: true },
-  { name: "Beatport", url: "#", icon: "BP", soon: true }
+  { name: "Spotify", url: "https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ", icon: "SP", },
+  { name: "Apple Music", url: "https://music.apple.com/de/artist/max-hefele/6779171915", icon: "AppleMusic" },
+  { name: "Amazon Music", url: "https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele", icon: "AmazonMusic" },
+  { name: "Beatport", url: "https://www.beatport.com/artist/max-hefele/2396410", icon: "BP",  }
 ];
 
 const GOOGLE_DRIVE = {
@@ -166,17 +183,31 @@ const NEWS_ITEMS = [
   },
   {
     id: 2,
+    date: "05.07.2026",
+    category: "Paul van Dyk's VONYC Sessions 1026 Support my Track Better Day of Life",
+    link: "https://www.youtube.com/watch?v=AIGRuvQBEvs",
+    image: "images/vonycsession.jpg", 
+  },
+   {
+    id: 3,
     date: "09.07.2026",
     category: "Interview with the last future",
     link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr",
     image: "images/thelastfuture.jpg", 
   },
   {
-    id: 3,
+    id: 4,
     date: "10.07.2026",
     category: "New Episode Rave in the City",
     link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM",
     image: "images/rvitc.jpg", 
+  },
+    {
+    id: 5,
+    date: "26.07.2026",
+    category: "My exclusive interview for Melodic Dancers can be found on page 9.",
+    link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ",
+    image: "images/melodicdancers.jpg", 
   },
 ];
 
@@ -240,6 +271,16 @@ const Icons = {
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/>
+    </svg>
+  ),
+  AppleMusic: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16.8 3.2c-.9.1-2 .7-2.7 1.5-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.3.7-.8 1.1-1.9 1-3zM19.4 12.7c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.5 3.3 2.4 1.3-.1 1.8-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.3-1.2 3.2-2.4 1-1.4 1.4-2.8 1.4-2.9-.1 0-3.2-1.2-3.2-4.1z"/>
+    </svg>
+  ),
+  AmazonMusic: () => (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4.6a5.4 5.4 0 0 1 4.68 2.7.7.7 0 0 1-1.2.7 4 4 0 0 0-6.96 0 .7.7 0 1 1-1.2-.7A5.4 5.4 0 0 1 12 6.6zM6.4 14.9c3.3 2 7.9 2 11.2 0a.5.5 0 0 1 .6.8c-3.6 2.3-8.8 2.3-12.4 0a.5.5 0 1 1 .6-.8zm-.7 2.1c3.8 2.3 8.8 2.3 12.6 0a.4.4 0 0 1 .44.67c-4 2.5-9.5 2.5-13.5 0a.4.4 0 0 1 .46-.67z"/>
     </svg>
   ),
   Mail: () => (
@@ -320,10 +361,10 @@ const css = `
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(25,22,18,0.5) 0%, rgba(6,6,6,0.85) 60%, rgba(6,6,6,1) 100%); }
   .hero-grain { position: absolute; inset: 0; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 256px; pointer-events: none; }
-  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-  .hero-name { font-family: var(--font-display); font-size: clamp(64px, 13vw, 160px); letter-spacing: clamp(8px, 2vw, 18px); line-height: 0.9; text-align: center; animation: heroIn 1.4s var(--ease) forwards; opacity: 0; }
+  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 0 20px; }
+  .hero-name { font-family: var(--font-display); font-size: clamp(52px, 13vw, 160px); letter-spacing: clamp(4px, 2vw, 18px); line-height: 0.9; text-align: center; animation: heroIn 1.4s var(--ease) forwards; opacity: 0; }
   .hero-line { width: 40px; height: 1px; background: var(--text-dim); margin: 32px 0; animation: heroIn 1.4s var(--ease) 0.15s forwards; opacity: 0; }
-  .hero-socials { display: flex; gap: 14px; animation: heroIn 1.4s var(--ease) 0.25s forwards; opacity: 0; }
+  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 90vw; animation: heroIn 1.4s var(--ease) 0.25s forwards; opacity: 0; }
   .hero-socials a { color: var(--text-dim); display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border-light); border-radius: 50%; transition: all 0.3s var(--ease); text-decoration: none; }
   .hero-socials a:hover { color: var(--text); border-color: var(--text-mid); transform: translateY(-3px); }
   .hero-social-soon { color: #333; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px dashed var(--border-light); border-radius: 50%; cursor: default; opacity: 0.5; }
@@ -358,7 +399,7 @@ const css = `
   /* MUSIC */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .music-inner { max-width: 1140px; margin: 0 auto; padding: 140px 48px; }
-  .music-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .music-grid { display: grid; grid-template-columns: repeat( 3, 1fr); gap: 20px; }
   .m-card { background: var(--bg-card); border: 1px solid var(--border); padding: 28px; transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 14px; }
   .m-card:hover { border-color: var(--border-light); transform: translateY(-3px); }
   .m-card-icon { color: var(--text-dim); }
@@ -367,27 +408,27 @@ const css = `
   .m-card-link { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
   .m-card:hover .m-card-link { color: var(--text); }
 
-  /* PRIVACY OVERLAY & GLASSMORPHISM */
-  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: #080808; }
-  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(20, 20, 20, 0.9); padding: 24px 32px; border-radius: 8px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #333; }
-  .media-consent-text-wrap { text-align: left; }
+  /* PRIVACY OVERLAY & GLASSMORPHISM & DYNAMIC BACKGROUND FIX */
+  .privacy-wrapper { position: relative; width: 100%; border: 1px solid var(--border); overflow: hidden; background: var(--bg-card); }
+  .privacy-blur-overlay { position: absolute; inset: 0; z-index: 12; display: flex; justify-content: center; align-items: center; background: rgba(10, 10, 10, 0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 16px; }
+  .media-consent-inner { display: flex; align-items: center; gap: 20px; background: rgba(18, 18, 18, 0.95); padding: 24px 32px; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.8); max-width: 100%; width: 100%; justify-content: space-between; }
+  .media-consent-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #111; border-radius: 50%; color: var(--text-mid); border: 1px solid #333; flex-shrink: 0; }
+  .media-consent-text-wrap { text-align: left; flex: 1; }
   .media-consent-title { font-family: var(--font-display); font-size: 20px; letter-spacing: 1px; color: var(--text); margin-bottom: 4px; line-height: 1; }
   .media-consent-text { font-size: 11px; color: #aaa; line-height: 1.5; margin: 0; letter-spacing: 0.2px; }
   .media-consent-link { background: none; border: none; padding: 0; color: var(--text-mid); font-family: var(--font-body); font-size: 11px; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color 0.3s; }
   .media-consent-link:hover { color: var(--text); }
-  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; }
+  .media-consent-btn { background: var(--text); border: 1px solid var(--text); color: var(--bg); padding: 10px 24px; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s var(--ease); white-space: nowrap; flex-shrink: 0; }
   .media-consent-btn:hover { background: transparent; color: var(--text); }
 
-  /* FAKE BACKGROUNDS FOR BLUR */
-  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 32px; opacity: 0.85; background: #111; }
-  .fake-waveform-bg > div { flex: 1; background: linear-gradient(180deg, #ff7700 0%, #ff3300 100%); border-radius: 2px; }
+  /* DYNAMIC BACKGROUND PATTERNS */
+  .fake-waveform-bg { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 32px; opacity: 0.5; background: var(--bg-card); }
+  .fake-waveform-bg > div { flex: 1; background: linear-gradient(180deg, #333 0%, #111 100%); border-radius: 2px; }
   
-  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; opacity: 0.85; background: #111; }
-  .fake-video-bg > div { background: #444; border-radius: 4px; border: 1px solid #555; }
+  .fake-video-bg { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; opacity: 0.5; background: var(--bg-card); }
+  .fake-video-bg > div { background: #222; border-radius: 4px; border: 1px solid var(--border); }
 
-  /* VIDEO GRID KOMPAKT */
+  /* VIDEO GRID */
   .video-block { margin-top: 56px; }
   .video-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; font-weight: 600; }
   .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; }
@@ -474,7 +515,7 @@ const css = `
   .rv { opacity: 0; transform: translateY(36px); transition: all 0.9s var(--ease); }
   .rv.vis { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE & MOBILE ICON FIXES */
   @media (max-width: 900px) {
     .nav { padding: 18px 24px; }
     .nav.scrolled { padding: 14px 24px; }
@@ -483,18 +524,21 @@ const css = `
     .section, .music-inner, .contact-inner { padding: 100px 24px; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 300px; }
-    .music-grid { grid-template-columns: 1fr; }
+    .music-grid { grid-template-columns: repeat(2, 1fr); }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .highlights { grid-template-columns: 1fr 1fr; }
-    .hero-name { letter-spacing: 6px; }
-    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; }
+    .hero-name { letter-spacing: 4px; }
+    .media-consent-inner { flex-direction: column; text-align: center; gap: 16px; padding: 20px; }
     .media-consent-text-wrap { text-align: center; }
   }
   @media (max-width: 480px) {
     .highlights { grid-template-columns: 1fr; }
+    .music-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .section, .music-inner, .contact-inner { padding: 80px 20px; }
+    .hero-socials { gap: 8px; }
+    .hero-socials a, .hero-social-soon { width: 38px; height: 38px; }
   }
 `;
 
@@ -508,7 +552,7 @@ function useReveal(threshold = 0.12) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.unobserve(el); } }, { threshold, rootMargin: "0px 0px -40px 0px" });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, vis];
 }
 
@@ -526,12 +570,15 @@ export default function MaxHefele() {
   const [legalModal, setLegalModal] = useState(null);
   const [videosExpanded, setVideosExpanded] = useState(false);
   
-  const [allowSoundCloud, setAllowSoundCloud] = useState(() => 
-    localStorage.getItem("consent-soundcloud") === "true"
-  );
-  const [allowGoogleDrive, setAllowGoogleDrive] = useState(() => 
-    localStorage.getItem("consent-googledrive") === "true"
-  );
+  const [allowSoundCloud, setAllowSoundCloud] = useState(false);
+  const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
+      setAllowGoogleDrive(localStorage.getItem("consent-googledrive") === "true");
+    }
+  }, []);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
@@ -542,8 +589,10 @@ export default function MaxHefele() {
   const go = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
 
   const resetConsent = () => {
-    localStorage.removeItem("consent-soundcloud");
-    localStorage.removeItem("consent-googledrive");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("consent-soundcloud");
+      localStorage.removeItem("consent-googledrive");
+    }
     setAllowSoundCloud(false);
     setAllowGoogleDrive(false);
     setVideosExpanded(false);
@@ -586,14 +635,14 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${import.meta.env.BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `linear-gradient(180deg, rgba(6,6,6,0.3) 0%, rgba(6,6,6,0.15) 40%, rgba(6,6,6,0.7) 80%, rgba(6,6,6,1) 100%), url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
         <div className="hero-grain" />
         <div className="hero-content">
           <h1 className="hero-name">{ARTIST_NAME}</h1>
           <div className="hero-line" />
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
-              const Icon = Icons[s.icon];
+              const Icon = Icons[s.icon] || Icons.Arrow;
               if (s.soon) {
                 return <span key={s.name} className="hero-social-soon" title={`${s.name} — ${t.soon}`}><Icon /></span>;
               }
@@ -614,7 +663,7 @@ export default function MaxHefele() {
         <div className="about-layout">
           <Rv delay={100}>
             <div className="about-photo">
-              <img src={`${import.meta.env.BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
+              <img src={`${BASE_URL}images/about.jpg`} alt="Max Hefele Press Photo" loading="lazy" />
             </div>
           </Rv>
           <div>
@@ -673,6 +722,30 @@ export default function MaxHefele() {
                 <div className="m-card-desc">{t.mcDesc}</div>
                 <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
               </a>
+              <a className="m-card" href="https://www.beatport.com/artist/max-hefele/2396410" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.BP /></div>
+                <div className="m-card-name">BEATPORT</div>
+                <div className="m-card-desc">{t.bpDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://open.spotify.com/intl-de/artist/6VT5NRA3Ems6HjcEbQDqpK?si=xc03f2ssRXS-09RH6SimcQ" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.SP /></div>
+                <div className="m-card-name">SPOTIFY</div>
+                <div className="m-card-desc">{t.spDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://music.apple.com/de/artist/max-hefele/6779171915" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.AppleMusic /></div>
+                <div className="m-card-name">APPLE MUSIC</div>
+                <div className="m-card-desc">{t.amDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
+              <a className="m-card" href="https://www.amazon.de/music/player/artists/B0H4VRN9WD/max-hefele" target="_blank" rel="noopener noreferrer">
+                <div className="m-card-icon"><Icons.AmazonMusic /></div>
+                <div className="m-card-name">AMAZON MUSIC</div>
+                <div className="m-card-desc">{t.azDesc}</div>
+                <div className="m-card-link">{t.listenBtn} <Icons.Arrow /></div>
+              </a>
             </div>
           </Rv>
           
@@ -695,7 +768,7 @@ export default function MaxHefele() {
                       </div>
                       <button className="media-consent-btn" onClick={() => {
                         setAllowSoundCloud(true);
-                        localStorage.setItem("consent-soundcloud", "true");
+                        if (typeof window !== "undefined") localStorage.setItem("consent-soundcloud", "true");
                       }}>{t.consentSC.btn}</button>
                     </div>
                   </div>
@@ -733,7 +806,7 @@ export default function MaxHefele() {
                           e.stopPropagation(); 
                           setAllowGoogleDrive(true); 
                           setVideosExpanded(true);
-                          localStorage.setItem("consent-googledrive", "true"); 
+                          if (typeof window !== "undefined") localStorage.setItem("consent-googledrive", "true"); 
                         }}>{t.consentVD.btnLoad}</button>
                       ) : (
                         <button className="media-consent-btn">{t.consentVD.btnExpand}</button>
@@ -773,7 +846,7 @@ export default function MaxHefele() {
                 <div className="n-img-wrap">
                   <img 
                     className="n-img" 
-                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${import.meta.env.BASE_URL}${NEWS_ITEMS[index].image}`} 
+                    src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} 
                     alt={item.title} 
                     loading="lazy" 
                     onError={(e) => { e.target.style.display = 'none'; }} 
@@ -888,7 +961,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
@@ -971,6 +1044,11 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>iTunes / Apple Music</h3>
                   <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Spotify & Amazon Music</h3>
+                  <p>Verlinkungen zu Spotify und Amazon Music sind ebenfalls statische Links. Erst nach einem Klick werden Sie zum jeweiligen Dienst weitergeleitet, wo dessen Datenschutzbestimmungen gelten. Weitere Informationen finden Sie bei Spotify (<a href="https://www.spotify.com/de/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">https://www.spotify.com/de/legal/privacy-policy/</a>) und Amazon (<a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010" target="_blank" rel="noopener noreferrer">amazon.de/datenschutz</a>).</p>
                 </div>
                 <p><strong>Stand 09. Juli 2026</strong></p>
               </>
