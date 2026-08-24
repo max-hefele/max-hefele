@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
 const T = {
@@ -462,20 +462,6 @@ const css = `
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.65) contrast(1.1); will-change: transform; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
-  
-  .hero-name { 
-    font-family: var(--font-display); 
-    font-size: clamp(36px, 7vw, 84px); 
-    font-weight: 800; 
-    letter-spacing: 6px; 
-    line-height: 1.1; 
-    text-transform: uppercase; 
-    margin-bottom: 24px; 
-    background: linear-gradient(180deg, #ffffff 0%, var(--cyan) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px var(--cyan-glow);
-  }
 
   .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
   .hero-socials a { 
@@ -1083,10 +1069,6 @@ export default function MaxHefele() {
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
-          <h1 className="hero-name">
-            <ElegantFadeText text={ARTIST_NAME} />
-          </h1>
-
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
@@ -1106,8 +1088,10 @@ export default function MaxHefele() {
       {/* MARQUEE TICKER */}
       <div className="marquee-container">
         <div className="marquee-track">
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ BEATPORT TOP 100 #39 ✦ RAVE IN THE CITY ✦ </span>
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ BEATPORT TOP 100 #39 ✦ RAVE IN THE CITY ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
 const T = {
@@ -20,7 +20,7 @@ const T = {
       "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh, Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
       "Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.",
       "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat. Der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
-      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio: Mit seiner Debüt-EP CALL ME auf MYR Records hat er ein echtes Ausrufezeichen gesetzt. Der Release wurde unter anderem von Paul van Dyk in seiner Radioshow Vonyc Sessions (Folge 1026) gefeiert.",
+      "Sein Sound basiert nicht auf Effekten, sondern auf Spannung, Tiefe und dem richtigen Moment. Diese Selbstsicherheit ist auch im Studio zu hören. Mit seiner Debüt-EP „CALL ME“ auf MYR Records hat er ein echtes Statement gesetzt. Die Veröffentlichung wurde unter anderem von Paul van Dyk in seiner Radiosendung „Vonyc Sessions“ (Folge 1026) gefeiert und kletterte direkt auf Platz 39 der Beatport Top 100 Melodic Techno Releases, wo sie sich sechs Tage lang in den Charts hielt.",
       "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe Rave in the City. Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
       "Max Hefele bringt etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
@@ -94,7 +94,7 @@ const T = {
       "Starting out as a resident under the name Mexx Pain, he emerged from the Hip-Hop scene and learned early on that two turntables are more than just technique. With instinct, precision, and perfect timing, he shapes entire nights. He knows exactly how to move crowds and command the energy of a room.",
       "Exactly this experience characterizes his Melodic Techno sets today. Max Hefele doesn't play stock setlists. He reads the room, builds tension, sustains it, and knows exactly when a track needs to hit.",
       "After two decades behind the decks, his name now reflects the very forces that shaped him. It is a journey from Hip-Hop to electronic music, all without ever severing those roots.",
-      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This confidence can also be heard in the studio: With his debut EP CALL ME on MYR Records, he has set a real statement. The release was celebrated by Paul van Dyk on his radio show Vonyc Sessions (episode 1026) among others.",
+      "His sound isn’t based on effects, but on tension, depth, and timing. That confidence is also evident in the studio. With his debut EP “CALL ME” on MYR Records, he’s made a real statement. The release was celebrated by Paul van Dyk, among others, on his radio show “Vonyc Sessions” (Episode 1026) and climbed straight to No. 39 on the Beatport Top 100 Melodic Techno Releases, where it remained on the charts for six days.",
       "In parallel, he shares his musical vision every two weeks through the YouTube series 'Rave in the City.' One hour that captures the essence of what it’s all about: quality over quantity, experience over chance. No gimmicks. Just music.",
       "Max Hefele brings something that has become rare genuine club experience and the ability to craft entire nights without losing the thread."
     ],
@@ -248,19 +248,21 @@ const Icons = {
   )
 };
 
-// ─── Visual & Dynamic Styles ───
+// ─── TRON Cyber & Modern CSS Styling ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;700;800&display=swap');
 
   :root {
-    --bg: #0b0b0b;
-    --bg-elevated: #111319;
-    --bg-card: #161822;
+    --bg: #05070a;
+    --bg-elevated: #0a0e17;
+    --bg-card: #0f1522;
     --text: #f3f4f6;
     --text-dim: #6c7385;
     --text-mid: #9ea5b5;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(6, 182, 212, 0.4);
+    --cyan: #00E5FF;
+    --cyan-glow: rgba(0, 229, 255, 0.4);
+    --border: rgba(0, 229, 255, 0.15);
+    --border-hover: rgba(0, 229, 255, 0.6);
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -271,7 +273,7 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
 
-  /* NOISE OVERLAY */
+  /* NOISE & TRON CYBER GRID OVERLAY */
   .noise-overlay {
     position: fixed;
     inset: 0;
@@ -282,15 +284,27 @@ const css = `
     z-index: 999;
   }
 
+  .tron-grid {
+    position: fixed;
+    inset: 0;
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* LASER STREAM ANIMATION */
   .laser-stream-h {
     position: fixed;
     top: 30%;
     left: -100px;
-    width: 200px;
+    width: 300px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.25), transparent);
-    animation: streamHorizontal 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    box-shadow: 0 0 10px var(--cyan);
+    animation: streamHorizontal 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
   }
@@ -299,37 +313,38 @@ const css = `
     top: -100px;
     right: 20%;
     width: 1px;
-    height: 200px;
-    background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.3), transparent);
-    animation: streamVertical 16s cubic-bezier(0.4, 0, 0.2, 1) infinite 4s;
+    height: 300px;
+    background: linear-gradient(180deg, transparent, var(--cyan), transparent);
+    box-shadow: 0 0 10px var(--cyan);
+    animation: streamVertical 14s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s;
     pointer-events: none;
     z-index: 0;
   }
 
   @keyframes streamHorizontal {
     0% { transform: translateX(0); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.8; }
+    20% { opacity: 0.9; }
+    80% { opacity: 0.9; }
     100% { transform: translateX(110vw); opacity: 0; }
   }
   @keyframes streamVertical {
     0% { transform: translateY(0); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.8; }
+    20% { opacity: 0.9; }
+    80% { opacity: 0.9; }
     100% { transform: translateY(110vh); opacity: 0; }
   }
 
   .bg-glow-orb {
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 650px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
-    top: -300px;
-    left: -300px;
+    top: -325px;
+    left: -325px;
   }
 
   .floating-logo-wrap {
@@ -345,14 +360,14 @@ const css = `
   .cyber-glitch-title {
     position: relative;
     display: inline-block;
-    animation: glitchTrigger 10s infinite;
+    animation: glitchTrigger 8s infinite;
   }
 
   @keyframes glitchTrigger {
-    0%, 95%, 100% { transform: translate(0); filter: none; }
-    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 #06b6d4) drop-shadow(-2px 0 #00ffff); }
-    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 #06b6d4) drop-shadow(2px 0 #00ffff); }
-    98% { transform: translate(0); filter: none; }
+    0%, 94%, 100% { transform: translate(0); filter: none; }
+    95% { transform: translate(-2px, 1px); filter: drop-shadow(2px 0 var(--cyan)); }
+    96% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--cyan)); }
+    97% { transform: translate(0); filter: none; }
   }
 
   .fade-logo { display: inline-flex; letter-spacing: 4px; }
@@ -369,23 +384,25 @@ const css = `
 
   /* MARQUEE TICKER */
   .marquee-container {
-    background: #06b6d4;
-    color: #0b0b0b;
+    background: var(--cyan);
+    color: #000;
     overflow: hidden;
     white-space: nowrap;
-    padding: 14px 0;
+    padding: 12px 0;
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 13px;
     letter-spacing: 3px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
+    box-shadow: 0 0 25px var(--cyan-glow);
   }
   .marquee-track {
     display: inline-block;
-    animation: marqueeScroll 22s linear infinite;
+    animation: marqueeScroll 20s linear infinite;
   }
+  .marquee-track:hover { animation-play-state: paused; }
+
   @keyframes marqueeScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -393,107 +410,104 @@ const css = `
 
   /* NAV & MODERN MENU */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { padding: 16px 60px; background: rgba(11, 11, 11, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .nav.scrolled { padding: 16px 60px; background: rgba(5, 7, 10, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
   
-  .nav-right { display: flex; align-items: center; gap: 40px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; position: relative; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; padding: 4px 0; display: inline-block; }
-  .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .nav-right { display: flex; align-items: center; gap: 36px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; position: relative; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: all 0.3s; padding: 4px 0; display: inline-block; position: relative; }
+  .nav-links a:hover, .nav-links a.active { color: var(--cyan); text-shadow: 0 0 8px var(--cyan-glow); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+  }
 
   /* BOOKING BUTTON IN HEADER */
   .nav-booking-btn {
-    background: #06b6d4;
-    color: #0b0b0b;
+    background: var(--cyan);
+    color: #000;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 10px 24px;
     border-radius: 9999px;
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 20px var(--cyan-glow);
     transition: all 0.3s ease;
   }
   .nav-booking-btn:hover {
-    background: #22d3ee;
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+    background: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
     transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 500; transition: color 0.3s; }
-  .lang-switch button.active { color: #fff; font-weight: 700; }
+  .lang-switch button.active { color: var(--cyan); font-weight: 700; text-shadow: 0 0 6px var(--cyan-glow); }
 
   .menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; z-index: 101; }
-  .menu-btn span { display: block; width: 22px; height: 1px; background: var(--text); margin: 5px 0; transition: all 0.3s; }
+  .menu-btn span { display: block; width: 22px; height: 2px; background: var(--cyan); margin: 5px 0; transition: all 0.3s; box-shadow: 0 0 5px var(--cyan); }
   .mobile-nav { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 32px; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 32px; font-weight: 700; text-transform: uppercase; }
 
-  /* HERO & PARALLAX */
+  /* HERO & TRON RINGS */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
-  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.65) contrast(1.05); will-change: transform; }
+  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.65) contrast(1.1); will-change: transform; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
-  
-  .hero-name { 
-    font-family: var(--font-display); 
-    font-size: clamp(36px, 7vw, 84px); 
-    font-weight: 800; 
-    letter-spacing: 6px; 
-    line-height: 1.1; 
-    text-transform: uppercase; 
-    margin-bottom: 24px; 
-    background: linear-gradient(180deg, #ffffff 0%, #8d95a5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 
-  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
   .hero-socials a { 
     color: var(--text-mid); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    width: 42px; 
-    height: 42px; 
+    width: 44px; 
+    height: 44px; 
     border: 1px solid var(--border); 
     border-radius: 50%; 
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s; 
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s, box-shadow 0.3s; 
     text-decoration: none; 
-    background: rgba(255, 255, 255, 0.02); 
+    background: rgba(0, 229, 255, 0.02); 
     will-change: transform;
   }
-  .hero-socials a:hover { color: #fff; border-color: var(--border-hover); background: rgba(255, 255, 255, 0.08); }
-  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; }
-  .scroll-hint:hover { color: var(--text); transform: translateY(3px); }
+  .hero-socials a:hover { color: #fff; border-color: var(--cyan); background: rgba(0, 229, 255, 0.15); box-shadow: 0 0 15px var(--cyan-glow); }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--cyan); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; filter: drop-shadow(0 0 6px var(--cyan)); }
+  .scroll-hint:hover { transform: translateY(5px); }
 
   /* SECTIONS */
   .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
-  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; font-weight: 500; }
-  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; font-weight: 600; text-shadow: 0 0 6px var(--cyan-glow); }
+  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
 
   /* ABOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
-  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; position: relative; }
+  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.8); }
   .about-photo img { width: 100%; height: 120%; object-fit: cover; position: relative; top: -10%; will-change: transform; transition: transform 0.7s var(--ease); }
   .about-photo:hover img { transform: scale(1.04); }
   .about-text p { color: var(--text-mid); font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
   .about-text p:first-child { color: var(--text); font-size: 18px; font-weight: 400; line-height: 1.6; }
   
   .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
-  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; transition: border-color 0.3s; }
-  .h-card:hover { border-color: var(--border-hover); }
+  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; transition: border-color 0.3s, box-shadow 0.3s; }
+  .h-card:hover { border-color: var(--cyan); box-shadow: 0 0 15px var(--cyan-glow); }
   .h-card-label { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; }
   .h-card-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 
   .residencies { margin-top: 40px; }
   .res-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 500; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(255, 255, 255, 0.02); transition: all 0.3s; }
-  .res-tag:hover { color: #fff; border-color: var(--border-hover); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(0, 229, 255, 0.02); transition: all 0.3s; }
+  .res-tag:hover { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
 
-  /* MUSIC SLIDER & 3D TILT CARDS WITH SPOTLIGHT GLOW */
+  /* MUSIC SLIDER & TILTCARDS */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
@@ -527,12 +541,11 @@ const css = `
     cursor: pointer;
   }
   
-  /* SPOTLIGHT GLOW OVERLAY FOR TILTCARDS */
   .m-card::before, .unified-consent-box::before, .video-frame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6, 182, 212, 0.18), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 229, 255, 0.2), transparent 80%);
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.3s;
@@ -555,8 +568,8 @@ const css = `
   .m-card .brand-icon { color: var(--brand-color, var(--text)); transition: transform 0.4s var(--ease); }
   
   .m-card:hover { 
-    border-color: var(--brand-color, var(--border-hover)); 
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.6), 0 0 15px -5px var(--brand-color);
+    border-color: var(--brand-color, var(--cyan)); 
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.8), 0 0 18px -5px var(--brand-color);
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
@@ -578,7 +591,7 @@ const css = `
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--border-hover); }
+  .unified-consent-box:hover { border-color: var(--cyan); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -596,7 +609,7 @@ const css = `
   .consent-bg-wave span {
     width: 8px;
     height: 40%;
-    background: #fff;
+    background: var(--cyan);
     border-radius: 4px;
     animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
@@ -612,7 +625,7 @@ const css = `
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(13, 14, 18, 0.82);
+    background: rgba(5, 7, 10, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: flex;
@@ -638,24 +651,25 @@ const css = `
   .media-play-btn {
     width: 56px;
     height: 56px;
-    background: #06b6d4;
+    background: var(--cyan);
     border: none;
     border-radius: 50%;
-    color: #0b0b0b;
+    color: #000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 20px var(--cyan-glow);
     will-change: transform;
   }
   .media-play-btn:hover {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.7);
+    box-shadow: 0 0 30px var(--cyan);
+    transform: scale(1.08);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
-  .media-privacy-link { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 11px; }
+  .media-privacy-link { background: none; border: none; color: var(--cyan); text-decoration: underline; cursor: pointer; font-size: 11px; }
 
   /* VIDEO GRID */
   .video-block { margin-top: 80px; }
@@ -675,13 +689,13 @@ const css = `
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
   .video-frame iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 2; }
-  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--text); }
+  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); text-decoration: none; transition: color 0.3s; }
+  .video-more:hover { color: #fff; text-shadow: 0 0 8px var(--cyan); }
 
   /* NEWS */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
   .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s var(--ease); display: flex; flex-direction: column; }
-  .n-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  .n-card:hover { border-color: var(--cyan); transform: translateY(-4px); box-shadow: 0 0 20px var(--cyan-glow); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
@@ -689,36 +703,67 @@ const css = `
   .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
   .n-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
-  .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan); font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
   /* DATES & CONTACT */
-  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; }
+  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; background: rgba(0,229,255,0.01); }
   .dates-empty-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
   .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s; }
-  .contact-email:hover { border-color: var(--border-hover); }
-  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
-  .contact-social:hover { color: #fff; }
+  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s; }
+  .contact-email:hover { border-color: var(--cyan); color: var(--cyan); }
+  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s, border-color 0.3s; }
+  .contact-social:hover { color: var(--cyan); border-color: var(--cyan); }
+
+  /* TRON IDENTITY DISC / DISC ICON */
+  .tron-disc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 20px var(--cyan-glow), inset 0 0 15px var(--cyan-glow);
+    background: radial-gradient(circle, rgba(0,229,255,0.2) 0%, transparent 70%);
+    color: #fff;
+    margin-bottom: 24px;
+    animation: discSpin 12s linear infinite;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .tron-disc-btn:hover {
+    transform: scale(1.1);
+    animation-duration: 4s;
+    box-shadow: 0 0 35px var(--cyan), inset 0 0 25px var(--cyan);
+  }
+  @keyframes discSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
   .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
-  .footer-link:hover { color: var(--text); }
+  .footer-link:hover { color: var(--cyan); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 720px; width: 100%; padding: 48px; position: relative; }
-  .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; }
-  .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
-  .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 32px; }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 7, 10, 0.92); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: 1px solid var(--cyan); border-radius: 8px; max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 35px var(--cyan-glow); }
+  .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; }
+  .legal-close:hover { color: var(--cyan); }
+  .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+  .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin-bottom: 32px; }
   .legal-section { margin-bottom: 24px; }
-  .legal-section h3 { font-size: 16px; margin-bottom: 8px; color: var(--text); }
-  .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
-  .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
+  .legal-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
+  .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
+  .legal-section li { margin-bottom: 6px; }
+  .legal-section a { color: var(--cyan); text-decoration: underline; }
+  .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; line-height: 1.6; }
 
   /* REVEAL ANIMATION */
   .rv { 
@@ -825,7 +870,6 @@ function TiltCard({ children, className = "", style = {}, ...props }) {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     
-    // Set mouse position properties for Spotlight Glow
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     cardRef.current.style.setProperty("--mouse-x", `${mouseX}px`);
@@ -834,8 +878,8 @@ function TiltCard({ children, className = "", style = {}, ...props }) {
     if (window.innerWidth < 1024) return;
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = (-y / rect.height) * 9;
-    const rotateY = (x / rect.width) * 9;
+    const rotateX = (-y / rect.height) * 8;
+    const rotateY = (x / rect.width) * 8;
     cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
@@ -863,6 +907,7 @@ export default function MaxHefele() {
   const t = T[lang];
 
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
   
@@ -884,6 +929,28 @@ export default function MaxHefele() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // IntersectionObserver for dynamic active section tracking
+  useEffect(() => {
+    const sectionIds = ["about", "music", "news", "dates", "contact"];
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions = { threshold: 0.3 };
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setAllowSoundCloud(localStorage.getItem("consent-soundcloud") === "true");
@@ -895,7 +962,6 @@ export default function MaxHefele() {
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Parallax Scroll Listener
     const handleScrollParallax = () => {
       const scrollY = window.scrollY;
       const heroBg = document.querySelector('.hero-bg');
@@ -948,21 +1014,29 @@ export default function MaxHefele() {
     <>
       <style>{css}</style>
       <div className="noise-overlay" />
+      <div className="tron-grid" />
       <div className="laser-stream-h" />
       <div className="laser-stream-v" />
       <div ref={orbRef} className="bg-glow-orb" />
 
-      {/* NAV */}
+      {/* NAVIGATION */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <ElegantFadeText text={ARTIST_NAME} />
-          <span className="text-cyan-400">.</span>
         </span>
         
         <div className="nav-right">
           <ul className="nav-links">
             {t.nav.map(item => (
-              <li key={item.id}><a href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a></li>
+              <li key={item.id}>
+                <a 
+                  href={`#${item.id}`} 
+                  className={activeSection === item.id ? "active" : ""}
+                  onClick={e => { e.preventDefault(); go(item.id); }}
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
           </ul>
           
@@ -988,18 +1062,14 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#0b0b0b', background: '#06b6d4', padding: '12px 32px', borderRadius: '9999px', fontSize: '18px' }}>{t.bookingBtn}</a>
+        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#000', background: 'var(--cyan)', padding: '12px 32px', borderRadius: '9999px', fontSize: '18px', fontWeight: '800' }}>{t.bookingBtn}</a>
       </div>
 
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section className="hero" id="home">
         <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
         <div className="hero-content">
-          <h1 className="hero-name">
-            <ElegantFadeText text={ARTIST_NAME} />
-          </h1>
-
-          <div className="hero-socials" style={{ marginTop: '16px' }}>
+          <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
               return (
@@ -1015,15 +1085,17 @@ export default function MaxHefele() {
         <div className="scroll-hint" onClick={() => go("about")}><Icons.ChevronDown /></div>
       </section>
 
-      {/* DYNAMIC MARQUEE TICKER */}
+      {/* MARQUEE TICKER */}
       <div className="marquee-container">
         <div className="marquee-track">
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
-          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
         </div>
       </div>
 
-      {/* ABOUT */}
+      {/* ABOUT SECTION */}
       <section className="section" id="about">
         <Rv>
           <p className="section-label">{t.aboutLabel}</p>
@@ -1063,7 +1135,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC SLIDER */}
+      {/* MUSIC SLIDER & MEDIA EMBEDS */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
@@ -1139,6 +1211,7 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
+          {/* SOUNDCLOUD INTEGRATION */}
           <Rv delay={150}>
             <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
@@ -1160,12 +1233,13 @@ export default function MaxHefele() {
                 </TiltCard>
               ) : (
                 <div className="unified-consent-box" style={{ height: '166px' }}>
-                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23111111&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%2300E5FF&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
                 </div>
               )}
             </div>
           </Rv>
 
+          {/* GOOGLE DRIVE VIDEO INTEGRATION */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
@@ -1205,7 +1279,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* NEWS */}
+      {/* NEWS SECTION */}
       <section className="section" id="news">
         <Rv>
           <p className="section-label">{t.newsLabel}</p>
@@ -1230,7 +1304,7 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* DATES */}
+      {/* DATES SECTION */}
       <section className="section" id="dates">
         <Rv>
           <p className="section-label">{t.datesLabel}</p>
@@ -1244,7 +1318,7 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* CONTACT */}
+      {/* CONTACT SECTION WITH TRON IDENTITY DISC */}
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
@@ -1254,6 +1328,9 @@ export default function MaxHefele() {
           <div className="contact-grid">
             <div>
               <Rv delay={100}>
+                <a href="mailto:info@maxhefele.de" className="tron-disc-btn" title="Booking & Contact">
+                  <Icons.Mail />
+                </a>
                 <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>{t.contactText}</p>
                 <a className="contact-email" href="mailto:info@maxhefele.de"><Icons.Mail /> info@maxhefele.de</a>
               </Rv>
@@ -1269,6 +1346,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME} — {t.footerRights}</div>
         <div className="footer-links">
@@ -1277,6 +1355,7 @@ export default function MaxHefele() {
         </div>
       </footer>
 
+      {/* LEGAL MODALS (IMPRESSUM & DATENSCHUTZ) */}
       {legalModal && (
         <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
           <div className="legal-box">
@@ -1287,16 +1366,30 @@ export default function MaxHefele() {
                 <h2 className="legal-title">{t.legalTitleImprint}</h2>
                 <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
                 <div className="legal-section">
-                  <h3>Verantwortlich</h3>
-                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />Deutschland</div>
+                  <h3>Angaben gemäß § 5 DDG</h3>
+                  <div className="legal-placeholder">
+                    <strong>Verantwortlich:</strong><br />
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland
+                  </div>
                 </div>
                 <div className="legal-section">
-                  <h3>Contact</h3>
-                  <p>E-Mail: <a href="mailto:info@maxhefele.de" style={{ color: '#fff' }}>info@maxhefele.de</a></p>
+                  <h3>Kontakt</h3>
+                  <p>E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a></p>
                 </div>
                 <div className="legal-section">
                   <h3>EU-Streitschlichtung</h3>
-                  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>https://ec.europa.eu/consumers/odr/</a>.</p>
+                  <p>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
+                      https://ec.europa.eu/consumers/odr/
+                    </a>.
+                  </p>
+                  <p>
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                  </p>
                 </div>
               </>
             )}
@@ -1305,20 +1398,54 @@ export default function MaxHefele() {
               <>
                 <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
                 <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
+                
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich.</p>
+                  <ul>
+                    <li>
+                      <strong>Allgemeine Hinweise:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.
+                    </li>
+                    <li>
+                      <strong>Verantwortliche Stelle:</strong> Max Hefele, Kapellenfeld 3, 86865 Markt Wald, E-Mail: info@maxhefele.de.
+                    </li>
+                    <li>
+                      <strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung:</strong> Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
+                    </li>
+                    <li>
+                      <strong>Recht auf Auskunft, Löschung und Berichtigung:</strong> Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten.
+                    </li>
+                  </ul>
+                  <div style={{ marginTop: '16px', marginBottom: '24px' }}>
+                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', background: 'var(--cyan)' }}>
+                      {t.revokeBtn}
+                    </button>
+                  </div>
                 </div>
+
                 <div className="legal-section">
-                  <h3>Verantwortliche Stelle</h3>
-                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de</div>
+                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
+                  <ul>
+                    <li>
+                      <strong>GitHub Pages (Hosting):</strong> Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA.
+                    </li>
+                    <li>
+                      <strong>Google Drive (Einbindung von Inhalten/Videos):</strong> Inhalte/Videos werden über Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland eingebunden.
+                    </li>
+                    <li>
+                      <strong>SoundCloud:</strong> Auf den Seiten sind Plugins der SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland integriert.
+                    </li>
+                    <li>
+                      <strong>Mixcloud:</strong> Links/Plugins der Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien.
+                    </li>
+                    <li>
+                      <strong>Beatport, Instagram & YouTube:</strong> Reine Text- bzw. Grafiklinks. Erst bei aktivem Klick werden Sie weitergeleitet.
+                    </li>
+                  </ul>
                 </div>
-                <div className="legal-section">
-                  <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
-                  <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', marginTop: '12px' }}>{t.revokeBtn}</button>
-                </div>
-                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 23. August 2026</strong></p>
+
+                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}>
+                  <strong>Stand:</strong> 09. Juli 2026
+                </p>
               </>
             )}
           </div>
