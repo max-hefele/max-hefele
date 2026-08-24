@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
 const T = {
@@ -248,21 +248,21 @@ const Icons = {
   )
 };
 
-// ─── TRON Cyber & Modern CSS Styling ───
+// ─── Visual & Dynamic Styles (Tron 1982 Retro-Futurism Meets 2026 High-End) ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;700;800&display=swap');
 
   :root {
-    --bg: #05070a;
-    --bg-elevated: #0a0e17;
-    --bg-card: #0f1522;
+    --bg: #070707;
+    --bg-elevated: #0d0f14;
+    --bg-card: #12151c;
     --text: #f3f4f6;
     --text-dim: #6c7385;
     --text-mid: #9ea5b5;
-    --cyan: #00E5FF;
-    --cyan-glow: rgba(0, 229, 255, 0.4);
-    --border: rgba(0, 229, 255, 0.15);
-    --border-hover: rgba(0, 229, 255, 0.6);
+    --border: rgba(0, 255, 204, 0.12);
+    --border-hover: rgba(0, 255, 204, 0.5);
+    --accent: #00bfff;
+    --accent-bright: #00ffcc;
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -273,49 +273,84 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
 
-  /* NOISE & TRON CYBER GRID OVERLAY */
+  /* SUBTLE GRID PATTERN & NOISE (TRON VIBE) */
   .noise-overlay {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    background-image: 
+      linear-gradient(rgba(0, 255, 204, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 204, 0.015) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 60px 60px, 60px 60px, 200px 200px;
     pointer-events: none;
     z-index: 999;
   }
 
-  .tron-grid {
-    position: fixed;
+  /* TRON VIDEO VISUAL & 3D GRID */
+  .tron-video-wrapper {
+    position: absolute;
     inset: 0;
-    background-size: 40px 40px;
+    z-index: 1;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .tron-video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    filter: contrast(1.2) saturate(1.2) hue-rotate(-10deg);
+  }
+  .tron-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 15%, rgba(7,7,7,0.85) 100%),
+                linear-gradient(to bottom, rgba(7,7,7,0.7) 0%, transparent 40%, rgba(7,7,7,0.95) 100%);
+    z-index: 2;
+  }
+  .tron-grid-floor {
+    position: absolute;
+    bottom: -30%;
+    left: -50%;
+    width: 200%;
+    height: 80%;
     background-image: 
-      linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
-    pointer-events: none;
-    z-index: 0;
+      linear-gradient(rgba(0, 255, 204, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 204, 0.25) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: perspective(600px) rotateX(75deg);
+    animation: gridMove 3s linear infinite;
+    z-index: 2;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+  }
+  @keyframes gridMove {
+    0% { transform: perspective(600px) rotateX(75deg) translateY(0); }
+    100% { transform: perspective(600px) rotateX(75deg) translateY(50px); }
   }
 
   /* LASER STREAM ANIMATION */
   .laser-stream-h {
     position: fixed;
-    top: 30%;
-    left: -100px;
+    top: 35%;
+    left: -150px;
     width: 300px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-    box-shadow: 0 0 10px var(--cyan);
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.4), transparent);
     animation: streamHorizontal 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
   }
   .laser-stream-v {
     position: fixed;
-    top: -100px;
-    right: 20%;
+    top: -150px;
+    right: 25%;
     width: 1px;
     height: 300px;
-    background: linear-gradient(180deg, transparent, var(--cyan), transparent);
-    box-shadow: 0 0 10px var(--cyan);
+    background: linear-gradient(180deg, transparent, rgba(0, 191, 255, 0.4), transparent);
     animation: streamVertical 14s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s;
     pointer-events: none;
     z-index: 0;
@@ -336,15 +371,15 @@ const css = `
 
   .bg-glow-orb {
     position: fixed;
-    width: 650px;
-    height: 650px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 229, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
-    top: -325px;
-    left: -325px;
+    top: -300px;
+    left: -300px;
   }
 
   .floating-logo-wrap {
@@ -360,14 +395,14 @@ const css = `
   .cyber-glitch-title {
     position: relative;
     display: inline-block;
-    animation: glitchTrigger 8s infinite;
+    animation: glitchTrigger 12s infinite;
   }
 
   @keyframes glitchTrigger {
-    0%, 94%, 100% { transform: translate(0); filter: none; }
-    95% { transform: translate(-2px, 1px); filter: drop-shadow(2px 0 var(--cyan)); }
-    96% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--cyan)); }
-    97% { transform: translate(0); filter: none; }
+    0%, 95%, 100% { transform: translate(0); filter: none; }
+    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 var(--accent)) drop-shadow(-2px 0 var(--accent-bright)); }
+    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--accent)) drop-shadow(2px 0 var(--accent-bright)); }
+    98% { transform: translate(0); filter: none; }
   }
 
   .fade-logo { display: inline-flex; letter-spacing: 4px; }
@@ -384,25 +419,23 @@ const css = `
 
   /* MARQUEE TICKER */
   .marquee-container {
-    background: var(--cyan);
-    color: #000;
+    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+    color: #070707;
     overflow: hidden;
     white-space: nowrap;
-    padding: 12px 0;
+    padding: 14px 0;
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 13px;
     letter-spacing: 3px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 25px var(--cyan-glow);
+    box-shadow: 0 0 35px rgba(0, 255, 204, 0.3);
   }
   .marquee-track {
     display: inline-block;
-    animation: marqueeScroll 20s linear infinite;
+    animation: marqueeScroll 22s linear infinite;
   }
-  .marquee-track:hover { animation-play-state: paused; }
-
   @keyframes marqueeScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -410,60 +443,74 @@ const css = `
 
   /* NAV & MODERN MENU */
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease); }
-  .nav.scrolled { padding: 16px 60px; background: rgba(5, 7, 10, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav.scrolled { padding: 16px 60px; background: rgba(7, 7, 7, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 255, 204, 0.15); }
   .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 2px; color: var(--text); text-decoration: none; text-transform: uppercase; cursor: pointer; }
   
-  .nav-right { display: flex; align-items: center; gap: 36px; }
-  .nav-links { display: flex; gap: 28px; list-style: none; position: relative; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: all 0.3s; padding: 4px 0; display: inline-block; position: relative; }
-  .nav-links a:hover, .nav-links a.active { color: var(--cyan); text-shadow: 0 0 8px var(--cyan-glow); }
-  .nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan);
-  }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; position: relative; }
+  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: color 0.3s; padding: 4px 0; display: inline-block; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent-bright); }
 
   /* BOOKING BUTTON IN HEADER */
   .nav-booking-btn {
-    background: var(--cyan);
-    color: #000;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent-bright);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 10px 24px;
-    border-radius: 9999px;
+    border-radius: 4px;
     text-decoration: none;
-    box-shadow: 0 0 20px var(--cyan-glow);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
     transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
   }
   .nav-booking-btn:hover {
-    background: #fff;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    background: var(--accent);
+    color: #070707;
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
     transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; letter-spacing: 1px; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 500; transition: color 0.3s; }
-  .lang-switch button.active { color: var(--cyan); font-weight: 700; text-shadow: 0 0 6px var(--cyan-glow); }
+  .lang-switch button.active { color: var(--accent-bright); font-weight: 700; }
 
   .menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; z-index: 101; }
-  .menu-btn span { display: block; width: 22px; height: 2px; background: var(--cyan); margin: 5px 0; transition: all 0.3s; box-shadow: 0 0 5px var(--cyan); }
+  .menu-btn span { display: block; width: 22px; height: 1px; background: var(--text); margin: 5px 0; transition: all 0.3s; }
   .mobile-nav { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 32px; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 32px; font-weight: 700; text-transform: uppercase; }
 
-  /* HERO & TRON RINGS */
+  /* HERO & PARALLAX */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
-  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.65) contrast(1.1); will-change: transform; }
-  .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
+  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.5) contrast(1.1) hue-rotate(10deg); will-change: transform; z-index: 1; }
+  .hero-content { position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
+  
+  .hero-name { 
+    font-family: var(--font-display); 
+    font-size: clamp(36px, 7vw, 84px); 
+    font-weight: 800; 
+    letter-spacing: 6px; 
+    line-height: 1.1; 
+    text-transform: uppercase; 
+    margin-bottom: 24px; 
+    background: linear-gradient(180deg, #ffffff 0%, var(--text-mid) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px rgba(0, 255, 204, 0.25));
+  }
 
-  .hero-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
+  .hero-socials { 
+    display: grid; 
+    grid-template-columns: repeat(8, auto);
+    justify-content: center; 
+    gap: 12px; 
+    margin-top: 16px; 
+  }
   .hero-socials a { 
     color: var(--text-mid); 
     display: flex; 
@@ -472,43 +519,43 @@ const css = `
     width: 44px; 
     height: 44px; 
     border: 1px solid var(--border); 
-    border-radius: 50%; 
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s, box-shadow 0.3s; 
+    border-radius: 4px; 
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background 0.3s, color 0.3s; 
     text-decoration: none; 
-    background: rgba(0, 229, 255, 0.02); 
+    background: rgba(0, 255, 204, 0.02); 
     will-change: transform;
   }
-  .hero-socials a:hover { color: #fff; border-color: var(--cyan); background: rgba(0, 229, 255, 0.15); box-shadow: 0 0 15px var(--cyan-glow); }
-  .scroll-hint { position: absolute; bottom: 30px; color: var(--cyan); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; filter: drop-shadow(0 0 6px var(--cyan)); }
-  .scroll-hint:hover { transform: translateY(5px); }
+  .hero-socials a:hover { color: var(--accent-bright); border-color: var(--border-hover); background: rgba(0, 255, 204, 0.08); box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 4; }
+  .scroll-hint:hover { color: var(--accent-bright); transform: translateY(3px); }
 
   /* SECTIONS */
-  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
-  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; font-weight: 600; text-shadow: 0 0 6px var(--cyan-glow); }
-  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
+  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 3; }
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
 
   /* ABOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
-  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 8px; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.8); }
-  .about-photo img { width: 100%; height: 120%; object-fit: cover; position: relative; top: -10%; will-change: transform; transition: transform 0.7s var(--ease); }
+  .about-photo { width: 100%; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); overflow: hidden; border-radius: 4px; position: relative; box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); }
+  .about-photo img { width: 100%; height: 120%; object-fit: cover; position: relative; top: -10%; will-change: transform; transition: transform 0.7s var(--ease); filter: contrast(1.05); }
   .about-photo:hover img { transform: scale(1.04); }
   .about-text p { color: var(--text-mid); font-size: 15px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
   .about-text p:first-child { color: var(--text); font-size: 18px; font-weight: 400; line-height: 1.6; }
   
   .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
-  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 6px; transition: border-color 0.3s, box-shadow 0.3s; }
-  .h-card:hover { border-color: var(--cyan); box-shadow: 0 0 15px var(--cyan-glow); }
+  .h-card { background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 4px; transition: border-color 0.3s, box-shadow 0.3s; }
+  .h-card:hover { border-color: var(--border-hover); box-shadow: 0 0 15px rgba(0, 255, 204, 0.1); }
   .h-card-label { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; }
   .h-card-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 
   .residencies { margin-top: 40px; }
-  .res-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; font-weight: 500; }
+  .res-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 600; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 100px; background: rgba(0, 229, 255, 0.02); transition: all 0.3s; }
-  .res-tag:hover { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); border-radius: 4px; background: rgba(0, 255, 204, 0.02); transition: all 0.3s; }
+  .res-tag:hover { color: var(--accent-bright); border-color: var(--border-hover); background: rgba(0, 255, 204, 0.06); }
 
-  /* MUSIC SLIDER & TILTCARDS */
-  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
+  /* MUSIC SLIDER & 3D TILT CARDS WITH SPOTLIGHT GLOW */
+  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 3; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   
   .music-slider { 
@@ -526,7 +573,7 @@ const css = `
     scroll-snap-align: start; 
     background: var(--bg-card); 
     border: 1px solid var(--border); 
-    border-radius: 8px; 
+    border-radius: 4px; 
     padding: 24px; 
     text-decoration: none; 
     color: inherit; 
@@ -541,11 +588,12 @@ const css = `
     cursor: pointer;
   }
   
+  /* SPOTLIGHT GLOW OVERLAY FOR TILTCARDS */
   .m-card::before, .unified-consent-box::before, .video-frame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 229, 255, 0.2), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 204, 0.15), transparent 80%);
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.3s;
@@ -557,7 +605,7 @@ const css = `
   }
 
   .m-card[data-brand="soundcloud"] { --brand-color: #ff5500; }
-  .m-card[data-brand="spotify"] { --brand-color: #1db954; }
+  .m-card[data-brand="spotify"] { --brand-color: #1ed760; }
   .m-card[data-brand="youtube"] { --brand-color: #ff0000; }
   .m-card[data-brand="beatport"] { --brand-color: #00ff8f; }
   .m-card[data-brand="applemusic"] { --brand-color: #fa243c; }
@@ -568,8 +616,8 @@ const css = `
   .m-card .brand-icon { color: var(--brand-color, var(--text)); transition: transform 0.4s var(--ease); }
   
   .m-card:hover { 
-    border-color: var(--brand-color, var(--cyan)); 
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.8), 0 0 18px -5px var(--brand-color);
+    border-color: var(--brand-color, var(--border-hover)); 
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.8), 0 0 20px -5px var(--brand-color);
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
@@ -584,14 +632,14 @@ const css = `
     position: relative;
     width: 100%;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     background: var(--bg-card);
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--cyan); }
+  .unified-consent-box:hover { border-color: var(--border-hover); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -609,8 +657,8 @@ const css = `
   .consent-bg-wave span {
     width: 8px;
     height: 40%;
-    background: var(--cyan);
-    border-radius: 4px;
+    background: var(--accent-bright);
+    border-radius: 2px;
     animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
   .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; }
@@ -619,13 +667,13 @@ const css = `
 
   @keyframes wavePulse {
     0% { height: 20%; opacity: 0.2; }
-    100% { height: 85%; opacity: 0.8; }
+    100% { height: 85%; opacity: 0.9; }
   }
 
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(5, 7, 10, 0.85);
+    background: rgba(7, 9, 13, 0.86);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: flex;
@@ -642,34 +690,34 @@ const css = `
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 4px;
-    color: #fff;
+    color: var(--accent-bright);
     text-transform: uppercase;
     margin-bottom: 14px;
-    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.4));
   }
 
   .media-play-btn {
     width: 56px;
     height: 56px;
-    background: var(--cyan);
+    background: var(--accent);
     border: none;
-    border-radius: 50%;
-    color: #000;
+    border-radius: 4px;
+    color: #070707;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
-    box-shadow: 0 0 20px var(--cyan-glow);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
     will-change: transform;
   }
   .media-play-btn:hover {
-    box-shadow: 0 0 30px var(--cyan);
-    transform: scale(1.08);
+    background: var(--accent-bright);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
-  .media-privacy-link { background: none; border: none; color: var(--cyan); text-decoration: underline; cursor: pointer; font-size: 11px; }
+  .media-privacy-link { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 11px; }
 
   /* VIDEO GRID */
   .video-block { margin-top: 80px; }
@@ -679,7 +727,7 @@ const css = `
     width: 100%; 
     aspect-ratio: 16/9; 
     border: 1px solid var(--border); 
-    border-radius: 8px; 
+    border-radius: 4px; 
     overflow: hidden; 
     background: #000; 
     animation: gridPop 0.6s var(--ease) forwards;
@@ -689,80 +737,53 @@ const css = `
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
   .video-frame iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 2; }
-  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: #fff; text-shadow: 0 0 8px var(--cyan); }
+  .video-more { margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
+  .video-more:hover { color: var(--accent-bright); }
 
   /* NEWS */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
-  .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s var(--ease); display: flex; flex-direction: column; }
-  .n-card:hover { border-color: var(--cyan); transform: translateY(-4px); box-shadow: 0 0 20px var(--cyan-glow); }
+  .n-card { flex: 0 0 360px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s var(--ease); display: flex; flex-direction: column; }
+  .n-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0, 255, 204, 0.1); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
   .n-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
+  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--accent); margin-bottom: 12px; font-weight: 500; }
   .n-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
-  .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .n-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-bright); font-weight: 600; display: flex; align-items: center; gap: 6px; }
 
   /* DATES & CONTACT */
-  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 8px; background: rgba(0,229,255,0.01); }
+  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); border-radius: 4px; background: rgba(0, 255, 204, 0.01); }
   .dates-empty-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
-  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
+  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 3; }
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s; }
-  .contact-email:hover { border-color: var(--cyan); color: var(--cyan); }
-  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s, border-color 0.3s; }
-  .contact-social:hover { color: var(--cyan); border-color: var(--cyan); }
+  .contact-email:hover { border-color: var(--border-hover); color: var(--accent-bright); }
+  .contact-social { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+  .contact-social:hover { color: var(--accent-bright); }
 
-  /* TRON IDENTITY DISC / DISC ICON */
-  .tron-disc-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--cyan);
-    box-shadow: 0 0 20px var(--cyan-glow), inset 0 0 15px var(--cyan-glow);
-    background: radial-gradient(circle, rgba(0,229,255,0.2) 0%, transparent 70%);
-    color: #fff;
-    margin-bottom: 24px;
-    animation: discSpin 12s linear infinite;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-  .tron-disc-btn:hover {
-    transform: scale(1.1);
-    animation-duration: 4s;
-    box-shadow: 0 0 35px var(--cyan), inset 0 0 25px var(--cyan);
-  }
-  @keyframes discSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 3; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
-  .footer-link:hover { color: var(--cyan); }
+  .footer-link:hover { color: var(--accent-bright); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 7, 10, 0.92); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: 1px solid var(--cyan); border-radius: 8px; max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 35px var(--cyan-glow); }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(7, 7, 7, 0.92); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 255, 204, 0.1); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; }
-  .legal-close:hover { color: var(--cyan); }
-  .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 800; margin-bottom: 8px; color: #fff; }
-  .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin-bottom: 32px; }
+  .legal-close:hover { color: var(--accent-bright); }
+  .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+  .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; font-weight: 600; }
   .legal-section { margin-bottom: 24px; }
   .legal-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
   .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
   .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
   .legal-section li { margin-bottom: 6px; }
-  .legal-section a { color: var(--cyan); text-decoration: underline; }
+  .legal-section a { color: var(--accent-bright); text-decoration: underline; }
   .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; line-height: 1.6; }
 
   /* REVEAL ANIMATION */
@@ -783,9 +804,10 @@ const css = `
 
   @media (max-width: 1024px) {
     .section, .music-inner, .contact-inner { padding: 80px 24px; }
-    .nav { padding: 20px 24px; }
-    .nav.scrolled { padding: 16px 24px; }
+    .nav { padding: 16px 24px; }
+    .nav.scrolled { padding: 14px 24px; }
     .nav-links { display: none; }
+    .nav-right { gap: 16px; }
     .menu-btn { display: block; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 320px; }
@@ -793,8 +815,14 @@ const css = `
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .footer { flex-direction: column; gap: 20px; text-align: center; }
   }
+
   @media (max-width: 640px) {
-    .hero-socials a { width: 38px; height: 38px; }
+    .hero-socials { 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 12px 16px; 
+    }
+    .hero-socials a { width: 42px; height: 42px; }
+    .nav-booking-btn { font-size: 10px; padding: 8px 16px; }
     .highlights { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .m-card { flex: 0 0 260px; padding: 20px; }
@@ -878,8 +906,8 @@ function TiltCard({ children, className = "", style = {}, ...props }) {
     if (window.innerWidth < 1024) return;
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = (-y / rect.height) * 8;
-    const rotateY = (x / rect.width) * 8;
+    const rotateX = (-y / rect.height) * 9;
+    const rotateY = (x / rect.width) * 9;
     cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
@@ -907,7 +935,6 @@ export default function MaxHefele() {
   const t = T[lang];
 
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
   
@@ -917,39 +944,36 @@ export default function MaxHefele() {
   const orbRef = useRef(null);
   const mouseTargetRef = useRef({ x: 0, y: 0 });
 
-  // ESC Listener to close Modals & Mobile Menu
+  const openModal = (type) => {
+    setLegalModal(type);
+    window.history.pushState({ modalOpen: true }, "");
+  };
+
+  const closeModal = () => {
+    setLegalModal(null);
+  };
+
   useEffect(() => {
+    const handlePopState = () => {
+      if (legalModal) {
+        setLegalModal(null);
+      }
+    };
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         setLegalModal(null);
         setMenuOpen(false);
       }
     };
+
+    window.addEventListener("popstate", handlePopState);
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // IntersectionObserver for dynamic active section tracking
-  useEffect(() => {
-    const sectionIds = ["about", "music", "news", "dates", "contact"];
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("keydown", handleKeyDown);
     };
-
-    const observerOptions = { threshold: 0.3 };
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  }, [legalModal]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -1014,29 +1038,21 @@ export default function MaxHefele() {
     <>
       <style>{css}</style>
       <div className="noise-overlay" />
-      <div className="tron-grid" />
       <div className="laser-stream-h" />
       <div className="laser-stream-v" />
       <div ref={orbRef} className="bg-glow-orb" />
 
-      {/* NAVIGATION */}
+      {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <ElegantFadeText text={ARTIST_NAME} />
+          <span style={{ color: 'var(--accent-bright)' }}>.</span>
         </span>
         
         <div className="nav-right">
           <ul className="nav-links">
             {t.nav.map(item => (
-              <li key={item.id}>
-                <a 
-                  href={`#${item.id}`} 
-                  className={activeSection === item.id ? "active" : ""}
-                  onClick={e => { e.preventDefault(); go(item.id); }}
-                >
-                  {item.label}
-                </a>
-              </li>
+              <li key={item.id}><a href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a></li>
             ))}
           </ul>
           
@@ -1062,13 +1078,28 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#000', background: 'var(--cyan)', padding: '12px 32px', borderRadius: '9999px', fontSize: '18px', fontWeight: '800' }}>{t.bookingBtn}</a>
+        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#070707', background: 'var(--accent-bright)', padding: '12px 32px', borderRadius: '4px', fontSize: '18px', whiteSpace: 'nowrap' }}>{t.bookingBtn}</a>
       </div>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
+        {/* TRON VIDEO VISUAL BACKGROUND */}
+        <div className="tron-video-wrapper">
+          <video autoPlay loop muted playsInline className="tron-video-bg">
+            <source src={`${BASE_URL}videos/tron-visual.mp4`} type="video/mp4" />
+          </video>
+          <div className="tron-grid-floor" />
+          <div className="tron-overlay" />
+        </div>
+
+        {/* Existing Image Background for Fallback / Blending */}
+        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat`, opacity: 0.25 }} />
+        
         <div className="hero-content">
+          <h1 className="hero-name">
+            <ElegantFadeText text={ARTIST_NAME} />
+          </h1>
+
           <div className="hero-socials">
             {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
@@ -1085,17 +1116,15 @@ export default function MaxHefele() {
         <div className="scroll-hint" onClick={() => go("about")}><Icons.ChevronDown /></div>
       </section>
 
-      {/* MARQUEE TICKER */}
+      {/* DYNAMIC MARQUEE TICKER */}
       <div className="marquee-container">
         <div className="marquee-track">
-          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
-          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
-          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
-          <span>✦ CALL ME OUT NOW ON ALL PLATFORMS ✦ </span>
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
+          <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
         </div>
       </div>
 
-      {/* ABOUT SECTION */}
+      {/* ABOUT */}
       <section className="section" id="about">
         <Rv>
           <p className="section-label">{t.aboutLabel}</p>
@@ -1135,7 +1164,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* MUSIC SLIDER & MEDIA EMBEDS */}
+      {/* MUSIC SLIDER */}
       <section className="music-wrap" id="music">
         <div className="music-inner">
           <Rv>
@@ -1211,7 +1240,6 @@ export default function MaxHefele() {
             </div>
           </Rv>
           
-          {/* SOUNDCLOUD INTEGRATION */}
           <Rv delay={150}>
             <div style={{ marginTop: '20px' }}>
               {!allowSoundCloud ? (
@@ -1227,19 +1255,18 @@ export default function MaxHefele() {
                     </MagneticButton>
                     <p className="media-consent-text">
                       {t.consentSC.text}{' '}
-                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>{t.consentSC.link}</button>
+                      <button className="media-privacy-link" onClick={() => openModal("datenschutz")}>{t.consentSC.link}</button>
                     </p>
                   </div>
                 </TiltCard>
               ) : (
                 <div className="unified-consent-box" style={{ height: '166px' }}>
-                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%2300E5FF&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%2300ffcc&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
                 </div>
               )}
             </div>
           </Rv>
 
-          {/* GOOGLE DRIVE VIDEO INTEGRATION */}
           <Rv delay={200}>
             <div className="video-block" id="videos">
               <div className="section-label" style={{ marginBottom: '20px' }}>{t.videoLabel}</div>
@@ -1257,7 +1284,7 @@ export default function MaxHefele() {
                     </MagneticButton>
                     <p className="media-consent-text">
                       {t.consentVD.title(VIDEO_IDS.length)} — {t.consentVD.text}{' '}
-                      <button className="media-privacy-link" onClick={() => setLegalModal("datenschutz")}>{t.consentVD.link}</button>
+                      <button className="media-privacy-link" onClick={() => openModal("datenschutz")}>{t.consentVD.link}</button>
                     </p>
                   </div>
                 </TiltCard>
@@ -1279,7 +1306,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* NEWS SECTION */}
+      {/* NEWS */}
       <section className="section" id="news">
         <Rv>
           <p className="section-label">{t.newsLabel}</p>
@@ -1304,7 +1331,7 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* DATES SECTION */}
+      {/* DATES */}
       <section className="section" id="dates">
         <Rv>
           <p className="section-label">{t.datesLabel}</p>
@@ -1318,7 +1345,7 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* CONTACT SECTION WITH TRON IDENTITY DISC */}
+      {/* CONTACT */}
       <section className="contact-wrap" id="contact">
         <div className="contact-inner">
           <Rv>
@@ -1328,9 +1355,6 @@ export default function MaxHefele() {
           <div className="contact-grid">
             <div>
               <Rv delay={100}>
-                <a href="mailto:info@maxhefele.de" className="tron-disc-btn" title="Booking & Contact">
-                  <Icons.Mail />
-                </a>
                 <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>{t.contactText}</p>
                 <a className="contact-email" href="mailto:info@maxhefele.de"><Icons.Mail /> info@maxhefele.de</a>
               </Rv>
@@ -1346,20 +1370,18 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME} — {t.footerRights}</div>
         <div className="footer-links">
-          <button className="footer-link" onClick={() => setLegalModal("impressum")}>{t.imprintBtn}</button>
-          <button className="footer-link" onClick={() => setLegalModal("datenschutz")}>{t.privacyBtn}</button>
+          <button className="footer-link" onClick={() => openModal("impressum")}>{t.imprintBtn}</button>
+          <button className="footer-link" onClick={() => openModal("datenschutz")}>{t.privacyBtn}</button>
         </div>
       </footer>
 
-      {/* LEGAL MODALS (IMPRESSUM & DATENSCHUTZ) */}
       {legalModal && (
-        <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setLegalModal(null); }}>
+        <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
           <div className="legal-box">
-            <button className="legal-close" onClick={() => setLegalModal(null)}>✕</button>
+            <button className="legal-close" onClick={closeModal}>✕</button>
 
             {legalModal === "impressum" && (
               <>
@@ -1403,20 +1425,23 @@ export default function MaxHefele() {
                   <h3>1. Datenschutz auf einen Blick</h3>
                   <ul>
                     <li>
-                      <strong>Allgemeine Hinweise:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können.
+                      <strong>Allgemeine Hinweise:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.
                     </li>
                     <li>
-                      <strong>Verantwortliche Stelle:</strong> Max Hefele, Kapellenfeld 3, 86865 Markt Wald, E-Mail: info@maxhefele.de.
+                      <strong>Verantwortliche Stelle:</strong> Max Hefele, Kapellenfeld 3, 86865 Markt Wald, E-Mail: info@maxhefele.de. Die verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
                     </li>
                     <li>
-                      <strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung:</strong> Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
+                      <strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung:</strong> Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
                     </li>
                     <li>
-                      <strong>Recht auf Auskunft, Löschung und Berichtigung:</strong> Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten.
+                      <strong>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde:</strong> Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
+                    </li>
+                    <li>
+                      <strong>Recht auf Auskunft, Löschung und Berichtigung:</strong> Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.
                     </li>
                   </ul>
                   <div style={{ marginTop: '16px', marginBottom: '24px' }}>
-                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', background: 'var(--cyan)' }}>
+                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', color: '#070707' }}>
                       {t.revokeBtn}
                     </button>
                   </div>
@@ -1426,19 +1451,37 @@ export default function MaxHefele() {
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <ul>
                     <li>
-                      <strong>GitHub Pages (Hosting):</strong> Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA.
+                      <strong>GitHub Pages (Hosting):</strong> Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA. Beim Besuch der Seite erfasst GitHub Protokolldaten (z. B. IP-Adresse, Browsertyp, Betriebssystem) auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub:{' '}
+                      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
+                        https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+                      </a>.
                     </li>
                     <li>
-                      <strong>Google Drive (Einbindung von Inhalten/Videos):</strong> Inhalte/Videos werden über Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland eingebunden.
+                      <strong>Google Drive (Einbindung von Inhalten/Videos):</strong> Inhalte/Videos werden über Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland eingebunden. Das Aufrufen über das Zwei-Klick-System übermittelt Daten (wie Ihre IP-Adresse) an Google und erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Details finden Sie bei Google:{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                        https://policies.google.com/privacy
+                      </a>.
                     </li>
                     <li>
-                      <strong>SoundCloud:</strong> Auf den Seiten sind Plugins der SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland integriert.
+                      <strong>SoundCloud:</strong> Auf den Seiten sind Plugins der SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland integriert. Die Aktivierung über das Zwei-Klick-System stellt eine Verbindung zu SoundCloud-Servern her und verarbeitet Daten auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Details:{' '}
+                      <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">
+                        https://soundcloud.com/pages/privacy
+                      </a>.
                     </li>
                     <li>
-                      <strong>Mixcloud:</strong> Links/Plugins der Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien.
+                      <strong>Mixcloud:</strong> Die Website enthält Links/Plugins der Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien. Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Details:{' '}
+                      <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">
+                        https://www.mixcloud.com/privacy/
+                      </a>.
                     </li>
                     <li>
-                      <strong>Beatport, Instagram & YouTube:</strong> Reine Text- bzw. Grafiklinks. Erst bei aktivem Klick werden Sie weitergeleitet.
+                      <strong>Beatport, Instagram & YouTube (Externe Verlinkungen):</strong> Es handelt sich um reine Text- bzw. Grafiklinks, die beim Laden der Webseite keine Daten an diese Netzwerke senden. Erst bei aktivem Klick werden Sie weitergeleitet und es gelten die Datenschutzbestimmungen der jeweiligen Betreiber.
+                    </li>
+                    <li>
+                      <strong>iTunes / Apple Music:</strong> Soweit Verlinkungen genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Details:{' '}
+                      <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">
+                        https://www.apple.com/legal/privacy/de/
+                      </a>.
                     </li>
                   </ul>
                 </div>
