@@ -555,11 +555,19 @@ const css = `
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; }
   .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
 
-  .menu-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; z-index: 101; }
-  .menu-btn span { display: block; width: 22px; height: 1px; background: var(--text); margin: 5px 0; transition: all 0.3s; }
-  .mobile-nav { display: none; position: fixed; inset: 0; background: var(--bg-obsidian); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 32px; }
+  /* FIX FÜR MOBILE MENÜ ANZEIGE */
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(8, 10, 18, 0.7); transition: border-color 0.3s; }
+  .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+  .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
+  .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
+  .menu-btn.open .menu-icon-lines span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
+  .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 24px; padding: 40px; }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 28px; font-weight: 700; text-transform: uppercase; }
+  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
+  .mobile-nav a:hover { color: var(--accent-cyan); }
 
   /* HERO & PARALLAX */
   .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
@@ -932,7 +940,7 @@ const css = `
     .nav.scrolled { padding: 14px 24px; }
     .nav-links { display: none; }
     .nav-right { gap: 16px; }
-    .menu-btn { display: block; }
+    .menu-btn { display: flex; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 320px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1168,7 +1176,7 @@ export default function MaxHefele() {
       <div className="laser-stream-v" />
       <div ref={orbRef} className="bg-glow-orb" />
 
-      {/* NAV (MEHRERE LOGO-PUNKTE ENTFERNT - LOGO ALS SCRIPTTYTPE / KONTURIERTE SCHRIFT) */}
+      {/* NAV */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
         <span className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <ElegantFadeText text={ARTIST_NAME} />
@@ -1201,7 +1209,11 @@ export default function MaxHefele() {
           </div>
 
           <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-            <span /><span />
+            <div className="menu-icon-lines">
+              <span />
+              <span />
+              <span />
+            </div>
           </button>
         </div>
       </nav>
