@@ -51,6 +51,7 @@ export default function App() {
   const [active, setActive] = useState("music");
   const [legal, setLegal] = useState(null);
   const [scanning, setScanning] = useState(0);
+  const [imgSrc, setImgSrc] = useState(portraitImg);
 
   useEffect(() => {
     const onScroll = () => {
@@ -133,6 +134,7 @@ export default function App() {
             linear-gradient(90deg, rgba(0,229,255,0.15) 1px, transparent 1px);
           background-size: 80px 80px;
           mask-image: linear-gradient(180deg, transparent 0%, black 40%, transparent 100%);
+          -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 40%, transparent 100%);
           opacity:0.35;
           pointer-events:none;
         }
@@ -254,7 +256,12 @@ export default function App() {
               <div className="relative w-[84%] h-[84%] rounded-full bg-gradient-to-b from-[#0B1520] to-[#05050A] border border-[#00E5FF]/30 overflow-hidden shadow-[0_0_80px_rgba(0,229,255,0.25),inset_0_0_60px_rgba(0,229,255,0.1)]">
                 <div className="absolute inset-0 opacity-[0.08]" style={{backgroundImage:`linear-gradient(rgba(0,229,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.6) 1px, transparent 1px)`, backgroundSize:"28px 28px"}} />
 
-                <img src={portraitImg} alt="Max Hefele" className="absolute inset-0 w-full h-full object-cover object-top mix-blend-lighten opacity-[0.92]" />
+                <img 
+                  src={imgSrc} 
+                  onError={() => setImgSrc("https://via.placeholder.com/600x600/05050A/00E5FF?text=MAX+HEFELE")} 
+                  alt="Max Hefele" 
+                  className="absolute inset-0 w-full h-full object-cover object-top mix-blend-lighten opacity-[0.92]" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05050A] via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-[#00E5FF]/[0.08] mix-blend-color" />
 
@@ -294,7 +301,7 @@ export default function App() {
           <div className="order-2 md:order-2 relative">
             <div className="inline-flex items-center gap-2 border border-[#00E5FF]/20 bg-[#00E5FF]/[0.04] rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.2em] text-[#00E5FF] mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-[pulseLED_1s_ease_infinite]" />
-               OF CLUB CULTURE • EST. 2005
+               20 YEARS OF CLUB CULTURE • EST. 2005
             </div>
 
             <h1 className="font-display font-[800] leading-[0.85] tracking-[-0.03em]">
@@ -309,7 +316,7 @@ export default function App() {
               </div>
               <div className="border border-white/10 bg-white/[0.02] backdrop-blur px-4 py-3 rounded-[12px] min-w-[120px]">
                 <div className="font-mono text-[9px] tracking-[0.2em] text-white/40">EST.</div>
-                <div className="font-display font-[700] text-[14px] tracking-[0.1em] text-white">2005 — </div>
+                <div className="font-display font-[700] text-[14px] tracking-[0.1em] text-white">2005 — PRESENT</div>
               </div>
               <div className="border border-[#00E5FF]/30 bg-[#00E5FF]/[0.06] backdrop-blur px-4 py-3 rounded-[12px] min-w-[120px]">
                 <div className="font-mono text-[9px] tracking-[0.2em] text-[#00E5FF]/60">ARTIST</div>
@@ -389,7 +396,7 @@ export default function App() {
               </div>
 
               <div className="rounded-[16px] border border-white/10 bg-white/[0.02] p-5 flex items-center gap-4">
-                <img src={portraitImg} className="w-14 h-14 rounded-full object-cover border border-[#00E5FF]/30" alt="Max" />
+                <img src={imgSrc} onError={() => setImgSrc("https://via.placeholder.com/600x600/05050A/00E5FF?text=MAX+HEFELE")} className="w-14 h-14 rounded-full object-cover border border-[#00E5FF]/30" alt="Max" />
                 <div>
                   <div className="font-display font-[700] text-[14px] text-white">Rave in the City</div>
                   <div className="font-mono text-[10px] text-white/50">Alle 2 Wochen • YouTube • 1 Hour • Qualität statt Quantität</div>
