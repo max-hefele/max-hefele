@@ -20,7 +20,7 @@ const T = {
       "Als Resident unter dem Namen Mexx Pain kam er aus dem Hip-Hop und lernte früh, Zwei Plattenspieler sind mehr als nur Technik. Mit Instinkt, Präzision und perfektem Timing formte er ganze Nächte. Er weiß, wie man Crowds bewegt und die Energie eines Raumes lenkt.",
       "Genau diese Erfahrung prägt heute seine Melodic Techno Sets. Max Hefele spielt keine Setlisten von der Stange. Er liest den Raum, baut Spannung auf, hält sie aus und weiß exakt, wann ein Track sitzen muss.",
       "Nach zwei Jahrzehnten hinter den Decks macht der eigene Name sichtbar, was ihn geformt hat. Der Weg vom Hip-Hop zur elektronischen Musik, ohne die Wurzeln zu kappen.",
-      "Sein Sound setzt nicht auf Effekte. Er setzt auf Spannung, Tiefe und den richtigen Moment. Diese Souveränität hört man auch im Studio: Mit seiner Debüt-EP CALL ME auf MYR Records hat er ein echtes Ausrufezeichen gesetzt. Der Release wurde unter anderem von Paul van Dyk in seiner Radioshow Vonyc Sessions (Folge 1026) gefeiert.",
+      "Sein Sound basiert nicht auf Effekten, sondern auf Spannung, Tiefe und dem richtigen Moment. Diese Selbstsicherheit ist auch im Studio zu hören. Mit seiner Debüt-EP „CALL ME“ auf MYR Records hat er ein echtes Statement gesetzt. Die Veröffentlichung wurde unter anderem von Paul van Dyk in seiner Radiosendung „Vonyc Sessions“ (Folge 1026) gefeiert und kletterte direkt auf Platz 39 der Beatport Top 100 Melodic Techno Releases, wo sie sich sechs Tage lang in den Charts hielt.",
       "Parallel dazu erscheint alle zwei Wochen seine musikalische Vision in der YouTube-Reihe Rave in the City. Eine Stunde, die zeigt, worum es geht. Qualität statt Quantität. Erfahrung statt Zufall. Keine Show. Nur Musik.",
       "Max Hefele bringt etwas mit, das selten geworden ist, echte Club-Erfahrung und die Fähigkeit, komplette Nächte zu gestalten, ohne den roten Faden zu verlieren."
     ],
@@ -94,7 +94,7 @@ const T = {
       "Starting out as a resident under the name Mexx Pain, he emerged from the Hip-Hop scene and learned early on that two turntables are more than just technique. With instinct, precision, and perfect timing, he shapes entire nights. He knows exactly how to move crowds and command the energy of a room.",
       "Exactly this experience characterizes his Melodic Techno sets today. Max Hefele doesn't play stock setlists. He reads the room, builds tension, sustains it, and knows exactly when a track needs to hit.",
       "After two decades behind the decks, his name now reflects the very forces that shaped him. It is a journey from Hip-Hop to electronic music, all without ever severing those roots.",
-      "His sound doesn't rely on effects. It relies on tension, depth, and the right moment. This confidence can also be heard in the studio: With his debut EP CALL ME on MYR Records, he has set a real statement. The release was celebrated by Paul van Dyk on his radio show Vonyc Sessions (episode 1026) among others.",
+      "His sound isn’t based on effects, but on tension, depth, and timing. That confidence is also evident in the studio. With his debut EP “CALL ME” on MYR Records, he’s made a real statement. The release was celebrated by Paul van Dyk, among others, on his radio show “Vonyc Sessions” (Episode 1026) and climbed straight to No. 39 on the Beatport Top 100 Melodic Techno Releases, where it remained on the charts for six days.",
       "In parallel, he shares his musical vision every two weeks through the YouTube series 'Rave in the City.' One hour that captures the essence of what it’s all about: quality over quantity, experience over chance. No gimmicks. Just music.",
       "Max Hefele brings something that has become rare genuine club experience and the ability to craft entire nights without losing the thread."
     ],
@@ -711,14 +711,17 @@ const css = `
 
   /* MODALS */
   .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(11, 11, 11, 0.9); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 720px; width: 100%; padding: 48px; position: relative; }
+  .legal-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; max-width: 760px; width: 100%; padding: 48px; position: relative; }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; }
   .legal-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #fff; }
   .legal-subtitle { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 32px; }
   .legal-section { margin-bottom: 24px; }
-  .legal-section h3 { font-size: 16px; margin-bottom: 8px; color: var(--text); }
-  .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
-  .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; }
+  .legal-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
+  .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
+  .legal-section li { margin-bottom: 6px; }
+  .legal-section a { color: #fff; text-decoration: underline; }
+  .legal-placeholder { background: var(--bg); border: 1px solid var(--border); padding: 16px; border-radius: 4px; font-size: 13px; color: var(--text-mid); margin-top: 8px; line-height: 1.6; }
 
   /* REVEAL ANIMATION */
   .rv { 
@@ -1287,16 +1290,30 @@ export default function MaxHefele() {
                 <h2 className="legal-title">{t.legalTitleImprint}</h2>
                 <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
                 <div className="legal-section">
-                  <h3>Verantwortlich</h3>
-                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />Deutschland</div>
+                  <h3>Angaben gemäß § 5 DDG</h3>
+                  <div className="legal-placeholder">
+                    <strong>Verantwortlich:</strong><br />
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland
+                  </div>
                 </div>
                 <div className="legal-section">
-                  <h3>Contact</h3>
-                  <p>E-Mail: <a href="mailto:info@maxhefele.de" style={{ color: '#fff' }}>info@maxhefele.de</a></p>
+                  <h3>Kontakt</h3>
+                  <p>E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a></p>
                 </div>
                 <div className="legal-section">
                   <h3>EU-Streitschlichtung</h3>
-                  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#fff' }}>https://ec.europa.eu/consumers/odr/</a>.</p>
+                  <p>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
+                      https://ec.europa.eu/consumers/odr/
+                    </a>.
+                  </p>
+                  <p>
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                  </p>
                 </div>
               </>
             )}
@@ -1305,20 +1322,75 @@ export default function MaxHefele() {
               <>
                 <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
                 <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
+                
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich.</p>
+                  <ul>
+                    <li>
+                      <strong>Allgemeine Hinweise:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.
+                    </li>
+                    <li>
+                      <strong>Verantwortliche Stelle:</strong> Max Hefele, Kapellenfeld 3, 86865 Markt Wald, E-Mail: info@maxhefele.de. Die verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
+                    </li>
+                    <li>
+                      <strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung:</strong> Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
+                    </li>
+                    <li>
+                      <strong>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde:</strong> Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
+                    </li>
+                    <li>
+                      <strong>Recht auf Auskunft, Löschung und Berichtigung:</strong> Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.
+                    </li>
+                  </ul>
+                  <div style={{ marginTop: '16px', marginBottom: '24px' }}>
+                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px' }}>
+                      {t.revokeBtn}
+                    </button>
+                  </div>
                 </div>
+
                 <div className="legal-section">
-                  <h3>Verantwortliche Stelle</h3>
-                  <div className="legal-placeholder">Max Hefele<br />Kapellenfeld 3<br />86865 Markt Wald<br />E-Mail: info@maxhefele.de</div>
+                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
+                  <ul>
+                    <li>
+                      <strong>GitHub Pages (Hosting):</strong> Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA. Beim Besuch der Seite erfasst GitHub Protokolldaten (z. B. IP-Adresse, Browsertyp, Betriebssystem) auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub:{' '}
+                      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
+                        https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+                      </a>.
+                    </li>
+                    <li>
+                      <strong>Google Drive (Einbindung von Inhalten/Videos):</strong> Inhalte/Videos werden über Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland eingebunden. Das Aufrufen über das Zwei-Klick-System übermittelt Daten (wie Ihre IP-Adresse) an Google und erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Details finden Sie bei Google:{' '}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                        https://policies.google.com/privacy
+                      </a>.
+                    </li>
+                    <li>
+                      <strong>SoundCloud:</strong> Auf den Seiten sind Plugins der SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland integriert. Die Aktivierung über das Zwei-Klick-System stellt eine Verbindung zu SoundCloud-Servern her und verarbeitet Daten auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Details:{' '}
+                      <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">
+                        https://soundcloud.com/pages/privacy
+                      </a>.
+                    </li>
+                    <li>
+                      <strong>Mixcloud:</strong> Die Website enthält Links/Plugins der Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien. Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Details:{' '}
+                      <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">
+                        https://www.mixcloud.com/privacy/
+                      </a>.
+                    </li>
+                    <li>
+                      <strong>Beatport, Instagram & YouTube (Externe Verlinkungen):</strong> Es handelt sich um reine Text- bzw. Grafiklinks, die beim Laden der Webseite keine Daten an diese Netzwerke senden. Erst bei aktivem Klick werden Sie weitergeleitet und es gelten die Datenschutzbestimmungen der jeweiligen Betreiber.
+                    </li>
+                    <li>
+                      <strong>iTunes / Apple Music:</strong> Soweit Verlinkungen genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Details:{' '}
+                      <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">
+                        https://www.apple.com/legal/privacy/de/
+                      </a>.
+                    </li>
+                  </ul>
                 </div>
-                <div className="legal-section">
-                  <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-                  <p>Sie können eine bereits erteilte Einwilligung jederzeit widerrufen.</p>
-                  <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', marginTop: '12px' }}>{t.revokeBtn}</button>
-                </div>
-                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}><strong>Stand 23. August 2026</strong></p>
+
+                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}>
+                  <strong>Stand:</strong> 09. Juli 2026
+                </p>
               </>
             )}
           </div>
