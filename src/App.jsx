@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import portraitImg from "./assets/portrait.jpg";
-// Place portrait.jpg in src/assets/
 
 // --- DATA FROM ORIGINAL HOMEPAGE ---
 const BIO = [
@@ -52,7 +51,6 @@ export default function App() {
   const [active, setActive] = useState("music");
   const [legal, setLegal] = useState(null);
   const [scanning, setScanning] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -83,7 +81,7 @@ export default function App() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -98,7 +96,6 @@ export default function App() {
         .font-mono{ font-family:'JetBrains Mono', monospace; }
         .font-body{ font-family:'Inter', sans-serif; }
 
-        /* Blueprint Grid */
         .blueprint-grid{
           position:fixed; inset:0; z-index:0; pointer-events:none;
           background-image:
@@ -115,14 +112,12 @@ export default function App() {
                       linear-gradient(180deg, rgba(5,5,10,0) 0%, rgba(5,5,10,0.8) 100%);
         }
 
-        /* Light Lines */
         .light-line{
           position:absolute; background: linear-gradient(90deg, transparent, var(--cyan), transparent);
           height:1px; box-shadow:0 0 12px var(--cyan), 0 0 24px rgba(0,229,255,0.5);
           opacity:0.8;
         }
 
-        /* Scanning Line */
         .scanline{
           position:absolute; left:0; right:0; height:2px; z-index:10;
           background: linear-gradient(90deg, transparent, #00E5FF 20%, #ffffff 50%, #00E5FF 80%, transparent);
@@ -130,7 +125,6 @@ export default function App() {
           mix-blend-mode: screen;
         }
 
-        /* Grid Floor Perspective */
         .grid-floor{
           position:absolute; bottom:0; left:50%; width:120%; height:60%;
           transform: translateX(-50%) perspective(400px) rotateX(60deg);
@@ -236,7 +230,7 @@ export default function App() {
         <div className="whitespace-nowrap flex animate-[ticker_25s_linear_infinite]">
           {Array.from({length:8}).map((_,i)=>(
             <span key={i} className="flex items-center gap-8 pr-8">
-              <span>MAX HEFELE — MELODIC TECHNO —  CLUB CULTURE — RAVE IN THE CITY VOL.52 — CALL ME EP OUT NOW — PAUL VAN DYK SUPPORT — </span>
+              <span>MAX HEFELE — MELODIC TECHNO — CLUB CULTURE — RAVE IN THE CITY VOL.52 — CALL ME EP OUT NOW — PAUL VAN DYK SUPPORT — </span>
               <span className="w-1.5 h-1.5 bg-black rounded-full" />
             </span>
           ))}
@@ -244,8 +238,7 @@ export default function App() {
       </div>
 
       {/* HERO */}
-      <section ref={heroRef} className="relative z-10 pt-[160px] md:pt-[170px] pb-20 md:pb-28 px-4 md:px-8 max-w-[1600px] mx-auto overflow-hidden">
-        {/* Light Lines */}
+      <section className="relative z-10 pt-[160px] md:pt-[170px] pb-20 md:pb-28 px-4 md:px-8 max-w-[1600px] mx-auto overflow-hidden">
         <div className="light-line top-[18%] left-0 w-[28%] hidden md:block" />
         <div className="light-line top-[62%] right-0 w-[22%] hidden md:block" />
 
@@ -253,37 +246,29 @@ export default function App() {
           {/* Identity Disc */}
           <div className="relative order-1 md:order-1 flex justify-center">
             <div className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] flex items-center justify-center animate-[floatSlow_6s_ease_infinite] max-w-[92vw]">
-              {/* Outer Rings */}
               <div className="disc-ring w-[115%] h-[115%] opacity-30" style={{borderStyle:"dashed", borderWidth:"1px"}} />
               <div className="disc-ring w-[108%] h-[108%]" />
               <div className="disc-ring w-[102%] h-[102%] border-[#00E5FF]/40" />
               <div className="disc-ring w-[92%] h-[92%] border-white/10" />
 
-              {/* Main Disc */}
               <div className="relative w-[84%] h-[84%] rounded-full bg-gradient-to-b from-[#0B1520] to-[#05050A] border border-[#00E5FF]/30 overflow-hidden shadow-[0_0_80px_rgba(0,229,255,0.25),inset_0_0_60px_rgba(0,229,255,0.1)]">
-                {/* Grid overlay inside disc */}
                 <div className="absolute inset-0 opacity-[0.08]" style={{backgroundImage:`linear-gradient(rgba(0,229,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.6) 1px, transparent 1px)`, backgroundSize:"28px 28px"}} />
 
-                {/* Portrait */}
                 <img src={portraitImg} alt="Max Hefele" className="absolute inset-0 w-full h-full object-cover object-top mix-blend-lighten opacity-[0.92]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05050A] via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-[#00E5FF]/[0.08] mix-blend-color" />
 
-                {/* Scanning line */}
                 <div className="scanline" style={{ top: `${10 + scanning * 80}%` }} />
 
-                {/* Center crosshair */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] h-[1px] bg-[#00E5FF]/20" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-[92%] bg-[#00E5FF]/20" />
 
-                {/* HUD corners */}
                 <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-[#00E5FF]/60" />
                 <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-[#00E5FF]/60" />
                 <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-[#00E5FF]/60" />
                 <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-[#00E5FF]/60" />
               </div>
 
-              {/* Outer glow ticks */}
               <div className="absolute inset-0">
                 {[0,90,180,270].map(deg=>(
                   <div key={deg} className="absolute w-[2px] h-[14px] bg-[#00E5FF]" style={{left:"50%", top:"-6px", transformOrigin:"50% 266px", transform:`translateX(-50%) rotate(${deg}deg)`, boxShadow:"0 0 8px #00E5FF"}} />
@@ -291,10 +276,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Grid Floor under disc */}
             <div className="grid-floor" />
 
-            {/* Data labels */}
             <div className="absolute -bottom-6 md:bottom-2 left-2 md:-left-8 font-mono text-[9px] leading-[1.4] text-[#00E5FF]/50 hidden md:block">
               <div>IDENTITY_DISC // MK-VII</div>
               <div>USER: MAX_HEFELE</div>
@@ -410,7 +393,7 @@ export default function App() {
                 <div>
                   <div className="font-display font-[700] text-[14px] text-white">Rave in the City</div>
                   <div className="font-mono text-[10px] text-white/50">Alle 2 Wochen • YouTube • 1 Hour • Qualität statt Quantität</div>
-                  <a href={SOCIAL_LINKS[2].url} target="_blank" rel="noopener" className="inline-block mt-1 font-mono text-[10px] tracking-[0.15em] text-[#00E5FF] hover:text-white transition-colors">YOUTUBE.COM/@MAXHEFELE →</a>
+                  <a href={SOCIAL_LINKS[2].url} target="_blank" rel="noopener noreferrer" className="inline-block mt-1 font-mono text-[10px] tracking-[0.15em] text-[#00E5FF] hover:text-white transition-colors">YOUTUBE.COM/@MAXHEFELE →</a>
                 </div>
               </div>
             </div>
@@ -436,7 +419,7 @@ export default function App() {
             {MUSIC_PLATFORMS.map((p,i)=>{
               const span = i===0 || i===1 ? "md:col-span-6" : "md:col-span-4";
               return (
-                <a key={p.id} href={p.url} target="_blank" rel="noopener" className={`${span} group relative rounded-[16px] md:rounded-[20px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-black/40 backdrop-blur-xl p-5 md:p-6 overflow-hidden hover:border-[#00E5FF]/40 transition-all hover:-translate-y-[1px] hover:shadow-[0_0_40px_rgba(0,229,255,0.15)]`}>
+                <a key={p.id} href={p.url} target="_blank" rel="noopener noreferrer" className={`${span} group relative rounded-[16px] md:rounded-[20px] border border-white/10 bg-gradient-to-b from-white/[0.04] to-black/40 backdrop-blur-xl p-5 md:p-6 overflow-hidden hover:border-[#00E5FF]/40 transition-all hover:-translate-y-[1px] hover:shadow-[0_0_40px_rgba(0,229,255,0.15)]`}>
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00E5FF]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="flex items-start justify-between gap-4">
                     <div className="w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center font-display font-[800] text-[11px] tracking-[0.1em] text-white group-hover:bg-[#00E5FF] group-hover:text-black transition-colors">
@@ -461,8 +444,8 @@ export default function App() {
             <div className="rounded-[16px] border border-[#00E5FF]/20 bg-[#00E5FF]/[0.04] p-4 md:p-5 flex flex-wrap items-center gap-4">
               <div className="font-mono text-[10px] tracking-[0.2em] text-[#00E5FF]">GOOGLE DRIVE • MEDIA VAULT</div>
               <div className="flex gap-2">
-                <a href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener" className="h-[30px] px-3 rounded-full bg-black/60 border border-white/10 text-white font-mono text-[10px] tracking-[0.12em] flex items-center hover:border-[#00E5FF]/40">VIDEOS FOLDER</a>
-                <a href={GOOGLE_DRIVE.pressKit} target="_blank" rel="noopener" className="h-[30px] px-3 rounded-full bg-[#00E5FF] text-black font-display font-[700] text-[10px] tracking-[0.12em] flex items-center">PRESS KIT</a>
+                <a href={GOOGLE_DRIVE.videos} target="_blank" rel="noopener noreferrer" className="h-[30px] px-3 rounded-full bg-black/60 border border-white/10 text-white font-mono text-[10px] tracking-[0.12em] flex items-center hover:border-[#00E5FF]/40">VIDEOS FOLDER</a>
+                <a href={GOOGLE_DRIVE.pressKit} target="_blank" rel="noopener noreferrer" className="h-[30px] px-3 rounded-full bg-[#00E5FF] text-black font-display font-[700] text-[10px] tracking-[0.12em] flex items-center">PRESS KIT</a>
               </div>
               <div className="ml-auto hidden md:flex items-center gap-2 font-mono text-[9px] text-white/30"><div className="w-1 h-1 rounded-full bg-[#00E5FF]" /> FIRST_VIDEO_ID: {GOOGLE_DRIVE.firstVideoId.slice(0,8)}...</div>
             </div>
@@ -490,7 +473,7 @@ export default function App() {
 
           <div className="grid md:grid-cols-5 gap-3 md:gap-4">
             {NEWS.map(item=>(
-              <a key={item.id} href={item.link} target="_blank" rel="noopener" className="group relative rounded-[16px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#00E5FF]/30 p-5 flex flex-col min-h-[240px] transition-all">
+              <a key={item.id} href={item.link} target="_blank" rel="noopener noreferrer" className="group relative rounded-[16px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#00E5FF]/30 p-5 flex flex-col min-h-[240px] transition-all">
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-mono text-[9px] tracking-[0.2em] text-[#00E5FF] border border-[#00E5FF]/20 bg-[#00E5FF]/10 rounded-full px-2 py-1">{item.cat}</span>
                   <span className="font-mono text-[9px] text-white/30">{item.date}</span>
@@ -555,7 +538,7 @@ export default function App() {
               <div className="font-mono text-[10px] tracking-[0.2em] text-white/30 mb-4">SOCIAL NODES • 8 ACTIVE</div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {SOCIAL_LINKS.map(s=>(
-                  <a key={s.name} href={s.url} target="_blank" rel="noopener" className="group flex items-center justify-between rounded-[14px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#00E5FF]/30 px-4 py-4 transition-all">
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between rounded-[14px] border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#00E5FF]/30 px-4 py-4 transition-all">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-mono text-[10px] text-white/60 group-hover:bg-[#00E5FF] group-hover:text-black transition-colors">
                         {s.name.slice(0,2).toUpperCase()}
@@ -619,7 +602,7 @@ export default function App() {
                     </div>
                     <div>
                       <h3 className="font-display font-[700] text-white text-[14px] mb-1">EU-Streitschlichtung</h3>
-                      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener" className="text-[#00E5FF]">https://ec.europa.eu/consumers/odr/</a>. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-[#00E5FF]">https://ec.europa.eu/consumers/odr/</a>. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
                     </div>
                   </div>
                 </>
