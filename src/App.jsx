@@ -1783,30 +1783,117 @@ export default function MaxHefele() {
           <div className="legal-box" onClick={e => e.stopPropagation()}>
             <button className="legal-close" onClick={closeModal}>✕</button>
             
-            {legalModal === "impressum" ? (
+            {legalModal === "impressum" && (
               <>
                 <h2 className="legal-title">{t.legalTitleImprint}</h2>
-                <div className="legal-subtitle">{t.legalSubtitleImprint}</div>
+                <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
+
                 <div className="legal-section">
-                  <h3>Angaben gemäß § 5 DDG</h3>
-                  <p><strong>Max Hefele</strong><br />E-Mail: info@maxhefele.de</p>
-                  <p><strong>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV:</strong><br />Max Hefele</p>
+                  <h3>Verantwortlich</h3>
+                  <div className="legal-placeholder">
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland
+                  </div>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Contact</h3>
+                  <p>
+                    E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
+                  </p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>EU-Streitschlichtung</h3>
+                  <p>
+                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
+                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                  </p>
                 </div>
               </>
-            ) : (
+            )}
+
+            {legalModal === "datenschutz" && (
               <>
                 <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
-                <div className="legal-subtitle">{t.legalSubtitlePrivacy}</div>
+                <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
+                
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
-                  
-                  <h3>2. Hosting & Externe Medien</h3>
-                  <p>Inhalte wie Audio-Player (SoundCloud) und Videos (Google Drive) werden erst nach expliziter Einwilligung des Nutzers geladen, um die Übertragung von Daten an Drittanbieter vorab zu verhindern.</p>
-                  
-                  <h3>3. Kontaktaufnahme / Formular</h3>
-                  <p>Wenn Sie uns per E-Mail oder Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+                  <h3>Allgemeine Hinweise</h3>
+                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                  <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
                 </div>
+
+                <div className="legal-section">
+                  <h3>Verantwortliche Stelle</h3>
+                  <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                  <div className="legal-placeholder">
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    E-Mail: info@maxhefele.de
+                  </div>
+                  <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+                  <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+                  <button onClick={resetConsent} className="media-consent-btn" style={{ marginTop: '12px', display: 'block', padding: '10px 24px', fontSize: '9px' }}>
+                    {t.revokeBtn}
+                  </button>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde</h3>
+                  <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Recht auf Auskunft, Löschung und Berichtigung</h3>
+                  <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
+                  <h3>GitHub Pages (Hosting)</h3>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+
+                  <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
+                  <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
+                  <p>Wenn Sie Inhalte (wie Videos) über das integrierte Zwei-Klick-System aktivieren, wird eine Verbindung zu den Servern von Google hergestellt. Dabei wird an Google übermittelt, welche unserer Seiten Sie besucht haben. Zudem erhebt Google Ihre IP-Adresse. Sollten Sie in Ihrem Google-Konto eingeloggt sein, ermöglichen Sie Google, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Dies können Sie verhindern, indem Sie sich aus Ihrem Google-Konto ausloggen.</p>
+                  <p>Die Nutzung von Google Drive erfolgt auf Grundlage Ihrer expliziten Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über das Aktivieren der Inhalte auf unserer Website erteilt haben. Die Einwilligung ist jederzeit für die Zukunft widerrufbar.</p>
+                  <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission sowie das EU-US Data Privacy Framework gestützt. Details finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>SoundCloud</h3>
+                  <p>Auf unseren Seiten können Plugins des sozialen Netzwerks SoundCloud (SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland) integriert sein. Die SoundCloud-Plugins erkennen Sie an dem SoundCloud-Logo auf den betroffenen Inhalten.</p>
+                  <p>Wenn Sie die SoundCloud-Inhalte über unser Zwei-Klick-System aktivieren, wird eine direkte Verbindung zwischen Ihrem Browser und dem SoundCloud-Server hergestellt. SoundCloud erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie den SoundCloud-Button anklicken während Sie in Ihrem SoundCloud-Benutzerkonto eingeloggt sind, können Sie die Inhalte unserer Seiten mit Ihrem SoundCloud-Profil verlinken. Dadurch kann SoundCloud den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch SoundCloud erhalten.</p>
+                  <p>Die Datenverarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von SoundCloud unter: <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">https://soundcloud.com/pages/privacy</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Mixcloud</h3>
+                  <p>Auf unserer Website sind Links oder Plugins des Audio-Dienstes Mixcloud integriert. Anbieter ist die Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien.</p>
+                  <p>Bei der Nutzung oder beim Aufruf von Mixcloud-Elementen stellt Ihr Browser eine direkte Verbindung zu den Servern von Mixcloud her. Hierdurch erhält Mixcloud die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Die Nutzung von Mixcloud erfolgt auf Grundlage unseres berechtigten Interesses an der ansprechenden Gestaltung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Für den Datentransfer nach Großbritannien liegt ein Angemessenheitsbeschluss der Europäischen Kommission vor.</p>
+                  <p>Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Mixcloud: <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">https://www.mixcloud.com/privacy/</a>.</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>Beatport, Instagram & YouTube (Externe Verlinkungen)</h3>
+                  <p>Auf unserer Webseite befinden sich Hyperlinks zu externen Social-Media-Plattformen und Musikdiensten (Beatport, Instagram, YouTube). Es handelt sich hierbei um reine Text- bzw. Grafiklinks, die beim Laden unserer Webseite **keine** Daten an diese Netzwerke senden. Erst wenn Sie aktiv auf einen dieser Links klicken, werden Sie auf die Plattform des Drittanbieters weitergeleitet. Dort gelten die jeweiligen Datenschutzbestimmungen der Betreiber.</p>
+                  <p>Informationen zum Umgang mit Ihren Daten finden Sie in den Datenschutzrichtlinien von Beatport (<a href="https://www.beatport.com/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.beatport.com/privacy-policy</a>), Instagram (<a href="https://help.instagram.com/519522125107875" target="_blank" rel="noopener noreferrer">https://help.instagram.com/519522125107875</a>) und YouTube/Google (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>).</p>
+                </div>
+
+                <div className="legal-section">
+                  <h3>iTunes / Apple Music</h3>
+                  <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
+                </div>
+                <p><strong>Stand 09. Juli 2026</strong></p>
               </>
             )}
           </div>
