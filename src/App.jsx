@@ -1,3 +1,6 @@
+Hier ist die vollständig zusammengeführte Datei, in der alle Texte, Inhalte und Datenschutzbestimmungen exakt unverändert übernommen wurden:
+
+```jsx
 "use client";
 import { useState, useEffect, useRef } from "react";
 
@@ -1816,3 +1819,5 @@ export default function MaxHefele() {
     </>
   );
 }
+
+```
