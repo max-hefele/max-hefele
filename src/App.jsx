@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-// ─── Translations (UNVERÄNDERT) ───
+// ─── Translations ───
 const T = {
   de: {
     nav: [
@@ -9,6 +9,7 @@ const T = {
       { id: "music", label: "Music" },
       { id: "news", label: "News" },
       { id: "dates", label: "Dates" },
+      { id: "booking", label: "Booking" },
       { id: "contact", label: "Contact" }
     ],
     bookingBtn: "Book Now",
@@ -64,6 +65,22 @@ const T = {
     datesTitle: "DATES",
     datesEmpty: "NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN",
     datesSub: "Für Booking-Anfragen bitte Kontakt aufnehmen.",
+    bookingLabel: "Promoter & Management",
+    bookingTitle: "BOOKING ANFRAGE",
+    bookingText: "Für Festival-Bookings, Club-Termine oder internationale Events nutze das Anfragenformular oder kontaktiere das Management direkt.",
+    bookingDirectTitle: "Direkter Booking-Kontakt",
+    bookingPressTitle: "Press Kit & Tech Rider",
+    bookingPressDesc: "Pressefotos, Biografien und Technical Rider auf Anfrage verfügbar.",
+    bookingFields: {
+      name: "Name / Agentur / Veranstalter",
+      email: "E-Mail-Adresse",
+      date: "Event Datum",
+      type: "Event Typ (Club, Festival, Private)",
+      location: "Location / Stadt & Land",
+      message: "Details & Nachricht",
+      submit: "ANFRAGE ABSENDEN"
+    },
+    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich übermittelt.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
@@ -83,6 +100,7 @@ const T = {
       { id: "music", label: "Music" },
       { id: "news", label: "News" },
       { id: "dates", label: "Dates" },
+      { id: "booking", label: "Booking" },
       { id: "contact", label: "Contact" }
     ],
     bookingBtn: "Book Now",
@@ -138,6 +156,22 @@ const T = {
     datesTitle: "DATES",
     datesEmpty: "NEW DATES WILL BE ANNOUNCED SOON",
     datesSub: "For booking inquiries please get in touch.",
+    bookingLabel: "Promoter & Management",
+    bookingTitle: "BOOKING INQUIRY",
+    bookingText: "For festival bookings, club dates, or international events, please use the inquiry form below or contact management directly.",
+    bookingDirectTitle: "Direct Booking Contact",
+    bookingPressTitle: "Press Kit & Tech Rider",
+    bookingPressDesc: "Press photos, press bio, and technical rider available upon request.",
+    bookingFields: {
+      name: "Name / Agency / Promoter",
+      email: "Email Address",
+      date: "Event Date",
+      type: "Event Type (Club, Festival, Private)",
+      location: "Location / City & Country",
+      message: "Details & Message",
+      submit: "SEND INQUIRY"
+    },
+    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "For booking inquiries, collaborations or general questions — just send a message.",
@@ -278,9 +312,9 @@ const css = `
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scrollbar-width: none; }
+  html { scroll-behavior: smooth; scrollbar-width: none; overflow-x: hidden; width: 100%; }
   ::-webkit-scrollbar { display: none; }
-  body, #root { background: var(--bg-obsidian); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
+  body, #root { background: var(--bg-obsidian); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; width: 100%; }
 
   /* TRON 3D LIGHTCYCLE PERSPECTIVE GRID */
   .tron-grid {
@@ -397,7 +431,7 @@ const css = `
     98% { transform: translate(0); filter: none; }
   }
 
-  .fade-logo { display: inline-flex; letter-spacing: 5px; }
+  .fade-logo { display: inline-flex; letter-spacing: 5px; flex-wrap: wrap; }
   .fade-char {
     display: inline-block;
     opacity: 0;
@@ -498,7 +532,7 @@ const css = `
   }
 
   .nav-right { display: flex; align-items: center; gap: 36px; }
-  .nav-links { display: flex; gap: 28px; list-style: none; position: relative; }
+  .nav-links { display: flex; gap: 24px; list-style: none; position: relative; }
   .nav-links a { 
     font-family: var(--font-display);
     color: var(--text-mid); 
@@ -543,6 +577,7 @@ const css = `
     transition: all 0.3s var(--ease);
     white-space: nowrap;
     display: inline-block;
+    touch-action: manipulation;
   }
   .nav-booking-btn:hover {
     background: var(--accent-cyan);
@@ -552,11 +587,11 @@ const css = `
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 1px; flex-shrink: 0; }
-  .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; }
+  .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; padding: 4px; }
   .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
 
-  /* FIX FÜR MOBILE MENÜ ANZEIGE */
-  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(8, 10, 18, 0.7); transition: border-color 0.3s; flex-shrink: 0; }
+  /* MOBILE NAV */
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(8, 10, 18, 0.7); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
   .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
@@ -564,21 +599,21 @@ const css = `
   .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
   .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 24px; padding: 40px; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 24px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
+  .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
   /* HERO & PARALLAX */
-  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
+  .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.4) contrast(1.2) hue-rotate(-10deg); will-change: transform; }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
   .hero-name { 
     font-family: var(--font-display); 
-    font-size: clamp(36px, 7vw, 84px); 
+    font-size: clamp(32px, 7vw, 84px); 
     font-weight: 900; 
-    letter-spacing: 8px; 
+    letter-spacing: 6px; 
     line-height: 1.1; 
     text-transform: uppercase; 
     margin-bottom: 24px; 
@@ -586,6 +621,7 @@ const css = `
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.3));
+    word-break: break-word;
   }
 
   .hero-socials { 
@@ -594,6 +630,7 @@ const css = `
     justify-content: center; 
     gap: 12px; 
     margin-top: 16px; 
+    max-width: 100%;
   }
   .hero-socials a { 
     color: var(--text-mid); 
@@ -608,19 +645,20 @@ const css = `
     text-decoration: none; 
     background: rgba(8, 10, 18, 0.7); 
     will-change: transform;
+    touch-action: manipulation;
   }
   .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.12); box-shadow: 0 0 20px rgba(0, 243, 255, 0.35); }
-  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; }
+  .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
   .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
 
-  /* SECTIONS & TRON CHAMFERED HUD CONTAINER STRUCTURE */
-  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+  /* SECTIONS & CONTAINER STRUCTURE */
+  .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
   .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .section-label::before { content: '['; color: var(--accent-pink); }
   .section-label::after { content: ']'; color: var(--accent-pink); }
-  .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1; margin-bottom: 50px; text-transform: uppercase; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; }
 
-  /* ABOUT LAYOUT & TRON CORNER FRAMES */
+  /* ABOUT LAYOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   
   .about-photo { 
@@ -661,8 +699,8 @@ const css = `
     transition: border-color 0.3s, box-shadow 0.3s; 
   }
   .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.25); }
-  .h-card-label { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #fff; }
-  .h-card-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .h-card-label { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+  .h-card-detail { font-size: 13px; color: var(--accent-cyan); margin-top: 6px; word-break: break-all; }
 
   .residencies { margin-top: 40px; }
   .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 700; }
@@ -670,9 +708,9 @@ const css = `
   .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.03); transition: all 0.3s; }
   .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.1); }
 
-  /* MUSIC SLIDER & TRON HUD CARDS */
-  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
-  .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  /* MUSIC SLIDER */
+  .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
+  .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   
   .music-slider { 
     display: flex; 
@@ -682,6 +720,7 @@ const css = `
     padding: 10px 10px 30px 10px; 
     margin-bottom: 40px;
     perspective: 1000px;
+    -webkit-overflow-scrolling: touch;
   }
   
   .m-card { 
@@ -828,6 +867,7 @@ const css = `
     transition: transform 0.2s var(--ease), box-shadow 0.3s, background 0.3s;
     box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
     will-change: transform;
+    touch-action: manipulation;
   }
   .media-play-btn:hover {
     background: #fff;
@@ -859,7 +899,7 @@ const css = `
   .video-more:hover { color: var(--accent-cyan); }
 
   /* NEWS */
-  .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
+  .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
   .n-card { 
     flex: 0 0 360px; 
     scroll-snap-align: start; 
@@ -885,20 +925,92 @@ const css = `
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
   .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
-  /* DATES & CONTACT */
-  .dates-empty { text-align: center; padding: 80px 0; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.015); }
-  .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
+  /* DATES */
+  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.015); }
+  .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
-  .contact-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; }
-  .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  /* BOOKING SECTION */
+  .booking-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
+  .booking-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  
+  .booking-form { 
+    background: var(--glass-bg); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: var(--glass-border); 
+    padding: 36px; 
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
+  .form-input {
+    background: rgba(3, 4, 8, 0.8);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    color: #fff;
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 16px; /* Preventing iOS auto-zoom */
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+    outline: none;
+    transition: all 0.3s;
+    width: 100%;
+  }
+  .form-input:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    background: rgba(7, 9, 18, 0.95);
+  }
+  .form-textarea { resize: vertical; min-height: 110px; }
+  
+  .booking-submit-btn {
+    width: 100%;
+    background: var(--accent-cyan);
+    color: #030408;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    touch-action: manipulation;
+  }
+  .booking-submit-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 35px rgba(0, 243, 255, 0.9);
+  }
+
+  .booking-success-msg {
+    padding: 30px;
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid var(--accent-cyan);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
+  /* CONTACT */
+  .contact-wrap { background: var(--bg-obsidian); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
+  .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s; }
+  .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s; word-break: break-all; }
   .contact-email:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
   .contact-social { font-family: var(--font-display); display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
   .contact-social:hover { color: var(--accent-cyan); }
 
-  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+  .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; width: 100%; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
   .footer-link:hover { color: var(--accent-cyan); }
@@ -906,7 +1018,7 @@ const css = `
   /* MODALS */
   .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 4, 8, 0.95); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.2); }
-  .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; }
+  .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
   .legal-close:hover { color: var(--accent-cyan); }
   .legal-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #fff; }
   .legal-subtitle { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 32px; font-weight: 700; }
@@ -934,35 +1046,41 @@ const css = `
     transform: translateY(0) scale(1); 
   }
 
+  /* RESPONSIVE OPTIMIZATIONS */
   @media (max-width: 1024px) {
-    .section, .music-inner, .contact-inner { padding: 80px 24px; }
-    .nav { padding: 16px 16px; }
-    .nav.scrolled { padding: 14px 16px; }
+    .section, .music-inner, .booking-inner, .contact-inner { padding: 80px 24px; }
+    .nav { padding: 16px 20px; }
+    .nav.scrolled { padding: 14px 20px; }
     .nav-links { display: none; }
-    .nav-right { gap: 10px; }
+    .nav-right { gap: 14px; }
     .menu-btn { display: flex; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
-    .about-photo { max-width: 320px; }
+    .about-photo { max-width: 360px; margin: 0 auto; }
+    .booking-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer { flex-direction: column; gap: 20px; text-align: center; }
+    .footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
   }
 
   @media (max-width: 640px) {
-    .nav { padding: 12px 12px; }
-    .nav-logo { font-size: 13px; letter-spacing: 2px; gap: 8px; }
+    .nav { padding: 12px 16px; }
+    .nav-logo { font-size: 12px; letter-spacing: 2px; gap: 8px; }
     .tron-eq { display: none; }
+    .hero-name { font-size: 32px; letter-spacing: 3px; }
     .hero-socials { 
       grid-template-columns: repeat(4, 1fr); 
-      gap: 12px 16px; 
+      gap: 10px 12px; 
     }
-    .hero-socials a { width: 42px; height: 42px; }
+    .hero-socials a { width: 40px; height: 40px; }
     .nav-booking-btn { font-size: 9px; padding: 8px 12px; }
     .highlights { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
-    .m-card { flex: 0 0 260px; padding: 20px; }
+    .m-card { flex: 0 0 270px; padding: 20px; }
     .n-card { flex: 0 0 280px; }
-    .legal-box { padding: 24px; }
+    .booking-form { padding: 24px 18px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .legal-box { padding: 24px 16px; }
+    .legal-overlay { padding: 40px 12px; }
   }
 `;
 
@@ -1072,6 +1190,7 @@ export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
@@ -1165,6 +1284,11 @@ export default function MaxHefele() {
     alert(t.revokeAlert);
   };
 
+  const handleBookingSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+  };
+
   return (
     <>
       <style>{css}</style>
@@ -1200,7 +1324,7 @@ export default function MaxHefele() {
           </ul>
           
           <MagneticButton>
-            <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} className="nav-booking-btn">
+            <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} className="nav-booking-btn">
               {t.bookingBtn}
             </a>
           </MagneticButton>
@@ -1225,7 +1349,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#contact" onClick={e => { e.preventDefault(); go("contact"); }} style={{ color: '#030408', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '18px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)' }}>{t.bookingBtn}</a>
+        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#030408', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
       </div>
 
       {/* HERO */}
@@ -1479,6 +1603,83 @@ export default function MaxHefele() {
             <div className="dates-empty-sub">{t.datesSub}</div>
           </div>
         </Rv>
+      </section>
+
+      {/* BOOKING SECTION */}
+      <section className="booking-wrap" id="booking">
+        <div className="booking-inner">
+          <Rv>
+            <p className="section-label">{t.bookingLabel}</p>
+            <h2 className="section-title">{t.bookingTitle}</h2>
+          </Rv>
+          <div className="booking-grid">
+            <Rv delay={100}>
+              <div className="booking-info">
+                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>
+                  {t.bookingText}
+                </p>
+
+                <div className="h-card" style={{ marginBottom: '16px' }}>
+                  <div className="h-card-label">{t.bookingDirectTitle}</div>
+                  <div className="h-card-detail">booking@maxhefele.de</div>
+                </div>
+
+                <div className="h-card">
+                  <div className="h-card-label">{t.bookingPressTitle}</div>
+                  <div className="h-card-detail">{t.bookingPressDesc}</div>
+                </div>
+              </div>
+            </Rv>
+
+            <Rv delay={200}>
+              <form className="booking-form" onSubmit={handleBookingSubmit}>
+                {formSubmitted ? (
+                  <div className="booking-success-msg">
+                    {t.bookingSuccess}
+                  </div>
+                ) : (
+                  <>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label className="form-label">{t.bookingFields.name}</label>
+                        <input type="text" required className="form-input" placeholder="Name / Agentur" />
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label">{t.bookingFields.email}</label>
+                        <input type="email" required className="form-input" placeholder="mail@domain.com" />
+                      </div>
+                    </div>
+                    
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label className="form-label">{t.bookingFields.date}</label>
+                        <input type="date" required className="form-input" />
+                      </div>
+                      <div className="form-group">
+                        <label className="form-label">{t.bookingFields.type}</label>
+                        <input type="text" className="form-input" placeholder="z.B. Club Show / Festival" />
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <label className="form-label">{t.bookingFields.location}</label>
+                      <input type="text" className="form-input" placeholder="z.B. München, Deutschland" />
+                    </div>
+
+                    <div className="form-group">
+                      <label className="form-label">{t.bookingFields.message}</label>
+                      <textarea rows={4} required className="form-input form-textarea" placeholder="Nenne uns erste Details zu Event, Stage, Sound & Setup..." />
+                    </div>
+
+                    <button type="submit" className="booking-submit-btn">
+                      {t.bookingFields.submit}
+                    </button>
+                  </>
+                )}
+              </form>
+            </Rv>
+          </div>
+        </div>
       </section>
 
       {/* CONTACT */}
