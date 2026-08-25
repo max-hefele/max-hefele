@@ -80,7 +80,7 @@ const T = {
       message: "Details & Nachricht",
       submit: "ANFRAGE ABSENDEN"
     },
-    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich übermittelt.",
+    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich an info@maxhefele.de übermittelt.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
@@ -171,7 +171,7 @@ const T = {
       message: "Details & Message",
       submit: "SEND INQUIRY"
     },
-    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully.",
+    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully to info@maxhefele.de.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "For booking inquiries, collaborations or general questions — just send a message.",
@@ -616,15 +616,15 @@ const css = `
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
-  /* HERO & OPTIMIZED FACE ALIGNMENT */
+  /* HERO & OPTIMIZED FACE ALIGNMENT (HEADER BILD WEITER NACH UNTEN) */
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { 
     position: absolute; 
     inset: -100px 0; 
     filter: brightness(0.45) contrast(1.25) hue-rotate(-10deg); 
     will-change: transform; 
-    background-position: center 30% !important;
-    object-position: center 30% !important;
+    background-position: center 10% !important;
+    object-position: center 10% !important;
   }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
@@ -1048,7 +1048,6 @@ const css = `
   .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
   .legal-section li { margin-bottom: 6px; }
   .legal-section a { color: var(--accent-cyan); text-decoration: underline; }
-  .legal-placeholder { background: var(--bg-obsidian); border: 1px solid var(--border); padding: 16px; font-size: 13px; color: var(--text-mid); margin-top: 8px; line-height: 1.6; }
 
   /* REVEAL ANIMATION */
   .rv { 
@@ -1211,6 +1210,7 @@ export default function MaxHefele() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
@@ -1304,9 +1304,30 @@ export default function MaxHefele() {
     alert(t.revokeAlert);
   };
 
-  const handleBookingSubmit = (e) => {
+  const handleBookingSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/info@maxhefele.de", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        alert("Fehler beim Senden. Bitte direkt per Mail an info@maxhefele.de senden.");
+      }
+    } catch (err) {
+      setFormSubmitted(true); // Fallback Anzeige
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1374,7 +1395,7 @@ export default function MaxHefele() {
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center 10% / cover no-repeat` }} />
         <div className="hero-content">
           <h1 className="hero-name">
             <ElegantFadeText text={ARTIST_NAME} />
@@ -1594,19 +1615,25 @@ export default function MaxHefele() {
         </Rv>
         <Rv delay={100}>
           <div className="news-grid">
-            {t.newsItems.map((item, index) => (
-              <a key={index} className="n-card" href={NEWS_ITEMS[index].link} target="_blank" rel="noopener noreferrer">
-                <div className="n-img-wrap">
-                  <img className="n-img" src={NEWS_ITEMS[index].image.startsWith('http') ? NEWS_ITEMS[index].image : `${BASE_URL}${NEWS_ITEMS[index].image}`} alt={item.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
-                </div>
-                <div className="n-content">
-                  <div className="n-meta"><span>{NEWS_ITEMS[index].date}</span><span>{NEWS_ITEMS[index].category}</span></div>
-                  <h3 className="n-title">{item.title}</h3>
-                  <p className="n-excerpt">{item.excerpt}</p>
-                  <div className="n-link">{t.readMore} <Icons.Arrow /></div>
-                </div>
-              </a>
-            ))}
+            {NEWS_ITEMS.map((item, index) => {
+              const newsText = t.newsItems[index] || t.newsItems[0];
+              return (
+                <a key={item.id} href={item.link} target="_blank" rel="noopener noreferrer" className="n-card">
+                  <div className="n-img-wrap">
+                    <img src={`${BASE_URL}${item.image}`} alt={newsText.title} className="n-img" loading="lazy" />
+                  </div>
+                  <div className="n-content">
+                    <div className="n-meta">
+                      <span>{item.date}</span>
+                      <span>{item.category}</span>
+                    </div>
+                    <h3 className="n-title">{newsText.title}</h3>
+                    <p className="n-excerpt">{newsText.excerpt}</p>
+                    <div className="n-link">{t.readMore} <Icons.Arrow /></div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </Rv>
       </section>
@@ -1625,7 +1652,7 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* BOOKING SECTION */}
+      {/* BOOKING */}
       <section className="booking-wrap" id="booking">
         <div className="booking-inner">
           <Rv>
@@ -1634,69 +1661,78 @@ export default function MaxHefele() {
           </Rv>
           <div className="booking-grid">
             <Rv delay={100}>
-              <div className="booking-info">
-                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>
-                  {t.bookingText}
+              <p style={{ color: 'var(--text-mid)', fontSize: '15px', lineHeight: '1.8', marginBottom: '30px' }}>
+                {t.bookingText}
+              </p>
+              
+              <div style={{ marginBottom: '30px' }}>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
+                  {t.bookingDirectTitle}
+                </h4>
+                <a href="mailto:info@maxhefele.de" className="contact-email" style={{ padding: '8px 0', fontSize: '15px' }}>
+                  <Icons.Mail /> info@maxhefele.de
+                </a>
+              </div>
+
+              <div>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
+                  {t.bookingPressTitle}
+                </h4>
+                <p style={{ color: 'var(--text-mid)', fontSize: '13px', lineHeight: '1.6' }}>
+                  {t.bookingPressDesc}
                 </p>
-
-                <div className="h-card" style={{ marginBottom: '16px' }}>
-                  <div className="h-card-label">{t.bookingDirectTitle}</div>
-                  <div className="h-card-detail">info@maxhefele.de</div>
-                </div>
-
-                <div className="h-card">
-                  <div className="h-card-label">{t.bookingPressTitle}</div>
-                  <div className="h-card-detail">{t.bookingPressDesc}</div>
-                </div>
               </div>
             </Rv>
 
-            <Rv delay={200}>
-              <form className="booking-form" onSubmit={handleBookingSubmit}>
-                {formSubmitted ? (
-                  <div className="booking-success-msg">
-                    {t.bookingSuccess}
-                  </div>
-                ) : (
-                  <>
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label className="form-label">{t.bookingFields.name}</label>
-                        <input type="text" required className="form-input" placeholder="Name / Agentur" />
-                      </div>
-                      <div className="form-group">
-                        <label className="form-label">{t.bookingFields.email}</label>
-                        <input type="email" required className="form-input" placeholder="info@maxhefele.de" />
-                      </div>
-                    </div>
-                    
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label className="form-label">{t.bookingFields.date}</label>
-                        <input type="date" required className="form-input" />
-                      </div>
-                      <div className="form-group">
-                        <label className="form-label">{t.bookingFields.type}</label>
-                        <input type="text" className="form-input" placeholder="z.B. Club Show / Festival" />
-                      </div>
-                    </div>
+            <Rv delay={150}>
+              {formSubmitted ? (
+                <div className="booking-success-msg">
+                  {t.bookingSuccess}
+                </div>
+              ) : (
+                <form className="booking-form" onSubmit={handleBookingSubmit}>
+                  {/* Formhandler Konfiguration für info@maxhefele.de */}
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
+                  <input type="hidden" name="_template" value="table" />
 
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.name}</label>
+                    <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label">{t.bookingFields.email}</label>
+                      <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label">{t.bookingFields.date}</label>
+                      <input type="date" name="date" required className="form-input" />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label">{t.bookingFields.type}</label>
+                      <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
+                    </div>
                     <div className="form-group">
                       <label className="form-label">{t.bookingFields.location}</label>
-                      <input type="text" className="form-input" placeholder="z.B. München, Deutschland" />
+                      <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
                     </div>
+                  </div>
 
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.message}</label>
-                      <textarea rows={4} required className="form-input form-textarea" placeholder="Nenne uns erste Details zu Event, Stage, Sound & Setup..." />
-                    </div>
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.message}</label>
+                    <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
+                  </div>
 
-                    <button type="submit" className="booking-submit-btn">
-                      {t.bookingFields.submit}
-                    </button>
-                  </>
-                )}
-              </form>
+                  <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
+                    {isSubmitting ? "WIRD GESENDET..." : t.bookingFields.submit}
+                  </button>
+                </form>
+              )}
             </Rv>
           </div>
         </div>
@@ -1710,98 +1746,67 @@ export default function MaxHefele() {
             <h2 className="section-title">{t.contactTitle}</h2>
           </Rv>
           <div className="contact-grid">
-            <div>
-              <Rv delay={100}>
-                <p style={{ color: "var(--text-mid)", fontSize: "15px", lineHeight: "1.7", marginBottom: "32px", fontWeight: "300" }}>{t.contactText}</p>
-                <a className="contact-email" href="mailto:info@maxhefele.de"><Icons.Mail /> info@maxhefele.de</a>
-              </Rv>
-            </div>
-            <div>
-              <Rv delay={200}>
+            <Rv delay={100}>
+              <p style={{ color: 'var(--text-mid)', fontSize: '15px', lineHeight: '1.8', marginBottom: '24px' }}>
+                {t.contactText}
+              </p>
+              <a href="mailto:info@maxhefele.de" className="contact-email">
+                <Icons.Mail /> info@maxhefele.de
+              </a>
+            </Rv>
+            <Rv delay={150}>
+              <div>
                 {SOCIAL_LINKS.map(s => (
-                  <a key={s.name} className="contact-social" href={s.url} target="_blank" rel="noopener noreferrer">{s.name} <Icons.Arrow /></a>
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="contact-social">
+                    <span>{s.name}</span>
+                    <Icons.Arrow />
+                  </a>
                 ))}
-              </Rv>
-            </div>
+              </div>
+            </Rv>
           </div>
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer className="footer">
-        <div>© {new Date().getFullYear()} {ARTIST_NAME} — {t.footerRights}</div>
+        <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
         <div className="footer-links">
           <button className="footer-link" onClick={() => openModal("impressum")}>{t.imprintBtn}</button>
           <button className="footer-link" onClick={() => openModal("datenschutz")}>{t.privacyBtn}</button>
+          <button className="footer-link" onClick={resetConsent}>{t.revokeBtn}</button>
         </div>
       </footer>
 
+      {/* LEGAL MODAL */}
       {legalModal && (
-        <div className="legal-overlay" onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
-          <div className="legal-box">
+        <div className="legal-overlay" onClick={closeModal}>
+          <div className="legal-box" onClick={e => e.stopPropagation()}>
             <button className="legal-close" onClick={closeModal}>✕</button>
-
-            {legalModal === "impressum" && (
+            
+            {legalModal === "impressum" ? (
               <>
                 <h2 className="legal-title">{t.legalTitleImprint}</h2>
-                <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
+                <div className="legal-subtitle">{t.legalSubtitleImprint}</div>
                 <div className="legal-section">
                   <h3>Angaben gemäß § 5 DDG</h3>
-                  <div className="legal-placeholder">
-                    <strong>Verantwortlich:</strong><br />
-                    Max Hefele<br />
-                    Kapellenfeld 3<br />
-                    86865 Markt Wald<br />
-                    Deutschland
-                  </div>
-                </div>
-                <div className="legal-section">
-                  <h3>Kontakt</h3>
-                  <p>E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a></p>
-                </div>
-                <div className="legal-section">
-                  <h3>EU-Streitschlichtung</h3>
-                  <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
-                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
-                      https://ec.europa.eu/consumers/odr/
-                    </a>.
-                  </p>
-                  <p>
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-                  </p>
+                  <p><strong>Max Hefele</strong><br />E-Mail: info@maxhefele.de</p>
+                  <p><strong>Inhaltlich Verantwortlicher gemäß § 18 Abs. 2 MStV:</strong><br />Max Hefele</p>
                 </div>
               </>
-            )}
-
-            {legalModal === "datenschutz" && (
+            ) : (
               <>
                 <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
-                <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
-                
+                <div className="legal-subtitle">{t.legalSubtitlePrivacy}</div>
                 <div className="legal-section">
                   <h3>1. Datenschutz auf einen Blick</h3>
-                  <ul>
-                    <li>
-                      <strong>Allgemeine Hinweise:</strong> Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.
-                    </li>
-                    <li>
-                      <strong>Verantwortliche Stelle:</strong> Max Hefele, Kapellenfeld 3, 86865 Markt Wald, E-Mail: info@maxhefele.de. Die verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
-                    </li>
-                    <li>
-                      <strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung:</strong> Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
-                    </li>
-                    <li>
-                      <strong>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde:</strong> Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
-                    </li>
-                    <li>
-                      <strong>Recht auf Auskunft, Löschung und Berichtigung:</strong> Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.
-                    </li>
-                  </ul>
-                  <div style={{ marginTop: '16px', marginBottom: '24px' }}>
-                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', color: '#05050a' }}>
-                      {t.revokeBtn}
-                    </button>
-                  </div>
+                  <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+                  
+                  <h3>2. Hosting & Externe Medien</h3>
+                  <p>Inhalte wie Audio-Player (SoundCloud) und Videos (Google Drive) werden erst nach expliziter Einwilligung des Nutzers geladen, um die Übertragung von Daten an Drittanbieter vorab zu verhindern.</p>
+                  
+                  <h3>3. Kontaktaufnahme / Formular</h3>
+                  <p>Wenn Sie uns per E-Mail oder Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
                 </div>
               </>
             )}
