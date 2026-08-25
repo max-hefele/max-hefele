@@ -282,21 +282,21 @@ const Icons = {
   )
 };
 
-// ─── High-End Future 80s TRON Synth / Melodic Techno HUD Styles ───
+// ─── Anyma x Tron Holographic CSS ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap');
 
   :root {
-    --bg-obsidian: #030408;
-    --bg-elevated: #070912;
-    --bg-card: rgba(8, 10, 18, 0.85);
+    --bg-obsidian: #05050a;
+    --bg-elevated: #090b14;
+    --bg-card: rgba(5, 5, 10, 0.9);
     
     --text: #f0f3f8;
     --text-dim: #50586c;
     --text-mid: #9ba4b8;
     
-    --border: rgba(0, 243, 255, 0.2);
-    --border-hover: rgba(0, 243, 255, 0.7);
+    --border: rgba(0, 243, 255, 0.25);
+    --border-hover: rgba(0, 243, 255, 0.85);
     
     --accent-violet: #9d00ff;
     --accent-cyan: #00f3ff;
@@ -306,9 +306,9 @@ const css = `
     --font-body: 'Space Grotesk', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     
-    --glass-bg: rgba(7, 9, 16, 0.75);
-    --glass-border: 1px solid rgba(0, 243, 255, 0.22);
-    --glass-glow: 0 12px 40px 0 rgba(0, 0, 0, 0.9);
+    --glass-bg: rgba(9, 11, 20, 0.8);
+    --glass-border: 1px solid rgba(0, 243, 255, 0.3);
+    --glass-glow: 0 0 30px rgba(0, 243, 255, 0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -316,7 +316,7 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg-obsidian); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; width: 100%; }
 
-  /* TRON 3D LIGHTCYCLE PERSPECTIVE GRID */
+  /* 3D TRON LIGHTCYCLE PERSPECTIVE GRID */
   .tron-grid {
     position: fixed;
     inset: 0;
@@ -324,7 +324,7 @@ const css = `
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.16;
+    opacity: 0.22;
   }
   .tron-grid-plane {
     position: absolute;
@@ -337,7 +337,7 @@ const css = `
       linear-gradient(to bottom, var(--accent-cyan) 1px, transparent 1px);
     background-size: 50px 50px;
     transform: rotateX(72deg);
-    animation: gridMove 15s linear infinite;
+    animation: gridMove 12s linear infinite;
   }
   @keyframes gridMove {
     0% { transform: rotateX(72deg) translateY(0); }
@@ -351,35 +351,37 @@ const css = `
     width: 100vw;
     height: 100vh;
     background-image: 
-      linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(157, 0, 255, 0.02) 1px, transparent 1px);
     background-size: 100% 3px, 60px 60px;
     pointer-events: none;
     z-index: 999;
   }
 
-  /* LASER STREAMS */
+  /* LASER & PARTICLE STREAMS */
   .laser-stream-h {
     position: fixed;
     top: 35%;
     left: -150px;
     width: 450px;
-    height: 1px;
+    height: 1.5px;
     background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
     animation: streamHorizontal 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
+    box-shadow: 0 0 15px var(--accent-cyan);
   }
   .laser-stream-v {
     position: fixed;
     top: -150px;
     right: 25%;
-    width: 1px;
+    width: 1.5px;
     height: 450px;
     background: linear-gradient(180deg, transparent, var(--accent-pink), transparent);
     animation: streamVertical 12s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s;
     pointer-events: none;
     z-index: 0;
+    box-shadow: 0 0 15px var(--accent-pink);
   }
 
   @keyframes streamHorizontal {
@@ -400,7 +402,7 @@ const css = `
     width: 700px;
     height: 700px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 243, 255, 0.09) 0%, rgba(157, 0, 255, 0.05) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.12) 0%, rgba(157, 0, 255, 0.06) 45%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
@@ -431,6 +433,16 @@ const css = `
     98% { transform: translate(0); filter: none; }
   }
 
+  /* ATMENDER GLOW (BREATHING GLOW FILTER) */
+  .breathing-glow {
+    animation: pulseGlow 4s infinite ease-in-out alternate;
+  }
+
+  @keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.4)); }
+    100% { filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.9)) drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+  }
+
   .fade-logo { display: inline-flex; letter-spacing: 5px; flex-wrap: wrap; }
   .fade-char {
     display: inline-block;
@@ -458,7 +470,7 @@ const css = `
     letter-spacing: 4px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
   }
   .marquee-track {
     display: inline-block;
@@ -480,7 +492,7 @@ const css = `
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    background: rgba(3, 4, 8, 0.85);
+    background: rgba(5, 5, 10, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(0, 243, 255, 0.2);
@@ -488,9 +500,9 @@ const css = `
   }
   .nav.scrolled { 
     padding: 14px 60px; 
-    background: rgba(3, 4, 8, 0.95); 
+    background: rgba(5, 5, 10, 0.95); 
     border-bottom: 1px solid var(--accent-cyan);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 243, 255, 0.2);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 243, 255, 0.3);
   }
   .nav-logo { 
     font-family: var(--font-display); 
@@ -557,12 +569,12 @@ const css = `
     background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
     transition: width 0.3s var(--ease), left 0.3s var(--ease);
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(0, 243, 255, 0.6); }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(0, 243, 255, 0.8); }
   .nav-links a:hover::after, .nav-links a.active::after { width: 100%; left: 0%; }
 
   /* CYBER HUD BOOKING BUTTON WITH CHAMFERED CORNERS */
   .nav-booking-btn {
-    background: rgba(0, 243, 255, 0.06);
+    background: rgba(0, 243, 255, 0.08);
     border: 1px solid var(--accent-cyan);
     color: var(--accent-cyan);
     font-family: var(--font-display);
@@ -573,7 +585,7 @@ const css = `
     padding: 10px 22px;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     text-decoration: none;
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    box-shadow: 0 0 18px rgba(0, 243, 255, 0.3);
     transition: all 0.3s var(--ease);
     white-space: nowrap;
     display: inline-block;
@@ -581,8 +593,8 @@ const css = `
   }
   .nav-booking-btn:hover {
     background: var(--accent-cyan);
-    color: #030408;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
+    color: #05050a;
+    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
     transform: translateY(-1px);
   }
 
@@ -591,7 +603,7 @@ const css = `
   .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
 
   /* MOBILE NAV */
-  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(8, 10, 18, 0.7); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(9, 11, 20, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
   .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
@@ -599,14 +611,21 @@ const css = `
   .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
   .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5, 5, 10, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
-  /* HERO & PARALLAX */
+  /* HERO & OPTIMIZED FACE ALIGNMENT */
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
-  .hero-bg { position: absolute; inset: -100px 0; filter: brightness(0.4) contrast(1.2) hue-rotate(-10deg); will-change: transform; }
+  .hero-bg { 
+    position: absolute; 
+    inset: -100px 0; 
+    filter: brightness(0.45) contrast(1.25) hue-rotate(-10deg); 
+    will-change: transform; 
+    background-position: center 30% !important;
+    object-position: center 30% !important;
+  }
   .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 1000px; }
   
   .hero-name { 
@@ -620,7 +639,7 @@ const css = `
     background: linear-gradient(180deg, #ffffff 0%, var(--text-mid) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.3));
+    filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.4));
     word-break: break-word;
   }
 
@@ -643,11 +662,11 @@ const css = `
     clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
     transition: transform 0.2s var(--ease), border-color 0.3s, background 0.3s, color 0.3s; 
     text-decoration: none; 
-    background: rgba(8, 10, 18, 0.7); 
+    background: rgba(9, 11, 20, 0.7); 
     will-change: transform;
     touch-action: manipulation;
   }
-  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.12); box-shadow: 0 0 20px rgba(0, 243, 255, 0.35); }
+  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.15); box-shadow: 0 0 22px rgba(0, 243, 255, 0.4); }
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
   .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
 
@@ -678,6 +697,7 @@ const css = `
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
+    object-position: center 25%;
     transform: none;
     transition: transform 0.6s var(--ease); 
     will-change: transform; 
@@ -698,15 +718,15 @@ const css = `
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     transition: border-color 0.3s, box-shadow 0.3s; 
   }
-  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.25); }
+  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.3); }
   .h-card-label { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
   .h-card-detail { font-size: 13px; color: var(--accent-cyan); margin-top: 6px; word-break: break-all; }
 
   .residencies { margin-top: 40px; }
   .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 700; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.03); transition: all 0.3s; }
-  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.1); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.04); transition: all 0.3s; }
+  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.12); }
 
   /* MUSIC SLIDER */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
@@ -749,7 +769,7 @@ const css = `
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.08), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.1), transparent 80%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -796,7 +816,7 @@ const css = `
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.25); }
+  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.3); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -830,7 +850,7 @@ const css = `
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(3, 4, 8, 0.9);
+    background: rgba(5, 5, 10, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
@@ -850,7 +870,7 @@ const css = `
     color: var(--accent-cyan);
     text-transform: uppercase;
     margin-bottom: 14px;
-    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.4));
+    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
   }
 
   .media-play-btn {
@@ -859,19 +879,19 @@ const css = `
     background: var(--accent-cyan);
     border: none;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    color: #030408;
+    color: #05050a;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s var(--ease), box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
     will-change: transform;
     touch-action: manipulation;
   }
   .media-play-btn:hover {
     background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.9);
+    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
@@ -915,7 +935,7 @@ const css = `
     display: flex; 
     flex-direction: column; 
   }
-  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 243, 255, 0.2); }
+  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 243, 255, 0.25); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
@@ -926,7 +946,7 @@ const css = `
   .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
   /* DATES */
-  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.015); }
+  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.02); }
   .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
@@ -942,18 +962,18 @@ const css = `
     border: var(--glass-border); 
     padding: 36px; 
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
   .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
   .form-input {
-    background: rgba(3, 4, 8, 0.8);
-    border: 1px solid rgba(0, 243, 255, 0.25);
+    background: rgba(5, 5, 10, 0.85);
+    border: 1px solid rgba(0, 243, 255, 0.3);
     color: #fff;
     padding: 14px 16px;
     font-family: var(--font-body);
-    font-size: 16px; /* Preventing iOS auto-zoom */
+    font-size: 16px;
     clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
     outline: none;
     transition: all 0.3s;
@@ -961,15 +981,15 @@ const css = `
   }
   .form-input:focus {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-    background: rgba(7, 9, 18, 0.95);
+    box-shadow: 0 0 18px rgba(0, 243, 255, 0.4);
+    background: rgba(9, 11, 22, 0.95);
   }
   .form-textarea { resize: vertical; min-height: 110px; }
   
   .booking-submit-btn {
     width: 100%;
     background: var(--accent-cyan);
-    color: #030408;
+    color: #05050a;
     border: none;
     font-family: var(--font-display);
     font-size: 11px;
@@ -980,12 +1000,12 @@ const css = `
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     cursor: pointer;
     transition: all 0.3s var(--ease);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+    box-shadow: 0 0 22px rgba(0, 243, 255, 0.5);
     touch-action: manipulation;
   }
   .booking-submit-btn:hover {
     background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.9);
+    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
   }
 
   .booking-success-msg {
@@ -1016,8 +1036,8 @@ const css = `
   .footer-link:hover { color: var(--accent-cyan); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 4, 8, 0.95); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.2); }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 5, 10, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.25); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
   .legal-close:hover { color: var(--accent-cyan); }
   .legal-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #fff; }
@@ -1324,7 +1344,7 @@ export default function MaxHefele() {
           </ul>
           
           <MagneticButton>
-            <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} className="nav-booking-btn">
+            <a href="#booking" target="_blank" rel="noopener noreferrer" onClick={e => { e.preventDefault(); go("booking"); }} className="nav-booking-btn breathing-glow">
               {t.bookingBtn}
             </a>
           </MagneticButton>
@@ -1349,12 +1369,12 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#030408', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
+        <a href="#booking" target="_blank" rel="noopener noreferrer" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
       </div>
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center/cover no-repeat` }} />
+        <div className="hero-bg" style={{ background: `url('${BASE_URL}images/hero.jpg') center 30% / cover no-repeat` }} />
         <div className="hero-content">
           <h1 className="hero-name">
             <ElegantFadeText text={ARTIST_NAME} />
@@ -1621,7 +1641,7 @@ export default function MaxHefele() {
 
                 <div className="h-card" style={{ marginBottom: '16px' }}>
                   <div className="h-card-label">{t.bookingDirectTitle}</div>
-                  <div className="h-card-detail">booking@maxhefele.de</div>
+                  <div className="h-card-detail">info@maxhefele.de</div>
                 </div>
 
                 <div className="h-card">
@@ -1646,7 +1666,7 @@ export default function MaxHefele() {
                       </div>
                       <div className="form-group">
                         <label className="form-label">{t.bookingFields.email}</label>
-                        <input type="email" required className="form-input" placeholder="mail@domain.com" />
+                        <input type="email" required className="form-input" placeholder="info@maxhefele.de" />
                       </div>
                     </div>
                     
@@ -1778,54 +1798,11 @@ export default function MaxHefele() {
                     </li>
                   </ul>
                   <div style={{ marginTop: '16px', marginBottom: '24px' }}>
-                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', color: '#030408' }}>
+                    <button onClick={resetConsent} className="media-play-btn" style={{ width: 'auto', height: 'auto', padding: '10px 20px', borderRadius: '4px', fontSize: '11px', color: '#05050a' }}>
                       {t.revokeBtn}
                     </button>
                   </div>
                 </div>
-
-                <div className="legal-section">
-                  <h3>2. Hosting und Drittanbieter-Dienste</h3>
-                  <ul>
-                    <li>
-                      <strong>GitHub Pages (Hosting):</strong> Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA. Beim Besuch der Seite erfasst GitHub Protokolldaten (z. B. IP-Adresse, Browsertyp, Betriebssystem) auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub:{' '}
-                      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
-                        https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
-                      </a>.
-                    </li>
-                    <li>
-                      <strong>Google Drive (Einbindung von Inhalten/Videos):</strong> Inhalte/Videos werden über Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland eingebunden. Das Aufrufen über das Zwei-Klick-System übermittelt Daten (wie Ihre IP-Adresse) an Google und erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Details finden Sie bei Google:{' '}
-                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                        https://policies.google.com/privacy
-                      </a>.
-                    </li>
-                    <li>
-                      <strong>SoundCloud:</strong> Auf den Seiten sind Plugins der SoundCloud Limited, Rheinsberger Str. 76/77, 10115 Berlin, Deutschland integriert. Die Aktivierung über das Zwei-Klick-System stellt eine Verbindung zu SoundCloud-Servern her und verarbeitet Daten auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Details:{' '}
-                      <a href="https://soundcloud.com/pages/privacy" target="_blank" rel="noopener noreferrer">
-                        https://soundcloud.com/pages/privacy
-                      </a>.
-                    </li>
-                    <li>
-                      <strong>Mixcloud:</strong> Die Website enthält Links/Plugins der Mixcloud Limited, 275 New North Road, London N1 7AA, Großbritannien. Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) oder auf Grundlage Ihrer Einwilligung. Details:{' '}
-                      <a href="https://www.mixcloud.com/privacy/" target="_blank" rel="noopener noreferrer">
-                        https://www.mixcloud.com/privacy/
-                      </a>.
-                    </li>
-                    <li>
-                      <strong>Beatport, Instagram & YouTube (Externe Verlinkungen):</strong> Es handelt sich um reine Text- bzw. Grafiklinks, die beim Laden der Webseite keine Daten an diese Netzwerke senden. Erst bei aktivem Klick werden Sie weitergeleitet und es gelten die Datenschutzbestimmungen der jeweiligen Betreiber.
-                    </li>
-                    <li>
-                      <strong>iTunes / Apple Music:</strong> Soweit Verlinkungen genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Details:{' '}
-                      <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">
-                        https://www.apple.com/legal/privacy/de/
-                      </a>.
-                    </li>
-                  </ul>
-                </div>
-
-                <p style={{ marginTop: '20px', fontSize: '11px', color: 'var(--text-dim)' }}>
-                  <strong>Stand:</strong> 09. Juli 2026
-                </p>
               </>
             )}
           </div>
