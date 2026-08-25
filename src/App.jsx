@@ -56,8 +56,8 @@ const T = {
     newsItems: [
       { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die EP auf MYR Records." },
       { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supportet meinen Track Better day of life aus meiner EP Call Me." },
-      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Hier ein kleiner Einblick in meine neue EP." },
-      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
+      { title: "Interview mit The Last Future", excerpt: "Hier ein kleiner Einblick in meine neue EP im Interview mit The Last Future." },
+      { title: "Rave in the City Vol. 52 | Sunset Session", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
       { title: "Mein Exklusiv-Interview für Melodic Dancers", excerpt: "Hier ist mein Exklusiv-Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
     ],
     readMore: "Mehr lesen auf",
@@ -147,9 +147,9 @@ const T = {
     newsItems: [
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the EP on MYR Records." },
       { title: "Paul van Dyk Supports Vonyc Session 1026", excerpt: "Paul van Dyk is supporting my track 'Better Day of Life' from my 'Call Me' EP." },
-      { title: "Max Hefele presents Call Me [MYR]", excerpt: "Here is a quick look at my new EP." },
-      { title: "Rave in the City Vol. 52| Sunset Session | Melodic Techno • Indie Dance • House Mix", excerpt: "The Rave in the City mix show is released every two weeks..." },
-      { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9."}
+      { title: "Interview with The Last Future", excerpt: "A quick look into my new EP in an exclusive interview with The Last Future." },
+      { title: "Rave in the City Vol. 52 | Sunset Session", excerpt: "The Rave in the City mix show is released every two weeks..." },
+      { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9." }
     ],
     readMore: "Read more on",
     datesLabel: "Live",
@@ -207,10 +207,10 @@ const GOOGLE_DRIVE = {
 
 const NEWS_ITEMS = [
   { id: 1, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
-  { id: 2, date: "05.07.2026", category: "Paul van Dyk's VONYC Sessions 1026 Support my Track Better Day of Life", link: "https://www.youtube.com/watch?v=AIGRuvQBEvs", image: "images/vonycsession.jpg" },
-  { id: 3, date: "09.07.2026", category: "Interview with the last future", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
-  { id: 4, date: "10.07.2026", category: "New Episode Rave in the City", link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM", image: "images/rvitc.jpg" },
-  { id: 5, date: "26.07.2026", category: "My exclusive interview for Melodic Dancers can be found on page 9.", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
+  { id: 2, date: "05.07.2026", category: "Paul van Dyk Support", link: "https://www.youtube.com/watch?v=AIGRuvQBEvs", image: "images/vonycsession.jpg" },
+  { id: 3, date: "09.07.2026", category: "Interview", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
+  { id: 4, date: "10.07.2026", category: "New Episode", link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM", image: "images/rvitc.jpg" },
+  { id: 5, date: "26.07.2026", category: "Magazin Interview", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
 ];
 
 const VIDEO_IDS = [
@@ -616,7 +616,7 @@ const css = `
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
-  /* HERO & OPTIMIZED FACE ALIGNMENT (HEADER BILD WEITER NACH UNTEN) */
+  /* HERO & OPTIMIZED FACE ALIGNMENT */
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { 
     position: absolute; 
@@ -1324,7 +1324,7 @@ export default function MaxHefele() {
         alert("Fehler beim Senden. Bitte direkt per Mail an info@maxhefele.de senden.");
       }
     } catch (err) {
-      setFormSubmitted(true); // Fallback Anzeige
+      setFormSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -1691,7 +1691,6 @@ export default function MaxHefele() {
                 </div>
               ) : (
                 <form className="booking-form" onSubmit={handleBookingSubmit}>
-                  {/* Formhandler Konfiguration für info@maxhefele.de */}
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
                   <input type="hidden" name="_template" value="table" />
