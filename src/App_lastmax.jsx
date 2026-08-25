@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ─── Translations ───
 const T = {
@@ -305,7 +305,6 @@ const css = `
     --font-display: 'Orbitron', 'Syne', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --header-h: 74px;
     
     --glass-bg: rgba(9, 11, 20, 0.8);
     --glass-border: 1px solid rgba(0, 243, 255, 0.3);
@@ -602,8 +601,6 @@ const css = `
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 1px; flex-shrink: 0; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; padding: 4px; }
   .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
-  .mobile-lang-switch { display: none; margin-top: 20px; font-size: 18px; gap: 12px; }
-  .mobile-lang-switch button { font-size: 18px; padding: 8px; }
 
   /* MOBILE NAV */
   .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(9, 11, 20, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
@@ -620,13 +617,10 @@ const css = `
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
   /* HERO & OPTIMIZED FACE ALIGNMENT */
-  .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: var(--header-h) 20px 0; }
+  .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: 0 20px; }
   .hero-bg { 
     position: absolute; 
-    top: var(--header-h);
-    left: 0;
-    right: 0;
-    bottom: -120px;
+    inset: -100px 0; 
     filter: brightness(0.45) contrast(1.25) hue-rotate(-10deg); 
     will-change: transform; 
     background-position: center 10% !important;
@@ -646,19 +640,17 @@ const css = `
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.4));
-    white-space: nowrap;
+    word-break: break-word;
   }
-  .fade-logo { white-space: nowrap; }
 
   .hero-socials { 
-    display: flex;
-    flex-wrap: wrap;
+    display: grid; 
+    grid-template-columns: repeat(8, auto);
     justify-content: center; 
     gap: 12px; 
     margin-top: 16px; 
     max-width: 100%;
   }
-  .social-row-break { display: none; }
   .hero-socials a { 
     color: var(--text-mid); 
     display: flex; 
@@ -1093,14 +1085,12 @@ const css = `
     .nav { padding: 12px 16px; }
     .nav-logo { font-size: 12px; letter-spacing: 2px; gap: 8px; }
     .tron-eq { display: none; }
-    .hero-name { font-size: clamp(24px, 8vw, 32px); letter-spacing: 2px; }
-    .nav-right .lang-switch:not(.mobile-lang-switch) { display: none; }
-    .mobile-lang-switch { display: flex; }
+    .hero-name { font-size: 32px; letter-spacing: 3px; }
     .hero-socials { 
-      gap: 12px 14px; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 10px 12px; 
     }
-    .social-row-break { display: block; flex-basis: 100%; width: 100%; height: 0; margin: 0; }
-    .hero-socials a { width: 44px; height: 44px; }
+    .hero-socials a { width: 40px; height: 40px; }
     .nav-booking-btn { font-size: 9px; padding: 8px 12px; }
     .highlights { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
@@ -1230,26 +1220,18 @@ export default function MaxHefele() {
 
   const openModal = (type) => {
     setLegalModal(type);
-    window.history.pushState({ overlayOpen: true }, "");
+    window.history.pushState({ modalOpen: true }, "");
   };
 
   const closeModal = () => {
     setLegalModal(null);
   };
 
-  const toggleMenu = () => {
-    if (!menuOpen) {
-      setMenuOpen(true);
-      window.history.pushState({ overlayOpen: true }, "");
-    } else {
-      setMenuOpen(false);
-    }
-  };
-
   useEffect(() => {
     const handlePopState = () => {
-      setLegalModal(null);
-      setMenuOpen(false);
+      if (legalModal) {
+        setLegalModal(null);
+      }
     };
 
     const handleKeyDown = (e) => {
@@ -1265,7 +1247,7 @@ export default function MaxHefele() {
       window.removeEventListener("popstate", handlePopState);
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [legalModal]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -1282,7 +1264,7 @@ export default function MaxHefele() {
       const scrollY = window.scrollY;
       const heroBg = document.querySelector('.hero-bg');
       if (heroBg) {
-        heroBg.style.transform = `translateY(${-scrollY * 0.15}px)`;
+        heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
       }
       setScrolled(scrollY > 50);
     };
@@ -1383,7 +1365,7 @@ export default function MaxHefele() {
           </ul>
           
           <MagneticButton>
-            <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} className="nav-booking-btn breathing-glow">
+            <a href="#booking" target="_blank" rel="noopener noreferrer" onClick={e => { e.preventDefault(); go("booking"); }} className="nav-booking-btn breathing-glow">
               {t.bookingBtn}
             </a>
           </MagneticButton>
@@ -1394,7 +1376,7 @@ export default function MaxHefele() {
             <button onClick={() => setLang('en')} className={lang === 'en' ? 'active' : ''}>EN</button>
           </div>
 
-          <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={toggleMenu} aria-label="Menu">
+          <button className={`menu-btn ${menuOpen ? "open" : ""}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             <div className="menu-icon-lines">
               <span />
               <span />
@@ -1408,12 +1390,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
-        <div className="lang-switch mobile-lang-switch">
-          <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
-          <span>/</span>
-          <button onClick={() => setLang('en')} className={lang === 'en' ? 'active' : ''}>EN</button>
-        </div>
+        <a href="#booking" target="_blank" rel="noopener noreferrer" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
       </div>
 
       {/* HERO */}
@@ -1425,17 +1402,14 @@ export default function MaxHefele() {
           </h1>
 
           <div className="hero-socials">
-            {SOCIAL_LINKS.map((s, i) => {
+            {SOCIAL_LINKS.map(s => {
               const Icon = Icons[s.icon] || Icons.Arrow;
               return (
-                <React.Fragment key={s.name}>
-                  <MagneticButton>
-                    <a href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}>
-                      <Icon size={18} />
-                    </a>
-                  </MagneticButton>
-                  {i === 2 && <span className="social-row-break" aria-hidden="true" />}
-                </React.Fragment>
+                <MagneticButton key={s.name}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" title={s.name}>
+                    <Icon size={18} />
+                  </a>
+                </MagneticButton>
               );
             })}
           </div>
