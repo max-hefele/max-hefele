@@ -78,10 +78,11 @@ const T = {
       type: "Event Typ (Club, Festival, Private)",
       location: "Location / Stadt & Land",
       message: "Details & Nachricht",
-      submit: "ANFRAGE ABSENDEN"
+      submit: "ANFRAGE JETZT SENDEN"
     },
+    bookingMailtoBtn: "Direkt per E-Mail-Programm anfragen",
     bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich übermittelt.",
-    bookingError: "Fehler beim Senden. Bitte versuche es direkt via info@maxhefele.de.",
+    bookingError: "Fehler beim Senden. Bitte nutze den Direktlink info@maxhefele.de.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
@@ -170,10 +171,11 @@ const T = {
       type: "Event Type (Club, Festival, Private)",
       location: "Location / City & Country",
       message: "Details & Message",
-      submit: "SEND INQUIRY"
+      submit: "SEND INQUIRY NOW"
     },
+    bookingMailtoBtn: "Open email client directly",
     bookingSuccess: "Thank you! Your booking inquiry has been sent successfully.",
-    bookingError: "Error sending message. Please contact us directly via info@maxhefele.de.",
+    bookingError: "Error sending message. Please use direct email info@maxhefele.de.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "For booking inquiries, collaborations or general questions — just send a message.",
@@ -284,7 +286,7 @@ const Icons = {
   )
 };
 
-// ─── Exakte Tron Legacy Farbpalette & Styling ───
+// ─── Exakte Tron Legacy & Afterlife Farbpalette & Styling ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap');
 
@@ -297,13 +299,13 @@ const css = `
     --text-dim: #6b7594;
     --text-mid: #a3abc2;
     
-    --border: rgba(0, 240, 255, 0.25);
-    --border-hover: rgba(0, 240, 255, 0.9);
+    --border: rgba(255, 102, 0, 0.2);
+    --border-hover: rgba(255, 102, 0, 0.85);
     
-    /* Exakte Tron Legacy Neon-Farbpalette */
+    /* Perfekte Tron & Afterlife Neon-Farbpalette mit markantem Tron-Orange */
     --accent-cyan: #00f0ff;
     --accent-blue: #0088ff;
-    --accent-orange: #ff7700;
+    --accent-orange: #ff6600; /* Tron Orange & Afterlife Amber Touch */
     
     --font-display: 'Orbitron', 'Syne', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
@@ -311,8 +313,8 @@ const css = `
     --header-h: 74px;
     
     --glass-bg: rgba(5, 8, 17, 0.88);
-    --glass-border: 1px solid rgba(0, 240, 255, 0.35);
-    --glass-glow: 0 0 35px rgba(0, 240, 255, 0.18);
+    --glass-border: 1px solid rgba(255, 102, 0, 0.3);
+    --glass-glow: 0 0 35px rgba(255, 102, 0, 0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -327,7 +329,7 @@ const css = `
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.22;
+    opacity: 0.18;
   }
   .tron-grid-plane {
     position: absolute;
@@ -336,8 +338,8 @@ const css = `
     left: -50%;
     top: -10%;
     background-image: 
-      linear-gradient(to right, var(--accent-cyan) 1.5px, transparent 1.5px),
-      linear-gradient(to bottom, var(--accent-cyan) 1.5px, transparent 1.5px);
+      linear-gradient(to right, var(--accent-orange) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--accent-orange) 1px, transparent 1px);
     background-size: 60px 60px;
     transform: rotateX(72deg);
     animation: gridMove 10s linear infinite;
@@ -353,8 +355,8 @@ const css = `
     width: 100vw;
     height: 100vh;
     background-image: 
-      linear-gradient(rgba(0, 240, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 136, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(255, 102, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
     background-size: 100% 3px, 60px 60px;
     pointer-events: none;
     z-index: 999;
@@ -366,11 +368,11 @@ const css = `
     left: -150px;
     width: 450px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
     animation: streamHorizontal 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
-    box-shadow: 0 0 20px var(--accent-cyan);
+    box-shadow: 0 0 20px var(--accent-orange);
   }
   .laser-stream-v {
     position: fixed;
@@ -378,11 +380,11 @@ const css = `
     right: 25%;
     width: 2px;
     height: 450px;
-    background: linear-gradient(180deg, transparent, var(--accent-blue), transparent);
+    background: linear-gradient(180deg, transparent, var(--accent-cyan), transparent);
     animation: streamVertical 11s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s;
     pointer-events: none;
     z-index: 0;
-    box-shadow: 0 0 20px var(--accent-blue);
+    box-shadow: 0 0 20px var(--accent-cyan);
   }
 
   @keyframes streamHorizontal {
@@ -403,7 +405,7 @@ const css = `
     width: 750px;
     height: 750px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 240, 255, 0.12) 0%, rgba(0, 136, 255, 0.06) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 102, 0, 0.12) 0%, rgba(0, 240, 255, 0.05) 45%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
@@ -429,8 +431,8 @@ const css = `
 
   @keyframes glitchTrigger {
     0%, 95%, 100% { transform: translate(0); filter: none; }
-    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 var(--accent-blue)) drop-shadow(-2px 0 var(--accent-cyan)); }
-    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--accent-blue)) drop-shadow(2px 0 var(--accent-cyan)); }
+    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 var(--accent-orange)) drop-shadow(-2px 0 var(--accent-cyan)); }
+    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--accent-orange)) drop-shadow(2px 0 var(--accent-cyan)); }
     98% { transform: translate(0); filter: none; }
   }
 
@@ -439,8 +441,8 @@ const css = `
   }
 
   @keyframes pulseGlow {
-    0% { filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.45)); }
-    100% { filter: drop-shadow(0 0 28px rgba(0, 240, 255, 0.95)) drop-shadow(0 0 12px rgba(0, 136, 255, 0.7)); }
+    0% { filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.5)); }
+    100% { filter: drop-shadow(0 0 30px rgba(255, 102, 0, 0.95)) drop-shadow(0 0 12px rgba(0, 240, 255, 0.7)); }
   }
 
   .fade-logo { display: inline-flex; letter-spacing: 5px; flex-wrap: wrap; }
@@ -457,9 +459,9 @@ const css = `
 
   .marquee-container {
     background: #000;
-    border-top: 1.5px solid var(--accent-cyan);
-    border-bottom: 1.5px solid var(--accent-cyan);
-    color: var(--accent-cyan);
+    border-top: 1.5px solid var(--accent-orange);
+    border-bottom: 1.5px solid var(--accent-orange);
+    color: var(--accent-orange);
     overflow: hidden;
     white-space: nowrap;
     padding: 10px 0;
@@ -469,7 +471,7 @@ const css = `
     letter-spacing: 4px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 30px rgba(255, 102, 0, 0.4);
   }
   .marquee-track {
     display: inline-block;
@@ -493,14 +495,14 @@ const css = `
     background: rgba(2, 4, 8, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+    border-bottom: 1px solid rgba(255, 102, 0, 0.25);
     transition: all 0.4s var(--ease); 
   }
   .nav.scrolled { 
     padding: 14px 60px; 
     background: rgba(2, 4, 8, 0.97); 
-    border-bottom: 1.5px solid var(--accent-cyan);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 240, 255, 0.35);
+    border-bottom: 1.5px solid var(--accent-orange);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 102, 0, 0.35);
   }
   .nav-logo { 
     font-family: var(--font-display); 
@@ -522,18 +524,18 @@ const css = `
     gap: 3px;
     height: 14px;
     padding-left: 12px;
-    border-left: 1px solid rgba(0, 240, 255, 0.3);
+    border-left: 1px solid rgba(255, 102, 0, 0.3);
   }
   .tron-eq-bar {
     width: 2px;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 8px var(--accent-cyan);
+    background: var(--accent-orange);
+    box-shadow: 0 0 8px var(--accent-orange);
     animation: eqPulse 1.2s ease-in-out infinite alternate;
   }
   .tron-eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
   .tron-eq-bar:nth-child(2) { height: 90%; animation-delay: 0.3s; }
   .tron-eq-bar:nth-child(3) { height: 60%; animation-delay: 0.5s; }
-  .tron-eq-bar:nth-child(4) { height: 100%; animation-delay: 0.2s; }
+  .tron-eq-bar:nth-child(4) { height: 100%; animation-delay: 0.2s; background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); }
   .tron-eq-bar:nth-child(5) { height: 45%; animation-delay: 0.4s; }
   @keyframes eqPulse {
     0% { transform: scaleY(0.3); opacity: 0.4; }
@@ -563,16 +565,17 @@ const css = `
     left: 50%;
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-cyan));
     transition: width 0.3s var(--ease), left 0.3s var(--ease);
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 14px rgba(0, 240, 255, 0.9); }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent-orange); text-shadow: 0 0 14px rgba(255, 102, 0, 0.9); }
   .nav-links a:hover::after, .nav-links a.active::after { width: 100%; left: 0%; }
 
+  /* Ikonischer Tron-Orange Afterlife CTA Button */
   .nav-booking-btn {
-    background: rgba(0, 240, 255, 0.1);
-    border: 1.5px solid var(--accent-cyan);
-    color: var(--accent-cyan);
+    background: rgba(255, 102, 0, 0.12);
+    border: 1.5px solid var(--accent-orange);
+    color: var(--accent-orange);
     font-family: var(--font-display);
     font-size: 10px;
     font-weight: 800;
@@ -581,27 +584,27 @@ const css = `
     padding: 10px 22px;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.35);
     transition: all 0.3s var(--ease);
     white-space: nowrap;
     display: inline-block;
     touch-action: manipulation;
   }
   .nav-booking-btn:hover {
-    background: var(--accent-cyan);
+    background: var(--accent-orange);
     color: #020408;
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.95);
+    box-shadow: 0 0 45px rgba(255, 102, 0, 0.95);
     transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 1px; flex-shrink: 0; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; padding: 4px; }
-  .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 10px rgba(0, 240, 255, 0.6); }
+  .lang-switch button.active { color: var(--accent-orange); font-weight: 800; text-shadow: 0 0 10px rgba(255, 102, 0, 0.6); }
   .mobile-lang-switch { display: none; margin-top: 20px; font-size: 18px; gap: 12px; }
   .mobile-lang-switch button { font-size: 18px; padding: 8px; }
 
   .menu-btn { display: none; background: none; border: 1.5px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(5, 8, 17, 0.92); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
-  .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+  .menu-btn:hover { border-color: var(--accent-orange); color: var(--accent-orange); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
   .menu-btn.open .menu-icon-lines span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -611,7 +614,7 @@ const css = `
   .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(2, 4, 8, 0.985); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
-  .mobile-nav a:hover { color: var(--accent-cyan); }
+  .mobile-nav a:hover { color: var(--accent-orange); }
 
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: var(--header-h) 20px 0; }
   .hero-bg { 
@@ -620,7 +623,7 @@ const css = `
     left: 0;
     right: 0;
     bottom: -120px;
-    filter: brightness(0.48) contrast(1.25) hue-rotate(-8deg); 
+    filter: brightness(0.48) contrast(1.25) hue-rotate(-12deg); 
     will-change: transform; 
     background-position: center 10% !important;
     object-position: center 10% !important;
@@ -638,7 +641,7 @@ const css = `
     background: linear-gradient(180deg, #ffffff 0%, var(--text-mid) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.5));
+    filter: drop-shadow(0 0 35px rgba(255, 102, 0, 0.4));
     white-space: nowrap;
   }
   .fade-logo { white-space: nowrap; }
@@ -667,14 +670,14 @@ const css = `
     will-change: transform;
     touch-action: manipulation;
   }
-  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.15); box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); }
+  .hero-socials a:hover { color: var(--accent-orange); border-color: var(--accent-orange); background: rgba(255, 102, 0, 0.15); box-shadow: 0 0 25px rgba(255, 102, 0, 0.5); }
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
-  .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
+  .scroll-hint:hover { color: var(--accent-orange); transform: translateY(3px); }
 
   .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
-  .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-  .section-label::before { content: '['; color: var(--accent-blue); }
-  .section-label::after { content: ']'; color: var(--accent-blue); }
+  .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(255, 102, 0, 0.4); }
+  .section-label::before { content: '['; color: var(--accent-cyan); }
+  .section-label::after { content: ']'; color: var(--accent-cyan); }
   .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; color: var(--text); }
 
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
@@ -717,15 +720,15 @@ const css = `
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     transition: border-color 0.3s, box-shadow 0.3s; 
   }
-  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 28px rgba(0, 240, 255, 0.35); }
+  .h-card:hover { border-color: var(--accent-orange); box-shadow: 0 0 28px rgba(255, 102, 0, 0.35); }
   .h-card-label { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-  .h-card-detail { font-size: 13px; color: var(--accent-cyan); margin-top: 6px; word-break: break-all; }
+  .h-card-detail { font-size: 13px; color: var(--accent-orange); margin-top: 6px; word-break: break-all; }
 
   .residencies { margin-top: 40px; }
-  .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 700; }
+  .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 14px; font-weight: 700; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1.5px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 240, 255, 0.04); transition: all 0.3s; }
-  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.12); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1.5px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(255, 102, 0, 0.04); transition: all 0.3s; }
+  .res-tag:hover { color: var(--accent-orange); border-color: var(--accent-orange); background: rgba(255, 102, 0, 0.12); }
 
   .music-wrap { background: var(--bg-elevated); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
@@ -767,7 +770,7 @@ const css = `
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.12), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 102, 0, 0.12), transparent 80%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -813,7 +816,7 @@ const css = `
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 35px rgba(0, 240, 255, 0.35); }
+  .unified-consent-box:hover { border-color: var(--accent-orange); box-shadow: 0 0 35px rgba(255, 102, 0, 0.35); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -831,13 +834,13 @@ const css = `
   .consent-bg-wave span {
     width: 6px;
     height: 40%;
-    background: var(--accent-cyan);
+    background: var(--accent-orange);
     border-radius: 2px;
     animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
-  .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; }
+  .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; background: var(--accent-cyan); }
   .consent-bg-wave span:nth-child(3n) { animation-delay: 0.4s; }
-  .consent-bg-wave span:nth-child(4n) { animation-delay: 0.6s; }
+  .consent-bg-wave span:nth-child(4n) { animation-delay: 0.6s; background: var(--accent-cyan); }
 
   @keyframes wavePulse {
     0% { height: 20%; opacity: 0.2; }
@@ -864,16 +867,16 @@ const css = `
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 4px;
-    color: var(--accent-cyan);
+    color: var(--accent-orange);
     text-transform: uppercase;
     margin-bottom: 14px;
-    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
+    filter: drop-shadow(0 0 12px rgba(255, 102, 0, 0.6));
   }
 
   .media-play-btn {
     width: 56px;
     height: 56px;
-    background: var(--accent-cyan);
+    background: var(--accent-orange);
     border: none;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     color: #020408;
@@ -882,13 +885,13 @@ const css = `
     align-items: center;
     justify-content: center;
     transition: transform 0.2s var(--ease), box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 0 22px rgba(0, 240, 255, 0.7);
+    box-shadow: 0 0 22px rgba(255, 102, 0, 0.7);
     will-change: transform;
     touch-action: manipulation;
   }
   .media-play-btn:hover {
     background: #fff;
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.95);
+    box-shadow: 0 0 40px rgba(255, 102, 0, 0.95);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
@@ -912,7 +915,7 @@ const css = `
   }
   .video-frame iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 2; }
   .video-more { font-family: var(--font-display); margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--accent-cyan); }
+  .video-more:hover { color: var(--accent-orange); }
 
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
   .n-card { 
@@ -930,17 +933,17 @@ const css = `
     display: flex; 
     flex-direction: column; 
   }
-  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 240, 255, 0.3); }
+  .n-card:hover { border-color: var(--accent-orange); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255, 102, 0, 0.3); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1.5px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
   .n-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 500; font-family: var(--font-display); }
+  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--accent-orange); margin-bottom: 12px; font-weight: 500; font-family: var(--font-display); }
   .n-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
-  .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-orange); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
-  .dates-empty { text-align: center; padding: 80px 24px; border: 1.5px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 240, 255, 0.025); }
+  .dates-empty { text-align: center; padding: 80px 24px; border: 1.5px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(255, 102, 0, 0.025); }
   .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
@@ -959,10 +962,10 @@ const css = `
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
-  .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
+  .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); font-weight: 700; }
   .form-input {
     background: rgba(2, 4, 8, 0.92);
-    border: 1.5px solid rgba(0, 240, 255, 0.3);
+    border: 1.5px solid rgba(255, 102, 0, 0.3);
     color: #fff;
     padding: 14px 16px;
     font-family: var(--font-body);
@@ -973,15 +976,15 @@ const css = `
     width: 100%;
   }
   .form-input:focus {
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.45);
-    background: rgba(5, 8, 20, 0.96);
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.45);
+    background: rgba(10, 5, 2, 0.96);
   }
   .form-textarea { resize: vertical; min-height: 110px; }
   
   .booking-submit-btn {
     width: 100%;
-    background: var(--accent-cyan);
+    background: var(--accent-orange);
     color: #020408;
     border: none;
     font-family: var(--font-display);
@@ -993,18 +996,44 @@ const css = `
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     cursor: pointer;
     transition: all 0.3s var(--ease);
-    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.6);
     touch-action: manipulation;
   }
   .booking-submit-btn:hover {
     background: #fff;
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.95);
+    box-shadow: 0 0 40px rgba(255, 102, 0, 0.95);
+  }
+
+  .booking-mailto-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1.5px solid var(--accent-cyan);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .booking-mailto-btn:hover {
+    background: var(--accent-cyan);
+    color: #020408;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
   }
 
   .booking-success-msg {
     padding: 30px;
-    background: rgba(0, 240, 255, 0.1);
-    border: 1.5px solid var(--accent-cyan);
+    background: rgba(255, 102, 0, 0.1);
+    border: 1.5px solid var(--accent-orange);
     color: #fff;
     font-family: var(--font-display);
     font-size: 14px;
@@ -1012,7 +1041,7 @@ const css = `
     letter-spacing: 1px;
     line-height: 1.6;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+    box-shadow: 0 0 30px rgba(255, 102, 0, 0.25);
   }
 
   .booking-error-msg {
@@ -1031,27 +1060,27 @@ const css = `
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1.5px solid var(--border); transition: border-color 0.3s, color 0.3s; word-break: break-all; }
-  .contact-email:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+  .contact-email:hover { border-color: var(--accent-orange); color: var(--accent-orange); }
   .contact-social { font-family: var(--font-display); display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1.5px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
-  .contact-social:hover { color: var(--accent-cyan); }
+  .contact-social:hover { color: var(--accent-orange); }
 
   .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1.5px solid var(--border); position: relative; z-index: 1; width: 100%; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
-  .footer-link:hover { color: var(--accent-cyan); }
+  .footer-link:hover { color: var(--accent-orange); }
 
   .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(2, 4, 8, 0.97); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 60px rgba(0, 240, 255, 0.3); }
+  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 60px rgba(255, 102, 0, 0.25); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
-  .legal-close:hover { color: var(--accent-cyan); }
+  .legal-close:hover { color: var(--accent-orange); }
   .legal-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #fff; }
-  .legal-subtitle { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 32px; font-weight: 700; }
+  .legal-subtitle { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 32px; font-weight: 700; }
   .legal-section { margin-bottom: 24px; }
   .legal-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); border-bottom: 1.5px solid var(--border); padding-bottom: 6px; }
   .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
   .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
   .legal-section li { margin-bottom: 6px; }
-  .legal-section a { color: var(--accent-cyan); text-decoration: underline; }
+  .legal-section a { color: var(--accent-orange); text-decoration: underline; }
 
   .rv { 
     opacity: 0; 
@@ -1214,11 +1243,6 @@ export default function MaxHefele() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
   
-  // Booking Form States (AJAX Fix für FormSubmit)
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formError, setFormError] = useState(false);
-  
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
 
@@ -1240,35 +1264,6 @@ export default function MaxHefele() {
       window.history.pushState({ overlayOpen: true }, "");
     } else {
       setMenuOpen(false);
-    }
-  };
-
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setFormError(false);
-
-    const formData = new FormData(e.target);
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/info@maxhefele.de", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setFormSubmitted(true);
-        e.target.reset();
-      } else {
-        setFormError(true);
-      }
-    } catch (err) {
-      setFormError(true);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -1406,7 +1401,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#020408', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
+        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#020408', background: 'var(--accent-orange)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
         <div className="lang-switch mobile-lang-switch">
           <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
           <span>/</span>
@@ -1582,7 +1577,7 @@ export default function MaxHefele() {
                 </TiltCard>
               ) : (
                 <div className="unified-consent-box" style={{ height: '166px' }}>
-                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%2300f0ff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23ff6600&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
                 </div>
               )}
             </div>
@@ -1683,7 +1678,7 @@ export default function MaxHefele() {
               </p>
               
               <div style={{ marginBottom: '30px' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-orange)', marginBottom: '8px' }}>
                   {t.bookingDirectTitle}
                 </h4>
                 <a href="mailto:info@maxhefele.de" className="contact-email" style={{ padding: '8px 0', fontSize: '15px' }}>
@@ -1692,7 +1687,7 @@ export default function MaxHefele() {
               </div>
 
               <div>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
+                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-orange)', marginBottom: '8px' }}>
                   {t.bookingPressTitle}
                 </h4>
                 <p style={{ color: 'var(--text-mid)', fontSize: '13px', lineHeight: '1.6' }}>
@@ -1702,60 +1697,57 @@ export default function MaxHefele() {
             </Rv>
 
             <Rv delay={150}>
-              {formSubmitted ? (
-                <div className="booking-success-msg">
-                  {t.bookingSuccess}
+              {/* Zuverlässiges Standard-Formular (ohne anfälliges AJAX, um Fehler zu beheben) */}
+              <form 
+                className="booking-form" 
+                action="https://formsubmit.co/info@maxhefele.de" 
+                method="POST"
+              >
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
+
+                <div className="form-group">
+                  <label className="form-label">{t.bookingFields.name}</label>
+                  <input type="text" name="name" required className="form-input" placeholder="Name / Agency" />
                 </div>
-              ) : (
-                <form 
-                  className="booking-form" 
-                  onSubmit={handleBookingSubmit}
+
+                <div className="form-group">
+                  <label className="form-label">{t.bookingFields.email}</label>
+                  <input type="email" name="email" required className="form-input" placeholder="name@domain.com" />
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.date}</label>
+                    <input type="date" name="date" required className="form-input" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.type}</label>
+                    <input type="text" name="type" required className="form-input" placeholder="Club / Festival" />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">{t.bookingFields.location}</label>
+                  <input type="text" name="location" required className="form-input" placeholder="City, Country" />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: '24px' }}>
+                  <label className="form-label">{t.bookingFields.message}</label>
+                  <textarea name="message" required className="form-input form-textarea" placeholder="..." />
+                </div>
+
+                <button type="submit" className="booking-submit-btn">
+                  {t.bookingFields.submit}
+                </button>
+
+                <a 
+                  href="mailto:info@maxhefele.de?subject=Booking%20Anfrage%20Max%20Hefele" 
+                  className="booking-mailto-btn"
                 >
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
-
-                  {formError && (
-                    <div className="booking-error-msg">
-                      {t.bookingError}
-                    </div>
-                  )}
-
-                  <div className="form-group">
-                    <label className="form-label">{t.bookingFields.name}</label>
-                    <input type="text" name="name" required className="form-input" placeholder="Name / Agency" />
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">{t.bookingFields.email}</label>
-                    <input type="email" name="email" required className="form-input" placeholder="name@domain.com" />
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.date}</label>
-                      <input type="date" name="date" required className="form-input" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.type}</label>
-                      <input type="text" name="type" required className="form-input" placeholder="Club / Festival" />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">{t.bookingFields.location}</label>
-                    <input type="text" name="location" required className="form-input" placeholder="City, Country" />
-                  </div>
-
-                  <div className="form-group" style={{ marginBottom: '24px' }}>
-                    <label className="form-label">{t.bookingFields.message}</label>
-                    <textarea name="message" required className="form-input form-textarea" placeholder="..." />
-                  </div>
-
-                  <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
-                    {isSubmitting ? "SENDED..." : t.bookingFields.submit}
-                  </button>
-                </form>
-              )}
+                  <Icons.Mail /> {t.bookingMailtoBtn}
+                </a>
+              </form>
             </Rv>
           </div>
         </div>
