@@ -66,21 +66,11 @@ const T = {
     datesEmpty: "NEUE TERMINE WERDEN BALD BEKANNTGEGEBEN",
     datesSub: "Für Booking-Anfragen bitte Kontakt aufnehmen.",
     bookingLabel: "Promoter & Management",
-    bookingTitle: "BOOKING ANFRAGE",
-    bookingText: "Für Festival-Bookings, Club-Termine oder internationale Events nutze das Anfragenformular oder kontaktiere das Management direkt.",
-    bookingDirectTitle: "Direkter Booking-Kontakt",
+    bookingTitle: "BOOKING",
+    bookingText: "Für Festival-Bookings, Club-Termine oder internationale Events kontaktiere das Management direkt.",
+    bookingDirectTitle: "Booking Kontakt",
     bookingPressTitle: "Press Kit & Tech Rider",
     bookingPressDesc: "Pressefotos, Biografien und Technical Rider auf Anfrage verfügbar.",
-    bookingFields: {
-      name: "Name / Agentur / Veranstalter",
-      email: "E-Mail-Adresse",
-      date: "Event Datum",
-      type: "Event Typ (Club, Festival, Private)",
-      location: "Location / Stadt & Land",
-      message: "Details & Nachricht",
-      submit: "ANFRAGE ABSENDEN"
-    },
-    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich an info@maxhefele.de übermittelt.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
@@ -157,21 +147,11 @@ const T = {
     datesEmpty: "NEW DATES WILL BE ANNOUNCED SOON",
     datesSub: "For booking inquiries please get in touch.",
     bookingLabel: "Promoter & Management",
-    bookingTitle: "BOOKING INQUIRY",
-    bookingText: "For festival bookings, club dates, or international events, please use the inquiry form below or contact management directly.",
-    bookingDirectTitle: "Direct Booking Contact",
+    bookingTitle: "BOOKING",
+    bookingText: "For festival bookings, club dates, or international events, please contact management directly.",
+    bookingDirectTitle: "Booking Kontakt",
     bookingPressTitle: "Press Kit & Tech Rider",
     bookingPressDesc: "Press photos, press bio, and technical rider available upon request.",
-    bookingFields: {
-      name: "Name / Agency / Promoter",
-      email: "Email Address",
-      date: "Event Date",
-      type: "Event Type (Club, Festival, Private)",
-      location: "Location / City & Country",
-      message: "Details & Message",
-      submit: "SEND INQUIRY"
-    },
-    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully to info@maxhefele.de.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "For booking inquiries, collaborations or general questions — just send a message.",
@@ -282,34 +262,37 @@ const Icons = {
   )
 };
 
-// ─── Anyma x Tron Holographic CSS ───
+// ─── Enhanced Afterlife x Tron Holographic CSS ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap');
 
   :root {
-    --bg-obsidian: #05050a;
-    --bg-elevated: #090b14;
-    --bg-card: rgba(5, 5, 10, 0.9);
+    --bg-obsidian: #020307;
+    --bg-elevated: #060812;
+    --bg-card: rgba(3, 4, 8, 0.92);
     
-    --text: #f0f3f8;
-    --text-dim: #50586c;
-    --text-mid: #9ba4b8;
+    --text: #f2f5fc;
+    --text-dim: #444d62;
+    --text-mid: #949eb5;
     
-    --border: rgba(0, 243, 255, 0.25);
+    --border: rgba(0, 243, 255, 0.22);
     --border-hover: rgba(0, 243, 255, 0.85);
     
-    --accent-violet: #9d00ff;
+    /* Tron & Afterlife Subtile Akzente: Cyan, Blau, Orange, Pink */
     --accent-cyan: #00f3ff;
+    --accent-blue: #0066ff;
+    --accent-orange: #ff7700;
     --accent-pink: #ff007f;
+    --accent-violet: #9d00ff;
     
     --font-display: 'Orbitron', 'Syne', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --header-h: 74px;
     
-    --glass-bg: rgba(9, 11, 20, 0.8);
-    --glass-border: 1px solid rgba(0, 243, 255, 0.3);
-    --glass-glow: 0 0 30px rgba(0, 243, 255, 0.15);
+    --glass-bg: rgba(6, 8, 16, 0.85);
+    --glass-border: 1px solid rgba(0, 243, 255, 0.28);
+    --glass-glow: 0 0 40px rgba(0, 243, 255, 0.15), 0 0 20px rgba(255, 119, 0, 0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -317,7 +300,7 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg-obsidian); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; width: 100%; }
 
-  /* 3D TRON LIGHTCYCLE PERSPECTIVE GRID */
+  /* 3D TRON LIGHTCYCLE PERSPECTIVE GRID MIT BLAU-ORANGE DYNASTIE */
   .tron-grid {
     position: fixed;
     inset: 0;
@@ -325,7 +308,7 @@ const css = `
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.22;
+    opacity: 0.24;
   }
   .tron-grid-plane {
     position: absolute;
@@ -334,15 +317,15 @@ const css = `
     left: -50%;
     top: -10%;
     background-image: 
-      linear-gradient(to right, var(--accent-cyan) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--accent-cyan) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(to right, rgba(0, 243, 255, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 119, 0, 0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
     transform: rotateX(72deg);
-    animation: gridMove 12s linear infinite;
+    animation: gridMove 14s linear infinite;
   }
   @keyframes gridMove {
     0% { transform: rotateX(72deg) translateY(0); }
-    100% { transform: rotateX(72deg) translateY(50px); }
+    100% { transform: rotateX(72deg) translateY(60px); }
   }
 
   /* SYNTH SCANLINE OVERLAY */
@@ -352,63 +335,63 @@ const css = `
     width: 100vw;
     height: 100vh;
     background-image: 
-      linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(157, 0, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 119, 0, 0.02) 1px, transparent 1px);
     background-size: 100% 3px, 60px 60px;
     pointer-events: none;
     z-index: 999;
   }
 
-  /* LASER & PARTICLE STREAMS */
+  /* VERSTÄRKTE AFTERLIFE / ERIC PRYDZ LASER & LICHTSTÖMUNG */
   .laser-stream-h {
     position: fixed;
-    top: 35%;
-    left: -150px;
-    width: 450px;
-    height: 1.5px;
-    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-    animation: streamHorizontal 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    top: 30%;
+    left: -200px;
+    width: 500px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-orange), var(--accent-cyan), transparent);
+    animation: streamHorizontal 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     pointer-events: none;
     z-index: 0;
-    box-shadow: 0 0 15px var(--accent-cyan);
+    box-shadow: 0 0 20px var(--accent-orange), 0 0 10px var(--accent-cyan);
   }
   .laser-stream-v {
     position: fixed;
-    top: -150px;
-    right: 25%;
-    width: 1.5px;
-    height: 450px;
-    background: linear-gradient(180deg, transparent, var(--accent-pink), transparent);
-    animation: streamVertical 12s cubic-bezier(0.4, 0, 0.2, 1) infinite 3s;
+    top: -200px;
+    right: 20%;
+    width: 2px;
+    height: 500px;
+    background: linear-gradient(180deg, transparent, var(--accent-blue), var(--accent-pink), transparent);
+    animation: streamVertical 13s cubic-bezier(0.4, 0, 0.2, 1) infinite 2s;
     pointer-events: none;
     z-index: 0;
-    box-shadow: 0 0 15px var(--accent-pink);
+    box-shadow: 0 0 20px var(--accent-blue);
   }
 
   @keyframes streamHorizontal {
     0% { transform: translateX(0); opacity: 0; }
-    20% { opacity: 0.9; }
-    80% { opacity: 0.9; }
-    100% { transform: translateX(110vw); opacity: 0; }
+    20% { opacity: 0.95; }
+    80% { opacity: 0.95; }
+    100% { transform: translateX(115vw); opacity: 0; }
   }
   @keyframes streamVertical {
     0% { transform: translateY(0); opacity: 0; }
-    20% { opacity: 0.9; }
-    80% { opacity: 0.9; }
-    100% { transform: translateY(110vh); opacity: 0; }
+    20% { opacity: 0.95; }
+    80% { opacity: 0.95; }
+    100% { transform: translateY(115vh); opacity: 0; }
   }
 
   .bg-glow-orb {
     position: fixed;
-    width: 700px;
-    height: 700px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 243, 255, 0.12) 0%, rgba(157, 0, 255, 0.06) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, rgba(255, 119, 0, 0.06) 40%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
-    top: -350px;
-    left: -350px;
+    top: -400px;
+    left: -400px;
   }
 
   .floating-logo-wrap {
@@ -418,30 +401,31 @@ const css = `
 
   @keyframes gentleFloat {
     0% { transform: translateY(0px); }
-    100% { transform: translateY(-6px); }
+    100% { transform: translateY(-8px); }
   }
 
   .cyber-glitch-title {
     position: relative;
     display: inline-block;
-    animation: glitchTrigger 10s infinite;
+    animation: glitchTrigger 12s infinite;
   }
 
   @keyframes glitchTrigger {
     0%, 95%, 100% { transform: translate(0); filter: none; }
-    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 var(--accent-pink)) drop-shadow(-2px 0 var(--accent-cyan)); }
-    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--accent-pink)) drop-shadow(2px 0 var(--accent-cyan)); }
+    96% { transform: translate(-1px, 1px); filter: drop-shadow(2px 0 var(--accent-orange)) drop-shadow(-2px 0 var(--accent-cyan)); }
+    97% { transform: translate(2px, -1px); filter: drop-shadow(-2px 0 var(--accent-blue)) drop-shadow(2px 0 var(--accent-orange)); }
     98% { transform: translate(0); filter: none; }
   }
 
-  /* ATMENDER GLOW (BREATHING GLOW FILTER) */
+  /* ATMENDER AFTERLIFE GLOW */
   .breathing-glow {
-    animation: pulseGlow 4s infinite ease-in-out alternate;
+    animation: pulseGlow 5s infinite ease-in-out alternate;
   }
 
   @keyframes pulseGlow {
-    0% { filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.4)); }
-    100% { filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.9)) drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+    0% { filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.4)); }
+    50% { filter: drop-shadow(0 0 25px rgba(255, 119, 0, 0.5)) drop-shadow(0 0 10px rgba(0, 102, 255, 0.3)); }
+    100% { filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.8)) drop-shadow(0 0 15px rgba(255, 119, 0, 0.7)); }
   }
 
   .fade-logo { display: inline-flex; letter-spacing: 5px; flex-wrap: wrap; }
@@ -456,10 +440,10 @@ const css = `
     to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
   }
 
-  /* MARQUEE TICKER */
+  /* MARQUEE TICKER MIT ORANGE/CYAN AKZENTEN */
   .marquee-container {
-    background: #000;
-    border-top: 1px solid var(--accent-cyan);
+    background: #010204;
+    border-top: 1px solid var(--accent-orange);
     border-bottom: 1px solid var(--accent-cyan);
     color: var(--accent-cyan);
     overflow: hidden;
@@ -471,7 +455,7 @@ const css = `
     letter-spacing: 4px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.25), 0 0 15px rgba(255, 119, 0, 0.15);
   }
   .marquee-track {
     display: inline-block;
@@ -482,7 +466,7 @@ const css = `
     100% { transform: translateX(-50%); }
   }
 
-  /* CYBER-HUD NAV & EQUALIZER INTEGRATION */
+  /* CYBER-HUD NAV & EQUALIZER */
   .nav { 
     position: fixed; 
     top: 0; 
@@ -493,17 +477,17 @@ const css = `
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    background: rgba(5, 5, 10, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(3, 4, 8, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(0, 243, 255, 0.2);
     transition: all 0.4s var(--ease); 
   }
   .nav.scrolled { 
     padding: 14px 60px; 
-    background: rgba(5, 5, 10, 0.95); 
-    border-bottom: 1px solid var(--accent-cyan);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 243, 255, 0.3);
+    background: rgba(3, 4, 8, 0.96); 
+    border-bottom: 1px solid var(--accent-orange);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 119, 0, 0.25);
   }
   .nav-logo { 
     font-family: var(--font-display); 
@@ -519,26 +503,25 @@ const css = `
     gap: 16px;
   }
   
-  /* TRON EQUALIZER WIDGET IN NAV */
   .tron-eq {
     display: flex;
     align-items: flex-end;
     gap: 3px;
     height: 14px;
     padding-left: 12px;
-    border-left: 1px solid rgba(0, 243, 255, 0.3);
+    border-left: 1px solid rgba(255, 119, 0, 0.35);
   }
   .tron-eq-bar {
     width: 2px;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 6px var(--accent-cyan);
+    background: var(--accent-orange);
+    box-shadow: 0 0 8px var(--accent-orange);
     animation: eqPulse 1.2s ease-in-out infinite alternate;
   }
-  .tron-eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+  .tron-eq-bar:nth-child(1) { height: 40%; background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); animation-delay: 0.1s; }
   .tron-eq-bar:nth-child(2) { height: 90%; animation-delay: 0.3s; }
-  .tron-eq-bar:nth-child(3) { height: 60%; animation-delay: 0.5s; }
+  .tron-eq-bar:nth-child(3) { height: 60%; background: var(--accent-blue); box-shadow: 0 0 8px var(--accent-blue); animation-delay: 0.5s; }
   .tron-eq-bar:nth-child(4) { height: 100%; animation-delay: 0.2s; }
-  .tron-eq-bar:nth-child(5) { height: 45%; animation-delay: 0.4s; }
+  .tron-eq-bar:nth-child(5) { height: 45%; background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan); animation-delay: 0.4s; }
   @keyframes eqPulse {
     0% { transform: scaleY(0.3); opacity: 0.4; }
     100% { transform: scaleY(1); opacity: 1; }
@@ -567,17 +550,16 @@ const css = `
     left: 50%;
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-cyan));
     transition: width 0.3s var(--ease), left 0.3s var(--ease);
   }
   .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(0, 243, 255, 0.8); }
   .nav-links a:hover::after, .nav-links a.active::after { width: 100%; left: 0%; }
 
-  /* CYBER HUD BOOKING BUTTON WITH CHAMFERED CORNERS */
   .nav-booking-btn {
-    background: rgba(0, 243, 255, 0.08);
-    border: 1px solid var(--accent-cyan);
-    color: var(--accent-cyan);
+    background: rgba(255, 119, 0, 0.1);
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
     font-family: var(--font-display);
     font-size: 10px;
     font-weight: 800;
@@ -586,7 +568,7 @@ const css = `
     padding: 10px 22px;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     text-decoration: none;
-    box-shadow: 0 0 18px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 119, 0, 0.3);
     transition: all 0.3s var(--ease);
     white-space: nowrap;
     display: inline-block;
@@ -594,32 +576,31 @@ const css = `
   }
   .nav-booking-btn:hover {
     background: var(--accent-cyan);
-    color: #05050a;
+    border-color: var(--accent-cyan);
+    color: #030307;
     box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
     transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 1px; flex-shrink: 0; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; padding: 4px; }
-  .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
+  .lang-switch button.active { color: var(--accent-orange); font-weight: 800; text-shadow: 0 0 8px rgba(255, 119, 0, 0.6); }
   .mobile-lang-switch { display: none; margin-top: 20px; font-size: 18px; gap: 12px; }
   .mobile-lang-switch button { font-size: 18px; padding: 8px; }
 
-  /* MOBILE NAV */
-  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(9, 11, 20, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
-  .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(6, 8, 16, 0.85); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
+  .menu-btn:hover { border-color: var(--accent-orange); color: var(--accent-orange); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
   .menu-btn.open .menu-icon-lines span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
   .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5, 5, 10, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
-  .mobile-nav a:hover { color: var(--accent-cyan); }
+  .mobile-nav a:hover { color: var(--accent-orange); }
 
-  /* HERO & OPTIMIZED FACE ALIGNMENT */
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: var(--header-h) 20px 0; }
   .hero-bg { 
     position: absolute; 
@@ -627,7 +608,7 @@ const css = `
     left: 0;
     right: 0;
     bottom: -120px;
-    filter: brightness(0.45) contrast(1.25) hue-rotate(-10deg); 
+    filter: brightness(0.4) contrast(1.3) hue-rotate(-5deg); 
     will-change: transform; 
     background-position: center 10% !important;
     object-position: center 10% !important;
@@ -645,7 +626,7 @@ const css = `
     background: linear-gradient(180deg, #ffffff 0%, var(--text-mid) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.4));
+    filter: drop-shadow(0 0 35px rgba(0, 243, 255, 0.35)) drop-shadow(0 0 15px rgba(255, 119, 0, 0.25));
     white-space: nowrap;
   }
   .fade-logo { white-space: nowrap; }
@@ -670,22 +651,20 @@ const css = `
     clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
     transition: transform 0.2s var(--ease), border-color 0.3s, background 0.3s, color 0.3s; 
     text-decoration: none; 
-    background: rgba(9, 11, 20, 0.7); 
+    background: rgba(6, 8, 16, 0.75); 
     will-change: transform;
     touch-action: manipulation;
   }
-  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.15); box-shadow: 0 0 22px rgba(0, 243, 255, 0.4); }
+  .hero-socials a:hover { color: var(--accent-orange); border-color: var(--accent-orange); background: rgba(255, 119, 0, 0.12); box-shadow: 0 0 22px rgba(255, 119, 0, 0.4); }
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
   .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
 
-  /* SECTIONS & CONTAINER STRUCTURE */
   .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
-  .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-  .section-label::before { content: '['; color: var(--accent-pink); }
-  .section-label::after { content: ']'; color: var(--accent-pink); }
+  .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .section-label::before { content: '['; color: var(--accent-cyan); }
+  .section-label::after { content: ']'; color: var(--accent-cyan); }
   .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; }
 
-  /* ABOUT LAYOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   
   .about-photo { 
@@ -695,7 +674,7 @@ const css = `
     background: var(--bg-card); 
     border: var(--glass-border); 
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95); 
   }
   
   .about-photo img { 
@@ -709,7 +688,7 @@ const css = `
     transform: none;
     transition: transform 0.6s var(--ease); 
     will-change: transform; 
-    filter: contrast(1.1) brightness(0.95); 
+    filter: contrast(1.15) brightness(0.9); 
   }
   .about-photo:hover img { transform: scale(1.04); }
 
@@ -726,17 +705,16 @@ const css = `
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     transition: border-color 0.3s, box-shadow 0.3s; 
   }
-  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.3); }
+  .h-card:hover { border-color: var(--accent-orange); box-shadow: 0 0 25px rgba(255, 119, 0, 0.3); }
   .h-card-label { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
   .h-card-detail { font-size: 13px; color: var(--accent-cyan); margin-top: 6px; word-break: break-all; }
 
   .residencies { margin-top: 40px; }
-  .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 700; }
+  .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 14px; font-weight: 700; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.04); transition: all 0.3s; }
-  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.12); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.03); transition: all 0.3s; }
+  .res-tag:hover { color: var(--accent-orange); border-color: var(--accent-orange); background: rgba(255, 119, 0, 0.1); }
 
-  /* MUSIC SLIDER */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   
@@ -777,7 +755,7 @@ const css = `
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.1), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 119, 0, 0.08), rgba(0, 243, 255, 0.08), transparent 80%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -800,7 +778,7 @@ const css = `
   
   .m-card:hover { 
     border-color: var(--brand-color, var(--border-hover)); 
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.9), 0 0 25px -5px var(--brand-color);
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.95), 0 0 25px -5px var(--brand-color);
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
@@ -810,7 +788,6 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 700; color: #fff; position: relative; z-index: 2; }
 
-  /* CONSENT OVERLAYS */
   .unified-consent-box {
     position: relative;
     width: 100%;
@@ -824,7 +801,7 @@ const css = `
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.3); }
+  .unified-consent-box:hover { border-color: var(--accent-orange); box-shadow: 0 0 35px rgba(255, 119, 0, 0.25); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -842,12 +819,12 @@ const css = `
   .consent-bg-wave span {
     width: 6px;
     height: 40%;
-    background: var(--accent-cyan);
+    background: var(--accent-orange);
     border-radius: 2px;
     animation: wavePulse 1.4s infinite ease-in-out alternate;
   }
-  .consent-bg-wave span:nth-child(2n) { animation-delay: 0.2s; }
-  .consent-bg-wave span:nth-child(3n) { animation-delay: 0.4s; }
+  .consent-bg-wave span:nth-child(2n) { background: var(--accent-cyan); animation-delay: 0.2s; }
+  .consent-bg-wave span:nth-child(3n) { background: var(--accent-blue); animation-delay: 0.4s; }
   .consent-bg-wave span:nth-child(4n) { animation-delay: 0.6s; }
 
   @keyframes wavePulse {
@@ -858,9 +835,9 @@ const css = `
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(5, 5, 10, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(3, 4, 8, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -875,37 +852,36 @@ const css = `
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 4px;
-    color: var(--accent-cyan);
+    color: var(--accent-orange);
     text-transform: uppercase;
     margin-bottom: 14px;
-    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+    filter: drop-shadow(0 0 12px rgba(255, 119, 0, 0.6));
   }
 
   .media-play-btn {
     width: 56px;
     height: 56px;
-    background: var(--accent-cyan);
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-cyan));
     border: none;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    color: #05050a;
+    color: #030307;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s var(--ease), box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    box-shadow: 0 0 25px rgba(255, 119, 0, 0.5);
     will-change: transform;
     touch-action: manipulation;
   }
   .media-play-btn:hover {
     background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.95);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
   .media-privacy-link { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 11px; }
 
-  /* VIDEO GRID */
   .video-block { margin-top: 80px; }
   .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .video-frame { 
@@ -924,9 +900,8 @@ const css = `
   }
   .video-frame iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 2; }
   .video-more { font-family: var(--font-display); margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
-  .video-more:hover { color: var(--accent-cyan); }
+  .video-more:hover { color: var(--accent-orange); }
 
-  /* NEWS */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
   .n-card { 
     flex: 0 0 360px; 
@@ -943,121 +918,65 @@ const css = `
     display: flex; 
     flex-direction: column; 
   }
-  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 243, 255, 0.25); }
+  .n-card:hover { border-color: var(--accent-orange); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255, 119, 0, 0.25); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
   .n-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 500; font-family: var(--font-display); }
+  .n-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--accent-orange); margin-bottom: 12px; font-weight: 500; font-family: var(--font-display); }
   .n-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; color: #fff; }
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
-  .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-orange); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
-  /* DATES */
-  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.02); }
+  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(255, 119, 0, 0.02); }
   .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
-  /* BOOKING SECTION */
+  /* BOOKING SEKTION OHNE FORMULAR (CLEAN AFTERLIFE CARD) */
   .booking-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
-  .booking-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
-  .booking-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  .booking-inner { max-width: 1000px; margin: 0 auto; padding: 0 60px; width: 100%; text-align: center; }
   
-  .booking-form { 
-    background: var(--glass-bg); 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: var(--glass-border); 
-    padding: 36px; 
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  .booking-card-pure {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    padding: 60px 40px;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 119, 0, 0.1);
+    margin-top: 40px;
   }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
-  .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
-  .form-input {
-    background: rgba(5, 5, 10, 0.85);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    color: #fff;
-    padding: 14px 16px;
-    font-family: var(--font-body);
-    font-size: 16px;
-    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-    outline: none;
-    transition: all 0.3s;
-    width: 100%;
-  }
-  .form-input:focus {
-    border-color: var(--accent-cyan);
-    box-shadow: 0 0 18px rgba(0, 243, 255, 0.4);
-    background: rgba(9, 11, 22, 0.95);
-  }
-  .form-textarea { resize: vertical; min-height: 110px; }
-  
-  .booking-submit-btn {
-    width: 100%;
-    background: var(--accent-cyan);
-    color: #05050a;
-    border: none;
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 16px 24px;
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    cursor: pointer;
-    transition: all 0.3s var(--ease);
-    box-shadow: 0 0 22px rgba(0, 243, 255, 0.5);
-    touch-action: manipulation;
-  }
-  .booking-submit-btn:hover {
-    background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
+  .booking-card-pure:hover {
+    border-color: var(--accent-orange);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 119, 0, 0.2);
   }
 
-  .booking-success-msg {
-    padding: 30px;
-    background: rgba(0, 243, 255, 0.08);
-    border: 1px solid var(--accent-cyan);
-    color: #fff;
-    font-family: var(--font-display);
-    font-size: 14px;
-    text-align: center;
-    letter-spacing: 1px;
-    line-height: 1.6;
-    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-  }
-
-  /* CONTACT */
   .contact-wrap { background: var(--bg-obsidian); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
   .contact-email { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-size: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s; word-break: break-all; }
-  .contact-email:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+  .contact-email:hover { border-color: var(--accent-orange); color: var(--accent-orange); }
   .contact-social { font-family: var(--font-display); display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text-mid); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
-  .contact-social:hover { color: var(--accent-cyan); }
+  .contact-social:hover { color: var(--accent-orange); }
 
   .footer { padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border); position: relative; z-index: 1; width: 100%; }
   .footer-links { display: flex; gap: 24px; }
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
-  .footer-link:hover { color: var(--accent-cyan); }
+  .footer-link:hover { color: var(--accent-orange); }
 
-  /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 5, 10, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.25); }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 4, 8, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(255, 119, 0, 0.2); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
-  .legal-close:hover { color: var(--accent-cyan); }
+  .legal-close:hover { color: var(--accent-orange); }
   .legal-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #fff; }
-  .legal-subtitle { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 32px; font-weight: 700; }
+  .legal-subtitle { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 32px; font-weight: 700; }
   .legal-section { margin-bottom: 24px; }
   .legal-section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
   .legal-section p { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
   .legal-section ul { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; padding-left: 20px; }
   .legal-section li { margin-bottom: 6px; }
-  .legal-section a { color: var(--accent-cyan); text-decoration: underline; }
+  .legal-section a { color: var(--accent-orange); text-decoration: underline; }
 
-  /* REVEAL ANIMATION */
   .rv { 
     opacity: 0; 
     filter: blur(12px);
@@ -1073,7 +992,6 @@ const css = `
     transform: translateY(0) scale(1); 
   }
 
-  /* RESPONSIVE OPTIMIZATIONS */
   @media (max-width: 1024px) {
     .section, .music-inner, .booking-inner, .contact-inner { padding: 80px 24px; }
     .nav { padding: 16px 20px; }
@@ -1083,7 +1001,6 @@ const css = `
     .menu-btn { display: flex; }
     .about-layout { grid-template-columns: 1fr; gap: 40px; }
     .about-photo { max-width: 360px; margin: 0 auto; }
-    .booking-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .video-grid { grid-template-columns: repeat(2, 1fr); }
     .footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
@@ -1096,9 +1013,7 @@ const css = `
     .hero-name { font-size: clamp(24px, 8vw, 32px); letter-spacing: 2px; }
     .nav-right .lang-switch:not(.mobile-lang-switch) { display: none; }
     .mobile-lang-switch { display: flex; }
-    .hero-socials { 
-      gap: 12px 14px; 
-    }
+    .hero-socials { gap: 12px 14px; }
     .social-row-break { display: block; flex-basis: 100%; width: 100%; height: 0; margin: 0; }
     .hero-socials a { width: 44px; height: 44px; }
     .nav-booking-btn { font-size: 9px; padding: 8px 12px; }
@@ -1106,8 +1021,7 @@ const css = `
     .video-grid { grid-template-columns: 1fr; }
     .m-card { flex: 0 0 270px; padding: 20px; }
     .n-card { flex: 0 0 280px; }
-    .booking-form { padding: 24px 18px; }
-    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .booking-card-pure { padding: 30px 18px; }
     .legal-box { padding: 24px 16px; }
     .legal-overlay { padding: 40px 12px; }
   }
@@ -1219,8 +1133,6 @@ export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
   const [allowGoogleDrive, setAllowGoogleDrive] = useState(false);
@@ -1322,38 +1234,11 @@ export default function MaxHefele() {
     alert(t.revokeAlert);
   };
 
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const formData = new FormData(e.target);
-    
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/info@maxhefele.de", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      if (response.ok) {
-        setFormSubmitted(true);
-      } else {
-        alert("Fehler beim Senden. Bitte direkt per Mail an info@maxhefele.de senden.");
-      }
-    } catch (err) {
-      setFormSubmitted(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <>
       <style>{css}</style>
       <div className="noise-overlay" />
       
-      {/* TRON 3D LIGHTCYCLE PERSPECTIVE GRID BACKGROUND */}
       <div className="tron-grid">
         <div className="tron-grid-plane" />
       </div>
@@ -1408,7 +1293,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
+        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#030307', background: 'var(--accent-orange)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
         <div className="lang-switch mobile-lang-switch">
           <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
           <span>/</span>
@@ -1443,7 +1328,7 @@ export default function MaxHefele() {
         <div className="scroll-hint" onClick={() => go("about")}><Icons.ChevronDown /></div>
       </section>
 
-      {/* DYNAMIC MARQUEE TICKER */}
+      {/* MARQUEE TICKER */}
       <div className="marquee-container">
         <div className="marquee-track">
           <span>✦ MAX HEFELE ✦ DEBUT EP 'CALL ME' OUT NOW ON MYR RECORDS ✦ STREAMING NOW ✦ </span>
@@ -1588,7 +1473,7 @@ export default function MaxHefele() {
                 </TiltCard>
               ) : (
                 <div className="unified-consent-box" style={{ height: '166px' }}>
-                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%2300f3ff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
+                  <iframe width="100%" height="166" scrolling="no" frameBorder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maxhefele&color=%23ff7700&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false" style={{ border: 0, display: 'block' }} title="SoundCloud Player" />
                 </div>
               )}
             </div>
@@ -1678,88 +1563,37 @@ export default function MaxHefele() {
         </Rv>
       </section>
 
-      {/* BOOKING */}
+      {/* BOOKING (OHNE FORMULAR - UMBENANNT IN BOOKING KONTAKT) */}
       <section className="booking-wrap" id="booking">
         <div className="booking-inner">
           <Rv>
             <p className="section-label">{t.bookingLabel}</p>
             <h2 className="section-title">{t.bookingTitle}</h2>
           </Rv>
-          <div className="booking-grid">
-            <Rv delay={100}>
-              <p style={{ color: 'var(--text-mid)', fontSize: '15px', lineHeight: '1.8', marginBottom: '30px' }}>
-                {t.bookingText}
-              </p>
-              
-              <div style={{ marginBottom: '30px' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
-                  {t.bookingDirectTitle}
-                </h4>
-                <a href="mailto:info@maxhefele.de" className="contact-email" style={{ padding: '8px 0', fontSize: '15px' }}>
-                  <Icons.Mail /> info@maxhefele.de
-                </a>
-              </div>
+          
+          <Rv delay={100}>
+            <p style={{ color: 'var(--text-mid)', fontSize: '16px', lineHeight: '1.8', maxWidth: '700px', margin: '0 auto' }}>
+              {t.bookingText}
+            </p>
 
-              <div>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '8px' }}>
+            <div className="booking-card-pure">
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '14px', letterSpacing: '3px', color: 'var(--accent-orange)', marginBottom: '18px', textTransform: 'uppercase' }}>
+                {t.bookingDirectTitle}
+              </h4>
+              <a href="mailto:info@maxhefele.de" className="contact-email" style={{ justifyContent: 'center', borderBottom: 'none', fontSize: 'clamp(18px, 3vw, 24px)', color: '#fff' }}>
+                <Icons.Mail /> info@maxhefele.de
+              </a>
+              
+              <div style={{ marginTop: '40px', paddingTop: '30px', borderTop: '1px solid var(--border)' }}>
+                <h5 style={{ fontFamily: 'var(--font-display)', fontSize: '12px', letterSpacing: '2px', color: 'var(--accent-cyan)', marginBottom: '10px', textTransform: 'uppercase' }}>
                   {t.bookingPressTitle}
-                </h4>
-                <p style={{ color: 'var(--text-mid)', fontSize: '13px', lineHeight: '1.6' }}>
+                </h5>
+                <p style={{ color: 'var(--text-mid)', fontSize: '14px', lineHeight: '1.6', maxWidth: '600px', margin: '0 auto' }}>
                   {t.bookingPressDesc}
                 </p>
               </div>
-            </Rv>
-
-            <Rv delay={150}>
-              {formSubmitted ? (
-                <div className="booking-success-msg">
-                  {t.bookingSuccess}
-                </div>
-              ) : (
-                <form className="booking-form" onSubmit={handleBookingSubmit}>
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
-                  <input type="hidden" name="_template" value="table" />
-
-                  <div className="form-group">
-                    <label className="form-label">{t.bookingFields.name}</label>
-                    <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.email}</label>
-                      <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.date}</label>
-                      <input type="date" name="date" required className="form-input" />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.type}</label>
-                      <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.location}</label>
-                      <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">{t.bookingFields.message}</label>
-                    <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
-                  </div>
-
-                  <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
-                    {isSubmitting ? "WIRD GESENDET..." : t.bookingFields.submit}
-                  </button>
-                </form>
-              )}
-            </Rv>
-          </div>
+            </div>
+          </Rv>
         </div>
       </section>
 
