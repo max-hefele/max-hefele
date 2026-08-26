@@ -1790,13 +1790,6 @@ export default function MaxHefele() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
-        <div className="footer-links">
-          <button className="footer-link" onClick={() => openModal("impressum")}>{t.imprintBtn}</button>
-          <button className="footer-link" onClick={() => openModal("datenschutz")}>{t.privacyBtn}</button>
-          <button className="footer-link" onClick={resetConsent}>{t.revokeBtn}</button>
-        </div>
       {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
