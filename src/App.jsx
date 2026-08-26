@@ -1666,7 +1666,7 @@ export default function MaxHefele() {
         </div>
       </section>
 
-}      {/* FOOTER */}
+      {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
         <div className="footer-links">
