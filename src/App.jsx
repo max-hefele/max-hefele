@@ -287,29 +287,29 @@ const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap');
 
   :root {
-    --bg-obsidian: #05050a;
-    --bg-elevated: #090b14;
-    --bg-card: rgba(5, 5, 10, 0.9);
+    --bg-obsidian: #03070d;
+    --bg-elevated: #07111d;
+    --bg-card: rgba(3, 7, 13, 0.92);
     
-    --text: #f0f3f8;
-    --text-dim: #50586c;
-    --text-mid: #9ba4b8;
+    --text: #edf4ff;
+    --text-dim: #53657d;
+    --text-mid: #9fb4ce;
     
-    --border: rgba(0, 243, 255, 0.25);
-    --border-hover: rgba(0, 243, 255, 0.85);
+    --border: rgba(22, 140, 255, 0.25);
+    --border-hover: rgba(22, 140, 255, 0.85);
     
-    --accent-violet: #9d00ff;
-    --accent-cyan: #00f3ff;
-    --accent-pink: #ff007f;
+    --accent-violet: #ff2d1a;
+    --accent-cyan: #168cff;
+    --accent-pink: #ff2d1a;
     
     --font-display: 'Orbitron', 'Syne', sans-serif;
     --font-body: 'Space Grotesk', sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --header-h: 74px;
     
-    --glass-bg: rgba(9, 11, 20, 0.8);
-    --glass-border: 1px solid rgba(0, 243, 255, 0.3);
-    --glass-glow: 0 0 30px rgba(0, 243, 255, 0.15);
+    --glass-bg: rgba(7, 17, 29, 0.8);
+    --glass-border: 1px solid rgba(22, 140, 255, 0.3);
+    --glass-glow: 0 0 30px rgba(22, 140, 255, 0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -352,8 +352,8 @@ const css = `
     width: 100vw;
     height: 100vh;
     background-image: 
-      linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(157, 0, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(22, 140, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 45, 26, 0.02) 1px, transparent 1px);
     background-size: 100% 3px, 60px 60px;
     pointer-events: none;
     z-index: 999;
@@ -403,7 +403,7 @@ const css = `
     width: 700px;
     height: 700px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 243, 255, 0.12) 0%, rgba(157, 0, 255, 0.06) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(22, 140, 255, 0.12) 0%, rgba(255, 45, 26, 0.06) 45%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
@@ -440,8 +440,8 @@ const css = `
   }
 
   @keyframes pulseGlow {
-    0% { filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.4)); }
-    100% { filter: drop-shadow(0 0 25px rgba(0, 243, 255, 0.9)) drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+    0% { filter: drop-shadow(0 0 8px rgba(22, 140, 255, 0.4)); }
+    100% { filter: drop-shadow(0 0 25px rgba(22, 140, 255, 0.9)) drop-shadow(0 0 10px rgba(255, 45, 26, 0.6)); }
   }
 
   .fade-logo { display: inline-flex; letter-spacing: 5px; flex-wrap: wrap; }
@@ -471,7 +471,7 @@ const css = `
     letter-spacing: 4px;
     position: relative;
     z-index: 2;
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 25px rgba(22, 140, 255, 0.3);
   }
   .marquee-track {
     display: inline-block;
@@ -493,17 +493,17 @@ const css = `
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    background: rgba(5, 5, 10, 0.85);
+    background: rgba(3, 7, 13, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    border-bottom: 1px solid rgba(22, 140, 255, 0.2);
     transition: all 0.4s var(--ease); 
   }
   .nav.scrolled { 
     padding: 14px 60px; 
-    background: rgba(5, 5, 10, 0.95); 
+    background: rgba(3, 7, 13, 0.95); 
     border-bottom: 1px solid var(--accent-cyan);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 10px 35px rgba(0, 3, 8, 0.9), 0 0 20px rgba(22, 140, 255, 0.3);
   }
   .nav-logo { 
     font-family: var(--font-display); 
@@ -526,7 +526,7 @@ const css = `
     gap: 3px;
     height: 14px;
     padding-left: 12px;
-    border-left: 1px solid rgba(0, 243, 255, 0.3);
+    border-left: 1px solid rgba(22, 140, 255, 0.3);
   }
   .tron-eq-bar {
     width: 2px;
@@ -570,12 +570,12 @@ const css = `
     background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
     transition: width 0.3s var(--ease), left 0.3s var(--ease);
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(0, 243, 255, 0.8); }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 12px rgba(22, 140, 255, 0.8); }
   .nav-links a:hover::after, .nav-links a.active::after { width: 100%; left: 0%; }
 
   /* CYBER HUD BOOKING BUTTON WITH CHAMFERED CORNERS */
   .nav-booking-btn {
-    background: rgba(0, 243, 255, 0.08);
+    background: rgba(22, 140, 255, 0.08);
     border: 1px solid var(--accent-cyan);
     color: var(--accent-cyan);
     font-family: var(--font-display);
@@ -586,7 +586,7 @@ const css = `
     padding: 10px 22px;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     text-decoration: none;
-    box-shadow: 0 0 18px rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 18px rgba(22, 140, 255, 0.3);
     transition: all 0.3s var(--ease);
     white-space: nowrap;
     display: inline-block;
@@ -594,19 +594,19 @@ const css = `
   }
   .nav-booking-btn:hover {
     background: var(--accent-cyan);
-    color: #05050a;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
+    color: #03070d;
+    box-shadow: 0 0 35px rgba(22, 140, 255, 0.95);
     transform: translateY(-1px);
   }
 
   .lang-switch { display: flex; gap: 6px; align-items: center; font-size: 11px; font-family: var(--font-display); letter-spacing: 1px; flex-shrink: 0; }
   .lang-switch button { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 11px; font-weight: 600; transition: color 0.3s; padding: 4px; }
-  .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(0, 243, 255, 0.5); }
+  .lang-switch button.active { color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 8px rgba(22, 140, 255, 0.5); }
   .mobile-lang-switch { display: none; margin-top: 20px; font-size: 18px; gap: 12px; }
   .mobile-lang-switch button { font-size: 18px; padding: 8px; }
 
   /* MOBILE NAV */
-  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(9, 11, 20, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(7, 17, 29, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
   .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
@@ -614,7 +614,7 @@ const css = `
   .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
   .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5, 5, 10, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 7, 13, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
@@ -645,7 +645,7 @@ const css = `
     background: linear-gradient(180deg, #ffffff 0%, var(--text-mid) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.4));
+    filter: drop-shadow(0 0 30px rgba(22, 140, 255, 0.4));
     white-space: nowrap;
   }
   .fade-logo { white-space: nowrap; }
@@ -670,11 +670,11 @@ const css = `
     clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
     transition: transform 0.2s var(--ease), border-color 0.3s, background 0.3s, color 0.3s; 
     text-decoration: none; 
-    background: rgba(9, 11, 20, 0.7); 
+    background: rgba(7, 17, 29, 0.7); 
     will-change: transform;
     touch-action: manipulation;
   }
-  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.15); box-shadow: 0 0 22px rgba(0, 243, 255, 0.4); }
+  .hero-socials a:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(22, 140, 255, 0.15); box-shadow: 0 0 22px rgba(22, 140, 255, 0.4); }
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
   .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
 
@@ -695,7 +695,7 @@ const css = `
     background: var(--bg-card); 
     border: var(--glass-border); 
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9); 
+    box-shadow: 0 20px 50px rgba(0, 3, 8, 0.9); 
   }
   
   .about-photo img { 
@@ -726,15 +726,15 @@ const css = `
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
     transition: border-color 0.3s, box-shadow 0.3s; 
   }
-  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 25px rgba(0, 243, 255, 0.3); }
+  .h-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 25px rgba(22, 140, 255, 0.3); }
   .h-card-label { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
   .h-card-detail { font-size: 13px; color: var(--accent-cyan); margin-top: 6px; word-break: break-all; }
 
   .residencies { margin-top: 40px; }
   .res-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 700; }
   .res-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.04); transition: all 0.3s; }
-  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.12); }
+  .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(22, 140, 255, 0.04); transition: all 0.3s; }
+  .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(22, 140, 255, 0.12); }
 
   /* MUSIC SLIDER */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
@@ -777,7 +777,7 @@ const css = `
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.1), transparent 80%);
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(22, 140, 255, 0.1), transparent 80%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
@@ -800,7 +800,7 @@ const css = `
   
   .m-card:hover { 
     border-color: var(--brand-color, var(--border-hover)); 
-    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.9), 0 0 25px -5px var(--brand-color);
+    box-shadow: 0 12px 30px -10px rgba(0, 3, 8, 0.9), 0 0 25px -5px var(--brand-color);
   }
   .m-card:hover .brand-icon { transform: scale(1.15) rotate(-3deg); }
   
@@ -824,7 +824,7 @@ const css = `
     transform-style: preserve-3d;
     will-change: transform;
   }
-  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 243, 255, 0.3); }
+  .unified-consent-box:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(22, 140, 255, 0.3); }
 
   .sc-height { height: 180px; }
   .vd-height { height: 260px; }
@@ -858,7 +858,7 @@ const css = `
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(5, 5, 10, 0.9);
+    background: rgba(3, 7, 13, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
@@ -878,7 +878,7 @@ const css = `
     color: var(--accent-cyan);
     text-transform: uppercase;
     margin-bottom: 14px;
-    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+    filter: drop-shadow(0 0 10px rgba(22, 140, 255, 0.5));
   }
 
   .media-play-btn {
@@ -887,19 +887,19 @@ const css = `
     background: var(--accent-cyan);
     border: none;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    color: #05050a;
+    color: #03070d;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s var(--ease), box-shadow 0.3s, background 0.3s;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    box-shadow: 0 0 20px rgba(22, 140, 255, 0.6);
     will-change: transform;
     touch-action: manipulation;
   }
   .media-play-btn:hover {
     background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
+    box-shadow: 0 0 35px rgba(22, 140, 255, 0.95);
   }
 
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
@@ -943,7 +943,7 @@ const css = `
     display: flex; 
     flex-direction: column; 
   }
-  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 243, 255, 0.25); }
+  .n-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(22, 140, 255, 0.25); }
   .n-img-wrap { width: 100%; aspect-ratio: 16/9; background: var(--bg-elevated); border-bottom: 1px solid var(--border); overflow: hidden; }
   .n-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
   .n-card:hover .n-img { transform: scale(1.05); }
@@ -954,7 +954,7 @@ const css = `
   .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
   /* DATES */
-  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.02); }
+  .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(22, 140, 255, 0.02); }
   .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
@@ -970,14 +970,14 @@ const css = `
     border: var(--glass-border); 
     padding: 36px; 
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 40px rgba(0, 3, 8, 0.7);
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
   .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
   .form-input {
-    background: rgba(5, 5, 10, 0.85);
-    border: 1px solid rgba(0, 243, 255, 0.3);
+    background: rgba(3, 7, 13, 0.85);
+    border: 1px solid rgba(22, 140, 255, 0.3);
     color: #fff;
     padding: 14px 16px;
     font-family: var(--font-body);
@@ -989,15 +989,15 @@ const css = `
   }
   .form-input:focus {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 18px rgba(0, 243, 255, 0.4);
-    background: rgba(9, 11, 22, 0.95);
+    box-shadow: 0 0 18px rgba(22, 140, 255, 0.4);
+    background: rgba(7, 17, 29, 0.95);
   }
   .form-textarea { resize: vertical; min-height: 110px; }
   
   .booking-submit-btn {
     width: 100%;
     background: var(--accent-cyan);
-    color: #05050a;
+    color: #03070d;
     border: none;
     font-family: var(--font-display);
     font-size: 11px;
@@ -1008,17 +1008,17 @@ const css = `
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
     cursor: pointer;
     transition: all 0.3s var(--ease);
-    box-shadow: 0 0 22px rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 22px rgba(22, 140, 255, 0.5);
     touch-action: manipulation;
   }
   .booking-submit-btn:hover {
     background: #fff;
-    box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
+    box-shadow: 0 0 35px rgba(22, 140, 255, 0.95);
   }
 
   .booking-success-msg {
     padding: 30px;
-    background: rgba(0, 243, 255, 0.08);
+    background: rgba(22, 140, 255, 0.08);
     border: 1px solid var(--accent-cyan);
     color: #fff;
     font-family: var(--font-display);
@@ -1044,8 +1044,8 @@ const css = `
   .footer-link:hover { color: var(--accent-cyan); }
 
   /* MODALS */
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 5, 10, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
-  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.25); }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 7, 13, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(22, 140, 255, 0.25); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
   .legal-close:hover { color: var(--accent-cyan); }
   .legal-title { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #fff; }
@@ -1324,25 +1324,40 @@ export default function MaxHefele() {
 
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    const form = e.currentTarget;
+    if (!form.reportValidity()) return;
+
+    const formData = Object.fromEntries(new FormData(form));
+
+    // FormSubmit honeypot: bots that fill this field are silently ignored.
+    if (formData._honey) return;
+
     setIsSubmitting(true);
-    
-    const formData = new FormData(e.target);
-    
+    formData._replyto = formData.email;
+
     try {
       const response = await fetch("https://formsubmit.co/ajax/info@maxhefele.de", {
         method: "POST",
-        body: formData,
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify(formData)
       });
-      if (response.ok) {
+
+      const result = await response.json();
+
+      if (response.ok && result.success !== false) {
         setFormSubmitted(true);
       } else {
+        console.error("FormSubmit error:", result);
         alert("Fehler beim Senden. Bitte direkt per Mail an info@maxhefele.de senden.");
       }
     } catch (err) {
-      setFormSubmitted(true);
+      console.error("Booking submission error:", err);
+      alert("Die Booking-Anfrage konnte nicht gesendet werden. Bitte direkt per Mail an info@maxhefele.de senden.");
     } finally {
       setIsSubmitting(false);
     }
@@ -1408,7 +1423,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
+        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#03070d', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
         <div className="lang-switch mobile-lang-switch">
           <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
           <span>/</span>
@@ -1712,45 +1727,46 @@ export default function MaxHefele() {
 
             <Rv delay={150}>
               {formSubmitted ? (
-                <div className="booking-success-msg">
+                <div className="booking-success-msg" role="status" aria-live="polite">
                   {t.bookingSuccess}
                 </div>
               ) : (
                 <form className="booking-form" onSubmit={handleBookingSubmit}>
                   <input type="hidden" name="_captcha" value="false" />
+                  <input type="text" name="_honey" tabIndex={-1} autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
                   <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
                   <input type="hidden" name="_template" value="table" />
 
                   <div className="form-group">
-                    <label className="form-label">{t.bookingFields.name}</label>
-                    <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
+                    <label htmlFor="booking-name" className="form-label">{t.bookingFields.name}</label>
+                    <input id="booking-name" type="text" name="name" required autoComplete="name" className="form-input" placeholder="Name / Agentur" />
                   </div>
 
                   <div className="form-row">
                     <div className="form-group">
-                      <label className="form-label">{t.bookingFields.email}</label>
-                      <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
+                      <label htmlFor="booking-email" className="form-label">{t.bookingFields.email}</label>
+                      <input id="booking-email" type="email" name="email" required autoComplete="email" className="form-input" placeholder="E-Mail" />
                     </div>
                     <div className="form-group">
-                      <label className="form-label">{t.bookingFields.date}</label>
-                      <input type="date" name="date" required className="form-input" />
+                      <label htmlFor="booking-date" className="form-label">{t.bookingFields.date}</label>
+                      <input id="booking-date" type="date" name="date" required className="form-input" />
                     </div>
                   </div>
 
                   <div className="form-row">
                     <div className="form-group">
-                      <label className="form-label">{t.bookingFields.type}</label>
-                      <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
+                      <label htmlFor="booking-event-type" className="form-label">{t.bookingFields.type}</label>
+                      <input id="booking-event-type" type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
                     </div>
                     <div className="form-group">
-                      <label className="form-label">{t.bookingFields.location}</label>
-                      <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
+                      <label htmlFor="booking-location" className="form-label">{t.bookingFields.location}</label>
+                      <input id="booking-location" type="text" name="location" autoComplete="address-level2" className="form-input" placeholder="Stadt / Land" />
                     </div>
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t.bookingFields.message}</label>
-                    <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
+                    <label htmlFor="booking-message" className="form-label">{t.bookingFields.message}</label>
+                    <textarea id="booking-message" name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
                   </div>
 
                   <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
@@ -1834,8 +1850,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>EU-Streitschlichtung</h3>
                   <p>
-                    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Die frühere EU-Plattform zur Online-Streitbeilegung (OS/ODR) wurde eingestellt. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
@@ -1886,7 +1901,7 @@ export default function MaxHefele() {
                 <div className="legal-section">
                   <h3>2. Hosting und Drittanbieter-Dienste</h3>
                   <h3>GitHub Pages (Hosting)</h3>
-                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub is unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+                  <p>Wir hosten diese Website über den Dienst GitHub Pages der GitHub Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend „GitHub“). Wenn Sie unsere Seiten besuchen, erfasst GitHub Protokolldaten (z. B. Ihre IP-Adresse, Browsertyp, Betriebssystem). Dies ist technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
 
                   <h3>Google Drive (Einbindung von Inhalten/Videos)</h3>
                   <p>Wir binden auf unserer Website Inhalte ein oder stellen Downloads über den Cloud-Speicherdienst Google Drive bereit. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (nachfolgend „Google“).</p>
@@ -1919,7 +1934,7 @@ export default function MaxHefele() {
                   <h3>iTunes / Apple Music</h3>
                   <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
                 </div>
-                <p><strong>Stand 09. Juli 2026</strong></p>
+                <p><strong>Stand 26. August 2026</strong></p>
               </>
             )}
           </div>
