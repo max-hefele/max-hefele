@@ -80,7 +80,7 @@ const T = {
       message: "Details & Nachricht",
       submit: "ANFRAGE ABSENDEN"
     },
-    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich an info@maxhefele.de übermittelt.",
+    bookingSuccess: "Vielen Dank! Deine Booking-Anfrage wurde erfolgreich übermittelt.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "Für Booking-Anfragen, Kooperationen oder allgemeine Fragen — einfach eine Nachricht schicken.",
@@ -171,7 +171,7 @@ const T = {
       message: "Details & Message",
       submit: "SEND INQUIRY"
     },
-    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully to info@maxhefele.de.",
+    bookingSuccess: "Thank you! Your booking inquiry has been sent successfully.",
     contactLabel: "Get in Touch",
     contactTitle: "CONTACT",
     contactText: "For booking inquiries, collaborations or general questions — just send a message.",
@@ -282,24 +282,24 @@ const Icons = {
   )
 };
 
-// ─── 1 zu 1 Tron Holographic CSS with custom palette from reference photo ───
+// ─── Korrigiertes Farbschema & Tron Styling ───
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap');
 
   :root {
-    --bg-obsidian: #05050a;
-    --bg-elevated: #090b14;
-    --bg-card: rgba(5, 5, 10, 0.9);
+    --bg-obsidian: #030408;
+    --bg-elevated: #070913;
+    --bg-card: rgba(7, 9, 19, 0.92);
     
-    --text: #f0f3f8;
-    --text-dim: #50586c;
-    --text-mid: #9ba4b8;
+    --text: #ffffff;
+    --text-dim: #6b7594;
+    --text-mid: #a3abc2;
     
-    --border: rgba(0, 243, 255, 0.25);
-    --border-hover: rgba(0, 243, 255, 0.85);
+    --border: rgba(0, 243, 255, 0.2);
+    --border-hover: rgba(0, 243, 255, 0.8);
     
-    /* 1:1 Farben aus dem Tron Foto übernommen */
-    --accent-violet: #9d00ff;
+    /* Optimierte und korrigierte Neon-Farbpalette */
+    --accent-violet: #8a2be2;
     --accent-cyan: #00f3ff;
     --accent-pink: #ff007f;
     
@@ -308,7 +308,7 @@ const css = `
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --header-h: 74px;
     
-    --glass-bg: rgba(9, 11, 20, 0.8);
+    --glass-bg: rgba(7, 9, 19, 0.85);
     --glass-border: 1px solid rgba(0, 243, 255, 0.3);
     --glass-glow: 0 0 30px rgba(0, 243, 255, 0.15);
   }
@@ -325,7 +325,7 @@ const css = `
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.22;
+    opacity: 0.18;
   }
   .tron-grid-plane {
     position: absolute;
@@ -351,8 +351,8 @@ const css = `
     width: 100vw;
     height: 100vh;
     background-image: 
-      linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(157, 0, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(138, 43, 226, 0.02) 1px, transparent 1px);
     background-size: 100% 3px, 60px 60px;
     pointer-events: none;
     z-index: 999;
@@ -401,7 +401,7 @@ const css = `
     width: 700px;
     height: 700px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 243, 255, 0.12) 0%, rgba(157, 0, 255, 0.06) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, rgba(138, 43, 226, 0.05) 45%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     will-change: transform;
@@ -488,7 +488,7 @@ const css = `
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    background: rgba(5, 5, 10, 0.85);
+    background: rgba(3, 4, 8, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(0, 243, 255, 0.2);
@@ -496,7 +496,7 @@ const css = `
   }
   .nav.scrolled { 
     padding: 14px 60px; 
-    background: rgba(5, 5, 10, 0.95); 
+    background: rgba(3, 4, 8, 0.96); 
     border-bottom: 1px solid var(--accent-cyan);
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 243, 255, 0.3);
   }
@@ -587,7 +587,7 @@ const css = `
   }
   .nav-booking-btn:hover {
     background: var(--accent-cyan);
-    color: #05050a;
+    color: #030408;
     box-shadow: 0 0 35px rgba(0, 243, 255, 0.95);
     transform: translateY(-1px);
   }
@@ -598,7 +598,7 @@ const css = `
   .mobile-lang-switch { display: none; margin-top: 20px; font-size: 18px; gap: 12px; }
   .mobile-lang-switch button { font-size: 18px; padding: 8px; }
 
-  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(9, 11, 20, 0.8); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); width: 42px; height: 42px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; z-index: 101; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); background: rgba(7, 9, 19, 0.9); transition: border-color 0.3s; flex-shrink: 0; touch-action: manipulation; }
   .menu-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
   .menu-icon-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
   .menu-icon-lines span { display: block; width: 100%; height: 2px; background: currentColor; transition: all 0.3s; }
@@ -606,7 +606,7 @@ const css = `
   .menu-btn.open .menu-icon-lines span:nth-child(2) { opacity: 0; }
   .menu-btn.open .menu-icon-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(5, 5, 10, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(3, 4, 8, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); z-index: 99; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: 40px; overflow-y: auto; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
@@ -618,7 +618,7 @@ const css = `
     left: 0;
     right: 0;
     bottom: -120px;
-    filter: brightness(0.45) contrast(1.25) hue-rotate(-10deg); 
+    filter: brightness(0.5) contrast(1.2) hue-rotate(-5deg); 
     will-change: transform; 
     background-position: center 10% !important;
     object-position: center 10% !important;
@@ -661,7 +661,7 @@ const css = `
     clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
     transition: transform 0.2s var(--ease), border-color 0.3s, background 0.3s, color 0.3s; 
     text-decoration: none; 
-    background: rgba(9, 11, 20, 0.7); 
+    background: rgba(7, 9, 19, 0.8); 
     will-change: transform;
     touch-action: manipulation;
   }
@@ -673,7 +673,7 @@ const css = `
   .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .section-label::before { content: '['; color: var(--accent-pink); }
   .section-label::after { content: ']'; color: var(--accent-pink); }
-  .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; color: var(--text); }
 
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   
@@ -780,7 +780,7 @@ const css = `
   .m-card[data-brand="youtube"] { --brand-color: #ff0000; }
   .m-card[data-brand="beatport"] { --brand-color: #00ff8f; }
   .m-card[data-brand="applemusic"] { --brand-color: #fa243c; }
-  .m-card[data-brand="mixcloud"] { --brand-color: #5000ff; }
+  .m-card[data-brand="mixcloud"] { --brand-color: #8a2be2; }
   .m-card[data-brand="amazonmusic"] { --brand-color: #00a8e1; }
 
   .m-card .m-badge { color: var(--brand-color, var(--text-mid)); }
@@ -845,7 +845,7 @@ const css = `
   .consent-overlay-content {
     position: absolute;
     inset: 0;
-    background: rgba(5, 5, 10, 0.9);
+    background: rgba(3, 4, 8, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex;
@@ -874,7 +874,7 @@ const css = `
     background: var(--accent-cyan);
     border: none;
     clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-    color: #05050a;
+    color: #030408;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -959,7 +959,7 @@ const css = `
   .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
   .form-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; }
   .form-input {
-    background: rgba(5, 5, 10, 0.85);
+    background: rgba(3, 4, 8, 0.9);
     border: 1px solid rgba(0, 243, 255, 0.3);
     color: #fff;
     padding: 14px 16px;
@@ -973,14 +973,14 @@ const css = `
   .form-input:focus {
     border-color: var(--accent-cyan);
     box-shadow: 0 0 18px rgba(0, 243, 255, 0.4);
-    background: rgba(9, 11, 22, 0.95);
+    background: rgba(7, 9, 22, 0.95);
   }
   .form-textarea { resize: vertical; min-height: 110px; }
   
   .booking-submit-btn {
     width: 100%;
     background: var(--accent-cyan);
-    color: #05050a;
+    color: #030408;
     border: none;
     font-family: var(--font-display);
     font-size: 11px;
@@ -1025,7 +1025,7 @@ const css = `
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
   .footer-link:hover { color: var(--accent-cyan); }
 
-  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(5, 5, 10, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
+  .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 4, 8, 0.96); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 50px rgba(0, 243, 255, 0.25); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
   .legal-close:hover { color: var(--accent-cyan); }
@@ -1198,7 +1198,6 @@ export default function MaxHefele() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [legalModal, setLegalModal] = useState(null);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [allowSoundCloud, setAllowSoundCloud] = useState(false);
@@ -1301,32 +1300,6 @@ export default function MaxHefele() {
     alert(t.revokeAlert);
   };
 
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const formData = new FormData(e.target);
-    
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/info@maxhefele.de", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      if (response.ok) {
-        setFormSubmitted(true);
-      } else {
-        setFormSubmitted(true); // Fallback: falls CORS blockiert, aber das Backend die Anfrage dennoch entgegennimmt
-      }
-    } catch (err) {
-      setFormSubmitted(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <>
       <style>{css}</style>
@@ -1385,7 +1358,7 @@ export default function MaxHefele() {
         {t.nav.map(item => (
           <a key={item.id} href={`#${item.id}`} onClick={e => { e.preventDefault(); go(item.id); }}>{item.label}</a>
         ))}
-        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#05050a', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
+        <a href="#booking" onClick={e => { e.preventDefault(); go("booking"); }} style={{ color: '#030408', background: 'var(--accent-cyan)', padding: '12px 32px', fontSize: '16px', whiteSpace: 'nowrap', clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)', marginTop: '10px' }}>{t.bookingBtn}</a>
         <div className="lang-switch mobile-lang-switch">
           <button onClick={() => setLang('de')} className={lang === 'de' ? 'active' : ''}>DE</button>
           <span>/</span>
@@ -1681,53 +1654,52 @@ export default function MaxHefele() {
             </Rv>
 
             <Rv delay={150}>
-              {formSubmitted ? (
-                <div className="booking-success-msg">
-                  {t.bookingSuccess}
+              <form 
+                className="booking-form" 
+                action="https://formsubmit.co/info@maxhefele.de" 
+                method="POST"
+              >
+                {/* FormSubmit Konfigurations-Inputs */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div className="form-group">
+                  <label className="form-label">{t.bookingFields.name}</label>
+                  <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
                 </div>
-              ) : (
-                <form className="booking-form" onSubmit={handleBookingSubmit}>
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_subject" value="Neue Booking-Anfrage (maxhefele.de)" />
-                  <input type="hidden" name="_template" value="table" />
 
+                <div className="form-row">
                   <div className="form-group">
-                    <label className="form-label">{t.bookingFields.name}</label>
-                    <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
+                    <label className="form-label">{t.bookingFields.email}</label>
+                    <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
                   </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.email}</label>
-                      <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.date}</label>
-                      <input type="date" name="date" required className="form-input" />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.type}</label>
-                      <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.location}</label>
-                      <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
-                    </div>
-                  </div>
-
                   <div className="form-group">
-                    <label className="form-label">{t.bookingFields.message}</label>
-                    <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
+                    <label className="form-label">{t.bookingFields.date}</label>
+                    <input type="date" name="date" required className="form-input" />
                   </div>
+                </div>
 
-                  <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
-                    {isSubmitting ? "WIRD GESENDET..." : t.bookingFields.submit}
-                  </button>
-                </form>
-              )}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.type}</label>
+                    <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.location}</label>
+                    <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">{t.bookingFields.message}</label>
+                  <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
+                </div>
+
+                <button type="submit" className="booking-submit-btn">
+                  {t.bookingFields.submit}
+                </button>
+              </form>
             </Rv>
           </div>
         </div>
@@ -1889,6 +1861,61 @@ export default function MaxHefele() {
                   <p>Soweit auf dieser Webseite Verlinkungen zu iTunes oder Apple Music genutzt werden, handelt es sich um statische Links. Apple erfasst Daten erst nach der Weiterleitung auf deren Seiten. Die Datenschutzerklärung von Apple finden Sie unter: <a href="https://www.apple.com/legal/privacy/de/" target="_blank" rel="noopener noreferrer">https://www.apple.com/legal/privacy/de/</a>.</p>
                 </div>
                 <p><strong>Stand 09. Juli 2026</strong></p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}      <footer className="footer">
+        <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
+        <div className="footer-links">
+          <button className="footer-link" onClick={() => openModal("impressum")}>{t.imprintBtn}</button>
+          <button className="footer-link" onClick={() => openModal("datenschutz")}>{t.privacyBtn}</button>
+          <button className="footer-link" onClick={resetConsent}>{t.revokeBtn}</button>
+        </div>
+      </footer>
+
+      {/* LEGAL MODAL */}
+      {legalModal && (
+        <div className="legal-overlay" onClick={closeModal}>
+          <div className="legal-box" onClick={e => e.stopPropagation()}>
+            <button className="legal-close" onClick={closeModal}>✕</button>
+            
+            {legalModal === "impressum" && (
+              <>
+                <h2 className="legal-title">{t.legalTitleImprint}</h2>
+                <p className="legal-subtitle">{t.legalSubtitleImprint}</p>
+
+                <div className="legal-section">
+                  <h3>Verantwortlich</h3>
+                  <div className="legal-placeholder">
+                    Max Hefele<br />
+                    Kapellenfeld 3<br />
+                    86865 Markt Wald<br />
+                    Deutschland
+                  </div>
+                </div>
+
+                <div className="nit-section">
+                  <h3>Contact</h3>
+                  <p>
+                    E-Mail: <a href="mailto:info@maxhefele.de">info@maxhefele.de</a>
+                  </p>
+                </div>
+              </>
+            )}
+
+            {legalModal === "datenschutz" && (
+              <>
+                <h2 className="legal-title">{t.legalTitlePrivacy}</h2>
+                <p className="legal-subtitle">{t.legalSubtitlePrivacy}</p>
+                
+                <div className="legal-section">
+                  <h3>Datenschutz auf einen Blick</h3>
+                  <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften.</p>
+                </div>
               </>
             )}
           </div>
