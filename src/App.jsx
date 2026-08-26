@@ -1722,38 +1722,37 @@ export default function MaxHefele() {
 
                   <div className="form-group">
                     <label className="form-label">{t.bookingFields.name}</label>
-                    <input type="text" name="name" required className="form-input" placeholder="Name / Agentur" />
+                    <input type="text" name="name" required className="form-input" placeholder="Name / Agency" />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">{t.bookingFields.email}</label>
+                    <input type="email" name="email" required className="form-input" placeholder="name@domain.com" />
                   </div>
 
                   <div className="form-row">
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.email}</label>
-                      <input type="email" name="email" required className="form-input" placeholder="E-Mail" />
-                    </div>
                     <div className="form-group">
                       <label className="form-label">{t.bookingFields.date}</label>
                       <input type="date" name="date" required className="form-input" />
                     </div>
-                  </div>
-
-                  <div className="form-row">
                     <div className="form-group">
                       <label className="form-label">{t.bookingFields.type}</label>
-                      <input type="text" name="event_type" className="form-input" placeholder="z.B. Club / Festival" />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label">{t.bookingFields.location}</label>
-                      <input type="text" name="location" className="form-input" placeholder="Stadt / Land" />
+                      <input type="text" name="type" required className="form-input" placeholder="Club / Festival" />
                     </div>
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">{t.bookingFields.message}</label>
-                    <textarea name="message" required className="form-input form-textarea" placeholder="Nachricht & Details..." />
+                    <label className="form-label">{t.bookingFields.location}</label>
+                    <input type="text" name="location" required className="form-input" placeholder="City, Country" />
                   </div>
 
-                  <button type="submit" className="booking-submit-btn" disabled={isSubmitting}>
-                    {isSubmitting ? "Wird gesendet..." : t.bookingFields.submit}
+                  <div className="form-group" style={{ marginBottom: '24px' }}>
+                    <label className="form-label">{t.bookingFields.message}</label>
+                    <textarea name="message" required className="form-input form-textarea" placeholder="..." />
+                  </div>
+
+                  <button type="submit" disabled={isSubmitting} className="booking-submit-btn">
+                    {isSubmitting ? "SENDED..." : t.bookingFields.submit}
                   </button>
                 </form>
               )}
@@ -1770,7 +1769,7 @@ export default function MaxHefele() {
           </Rv>
           <div className="contact-grid">
             <Rv delay={100}>
-              <p style={{ color: 'var(--text-mid)', fontSize: '15px', lineHeight: '1.8', marginBottom: '24px' }}>
+              <p style={{ color: 'var(--text-mid)', fontSize: '15px', lineHeight: '1.8', marginBottom: '30px' }}>
                 {t.contactText}
               </p>
               <a href="mailto:info@maxhefele.de" className="contact-email">
@@ -1778,8 +1777,8 @@ export default function MaxHefele() {
               </a>
             </Rv>
             <Rv delay={150}>
-              <div>
-                {SOCIAL_LINKS.map(s => (
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {SOCIAL_LINKS.slice(0, 5).map(s => (
                   <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="contact-social">
                     <span>{s.name}</span>
                     <Icons.Arrow />
@@ -1791,6 +1790,13 @@ export default function MaxHefele() {
         </div>
       </section>
 
+      <footer className="footer">
+        <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
+        <div className="footer-links">
+          <button className="footer-link" onClick={() => openModal("impressum")}>{t.imprintBtn}</button>
+          <button className="footer-link" onClick={() => openModal("datenschutz")}>{t.privacyBtn}</button>
+          <button className="footer-link" onClick={resetConsent}>{t.revokeBtn}</button>
+        </div>
       {/* FOOTER */}
       <footer className="footer">
         <div>© {new Date().getFullYear()} {ARTIST_NAME}. {t.footerRights}.</div>
