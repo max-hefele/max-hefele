@@ -3,14 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAX HEFELE — Melodic Techno &amp; Indie Dance</title>
-    <meta name="description" content="Max Hefele — DJ aus Süddeutschland. Melodic Techno &amp; Indie Dance. Booking, Music, Tour Dates." />
+    <title>Max Hefele — Melodic Techno & Indie Dance DJ</title>
+    <meta name="description" content="Max Hefele — DJ & Producer aus Süddeutschland. Melodic Techno & Indie Dance. Entdecke Tracks wie Call Me, Tour Dates und Booking-Infos." />
+    
+    <!-- Wichtig für SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.maxhefele.de/" />
+    
     <meta name="theme-color" content="#060606" />
-    <meta property="og:title" content="MAX HEFELE" />
-    <meta property="og:description" content="Melodic Techno &amp; Indie Dance — DJ aus Süddeutschland" />
+    
+    <!-- Open Graph / Social Media (Müssen ABSOLUTE URLs sein!) -->
+    <meta property="og:title" content="Max Hefele — Melodic Techno & Indie Dance" />
+    <meta property="og:description" content="DJ & Producer aus Süddeutschland. Höre die neuesten Releases wie Call Me." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./images/hero.jpg" />
+    <meta property="og:url" content="https://www.maxhefele.de/" />
+    <meta property="og:image" content="https://www.maxhefele.de/images/hero.jpg" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Max Hefele — Melodic Techno & Indie Dance" />
+    <meta name="twitter:description" content="DJ & Producer aus Süddeutschland." />
+    <meta name="twitter:image" content="https://www.maxhefele.de/images/hero.jpg" />
+
     <link rel="icon" type="image/jpeg" href="./images/logo.jpg" />
+
+    <!-- SEO: JSON-LD direkt im statischen HTML (Sofortige Erkennung durch Googlebot) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Max Hefele",
+      "url": "https://www.maxhefele.de",
+      "image": "https://www.maxhefele.de/images/hero.jpg",
+      "genre": ["Melodic Techno", "Melodic House", "Indie Dance", "Techno"],
+      "homeLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "DE"
+        }
+      },
+      "sameAs": [
+        "https://www.instagram.com/max.hefele.music",
+        "https://soundcloud.com/max-hefele",
+        "https://open.spotify.com/artist/6VT5NRA3Ems6HjcEbQDqpK",
+        "https://www.amazon.de/music/player/artists/B0H4VRN9WD",
+        "https://www.beatport.com/artist/max-hefele/2396410",
+        "https://music.apple.com/de/artist/max-hefele/6779171915",
+        "https://www.youtube.com/@maxhefele"
+      ],
+      "description": "Max Hefele is a German Melodic Techno, Indie Dance and Techno DJ and producer known for releases on MYR Records like Call Me, Storm and Struggle, and Better Day of Life."
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
