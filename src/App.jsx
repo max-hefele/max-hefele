@@ -775,7 +775,7 @@ const css = `
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(220px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.3), transparent 70%);
+    background: radial-gradient(220px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 243, 255, 0.6), transparent 70%);
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
