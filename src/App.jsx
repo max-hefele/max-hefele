@@ -54,11 +54,13 @@ const T = {
     newsLabel: "Latest Updates",
     newsTitle: "NEWS",
     newsItems: [
-      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die EP auf MYR Records." },
-      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supportet meinen Track Better day of life aus meiner EP Call Me." },
-      { title: "Interview mit The Last Future", excerpt: "Hier ein kleiner Einblick in meine neue EP im Interview mit The Last Future." },
-      { title: "Rave in the City Vol. 52 | Sunset Session", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
       { title: "Mein Exklusiv-Interview für Melodic Dancers", excerpt: "Hier ist mein Exklusiv-Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
+      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supportet meinen Track Better day of life aus meiner EP Call Me." },
+      { title: "Interview Soundspace", excerpt: "Max Hefele debütiert auf MYR mit der neuen EP Call Me." },
+      { title: "Meine Debüt Call Me", excerpt: "Ab jetzt überall erhältich." },
+      { title: "Interview mit The Last Future", excerpt: "Hier ein kleiner Einblick in meine neue EP im Interview mit The Last Future." },
+      { title: "Rave in the City Vol. 54 | Studio Session", excerpt: "Die Rave in the City Mix Show erscheint alle zwei Wochen Freitags um 19:00 Uhr auf YouTube und SoundCloud." },
+      { title: "Max Hefele präsentiert Call Me [MYR]", excerpt: "Meine Vision für die EP auf MYR Records." },
     ],
     readMore: "Mehr lesen auf",
     datesLabel: "Live",
@@ -145,11 +147,13 @@ const T = {
     newsLabel: "Latest Updates",
     newsTitle: "NEWS",
     newsItems: [
+      { title: "My Exclusive Interview for Melodic Dancers", excerpt: "Here is my exclusive interview for the Melodic Dancers Magazine, you can find the interview on page 9." },
+      { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supports my track Better day of life from my EP Call Me." },
+      { title: "My Debut Call Me", excerpt: "Max Hefele makes his debut on MYR with the new EP Call Me." },
+      { title: "My Debut Call Me", excerpt: "Available everywhere now." },
+      { title: "Interview with The Last Future", excerpt: "Here is a small insight into my new EP in an interview with The Last Future." },
+      { title: "Rave in the City Vol. 54 | Studio Session", excerpt: "The Rave in the City Mix Show is released every two weeks on Fridays at 7:00 PM on YouTube and SoundCloud." },
       { title: "Max Hefele presents Call Me [MYR]", excerpt: "My vision for the EP on MYR Records." },
-      { title: "Paul van Dyk Supports Vonyc Session 1026", excerpt: "Paul van Dyk is supporting my track 'Better Day of Life' from my 'Call Me' EP." },
-      { title: "Interview with The Last Future", excerpt: "A quick look into my new EP in an exclusive interview with The Last Future." },
-      { title: "Rave in the City Vol. 52 | Sunset Session", excerpt: "The Rave in the City mix show is released every two weeks..." },
-      { title: "My exclusive interview for Melodic Dancers", excerpt: "Here is my exclusive interview for Melodic Dancers magazine; you can find the interview on page 9." }
     ],
     readMore: "Read more on",
     datesLabel: "Live",
@@ -206,11 +210,13 @@ const GOOGLE_DRIVE = {
 };
 
 const NEWS_ITEMS = [
-  { id: 1, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
+  { id: 1, date: "26.07.2026", category: "Magazin Interview", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
   { id: 2, date: "05.07.2026", category: "Paul van Dyk Support", link: "https://www.youtube.com/watch?v=AIGRuvQBEvs", image: "images/vonycsession.jpg" },
-  { id: 3, date: "09.07.2026", category: "Interview", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
-  { id: 4, date: "10.07.2026", category: "New Episode", link: "https://youtu.be/xGbPAuIDj6o?si=xGAMJ8hxRATiVSKM", image: "images/rvitc.jpg" },
-  { id: 5, date: "26.07.2026", category: "Magazin Interview", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
+  { id: 3, date: "17.09.2026", category: "Interview Soundspace", link: "https://wearesoundspace.com/interview-max-hefele-myr-call-me-ep/", image: "images/soundspace.jpg" },
+  { id: 4, date: "05.08.2026", category: "Out Now Max Hefele Call Me", link: "https://links.feiyr.com/x/callme-myr43/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", images: "images/Callme.jpg"},
+  { id: 5, date: "09.07.2026", category: "Interview", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
+  { id: 6, date: "17.07.2026", category: "New Episode", link: "https://youtu.be/YOsFopz1DSA?si=lJxFKThWmk2ncuCs", image: "images/rvitc.jpg" },
+  { id: 7, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
 ];
 
 const VIDEO_IDS = [
