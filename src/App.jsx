@@ -215,7 +215,7 @@ const NEWS_ITEMS = [
   { id: 3, date: "17.09.2026", category: "Interview Soundspace", link: "https://wearesoundspace.com/interview-max-hefele-myr-call-me-ep/", image: "images/soundspace.jpg" },
   { id: 4, date: "05.08.2026", category: "Out Now Max Hefele Call Me", link: "https://links.feiyr.com/x/callme-myr43/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", images: "images/Callme.jpg"},
   { id: 5, date: "09.07.2026", category: "Interview", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
-  { id: 6, date: "17.09.2026", category: "New Episode", link: "https://youtu.be/YOsFopz1DSA?si=lJxFKThWmk2ncuCs", image: "images/rvitc.jpg" },
+  { id: 6, date: "17.07.2026", category: "New Episode", link: "https://youtu.be/YOsFopz1DSA?si=lJxFKThWmk2ncuCs", image: "images/rvitc.jpg" },
   { id: 7, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
 ];
 
