@@ -213,7 +213,7 @@ const NEWS_ITEMS = [
   { id: 1, date: "26.07.2026", category: "Magazin Interview", link: "https://www.melodicdancers.com/in-conversation-with-max-hefele?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnxbE2nY2irYoab9nlbXcj5Ys3QdqsliYzX87v67kiMa5Pjvkz1uxrkZtPCA8_aem_02qXV-HXORBgqnfSalckaQ", image: "images/melodicdancers.jpg" },
   { id: 2, date: "05.07.2026", category: "Paul van Dyk Support", link: "https://www.youtube.com/watch?v=AIGRuvQBEvs", image: "images/vonycsession.jpg" },
   { id: 3, date: "17.09.2026", category: "Interview Soundspace", link: "https://wearesoundspace.com/interview-max-hefele-myr-call-me-ep/", image: "images/soundspace.jpg" },
-  { id: 4, date: "05.08.2026", category: "Out Now Max Hefele Call Me", link: "https://links.feiyr.com/x/callme-myr43/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", images: "images/Callme.jpg"},
+  { id: 4, date: "05.08.2026", category: "Out Now Max Hefele Call Me", link: "https://links.feiyr.com/x/callme-myr43/?utm_source=ig&utm_medium=social&utm_content=link_in_bio", image: "images/Callme.jpg"},
   { id: 5, date: "09.07.2026", category: "Interview", link: "https://thelastfuture.wixsite.com/thelastfuture/post/max-hefele-presents-call-me-myr", image: "images/thelastfuture.jpg" },
   { id: 6, date: "17.07.2026", category: "New Episode", link: "https://youtu.be/YOsFopz1DSA?si=lJxFKThWmk2ncuCs", image: "images/rvitc.jpg" },
   { id: 7, date: "09.07.2026", category: "Interview", link: "https://www.chromatic-club.com/post/max-hefele-presents-call-me-myr", image: "images/chromaticclub.jpg" },
@@ -1700,7 +1700,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
