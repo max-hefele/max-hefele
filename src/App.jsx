@@ -54,7 +54,7 @@ const T = {
     newsLabel: "Latest Updates",
     newsTitle: "NEWS",
     newsItems: [
-      { title: "Mein Exklusiv-Interview für Melodic Dancers", excerpt: "Hier ist mein Exklusiv-Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." }
+      { title: "Mein Exklusiv-Interview für Melodic Dancers", excerpt: "Hier ist mein Exklusiv-Interview für das Melodic Dancers Magazin, das Interview findet ihr auf Seite 9." },
       { title: "Paul van Dyk Support Vonyc Session 1026", excerpt: "Paul van Dyk supportet meinen Track Better day of life aus meiner EP Call Me." },
       { title: "Interview Soundspace", excerpt: "Max Hefele debütiert auf MYR mit der neuen EP Call Me." },
       { title: "Meine Debüt Call Me", excerpt: "Ab jetzt überall erhältich." },
@@ -305,7 +305,7 @@ const css = `
     --border-hover: rgba(0, 243, 255, 0.85);
     
     --accent-cyan: #00f3ff;
-    --accent-magenta: #f72585; /* Refined 80s Synthwave Magenta */
+    --accent-magenta: #f72585;
     --accent-violet: #8b5cf6;
     --accent-amber: #f59e0b;
     
@@ -324,7 +324,6 @@ const css = `
   ::-webkit-scrollbar { display: none; }
   body, #root { background: var(--bg-obsidian); color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; width: 100%; }
 
-  /* 3D TRON & AFTERLIFE PERSPECTIVE GRID (HARMONIZED & DEPTH) */
   .tron-grid {
     position: fixed;
     inset: 0;
@@ -353,7 +352,6 @@ const css = `
     100% { transform: rotateX(75deg) translateY(60px); }
   }
 
-  /* ETHEREAL SCANLINE & FILM GRAIN */
   .noise-overlay {
     position: fixed;
     inset: 0;
@@ -367,7 +365,6 @@ const css = `
     z-index: 999;
   }
 
-  /* MOVING LASER & PARTICLE STREAMS */
   .laser-stream-h {
     position: fixed;
     top: 35%;
@@ -463,7 +460,6 @@ const css = `
     to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
   }
 
-  /* MARQUEE TICKER */
   .marquee-container {
     background: #020408;
     border-top: 1px solid rgba(0, 243, 255, 0.3);
@@ -489,7 +485,6 @@ const css = `
     100% { transform: translateX(-50%); }
   }
 
-  /* CYBER-HUD NAV & EQUALIZER */
   .nav { 
     position: fixed; 
     top: 0; 
@@ -623,7 +618,6 @@ const css = `
   .mobile-nav a { color: var(--text); text-decoration: none; font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; transition: color 0.3s; }
   .mobile-nav a:hover { color: var(--accent-cyan); }
 
-  /* HERO */
   .hero { height: 100vh; min-height: 560px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; padding: var(--header-h) 20px 0; }
   .hero-bg { 
     position: absolute; 
@@ -682,14 +676,12 @@ const css = `
   .scroll-hint { position: absolute; bottom: 30px; color: var(--text-dim); cursor: pointer; transition: color 0.3s, transform 0.3s; z-index: 2; padding: 10px; }
   .scroll-hint:hover { color: var(--accent-cyan); transform: translateY(3px); }
 
-  /* SECTIONS & CONTAINER */
   .section { padding: 120px 60px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
   .section-label { font-family: var(--font-display); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
   .section-label::before { content: '['; color: var(--accent-magenta); }
   .section-label::after { content: ']'; color: var(--accent-magenta); }
   .section-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 50px; text-transform: uppercase; word-break: break-word; }
 
-  /* ABOUT LAYOUT */
   .about-layout { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: start; }
   
   .about-photo { 
@@ -740,7 +732,6 @@ const css = `
   .res-tag { font-size: 12px; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); background: rgba(0, 243, 255, 0.03); transition: all 0.3s; }
   .res-tag:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); background: rgba(0, 243, 255, 0.1); }
 
-  /* MUSIC SLIDER */
   .music-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .music-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   
@@ -814,7 +805,6 @@ const css = `
   .m-card-desc { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
   .m-card-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-weight: 700; color: #fff; position: relative; z-index: 2; }
 
-  /* CONSENT OVERLAYS */
   .unified-consent-box {
     position: relative;
     width: 100%;
@@ -909,7 +899,6 @@ const css = `
   .media-consent-text { font-size: 11px; color: var(--text-mid); margin-top: 14px; max-width: 440px; line-height: 1.5; }
   .media-privacy-link { background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 11px; }
 
-  /* VIDEO GRID */
   .video-block { margin-top: 80px; }
   .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .video-frame { 
@@ -930,7 +919,6 @@ const css = `
   .video-more { font-family: var(--font-display); margin-top: 24px; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; }
   .video-more:hover { color: var(--accent-cyan); }
 
-  /* NEWS */
   .news-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -webkit-overflow-scrolling: touch; }
   .n-card { 
     flex: 0 0 360px; 
@@ -957,12 +945,10 @@ const css = `
   .n-excerpt { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; font-weight: 300; }
   .n-link { font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
-  /* DATES */
   .dates-empty { text-align: center; padding: 80px 24px; border: 1px dashed var(--border); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); background: rgba(0, 243, 255, 0.015); }
   .dates-empty-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; word-break: break-word; }
   .dates-empty-sub { font-size: 13px; color: var(--text-dim); }
 
-  /* BOOKING */
   .booking-wrap { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .booking-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   .booking-content-box { 
@@ -976,7 +962,6 @@ const css = `
     max-width: 900px;
   }
 
-  /* CONTACT */
   .contact-wrap { background: var(--bg-obsidian); border-top: 1px solid var(--border); padding: 120px 0; position: relative; z-index: 1; width: 100%; }
   .contact-inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; width: 100%; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
@@ -990,7 +975,6 @@ const css = `
   .footer-link { background: none; border: none; color: var(--text-dim); font-size: 11px; cursor: pointer; transition: color 0.3s; }
   .footer-link:hover { color: var(--accent-cyan); }
 
-  /* MODALS */
   .legal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(3, 5, 10, 0.95); backdrop-filter: blur(20px); display: flex; justify-content: center; align-items: flex-start; padding: 80px 24px; overflow-y: auto; }
   .legal-box { background: var(--bg-card); border: var(--glass-border); clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px)); max-width: 760px; width: 100%; padding: 48px; position: relative; box-shadow: 0 0 60px rgba(0, 243, 255, 0.2); }
   .legal-close { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text-mid); font-size: 24px; cursor: pointer; transition: color 0.3s; padding: 8px; touch-action: manipulation; }
@@ -1004,7 +988,6 @@ const css = `
   .legal-section li { margin-bottom: 6px; }
   .legal-section a { color: var(--accent-cyan); text-decoration: underline; }
 
-  /* REVEAL ANIMATION */
   .rv { 
     opacity: 0; 
     filter: blur(12px);
@@ -1020,7 +1003,6 @@ const css = `
     transform: translateY(0) scale(1); 
   }
 
-  /* RESPONSIVE OPTIMIZATIONS */
   @media (max-width: 1024px) {
     .section, .music-inner, .booking-inner, .contact-inner { padding: 80px 24px; }
     .nav { padding: 16px 20px; }
@@ -1268,7 +1250,6 @@ export default function MaxHefele() {
       <style>{css}</style>
       <div className="noise-overlay" />
       
-      {/* 3D TRON & WAREHOUSE PERSPECTIVE GRID (Ohne stehende Laserlinie) */}
       <div className="tron-grid">
         <div className="tron-grid-plane" />
       </div>
@@ -1700,7 +1681,7 @@ export default function MaxHefele() {
                   <h3>EU-Streitschlichtung</h3>
                   <p>
                     Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br/>
-                    Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    Unsere E-Mail-Adresse finden Sie oben im Impism. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                   </p>
                 </div>
               </>
